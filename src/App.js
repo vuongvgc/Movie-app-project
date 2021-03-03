@@ -6,7 +6,7 @@ import AuthLayout from "./layouts/AuthLayout";
 import AdminLayout from "./layouts/AdminLayout";
 import UsersManagement from "./layouts/UsersManagement";
 import MoviesManagement from "./layouts/MovieManagement";
-import InfomationUser from "./layouts/InformationUser";
+import InformationUser from "./layouts/InformationUser";
 import TicketBookingHistory from "./layouts/TicketBookingHistory";
 //Page
 import HomePage from "./pages/HomePage";
@@ -51,7 +51,7 @@ function App() {
         <Route exact path={["/user/information", "/user/movie"]}>
           <UserDetail>
             <Switch>
-              <Route path="/user/information" component={InfomationUser} />
+              <Route path="/user/information" component={InformationUser} />
               <Route path="/user/movie" component={TicketBookingHistory} />
             </Switch>
           </UserDetail>
