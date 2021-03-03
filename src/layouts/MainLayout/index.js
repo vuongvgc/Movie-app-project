@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-export default class AuthLayout extends Component {
+export default class MainLayout extends Component {
   render() {
     return (
       <div>
-        AuthLayout
+        MainLayout
         {this.props.children}
       </div>
     );
