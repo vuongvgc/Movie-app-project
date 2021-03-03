@@ -5,11 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import rootReducers from "./reducers/index";
-import { createStore } from "redux";
-const store = createStore(
-  rootReducers,
+import thunk from "redux-thunk";
+import { createStore, applyMiddleware, compose } from "redux";
+const enhance = compose(
+  applyMiddleware(thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+const store = createStore(rootReducers, enhance);
 ReactDOM.render(
   <Provider store={store}>
     <App />

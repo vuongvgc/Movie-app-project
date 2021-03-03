@@ -1,7 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+// import axios from "./utils/axiosClient";
 function App() {
+  // Test AXIOS
+  // axios.get("/QuanLyPhim/LayDanhSachPhim?maNhom=GP01").then((result) => {
+  //   console.log(result);
+  // });
   return (
     <div className="App">
       <header className="App-header">
