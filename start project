@@ -1,0 +1,41 @@
+[33mcommit b904259ea50d05dd1a20ae60542060f8ba90f27e[m[33m ([m[1;36mHEAD -> [m[1;32mPhucHomePage0303[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/PhucHomePage0303[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: vuongvgc <vuongvgc@gmail.com>
+Date:   Wed Mar 3 21:20:52 2021 +0700
+
+    edit name of component InformationUser
+
+[33mcommit fdd5743f277e951aca21dd1143b2ad4ec046a863[m
+Author: vuongvgc <vuongvgc@gmail.com>
+Date:   Wed Mar 3 21:07:57 2021 +0700
+
+    router project
+
+[33mcommit 8ec8642c8c226f3867dae5a0d1308682c2bbe0ae[m
+Author: vuongvgc <vuongvgc@gmail.com>
+Date:   Wed Mar 3 19:54:23 2021 +0700
+
+    add boostrap and font awesom
+
+[33mcommit 5297c3d3792e389ccbf786b0833dfc42df95dd70[m
+Author: vuongvgc <vuongvgc@gmail.com>
+Date:   Wed Mar 3 07:56:08 2021 +0700
+
+    build call API with redux thunk
+
+[33mcommit fdf1f1cd9e2d39b48940fdabe20c7f240c090024[m
+Author: vuongvgc <vuongvgc@gmail.com>
+Date:   Wed Mar 3 07:37:21 2021 +0700
+
+    build store with redux
+
+[33mcommit e8b112a628f83488b878c1265241bd82a43bea8d[m
+Author: vuongvgc <vuongvgc@gmail.com>
+Date:   Tue Mar 2 22:28:43 2021 +0700
+
+    create components
+
+[33mcommit c76d1aa04f4928ba3101d67537ff50f705ce842f[m
+Author: vuongvgc <vuongvgc@gmail.com>
+Date:   Tue Mar 2 22:18:36 2021 +0700
+
+    start project
