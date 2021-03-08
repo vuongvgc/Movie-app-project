@@ -9,9 +9,9 @@ export class QuanLyPhimService {
             method: 'GET'
         });
     }
-    layThongTinPhim = (maPhim) => {
+    layThongTinPhim = () => {
         return axios({
-            url: `${domain}/QuanLyRap/LayThongTinLichChieuPhim?maphim=${maPhim}`,
+            url: `${domain}/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=1323`,
             method: 'GET'
         });
     }
@@ -33,6 +33,8 @@ export class QuanLyPhimService {
             method: 'GET'
         });
     }
+
+    // /QuanLyRap/LayThongTinHeThongRap
 }
 
 
