@@ -1,52 +1,24 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import Carousel from "../Carousel";
-import TopSearch from "../TopSearch";
+import Carousel from "../../../src/components/Carousel/index";
+import Header from "../../components/Header";
+import TabTheaters from "../../components/TabTheater";
+import TopSearch from "../../components/TopSearch";
+import Footer from "../../components/Footer";
 
 export default class HomePage extends Component {
   render() {
     return <div>
-      <div>
-        <nav className="fixed-top navbar navbar-expand-lg  navbar-light bg-light">
-          <div className="container-fluid">
-            <NavLink className="navbar-brand" to="/">VPV</NavLink>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon" />
-            </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className=" navbar nav  mx-auto">
-                <li className="nav-item">
-                  <NavLink className="nav-link active" aria-current="page" to="/">Trang Chủ</NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/login">Đăng Nhập</NavLink>
-                </li>
-                <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Phim
-          </a>
-                  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a className="dropdown-item" href="#pills-home">Đang Chiếu</a></li>
-                    <li><a className="dropdown-item" href="#pills-profile">Sắp Chiếu</a></li>
-
-
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link " to="/"  >Liên Hệ</NavLink>
-                </li>
-              </ul>
-              {/* <form className="d-flex">
+      <Header />
+      {/* <form className="d-flex">
                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                 <button className="btn btn-outline-success" type="submit">Search</button>
               </form> */}
-            </div>
-          </div>
-        </nav>
-      </div>
+
       <Carousel />
       <TopSearch />
-
+      <TabTheaters />
+      <Footer />
 
     </div>;
   }
