@@ -1,13 +1,15 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { NavLink } from "react-router-dom";
 class LoginForm extends React.Component {
   renderError({ error, touched }) {
+    console.log("run error" + error + touched);
     if (error && touched) {
       return <div className="alert alert-danger">{error}</div>;
     }
   }
   renderInput = ({ input, label, meta }) => {
-    // console.log(propsForm)
+    console.log(meta);
     const className = meta.error && meta.touched ? "text-danger" : "";
     return (
       <div className="form-group">
@@ -28,7 +30,10 @@ class LoginForm extends React.Component {
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <Field name="taiKhoan" component={this.renderInput} label="Tài Khoản" />
         <Field name="matKhau" component={this.renderInput} label="Mật Khẩu" />
-        <button className="btn btn-primary">Submit</button>
+        <button className="btn btn-primary m-2">Đăng Nhập</button>
+        <NavLink to="/register">
+          <button className="btn btn-primary m-2">Đăng Ký</button>
+        </NavLink>
       </form>
     );
   }

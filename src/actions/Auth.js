@@ -1,4 +1,9 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL } from "../constants/auth";
+import {
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  LOGOUT_SUCCESS,
+} from "../constants/auth";
 import axios from "../utils/axiosClient";
 export const login = (values) => {
   return (dispatch) => {
@@ -28,4 +33,8 @@ export const login = (values) => {
         });
       });
   };
+};
+export const logout = () => {
+  localStorage.removeItem("user");
+  return { type: LOGOUT_SUCCESS };
 };
