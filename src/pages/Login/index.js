@@ -9,17 +9,23 @@ class Login extends Component {
     this.props.login(formValue);
   };
   render() {
+    // console.log(this.props.currentUser);
     return (
       <div>
-        <button className="btn btn-danger" onClick={this.props.logout}>
-          <NavLink className="nav-link" to="/login">
+        <h3>Đăng Nhập</h3>
+        <LoginForm onSubmit={this.onSubmit} />
+        <button className="btn btn-danger" onClick={() => this.props.logout()}>
+          <NavLink className="nav-link" to="/">
             Đăng Xuất
           </NavLink>
         </button>
-        <h3>Đăng Nhập</h3>
-        <LoginForm onSubmit={this.onSubmit} />
       </div>
     );
   }
 }
-export default connect(null, { login: login, logout: logout })(Login);
+const mapStateToProp = (state) => {
+  return {
+    currentUser: state.authReducers.currentUser,
+  };
+};
+export default connect(mapStateToProp, { login: login, logout: logout })(Login);
