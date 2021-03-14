@@ -13,12 +13,7 @@ class Login extends Component {
     return (
       <div>
         <h3>Đăng Nhập</h3>
-        <LoginForm onSubmit={this.onSubmit} />
-        <button className="btn btn-danger" onClick={() => this.props.logout()}>
-          <NavLink className="nav-link" to="/">
-            Đăng Xuất
-          </NavLink>
-        </button>
+        <LoginForm onSubmit={this.onSubmit} wrongAuth={this.props.error} />
       </div>
     );
   }
@@ -26,6 +21,7 @@ class Login extends Component {
 const mapStateToProp = (state) => {
   return {
     currentUser: state.authReducers.currentUser,
+    error: state.authReducers.error,
   };
 };
 export default connect(mapStateToProp, { login: login, logout: logout })(Login);

@@ -2,14 +2,24 @@ import React, { Component } from "react";
 import ButtonWhite from "../Buttons/ButtonWhite";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
+import { logout } from "../../actions/Auth";
 class StatusAuth extends Component {
   render() {
     console.log(this.props);
     if (this.props.currentUser) {
       return (
-        <NavLink className="nav-link active" aria-current="page" to="/login">
-          Chào, {this.props.currentUser.hoTen}
-        </NavLink>
+        <ul className="navbar nav">
+          <li className="nav-item">
+            <NavLink className="nav-link" aria-current="page" to="/login">
+              Chào, {this.props.currentUser.hoTen}
+            </NavLink>
+          </li>
+          <li className="nav-item" onClick={() => this.props.logout()}>
+            <NavLink className="nav-link active" aria-current="page" to="/">
+              Đăng Xuất
+            </NavLink>
+          </li>
+        </ul>
       );
     } else {
       return (
@@ -44,4 +54,4 @@ const mapStateToProp = (state) => {
     currentUser: state.authReducers.currentUser,
   };
 };
-export default connect(mapStateToProp, null)(StatusAuth);
+export default connect(mapStateToProp, { logout: logout })(StatusAuth);

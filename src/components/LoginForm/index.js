@@ -50,9 +50,12 @@ class LoginForm extends React.Component {
           component={this.renderInputPassword}
           label="Mật Khẩu"
         />
-        <NavLink to="/">
-          <button className="btn btn-primary m-2">Đăng Nhập</button>
-        </NavLink>
+        {this.props.wrongAuth ? (
+          <div className="alert alert-danger">{this.props.wrongAuth}</div>
+        ) : (
+          ""
+        )}
+        <button className="btn btn-primary m-2">Đăng Nhập</button>
         <NavLink to="/register">
           <button className="btn btn-primary m-2">Đăng Ký</button>
         </NavLink>
