@@ -1,8 +1,12 @@
+import RegisterForm from "../components/RegisterForm";
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
+  REGISTER_REQUEST,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
 } from "../constants/auth";
 import axios from "../utils/axiosClient";
 export const login = (values) => {
@@ -37,4 +41,26 @@ export const login = (values) => {
 export const logout = () => {
   localStorage.removeItem("user");
   return { type: LOGOUT_SUCCESS };
+};
+export const register = (values) => {
+  return (dispatch) => {
+    dispatch({
+      type: REGISTER_REQUEST,
+    });
+    axios.post("/QuanLyNguoiDung/DangKy", { ...values }).then((result) => {
+      dispatch({
+        type: REGISTER_SUCCESS,
+        payload: {
+          data: result.data,
+        },
+      }).catch((error) => {
+        dispatch({
+          type: RegisterForm,
+          payload: {
+            error: error.response.data,
+          },
+        });
+      });
+    });
+  };
 };
