@@ -3,6 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { NavLink } from "react-router-dom";
 import renderInput from "../Form/renderInput";
 import renderInputPassword from "../Form/renderInputPassword";
+import Validate from "./Validate";
 class RegisterForm extends React.Component {
   onSubmit = (formValue) => {
     // console.log(formValue);
@@ -44,30 +45,7 @@ class RegisterForm extends React.Component {
     );
   }
 }
-const validate = (formValues) => {
-  // console.log(formValues);
-  let error = {};
-  if (!formValues.taiKhoan) {
-    error.taiKhoan = "Bạn phải nhập tài khoản";
-  }
-  if (!formValues.matKhau) {
-    error.matKhau = "Bạn phải nhập mật khẩu";
-  }
-  if (!formValues.nhapLaiMatKhau) {
-    error.nhapLaiMatKhau = "Bạn phải nhập mật khẩu";
-  }
-  if (!formValues.hoTen) {
-    error.hoTen = "Bạn phải nhập họ tên";
-  }
-  if (!formValues.email) {
-    error.email = "Bạn phải nhập email";
-  }
-  if (!formValues.soDienThoai) {
-    error.soDienThoai = "Bạn phải nhập số điện thoại";
-  }
-  return error;
-};
 export default reduxForm({
   form: "registerForm",
-  validate: validate,
+  validate: Validate,
 })(RegisterForm);
