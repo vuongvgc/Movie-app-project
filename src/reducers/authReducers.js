@@ -4,6 +4,9 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
+  REGISTER_REQUEST,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
 } from "../constants/auth";
 
 const currentUser = localStorage.getItem("user")
@@ -14,6 +17,8 @@ const initialState = {
   currentUser: currentUser,
   loading: false,
   error: null,
+  registerUser: "",
+  registerStatus: "",
 };
 
 const authReducer = (state = initialState, action) => {
@@ -33,6 +38,12 @@ const authReducer = (state = initialState, action) => {
     }
     case LOGOUT_SUCCESS: {
       return { ...initialState };
+    }
+    case REGISTER_SUCCESS: {
+      return { ...state, registerUser: action.payload };
+    }
+    case REGISTER_FAIL: {
+      return { ...state, registerStatus: action.payload };
     }
     default:
       return state;

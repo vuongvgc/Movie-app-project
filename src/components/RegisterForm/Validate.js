@@ -3,14 +3,7 @@ const Validate = (formValues) => {
   const regexName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/g;
   const regexEmail = /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/gm;
   const regexPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
-  const {
-    taiKhoan,
-    matKhau,
-    nhapLaiMatKhau,
-    hoTen,
-    email,
-    soDienThoai,
-  } = formValues;
+  const { taiKhoan, matKhau, nhapLaiMatKhau, hoTen, email, soDt } = formValues;
   let error = {};
   if (!taiKhoan) {
     error.taiKhoan = "Bạn phải nhập tài khoản";
@@ -36,11 +29,11 @@ const Validate = (formValues) => {
   if (!regexEmail.test(email)) {
     error.email = "Email không hợp lệ";
   }
-  if (!soDienThoai) {
-    error.soDienThoai = "Bạn phải nhập số điện thoại";
+  if (!soDt) {
+    error.soDt = "Bạn phải nhập số điện thoại";
   }
-  if (!regexPhoneNumber.test(soDienThoai)) {
-    error.soDienThoai = "Số điện thoại không hợp lệ";
+  if (!regexPhoneNumber.test(soDt)) {
+    error.soDt = "Số điện thoại không hợp lệ";
   }
   return error;
 };

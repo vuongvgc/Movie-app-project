@@ -4,11 +4,15 @@ import { NavLink } from "react-router-dom";
 import renderInput from "../Form/renderInput";
 import renderInputPassword from "../Form/renderInputPassword";
 import Validate from "./Validate";
+import axios from "../../utils/axiosClient";
 class RegisterForm extends React.Component {
   onSubmit = (formValue) => {
     // console.log(formValue);
     // console.log(this.props.createStream());
+    delete formValue.nhapLaiMatKhau;
+    // console.log(formValue);
     this.props.onSubmit(formValue);
+    // axios.post("/QuanLyNguoiDung/DangKy", { ...formValue });
   };
   render() {
     // console.log(this.props)
@@ -27,11 +31,7 @@ class RegisterForm extends React.Component {
         />
         <Field name="hoTen" component={renderInput} label="Họ tên" />
         <Field name="email" component={renderInput} label="Email" />
-        <Field
-          name="soDienThoai"
-          component={renderInput}
-          label="Số điện thoại"
-        />
+        <Field name="soDt" component={renderInput} label="Số điện thoại" />
         {this.props.wrongAuth ? (
           <div className="alert alert-danger">{this.props.wrongAuth}</div>
         ) : (
@@ -49,3 +49,11 @@ export default reduxForm({
   form: "registerForm",
   validate: Validate,
 })(RegisterForm);
+
+// "taiKhoan": "vuong",
+//   "matKhau": "1996",
+//   "email": "vuong@gmail.com",
+//   "soDt": "0789200396",
+//   "maNhom": "GP10",
+//   "maLoaiNguoiDung": "string",
+//   "hoTen": "Vuong"

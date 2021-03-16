@@ -1,4 +1,3 @@
-import RegisterForm from "../components/RegisterForm";
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -28,7 +27,7 @@ export const login = (values) => {
         });
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
         dispatch({
           type: LOGIN_FAIL,
           payload: {
@@ -43,24 +42,33 @@ export const logout = () => {
   return { type: LOGOUT_SUCCESS };
 };
 export const register = (values) => {
+  const admin = {
+    maNhom: "GP10",
+    maLoaiNguoiDung: "KhachHang",
+  };
   return (dispatch) => {
     dispatch({
       type: REGISTER_REQUEST,
     });
-    axios.post("/QuanLyNguoiDung/DangKy", { ...values }).then((result) => {
-      dispatch({
-        type: REGISTER_SUCCESS,
-        payload: {
-          data: result.data,
-        },
-      }).catch((error) => {
+    axios
+      .post("/QuanLyNguoiDung/DangKy", { ...values, ...admin })
+      .then((result) => {
         dispatch({
-          type: RegisterForm,
+          type: REGISTER_SUCCESS,
+          payload: {
+            data: result.data,
+          },
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: REGISTER_FAIL,
           payload: {
             error: error.response.data,
           },
         });
       });
-    });
   };
 };
+//   "maNhom": "GP10",
+//   "maLoaiNguoiDung": "string",
