@@ -18,7 +18,7 @@ const initialState = {
   loading: false,
   error: null,
   registerUser: "",
-  registerStatus: "",
+  registerStatus: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -40,10 +40,10 @@ const authReducer = (state = initialState, action) => {
       return { ...initialState };
     }
     case REGISTER_SUCCESS: {
-      return { ...state, registerUser: action.payload };
+      return { ...state, registerUser: action.payload.data };
     }
     case REGISTER_FAIL: {
-      return { ...state, registerStatus: action.payload };
+      return { ...state, registerStatus: action.payload.error };
     }
     default:
       return state;

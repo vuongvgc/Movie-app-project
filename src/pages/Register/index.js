@@ -20,7 +20,7 @@ class Login extends Component {
 const mapStateToProp = (state) => {
   return {
     currentUser: state.authReducers.currentUser,
-    error: state.authReducers.error,
+    error: state.authReducers.registerStatus,
   };
 };
 export default connect(mapStateToProp, { register: register })(Login);
