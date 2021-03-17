@@ -8,6 +8,8 @@ import {
   REGISTER_FAIL,
 } from "../constants/auth";
 import axios from "../utils/axiosClient";
+import { createBrowserHistory } from "history";
+let history = createBrowserHistory();
 export const login = (values) => {
   return (dispatch) => {
     dispatch({
@@ -25,6 +27,7 @@ export const login = (values) => {
             data: result.data,
           },
         });
+        history.replace("/");
       })
       .catch((error) => {
         // console.log(error.response.data);
@@ -59,6 +62,7 @@ export const register = (values) => {
             data: result.data,
           },
         });
+        history.replace("/");
       })
       .catch((error) => {
         dispatch({

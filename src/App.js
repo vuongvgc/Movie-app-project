@@ -15,9 +15,11 @@ import MovieDetails from "./pages/MovieDetails";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserDetail from "./pages/UserDetail";
+import { createBrowserHistory } from "history";
+let history = createBrowserHistory();
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter history={history}>
       <Switch>
         {/* Movie */}
         <Route exact path={["/", "/ticketRoom/:movieId", "/movie/:movieId"]}>
