@@ -1,0 +1,56 @@
+.showTimes{
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    min-height: 500px;
+}
+
+.showTime-logo{
+    border-right: 1px solid #ebebec;
+
+  
+
+}
+
+.showTime-logoBorderBottom{
+    border-bottom: 1px solid #ebebec;
+    display: flex;
+}
+.showTime-maRap{
+    align-items: center;
+    line-height: 90px;
+
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+
+}
+.logo img{
+    width: 100%;
+}
+
+.showTimes-tenCumRap{
+    color: red;
+    font-size: 20px;
+    font-weight: 500;
+    padding-bottom: 20px;
+}
+
+
+
+
+
+.showTime-item {
+    text-align: center;
+    background-color: rgba(246,246,246,.5);
+    border-radius: 7px;
+    color: #9b9b9b;
+    border: 1px solid #e4e4e4;
+    padding: 5px;
+    margin: 0 15px 15px 0;
+    display: inline-block;
+    color: #108f3e;
+}
