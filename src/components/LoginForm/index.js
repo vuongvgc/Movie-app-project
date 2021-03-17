@@ -1,40 +1,9 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { NavLink } from "react-router-dom";
+import renderInput from "../Form/renderInput";
+import renderInputPassword from "../Form/renderInputPassword";
 class LoginForm extends React.Component {
-  renderError({ error, touched }) {
-    // console.log("run error" + error + touched);
-    if (error && touched) {
-      return <div className="alert alert-danger">{error}</div>;
-    }
-  }
-  renderInput = ({ input, label, meta }) => {
-    // console.log(meta);
-    const className = meta.error && meta.touched ? "text-danger" : "";
-    return (
-      <div className="form-group">
-        <label className={className}>{label}</label>
-        <input className="form-control" {...input} autoComplete="off" />
-        {this.renderError(meta)}
-      </div>
-    );
-  };
-  renderInputPassword = ({ input, label, meta }) => {
-    // console.log(meta);
-    const className = meta.error && meta.touched ? "text-danger" : "";
-    return (
-      <div className="form-group">
-        <label className={className}>{label}</label>
-        <input
-          type="password"
-          className="form-control"
-          {...input}
-          autoComplete="off"
-        />
-        {this.renderError(meta)}
-      </div>
-    );
-  };
   onSubmit = (formValue) => {
     // console.log(formValue);
     // console.log(this.props.createStream());
@@ -44,10 +13,10 @@ class LoginForm extends React.Component {
     // console.log(this.props)
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field name="taiKhoan" component={this.renderInput} label="Tài Khoản" />
+        <Field name="taiKhoan" component={renderInput} label="Tài Khoản" />
         <Field
           name="matKhau"
-          component={this.renderInputPassword}
+          component={renderInputPassword}
           label="Mật Khẩu"
         />
         {this.props.wrongAuth ? (

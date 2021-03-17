@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { login, logout } from "../../actions/Auth";
 import LoginForm from "../../components/LoginForm";
-import { NavLink } from "react-router-dom";
 import "./style.css";
 class Login extends Component {
     onSubmit = (formValue) => {
