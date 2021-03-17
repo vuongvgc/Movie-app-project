@@ -34,6 +34,13 @@ export class QuanLyPhimService {
         });
     }
 
+    layThongTinPhongVe = () => {
+        return axios({
+            url: `${domain}/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${groupID}`,
+            method: 'GET'
+        });
+    }
+
     // /QuanLyRap/LayThongTinHeThongRap
 }
 
