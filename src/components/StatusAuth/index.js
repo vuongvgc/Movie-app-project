@@ -10,7 +10,7 @@ class StatusAuth extends Component {
       return (
         <ul className="navbar nav">
           <li className="nav-item">
-            <NavLink className="nav-link" aria-current="page" to="/login">
+            <NavLink className="nav-link" aria-current="page" to="/">
               Chào, {this.props.currentUser.hoTen}
             </NavLink>
           </li>
