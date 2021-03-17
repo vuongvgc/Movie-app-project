@@ -29,10 +29,10 @@ export default function ShowTime(props) {
                         >
                             <div className='logo'>
                                 <img src={item?.logo} alt="" />
-                                <span>{item?.maHeThongRap}</span>
+                               
                           
                             </div>
-
+                            <span className='showTime-maRap'>{item?.maHeThongRap}</span>
                         </div>
                     )
 
