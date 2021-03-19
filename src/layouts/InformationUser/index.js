@@ -23,6 +23,7 @@ class InformationUser extends Component {
             "email",
             "soDT"
           )}
+          updateInfor={false}
         />
       </div>
     );

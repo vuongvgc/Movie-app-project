@@ -1,5 +1,5 @@
 import renderError from "../Form/renderError";
-const renderInputPassword = ({ input, label, meta }) => {
+const renderInputPassword = ({ input, label, meta, isUpdate }) => {
   // console.log(meta);
   const className = meta.error && meta.touched ? "text-danger" : "";
   return (
@@ -10,6 +10,7 @@ const renderInputPassword = ({ input, label, meta }) => {
         className="form-control"
         {...input}
         autoComplete="off"
+        disabled={isUpdate}
       />
       {renderError(meta)}
     </div>

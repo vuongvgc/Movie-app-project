@@ -5,33 +5,58 @@ import renderInput from "../Form/renderInput";
 import renderInputPassword from "../Form/renderInputPassword";
 import Validate from "./Validate";
 import axios from "../../utils/axiosClient";
-class RegisterForm extends React.Component {
+class InforUserForm extends React.Component {
   onSubmit = (formValue) => {
     // console.log(formValue);
-    // console.log(this.props.createStream());
     delete formValue.nhapLaiMatKhau;
-    // console.log(formValue);
     this.props.onSubmit(formValue);
-    // axios.post("/QuanLyNguoiDung/DangKy", { ...formValue });
   };
+  componentDidUpdate(prevProps) {
+    if (prevProps.isUpdate !== this.props.isUpdate) {
+      let isUpdate = this.props.isUpdate;
+    }
+  }
   render() {
     // console.log(this.props)
+    let isUpdate = this.props.isUpdate;
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field name="taiKhoan" component={renderInput} label="Tài khoản" />
+        <Field
+          name="taiKhoan"
+          component={renderInput}
+          label="Tài khoản"
+          isUpdate={{ disabled: true }}
+        />
         <Field
           name="matKhau"
           component={renderInputPassword}
           label="Mật khẩu"
+          isUpdate={{ disabled: isUpdate }}
         />
         <Field
           name="nhapLaiMatKhau"
           component={renderInputPassword}
           label="Nhập lại mật khẩu"
+          isUpdate={{ disabled: isUpdate }}
         />
-        <Field name="hoTen" component={renderInput} label="Họ tên" />
-        <Field name="email" component={renderInput} label="Email" />
-        <Field name="soDt" component={renderInput} label="Số điện thoại" />
+        <Field
+          name="hoTen"
+          component={renderInput}
+          label="Họ tên"
+          isUpdate={{ disabled: isUpdate }}
+        />
+        <Field
+          name="email"
+          component={renderInput}
+          label="Email"
+          isUpdate={{ disabled: isUpdate }}
+        />
+        <Field
+          name="soDT"
+          component={renderInput}
+          label="Số điện thoại"
+          isUpdate={{ disabled: isUpdate }}
+        />
         {this.props.wrongAuth ? (
           <div className="alert alert-danger">{this.props.wrongAuth}</div>
         ) : (
@@ -45,9 +70,9 @@ class RegisterForm extends React.Component {
   }
 }
 export default reduxForm({
-  form: "registerForm",
+  form: "InforUserForm",
   validate: Validate,
-})(RegisterForm);
+})(InforUserForm);
 
 // "taiKhoan": "vuong",
 //   "matKhau": "1996",
