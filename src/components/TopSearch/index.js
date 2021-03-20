@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { qlPhimService } from '../../services/QuanLyPhimService'
 import { NavLink } from 'react-router-dom';
+import './style.css'
 
 // var moment = require('moment'); // require
 
@@ -11,11 +12,11 @@ export default function TopSearch(props) {
     let [phimHot, setDanhSachPhimHot] = useState([]);
     const renderDanhSachPhim = () => {
         return phim.map((phim, index) => {
-            return <div key={index} className="col-3">
+            return <div key={index} className="col-3 ">
                 <div className="card text-left ">
-                    <img style={{ width: '100%', height: '100%' }} className="card-img-top" src={phim.hinhAnh} alt={phim.hinhAnh} />
+                    <img style={{ width: '100%' }} className="card-img-top  img__topSearch " src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
-                        <h4 className="card-title">{phim.tenPhim}</h4>
+                        <h6 className="card-title">{phim.tenPhim}</h6>
                         <NavLink to={`/moviedetail/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
                     </div>
                 </div>
@@ -27,9 +28,9 @@ export default function TopSearch(props) {
         return phimSapChieu.map((phim, index) => {
             return <div key={index} className="col-3">
                 <div className="card text-left ">
-                    <img style={{ width: '100%', height: '100%' }} className="card-img-top " src={phim.hinhAnh} alt={phim.hinhAnh} />
+                    <img style={{ width: '100%' }} className="card-img-top img__topSearch " src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
-                        <h4 className="card-title">{phim.tenPhim}</h4>
+                        <h6 className="card-title">{phim.tenPhim}</h6>
                         <NavLink to={`/moviedetail/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
                     </div>
                 </div>
@@ -42,9 +43,9 @@ export default function TopSearch(props) {
         return phimHot.map((phim, index) => {
             return <div key={index} className="col-3">
                 <div className="card text-left ">
-                    <img style={{ width: '100%', height: '100%' }} className="card-img-top" src={phim.hinhAnh} alt={phim.hinhAnh} />
+                    <img style={{ width: '100%' }} className="card-img-top img__topSearch" src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
-                        <h4 className="card-title">{phim.tenPhim}</h4>
+                        <h6 className="card-title">{phim.tenPhim}</h6>
                         <NavLink to={`/moviedetail/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
                     </div>
                 </div>
