@@ -1,0 +1,107 @@
+/* CAROUSEL CSS */
+
+.carousel-item img {
+  height: 700px !important;
+}
+
+.carouse-item__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, black, transparent);
+  box-shadow: inset 0 120px 30px -5px rgba(0, 0, 0, 0.75);
+}
+
+.carousel-item__caption {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-right: 25%;
+}
+
+.carousel-item__caption span {
+  color: #fbbd61;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.carousel-item__caption p {
+  font-size: 18px;
+}
+
+.carousel-item__trailer span {
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  line-height: 40px;
+}
+
+.btn-orange {
+  background: linear-gradient(to right, #fbbd61, #ec7532) !important;
+  border-radius: 40px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  padding: 11px 30px;
+}
+
+.btn-add-comment:hover,
+.btn-add-comment:focus {
+  color: white !important;
+}
+
+.my-carousel .carousel-indicators {
+  bottom: 50px;
+}
+
+.my-carousel .carousel-indicators li {
+  width: 11px;
+  height: 11px;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.my-carousel .carousel-indicators li.active {
+  background-color: white;
+}
+
+.slider__title {
+  color: white !important;
+}
+
+.video-play-slider {
+  width: 80px;
+  height: 80px;
+  font-size: 20px;
+  border-radius: 50%;
+  border: 2px solid white;
+  line-height: 80px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* right: 0%; */
+  transform: translate(-50%, -50%);
+}
+.fancybox-toolbar,
+.fancybox-button--arrow_right,
+.fancybox-button--arrow_left,
+.fancybox-infobar {
+  display: none;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  opacity: 0;
+}
+
+.btn__carousel {
+  width: 11px !important;
+  height: 11px !important;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+/* END CAROUSEL CSS */
