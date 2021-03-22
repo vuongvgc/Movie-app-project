@@ -11,14 +11,8 @@ class InforUserForm extends React.Component {
     delete formValue.nhapLaiMatKhau;
     this.props.onSubmit(formValue);
   };
-  componentDidUpdate(prevProps) {
-    if (prevProps.isUpdate !== this.props.isUpdate) {
-      let isUpdate = this.props.isUpdate;
-    }
-  }
   render() {
     // console.log(this.props)
-    let isUpdate = this.props.isUpdate;
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <Field
@@ -31,40 +25,21 @@ class InforUserForm extends React.Component {
           name="matKhau"
           component={renderInputPassword}
           label="Mật khẩu"
-          isUpdate={{ disabled: isUpdate }}
         />
         <Field
           name="nhapLaiMatKhau"
           component={renderInputPassword}
           label="Nhập lại mật khẩu"
-          isUpdate={{ disabled: isUpdate }}
         />
-        <Field
-          name="hoTen"
-          component={renderInput}
-          label="Họ tên"
-          isUpdate={{ disabled: isUpdate }}
-        />
-        <Field
-          name="email"
-          component={renderInput}
-          label="Email"
-          isUpdate={{ disabled: isUpdate }}
-        />
-        <Field
-          name="soDT"
-          component={renderInput}
-          label="Số điện thoại"
-          isUpdate={{ disabled: isUpdate }}
-        />
+        <Field name="hoTen" component={renderInput} label="Họ tên" />
+        <Field name="email" component={renderInput} label="Email" />
+        <Field name="soDT" component={renderInput} label="Số điện thoại" />
         {this.props.wrongAuth ? (
           <div className="alert alert-danger">{this.props.wrongAuth}</div>
         ) : (
           ""
         )}
-        <NavLink to="/">
-          <button className="btn btn-primary m-2">Cập nhập thông tin</button>
-        </NavLink>
+        <button className="btn btn-primary m-2">Cập nhập thông tin</button>
       </form>
     );
   }
