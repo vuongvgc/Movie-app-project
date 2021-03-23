@@ -4,6 +4,7 @@ import authReducers from "./authReducers";
 import movieReducers from "./movieReducers";
 import movieDetailReducer from "./movieDetailReducer";
 import movieInfoReducer from "./movieInfoReducer";
+import userReducers from "./userReducers";
 import ticketRoomReducer from "./ticketRoom";
 
 const rootReducers = combineReducers({
@@ -12,6 +13,7 @@ const rootReducers = combineReducers({
   form: formReducer,
   movieDetailReducer,
   movieInfoReducer,
-  ticketRoomReducer
+  ticketRoomReducer,
+  userReducers,
 });
 export default rootReducers;

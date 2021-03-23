@@ -36,8 +36,8 @@ export default function Header(props) {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/login">
-                    Đăng Nhập
+                  <NavLink className="nav-link" to="/">
+                    Cụm Rạp
                   </NavLink>
                 </li>
                 <li className="nav-item dropdown">
