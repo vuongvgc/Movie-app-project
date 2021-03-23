@@ -1,40 +1,71 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getUser, updateUser } from "../../actions/User";
-import InforUserForm from "../../components/InforUserForm";
-import _ from "lodash";
+import { getUser } from "../../actions/User";
+import "./style.css";
 class TicketBookingHistory extends Component {
   componentDidMount() {
     this.props.getUser({ taikhoan: this.props.currentUser });
-    console.log(this.props.bookingList);
+    console.log(this.props.userDetail.thongTinDatVe);
   }
   onSubmit = (formValue) => {
-    // console.log(formValue, this.props.accessToken);
-    formValue.soDt = formValue.soDT;
-    delete formValue.soDT;
-    console.log(formValue);
     this.props.updateUser(formValue, this.props.accessToken);
   };
   render() {
-    console.log(this.props.userDetail.thongTinDatVe);
-    if (!this.props.userDetail) {
+    if (!this.props.userDetail.thongTinDatVe) {
       return <div>Loading...</div>;
     }
     return (
       <div className="container-fluid">
-        <InforUserForm
-          initialValues={_.pick(
-            this.props.userDetail,
-            "taiKhoan",
-            "matKhau",
-            "hoTen",
-            "email",
-            "soDT"
-          )}
-          updateInfor={false}
-          onSubmit={this.onSubmit}
-          accessToken={this.props.accessToken}
-        />
+        <table className="table overflow-auto ticketList">
+          <thead>
+            <tr>
+              <th scope="col">Mã Vé</th>
+              <th scope="col">Tên Phim</th>
+              <th scope="col">Danh Sách Ghế</th>
+              <th scope="col">Ngày Đặt</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.userDetail.thongTinDatVe.map((ticket) => {
+              const {
+                maVe,
+                tenPhim,
+                thoiLuongPhim,
+                giaVe,
+                ngayDat,
+                danhSachGhe,
+              } = ticket;
+              return (
+                <tr key={maVe}>
+                  <th scope="row">{maVe}</th>
+                  <td>
+                    <p>
+                      Tên Phim: <b>{tenPhim}</b>
+                    </p>
+                    <p>
+                      Thời gian: <b>{thoiLuongPhim} phút</b>
+                    </p>
+                    <p>
+                      Giá vé: <b>{giaVe} VNĐ</b>
+                    </p>
+                  </td>
+                  <td>
+                    {danhSachGhe.map((item) => {
+                      const { tenHeThongRap, tenCumRap, tenGhe, maGhe } = item;
+                      // console.log(tenHeThongRap, tenCumRap, tenGhe);
+                      return (
+                        <p key={maGhe}>
+                          {tenHeThongRap} - {tenCumRap} - {tenGhe}
+                        </p>
+                      );
+                    })}
+                  </td>
+                  <td>{ngayDat}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     );
   }
@@ -42,9 +73,7 @@ class TicketBookingHistory extends Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.authReducers.currentUser.taiKhoan,
-    bookingList: state.userReducers.userDetail.thongTinDatVe,
+    userDetail: state.userReducers.userDetail,
   };
 };
-export default connect(mapStateToProps, { getUser, updateUser })(
-  TicketBookingHistory
-);
+export default connect(mapStateToProps, { getUser })(TicketBookingHistory);
