@@ -13,7 +13,11 @@ class InformationUser extends Component {
     delete formValue.soDT;
     console.log(formValue);
     this.props.updateUser(
-      { ...formValue, maNhom: "GP10", maLoaiNguoiDung: "QuanTri" },
+      {
+        ...formValue,
+        maNhom: this.props.maNhom,
+        maLoaiNguoiDung: this.props.maLoaiNguoiDung,
+      },
       this.props.accessToken
     );
   };
@@ -45,6 +49,8 @@ const mapStateToProps = (state) => {
   return {
     userDetail: state.userReducers.userDetail,
     currentUser: state.authReducers.currentUser.taiKhoan,
+    maNhom: state.authReducers.currentUser.maNhom,
+    maLoaiNguoiDung: state.authReducers.currentUser.maLoaiNguoiDung,
     accessToken: state.authReducers.currentUser.accessToken,
   };
 };
