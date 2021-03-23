@@ -21,7 +21,7 @@ export const updateUser = (formValue, accessToken) => {
     axios
       .put("/QuanLyNguoiDung/CapNhatThongTinNguoiDung", formValue, {
         headers: {
-          Authorization: accessToken,
+          Authorization: `Bearer ${accessToken}`,
         },
       })
       .then((result) => {
@@ -31,7 +31,7 @@ export const updateUser = (formValue, accessToken) => {
         });
       })
       .catch((error) => {
-        console.log(error.response.data);
+        console.log(error.response);
       });
   };
 };
