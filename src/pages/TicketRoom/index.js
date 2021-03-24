@@ -58,7 +58,7 @@ export default function TicketRoom(props) {
     const arr = listSeat;
     const arr1 = giaVe;
     const checkArr = arr.findIndex((item) => item === seat[0])
-    console.log(checkArr)
+   
     if (checkArr === -1) {
       setListSeat([...listSeat, seat[0]]);
       setGiaVe([...giaVe, seat[1]])
@@ -66,9 +66,10 @@ export default function TicketRoom(props) {
     }
     else {
       arr.splice(checkArr, 1);
-      arr1.slice(checkArr, 1)
+      arr1.pop()
       setListSeat([...arr])
       setGiaVe([...arr1])
+   
 
 
     }
@@ -276,6 +277,7 @@ export default function TicketRoom(props) {
         <div className="col-3 checkout-side">
           <div className="checkout-sideContainer">
             <div className="row-total">
+
               {giaVe.reduce((total, item) => { return total + item }, 0)} Đ
             </div>
 
@@ -285,7 +287,7 @@ export default function TicketRoom(props) {
               <p>{ticketRoom?.thongTinPhim?.ngayChieu}  - {ticketRoom?.thongTinPhim?.gioChieu} -{ticketRoom?.thongTinPhim?.tenRap} </p>
             </div>
             <div className={listSeat?.length ? "row-listSeat" : ''}>
-              {console.log(listSeat)}
+            
               {listSeat.map((seat) => {
 
                 return (
@@ -296,7 +298,7 @@ export default function TicketRoom(props) {
             <div className='infoUser'>
               <input type="text" name='emailCheckout' id="emailCheckout" required />
               <label for="emailCheckout" className='label-emailCheckout' >
-                {console.log()}
+              
                 <span className='span-emailCheckout'>E-Mail </span>
               </label>
             </div>
