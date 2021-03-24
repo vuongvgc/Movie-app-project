@@ -7,7 +7,7 @@ import CheckoutLayout from "./layouts/CheckoutLayout";
 import AuthLayout from "./layouts/AuthLayout";
 import AdminLayout from "./layouts/AdminLayout";
 import UsersManagement from "./layouts/UsersManagement";
-import MoviesManagement from "./layouts/MovieManagement";
+import MoviesManagement from "./layouts/MoviesManagement";
 import InformationUser from "./layouts/InformationUser";
 import TicketBookingHistory from "./layouts/TicketBookingHistory";
 //Page
@@ -36,12 +36,10 @@ function App() {
         </Route>
 
         {/* CheckoutLayout  */}
-        <Route exact path={[ "/checkout/:ticketRoomId"]}>
+        <Route exact path={["/checkout/:ticketRoomId"]}>
           <CheckoutLayout>
             <Switch>
-        
               <Route path="/checkout/:ticketRoomId" component={TicketRoom} />
-             
             </Switch>
           </CheckoutLayout>
         </Route>
