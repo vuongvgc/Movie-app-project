@@ -11,7 +11,7 @@ class InformationUser extends Component {
     // console.log(formValue, this.props.accessToken);
     formValue.soDt = formValue.soDT;
     delete formValue.soDT;
-    console.log(formValue);
+    // console.log(formValue);
     this.props.updateUser(
       {
         ...formValue,
@@ -22,7 +22,7 @@ class InformationUser extends Component {
     );
   };
   render() {
-    console.log(this.props.userDetail);
+    // console.log(this.props.userDetail);
     if (!this.props.userDetail) {
       return <div>Loading...</div>;
     }
