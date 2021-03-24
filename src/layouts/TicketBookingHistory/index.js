@@ -5,18 +5,18 @@ import "./style.css";
 class TicketBookingHistory extends Component {
   componentDidMount() {
     this.props.getUser({ taikhoan: this.props.currentUser });
-    console.log(this.props.userDetail.thongTinDatVe);
+    // console.log(this.props.userDetail.thongTinDatVe);
   }
   onSubmit = (formValue) => {
     this.props.updateUser(formValue, this.props.accessToken);
   };
   render() {
-    if (!this.props.userDetail.thongTinDatVe) {
+    if (!this.props.userDetail) {
       return <div>Loading...</div>;
     }
     return (
-      <div className="container-fluid">
-        <table className="table overflow-auto ticketList">
+      <div className="container-fluid ">
+        <table className="table overflow-auto ticketList table-hover">
           <thead>
             <tr>
               <th scope="col">Mã Vé</th>
@@ -55,7 +55,7 @@ class TicketBookingHistory extends Component {
                       // console.log(tenHeThongRap, tenCumRap, tenGhe);
                       return (
                         <p key={maGhe}>
-                          {tenHeThongRap} - {tenCumRap} - {tenGhe}
+                          {tenHeThongRap} - {tenCumRap} -Ghế: {tenGhe}
                         </p>
                       );
                     })}
