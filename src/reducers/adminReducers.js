@@ -4,8 +4,8 @@ import {
   GET_USER_FAIL,
 } from "../constants/Admin";
 const initialState = {
-  userList: {},
-  loading: false,
+  userList: null,
+  loading: true,
   error: null,
 };
 

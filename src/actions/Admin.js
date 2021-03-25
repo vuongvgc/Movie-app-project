@@ -4,41 +4,38 @@ import {
   GET_USER_FAIL,
 } from "../constants/Admin";
 import axios from "../utils/axiosClient";
-import { createBrowserHistory } from "history";
-let history = createBrowserHistory();
-export const getUserList = (maNhom, tuKhoa, page, pageSize) => {
+export const getUserList = (
+  maNhom = "GP01",
+  tuKhoa,
+  page = 1,
+  pageSize = 10
+) => {
   return (dispatch) => {
     dispatch({
       type: GET_USER_REQUEST,
     });
-
     axios
       .get("/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang", {
         params: {
-          MaNhom: "GP01",
-          tuKhoa: "v",
-          soTrang: 1,
-          soPhanTuTrenTrang: 20,
+          MaNhom: maNhom,
+          tuKhoa: tuKhoa,
+          soTrang: page,
+          soPhanTuTrenTrang: pageSize,
         },
       })
       .then((result) => {
         // Lưu thông tin user xuống localStorage
-        localStorage.setItem("user", JSON.stringify(result.data));
         dispatch({
           type: GET_USER_SUCCESS,
-          payload: {
-            data: result.data,
-          },
+          payload: { data: result.data },
         });
-        history.replace("/");
+        // history.replace("/");
       })
       .catch((error) => {
         // console.log(error.response.data);
         dispatch({
           type: GET_USER_FAIL,
-          payload: {
-            error: error.response.data,
-          },
+          payload: { error: error.response.data },
         });
       });
   };

@@ -36,6 +36,9 @@ export default function UserDetail(props) {
             >
               <div>Lịch sử đặt vé</div>
             </NavLink>
+            <NavLink to="/admin/users">
+              <div>Admin</div>
+            </NavLink>
           </div>
           <div className="col-10 border border-secondary">{props.children}</div>
         </div>

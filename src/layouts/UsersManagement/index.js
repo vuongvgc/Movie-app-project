@@ -4,23 +4,45 @@ import { connect } from "react-redux";
 import { getUserList } from "../../actions/Admin";
 class UsersManagement extends Component {
   componentDidMount() {
-    this.props.getUserList();
-    console.log(this.props.userList);
+    this.props.getUserList("GP01", "a", 1, 10);
   }
+  renderUser = (admin) => {
+    return admin.userList.items.map((user, index) => {
+      return (
+        <tr>
+          <td>{index + 1}</td>
+          <td>{user.taiKhoan}</td>
+          <td>{user.hoTen}</td>
+          <td>{user.email}</td>
+          <td>{user.soDt}</td>
+          <td>
+            <button className="btn btn-success mx-1">Cập Nhật</button>
+            <button className="btn btn-danger">Xóa</button>
+          </td>
+        </tr>
+      );
+    });
+  };
+  handlePage = (page) => {
+    this.props.getUserList("GP01", "a", page, 10);
+  };
   render() {
+    if (this.props.admin.loading === true) {
+      return <p>Loading...</p>;
+    }
     return (
-      <div class="container">
-        <div class="card text-center">
-          <div class="card-header myCardHeader">
-            <div class="row justify-content-between">
-              <div class="col-md-6">
-                <h4 class="text-start font-weight-bold">
+      <div className="container">
+        <div className="card text-center">
+          <div className="card-header">
+            <div className="row justify-content-between">
+              <div className="col-md-6">
+                <h4 className="text-start font-weight-bold">
                   Danh sách Người Dùng
                 </h4>
               </div>
-              <div class="col-md-6 text-end">
+              <div className="col-md-6 text-end">
                 <button
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   id="btnThem"
                   data-bs-toggle="modal"
                   data-bs-target="#myModal"
@@ -30,50 +52,74 @@ class UsersManagement extends Component {
               </div>
             </div>
           </div>
-          <div class="card-body">
-            <div class="row mb-3">
-              <div class="col">
-                <div class="input-group">
+          <div className="card-body">
+            <div className="row mb-3">
+              <div className="col">
+                <div className="input-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Tên người dùng"
                     id="searchName"
                   />
-                  <div class="input-group-prepend h-100">
-                    <span class="input-group-text" id="btnTimNV">
-                      <i class="fa fa-search"></i>
+                  <div className="input-group-prepend h-100">
+                    <span className="input-group-text" id="btnTimNV">
+                      <i className="fa fa-search"></i>
                     </span>
                   </div>
                 </div>
               </div>
             </div>
-            <table class="table table-bordered table-hover myTable">
-              <thead class="text-primary">
+            <table className="table table-bordered table-hover myTable">
+              <thead className="text-primary">
                 <tr>
                   <th>STT</th>
-                  <th class="nowrap">
-                    <span class="mr-1">Tài Khoản</span>
-                    <i class="fa fa-arrow-up mx-2" id="SapXepTang"></i>
-                    <i class="fa fa-arrow-down" id="SapXepGiam"></i>
+                  <th className="nowrap">
+                    <span className="mr-1">Tài Khoản</span>
+                    <i className="fa fa-arrow-up mx-2" id="SapXepTang"></i>
+                    <i className="fa fa-arrow-down" id="SapXepGiam"></i>
                   </th>
                   <th>Họ Tên</th>
                   <th>Email</th>
                   <th>Số Điện Thoại</th>
                   <th>
-                    <em class="fa fa-cog"></em>
+                    <em className="fa fa-cog"></em>
                   </th>
                 </tr>
               </thead>
-              <tbody id="tableDanhSach"></tbody>
+              <tbody>{this.renderUser(this.props.admin)}</tbody>
             </table>
           </div>
-          <div class="card-footer myCardFooter">
-            <nav>
-              <ul
-                class="pagination justify-content-center"
-                id="ulPhanTrang"
-              ></ul>
+          <div className="card-footer">
+            <nav aria-label="Page navigation">
+              <ul className="pagination col-3  mx-auto">
+                <li className="page-item">
+                  <button className="page-link" href="#">
+                    <span aria-hidden="true">&laquo;</span>
+                  </button>
+                </li>
+                <li className="page-item">
+                  <button
+                    className="page-link"
+                    onClick={() => this.handlePage(1)}
+                  >
+                    1
+                  </button>
+                </li>
+                <li className="page-item">
+                  <button
+                    className="page-link"
+                    onClick={() => this.handlePage(2)}
+                  >
+                    2
+                  </button>
+                </li>
+                <li className="page-item">
+                  <button className="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </button>
+                </li>
+              </ul>
             </nav>
           </div>
         </div>
@@ -84,7 +130,7 @@ class UsersManagement extends Component {
 }
 const mapMapToProps = (state) => {
   return {
-    userList: state.adminReducers.userList,
+    admin: state.adminReducers,
   };
 };
 export default connect(mapMapToProps, { getUserList })(UsersManagement);
