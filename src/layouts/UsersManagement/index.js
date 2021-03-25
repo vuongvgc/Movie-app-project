@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import Modal from "../../components/Modal";
-export default class UsersManagement extends Component {
+import { connect } from "react-redux";
+import { getUserList } from "../../actions/Admin";
+class UsersManagement extends Component {
+  componentDidMount() {
+    this.props.getUserList();
+    console.log(this.props.userList);
+  }
   render() {
     return (
       <div class="container">
@@ -76,3 +82,9 @@ export default class UsersManagement extends Component {
     );
   }
 }
+const mapMapToProps = (state) => {
+  return {
+    userList: state.adminReducers.userList,
+  };
+};
+export default connect(mapMapToProps, { getUserList })(UsersManagement);
