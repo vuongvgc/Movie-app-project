@@ -9,7 +9,7 @@ import Footer from "../../components/Footer";
 export default class HomePage extends Component {
   render() {
     return (
-      <div div>
+      <div >
         <Header />
         {/* <form className="d-flex">
              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -19,6 +19,7 @@ export default class HomePage extends Component {
         <TopSearch />
         <TabTheaters />
         <Footer />
+
       </div>
     );
   }

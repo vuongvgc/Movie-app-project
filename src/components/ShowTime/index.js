@@ -29,8 +29,7 @@ export default function ShowTime(props) {
                         >
                             <div className='logo'>
                                 <img src={item?.logo} alt="" />
-                               
-                          
+
                             </div>
                             <span className='showTime-maRap'>{item?.maHeThongRap}</span>
                         </div>
@@ -42,11 +41,11 @@ export default function ShowTime(props) {
 
             <div className='col-9'>
                 {movieInfo.heThongRapChieu ? movieInfo.heThongRapChieu[select].cumRapChieu.map((item) => {
-                   
+
                     return (
-                      
+
                         <div>
-                        
+
                             <div className='showTimes-tenCumRap'>{item?.tenCumRap}</div>
                             {item?.lichChieuPhim.map((time) => {
                                 return (

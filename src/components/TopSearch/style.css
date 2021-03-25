@@ -1,3 +1,90 @@
 .img__topSearch {
   height: 300px;
 }
+.slick-next,
+.slick-prev {
+  color: black !important;
+  /* height: 100px !important; */
+}
+
+button.slick-arrow.slick-next,
+button.slick-arrow.slick-prev {
+  color: pink !important;
+  /* height: 100px !important; */
+  /* width: 100px !important; */
+  background-color: black;
+}
+
+.top__Search {
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 10px;
+  height: 380px;
+}
+
+.top__Search__overlay {
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 180%;
+  height: 100%;
+  background: linear-gradient(to bottom, #fbbd61, #ec7532);
+
+  /* CÁCH BẺ XÉO NỀN THEO TRỤC X */
+  transform: translateX(-148%) skewX(30deg);
+  transition: all 0.5s;
+}
+
+.top__Search__play {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scale(0.8);
+  left: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.top__Search__play i {
+  width: 80px;
+  height: 80px;
+  font-size: 20px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin: 15px auto;
+  line-height: 80px;
+}
+
+.top__Search__play a {
+  color: white;
+}
+
+.top__Search__play a:hover {
+  color: white;
+  text-decoration: none;
+  /* transform: scale(0.5); */
+  /* transition: all 0.5s; */
+}
+
+.top__Search:hover .top__Search__overlay {
+  transform: translateX(-20%) skewX(20deg);
+}
+
+@media screen and (max-width: 576px) {
+  .top__Search img {
+    width: 100%;
+  }
+}
+
+.top__Search:hover .top__Search__play {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* .top__Search:hover .top__Search__title {
+  opacity: 0;
+} */
