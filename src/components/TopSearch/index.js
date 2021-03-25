@@ -68,11 +68,9 @@ export default function TopSearch(props) {
                     <img style={{ width: '100%' }} className="card-img-top  img__topSearch img-fluid " src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
                         <h6 className="card-title top__Search__title">{phim.tenPhim}</h6>
-                        {/* <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink> */}
+                        <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
                     </div>
                 </div>
-
-
             </div>
         })
     }
@@ -94,7 +92,7 @@ export default function TopSearch(props) {
                     <img style={{ width: '100%' }} className="card-img-top  img__topSearch img-fluid " src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
                         <h6 className="card-title top__Search__title">{phim.tenPhim}</h6>
-                        {/* <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink> */}
+                        <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
                     </div>
                 </div>
 
@@ -134,7 +132,7 @@ export default function TopSearch(props) {
                     <img style={{ width: '100%' }} className="card-img-top img__topSearch img-fluid" src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
                         <h6 className="card-title">{phim.tenPhim}</h6>
-                        <NavLink to={`/moviedetail/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
+                        <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
                     </div>
                 </div>
 
