@@ -29,7 +29,7 @@ import styles from "./style";
 import LazyLoad from "react-lazyload";
 const Footer = ({ classes }) => {
   return (
-    <div className={classes.compFooter} name="Footer">
+    <div id="footer" className={classes.compFooter} name="Footer">
       <Container maxWidth="lg">
         <Box className={classes.contentFooter}>
           <Box className={classes.itemContentFooter}>

@@ -15,12 +15,30 @@ export class QuanLyPhimService {
             method: 'GET'
         });
     }
+
+    layThongTinPhim2 = () => {
+        return axios({
+            url: `${domain}/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP10`,
+            method: 'GET'
+        });
+    }
+
+
+    // layThongTinPhim = () => {
+    //     return axios({
+    //         url: `${domain}/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${groupID}`,
+    //         method: 'GET'
+    //     });
+    // }
+
     layThongTinPhongVe = (maLichChieu) => {
         return axios({
             url: `${domain}/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`,
             method: 'GET'
         })
     }
+
+
     layDanhSachPhimSapChieu = () => {
         return axios({
             url: `${domain}/QuanLyPhim/LayDanhSachPhim?maNhom=GP11`,
@@ -36,7 +54,7 @@ export class QuanLyPhimService {
 
     layThongTinPhongVe = () => {
         return axios({
-            url: `${domain}/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${groupID}`,
+            url: `http://svcy2.myclass.vn/api//QuanLyHeThongRap/LayThongTinHeThongRap`,
             method: 'GET'
         });
     }

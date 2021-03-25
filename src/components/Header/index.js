@@ -1,11 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import StatusAuth from "../StatusAuth";
+import './style.css'
 export default function Header(props) {
   return (
     <div>
-      <div>
-        <nav className="fixed-top navbar navbar-expand-lg  navbar-light bg-light">
+      <div >
+        <nav className="fixed-top navbar navbar-expand-lg  navbar-light bg-light movie__header ">
           <div className="container-fluid">
             <NavLink className="navbar-brand" to="/">
               VPV
@@ -68,9 +69,11 @@ export default function Header(props) {
                   </ul>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link " to="/">
+                  <a className="nav-link active"
+                    aria-current="page" href="#footer">
                     Liên Hệ
-                  </NavLink>
+                      </a>
+
                 </li>
               </ul>
               {/* <form className="d-flex">
