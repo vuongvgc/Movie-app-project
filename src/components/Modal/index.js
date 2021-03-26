@@ -9,18 +9,9 @@ const Modal = (props) => {
     <div class="modal fade" id="myModal">
       <div class="modal-dialog">
         <div class="modal-content">
-          <header class="head-form mb-0">
-            <h2 id="header-title">Log In</h2>
+          <header class="head-form mb-0 text-center m-2">
+            <h3 id="header-title">Cập Nhật Thông Tin</h3>
           </header>
-
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-title">
-              Modal Heading
-            </h4>
-            <button type="button" class="close" data-dismiss="modal">
-              &times;
-            </button>
-          </div>
           <div class="modal-body">
             <form role="form" id="formNhanVien">
               <div class="form-group">

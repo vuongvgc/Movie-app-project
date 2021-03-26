@@ -2,27 +2,11 @@ import React, { Component } from "react";
 import Modal from "../../components/Modal";
 import { connect } from "react-redux";
 import { getUserList } from "../../actions/Admin";
+import RenderUserList from "./RenderUserList";
 class UsersManagement extends Component {
   componentDidMount() {
     this.props.getUserList("GP01", "a", 1, 10);
   }
-  renderUser = (admin) => {
-    return admin.userList.items.map((user, index) => {
-      return (
-        <tr>
-          <td>{index + 1}</td>
-          <td>{user.taiKhoan}</td>
-          <td>{user.hoTen}</td>
-          <td>{user.email}</td>
-          <td>{user.soDt}</td>
-          <td>
-            <button className="btn btn-success mx-1">Cập Nhật</button>
-            <button className="btn btn-danger">Xóa</button>
-          </td>
-        </tr>
-      );
-    });
-  };
   handlePage = (page) => {
     this.props.getUserList("GP01", "a", page, 10);
   };
@@ -30,6 +14,7 @@ class UsersManagement extends Component {
     if (this.props.admin.loading === true) {
       return <p>Loading...</p>;
     }
+    console.log("run user");
     return (
       <div className="container">
         <div className="card text-center">
@@ -87,7 +72,9 @@ class UsersManagement extends Component {
                   </th>
                 </tr>
               </thead>
-              <tbody>{this.renderUser(this.props.admin)}</tbody>
+              <tbody>
+                <RenderUserList admin={this.props.admin} />
+              </tbody>
             </table>
           </div>
           <div className="card-footer">
@@ -101,17 +88,31 @@ class UsersManagement extends Component {
                 <li className="page-item">
                   <button
                     className="page-link"
-                    onClick={() => this.handlePage(1)}
+                    onClick={() =>
+                      this.handlePage(this.props.admin.userList.currentPage - 1)
+                    }
                   >
-                    1
+                    {this.props.admin.userList.currentPage - 1}
                   </button>
                 </li>
                 <li className="page-item">
                   <button
                     className="page-link"
-                    onClick={() => this.handlePage(2)}
+                    onClick={() =>
+                      this.handlePage(this.props.admin.userList.currentPage)
+                    }
                   >
-                    2
+                    {this.props.admin.userList.currentPage}
+                  </button>
+                </li>
+                <li className="page-item">
+                  <button
+                    className="page-link"
+                    onClick={() =>
+                      this.handlePage(this.props.admin.userList.currentPage + 1)
+                    }
+                  >
+                    {this.props.admin.userList.currentPage + 1}
                   </button>
                 </li>
                 <li className="page-item">
