@@ -24,6 +24,9 @@ export default function TopSearch(props) {
         slidesToScroll: 4,
         arrows: true,
         dots: false,
+        autoplay: true,
+        autoplaySpeed: 1500,
+        // autoplaySpeed: 1000,
         responsive: [
             {
                 breakpoint: 1198,
@@ -120,7 +123,6 @@ export default function TopSearch(props) {
                     <img style={{ width: '100%' }} className="card-img-top  img__topSearch img-fluid " src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
                         <h6 className="card-title top__Search__title">{phim.tenPhim}</h6>
-                        {/* <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink> */}
                     </div>
                 </div>
 
@@ -177,13 +179,13 @@ export default function TopSearch(props) {
             <div className='mt-5 container'>
                 <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Phim Đang Chiếu</button>
+                        <button className="nav-link  top__Search__link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Phim Đang Chiếu</button>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Phim Sắp Chiếu</button>
+                        <button className="nav-link top__Search__link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Phim Sắp Chiếu</button>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Phim Hot</button>
+                        <button className="nav-link top__Search__link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Phim Hot</button>
                     </li>
                 </ul>
                 <div className="tab-content" id="pills-tabContent">

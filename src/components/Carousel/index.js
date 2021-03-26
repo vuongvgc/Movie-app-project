@@ -9,6 +9,7 @@ export default class Carousel extends Component {
         className="carousel slide"
         data-bs-ride="carousel"
       >
+
         <div className="carousel-indicators">
           <button
             type="button"
@@ -41,18 +42,16 @@ export default class Carousel extends Component {
             />
             <div className="carouse-item__overlay" />
             <div className="container carousel-item__caption text-white">
-              <span className="title">ACTION, ADVENTURE, FANTASY</span>
+              <span className="title">ADVENTURE, FAMILY</span>
               <h1 className="display-4 slider__title">
-                End of the World: Part I
+                The Call Of The Wild
               </h1>
               <p>
-                Claritas est etiam processus dynamicus, qui sequitur mutationem
-                consuetudium lectorum. Mirumest notare quam littera gothica,
-                quam nunc putamu.
+                Buck is a big-hearted dog whose blissful domestic life gets turned upside down when he is suddenly uprooted from his California home and transplanted to the exotic wilds of the Alaskan Yukon in the 1890s. As the newest rookie on a mail-delivery dog sled team, Buck experiences the adventure of a lifetime as he ultimately finds his true place in the world.
               </p>
               <div className="carousel-item__trailer mt-4">
                 <span className="d-inline-block text-white rounded-circle text-center mr-2">
-                  PG
+                  FHD
                 </span>
                 <button data-fancybox
                   href="https://www.youtube.com/watch?v=5P8R2zAhEwg?t=54" className="btn-orange border-0 text-white">
@@ -70,14 +69,12 @@ export default class Carousel extends Component {
             />
             <div className="carouse-item__overlay" />
             <div className="container carousel-item__caption text-white">
-              <span className="title">ACTION, ADVENTURE, FANTASY</span>
+              <span className="title">ACTION, SCI-FI, FANTASY</span>
               <h1 className="display-4 slider__title">
-                End of the World: Part I
+                Avengers: Infinity War
               </h1>
               <p>
-                Claritas est etiam processus dynamicus, qui sequitur mutationem
-                consuetudium lectorum. Mirumest notare quam littera gothica,
-                quam nunc putamu.
+                The Avengers must stop Thanos, an intergalactic warlord, from getting his hands on all the infinity stones. However, Thanos is prepared to go to any lengths to carry out his insane plan.
               </p>
               <div className="carousel-item__trailer mt-4">
                 <span className="d-inline-block text-white rounded-circle text-center mr-2">
@@ -99,18 +96,16 @@ export default class Carousel extends Component {
             />
             <div className="carouse-item__overlay" />
             <div className="container carousel-item__caption text-white">
-              <span className="title">ACTION, ADVENTURE, FANTASY</span>
+              <span className="title">ACTION, DRAMA</span>
               <h1 className="display-4 slider__title">
-                End of the World: Part I
+                Greyhound
               </h1>
               <p>
-                Claritas est etiam processus dynamicus, qui sequitur mutationem
-                consuetudium lectorum. Mirumest notare quam littera gothica,
-                quam nunc putamu.
+                U.S. Navy Cmdr. Ernest Krause is assigned to lead an Allied convoy across the Atlantic during World War II. His convoy, however, is pursued by German U-boats. Although this is Krause's first wartime mission, he finds himself embroiled in what would come to be known as the longest, largest and most complex naval battle in history: The Battle of the Atlantic.
               </p>
               <div className="carousel-item__trailer mt-4">
                 <span className="d-inline-block text-white rounded-circle text-center mr-2">
-                  PG
+                  TS
                 </span>
                 <button data-fancybox
                   href="https://youtu.be/eyzxu26-Wqk?t=20" className="btn-orange border-0 text-white">
