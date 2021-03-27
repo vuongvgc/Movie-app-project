@@ -3,7 +3,13 @@ import ModalUser from "../../components/Modal/ModalUser";
 import { connect } from "react-redux";
 import { getUserList } from "../../actions/Admin";
 import RenderUserList from "./RenderUserList";
+import Snackbar from "../../components/Snackbar";
+import CircularIndeterminate from "../../components/CircularIndeterminate";
 class UsersManagement extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { nameModel: "userModal" };
+  }
   componentDidMount() {
     this.props.getUserList("GP01", "a", 1, 10);
   }
@@ -12,9 +18,9 @@ class UsersManagement extends Component {
   };
   render() {
     if (this.props.admin.loading === true) {
-      return <p>Loading...</p>;
+      return <CircularIndeterminate />;
     }
-    console.log("run user");
+    // console.log("run user");
     return (
       <div className="container">
         <div className="card text-center">
@@ -30,7 +36,7 @@ class UsersManagement extends Component {
                   className="btn btn-primary"
                   id="btnThem"
                   data-bs-toggle="modal"
-                  data-bs-target="#myModal"
+                  data-bs-target={"#" + this.state.nameModel}
                 >
                   Thêm Người Dùng
                 </button>
@@ -124,7 +130,7 @@ class UsersManagement extends Component {
             </nav>
           </div>
         </div>
-        <ModalUser />
+        <ModalUser title="Thêm Người Dùng" idModal={this.state.nameModel} />
       </div>
     );
   }
