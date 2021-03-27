@@ -3,15 +3,13 @@ import ReactDOM from "react-dom";
 import "./style.css";
 import RegisterForm from "../RegisterForm";
 import { connect } from "react-redux";
-import { register } from "../../actions/Auth";
+import { addUser } from "../../actions/Admin";
 class Modal extends React.Component {
   onSubmit = (formValue) => {
-    console.log(formValue);
+    // console.log(formValue);
+    this.props.addUser(formValue, this.props.accessToken);
   };
   render() {
-    const color = {
-      backgroundColor: "rgba(0,0,0,0.5)",
-    };
     return ReactDOM.createPortal(
       <div className="modal fade" id="myModal">
         <div className="modal-dialog">
@@ -29,4 +27,9 @@ class Modal extends React.Component {
     );
   }
 }
-export default connect(null, { register })(Modal);
+const mapStateToProps = (state) => {
+  return {
+    accessToken: state.authReducers.currentUser.accessToken,
+  };
+};
+export default connect(mapStateToProps, { addUser })(Modal);

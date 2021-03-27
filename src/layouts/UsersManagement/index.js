@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Modal from "../../components/Modal";
+import ModalUser from "../../components/Modal/ModalUser";
 import { connect } from "react-redux";
 import { getUserList } from "../../actions/Admin";
 import RenderUserList from "./RenderUserList";
@@ -124,7 +124,7 @@ class UsersManagement extends Component {
             </nav>
           </div>
         </div>
-        <Modal />
+        <ModalUser />
       </div>
     );
   }
