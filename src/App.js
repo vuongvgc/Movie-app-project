@@ -2,10 +2,12 @@ import "./App.css";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 //Layout
 import MainLayout from "./layouts/MainLayout";
+import CheckoutLayout from "./layouts/CheckoutLayout";
+
 import AuthLayout from "./layouts/AuthLayout";
 import AdminLayout from "./layouts/AdminLayout";
 import UsersManagement from "./layouts/UsersManagement";
-import MoviesManagement from "./layouts/MovieManagement";
+import MoviesManagement from "./layouts/MoviesManagement";
 import InformationUser from "./layouts/InformationUser";
 import TicketBookingHistory from "./layouts/TicketBookingHistory";
 //Page
@@ -16,6 +18,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserDetail from "./pages/UserDetail";
 import { createBrowserHistory } from "history";
+
 let history = createBrowserHistory();
 function App() {
   return (
@@ -30,6 +33,15 @@ function App() {
               <Route path="/movie/:movieId" component={MovieDetails} />
             </Switch>
           </MainLayout>
+        </Route>
+
+        {/* CheckoutLayout  */}
+        <Route exact path={["/checkout/:ticketRoomId"]}>
+          <CheckoutLayout>
+            <Switch>
+              <Route path="/checkout/:ticketRoomId" component={TicketRoom} />
+            </Switch>
+          </CheckoutLayout>
         </Route>
         {/* Auth */}
         <Route exact path={["/login", "/register"]}>

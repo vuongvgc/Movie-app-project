@@ -1,36 +1,98 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { qlPhimService } from '../../services/QuanLyPhimService'
 import { NavLink } from 'react-router-dom';
+import './style.css'
+// Slick Slider
+import Slider from "react-slick";
+
+
+
 
 // var moment = require('moment'); // require
 
 export default function TopSearch(props) {
+
+
+    const settings = {
+        centerMode: false,
+        infinite: true,
+        // centerPadding: "60px",
+        slidesToShow: 4,
+        speed: 400,
+        rows: 1,
+        slidesPerRow: 1,
+        slidesToScroll: 4,
+        arrows: true,
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 1198,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    rows: 2
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    rows: 1
+                }
+            }
+        ]
+    };
+
+
 
     let [phim, setDanhSachPhim] = useState([]);
     let [phimSapChieu, setDanhSachPhimSapChieu] = useState([]);
     let [phimHot, setDanhSachPhimHot] = useState([]);
     const renderDanhSachPhim = () => {
         return phim.map((phim, index) => {
-            return <div key={index} className="col-3">
-                <div className="card text-left ">
-                    <img style={{ width: '100%', height: '100%' }} className="card-img-top" src={phim.hinhAnh} alt={phim.hinhAnh} />
+            return <div key={index} className="col-3 ">
+
+                <div className="card text-left top__Search ">
+                    <div className="top__Search__overlay"></div>
+                    <div className="top__Search__play">
+                        <a className="" data-fancybox href={phim.trailer}>
+                            <i className="fa fa-play" />
+                        </a>
+                        <p>
+                            <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
+                        </p>
+
+                    </div>
+
+                    <img style={{ width: '100%' }} className="card-img-top  img__topSearch img-fluid " src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
-                        <h4 className="card-title">{phim.tenPhim}</h4>
-                        <NavLink to={`/moviedetail/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
+                        <h6 className="card-title top__Search__title">{phim.tenPhim}</h6>
+                        <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
                     </div>
                 </div>
-
             </div>
         })
     }
     const renderDanhSachPhimSapChieu = () => {
         return phimSapChieu.map((phim, index) => {
             return <div key={index} className="col-3">
-                <div className="card text-left ">
-                    <img style={{ width: '100%', height: '100%' }} className="card-img-top " src={phim.hinhAnh} alt={phim.hinhAnh} />
+                <div className="card text-left top__Search ">
+                    <div className="top__Search__overlay"></div>
+                    <div className="top__Search__play">
+                        <a className="" data-fancybox href={phim.trailer}>
+                            <i className="fa fa-play" />
+                        </a>
+                        <p>
+                            <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
+                        </p>
+
+                    </div>
+
+                    <img style={{ width: '100%' }} className="card-img-top  img__topSearch img-fluid " src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
-                        <h4 className="card-title">{phim.tenPhim}</h4>
-                        <NavLink to={`/moviedetail/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
+                        <h6 className="card-title top__Search__title">{phim.tenPhim}</h6>
+                        <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
                     </div>
                 </div>
 
@@ -41,11 +103,36 @@ export default function TopSearch(props) {
     const renderDanhSachPhimHot = () => {
         return phimHot.map((phim, index) => {
             return <div key={index} className="col-3">
-                <div className="card text-left ">
-                    <img style={{ width: '100%', height: '100%' }} className="card-img-top" src={phim.hinhAnh} alt={phim.hinhAnh} />
+                <div className="card text-left top__Search ">
+                    <div className="top__Search__overlay"></div>
+                    <div className="top__Search__play">
+                        <a className="" data-fancybox href={phim.trailer}>
+                            <i className="fa fa-play" />
+                        </a>
+                        <p>
+                            <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
+                        </p>
+
+                    </div>
+
+                    <img style={{ width: '100%' }} className="card-img-top  img__topSearch img-fluid " src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
-                        <h4 className="card-title">{phim.tenPhim}</h4>
-                        <NavLink to={`/moviedetail/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
+                        <h6 className="card-title top__Search__title">{phim.tenPhim}</h6>
+                        {/* <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink> */}
+                    </div>
+                </div>
+
+            </div>
+        })
+    }
+    const renderDanhSachPhimHot2 = () => {
+        return phimHot.map((phim, index) => {
+            return <div key={index} className="col-3">
+                <div className="card text-left ">
+                    <img style={{ width: '100%' }} className="card-img-top img__topSearch img-fluid" src={phim.hinhAnh} alt={phim.hinhAnh} />
+                    <div className="card-body">
+                        <h6 className="card-title">{phim.tenPhim}</h6>
+                        <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
                     </div>
                 </div>
 
@@ -54,12 +141,6 @@ export default function TopSearch(props) {
     }
 
 
-    // useEffect(() => {
-    //     qlPhimService.layDanhSachPhim().then(result => {
-    //         console.log(result.data)
-    //         setPhim(result.data)
-    //     })
-    // }, [])
     //useEffect thay thế cho 3 lifecycle (xem slide)
     useEffect(() => {
         qlPhimService.layDanhSachPhim().then(result => {
@@ -87,6 +168,8 @@ export default function TopSearch(props) {
         })
     }, []); //Tham số 2 [] rổng sử dụng như componentdidmount
 
+
+
     return (
         <div>
             <div className='mt-5 container'>
@@ -104,28 +187,47 @@ export default function TopSearch(props) {
                 <div className="tab-content" id="pills-tabContent">
                     <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <div className="container">
-                            <div className="display-4"></div>
+
+                            {/* <div className="display-4"></div>
                             <div className="row">
                                 {renderDanhSachPhim()}
-                            </div>
+                            </div> */}
+                            {/* {renderDanhSachPhim()} */}
+                            <Slider {...settings}>
+                                {/* {renderDanhSachPhimHot()} */}
+                                {/* {renderDanhSachPhimSapChieu()} */}
+                                {renderDanhSachPhim()}
+
+
+                            </Slider>
 
                         </div>
                     </div>
                     <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <div className="container">
-                            <div className="display-4"></div>
+                            {/* <div className="display-4"></div>
                             <div className="row">
                                 {renderDanhSachPhimSapChieu()}
-                            </div>
+
+                            </div> */}
+                            <Slider {...settings}>
+                                {/* {renderDanhSachPhimHot()} */}
+                                {renderDanhSachPhimSapChieu()}
+
+                            </Slider>
+
 
                         </div>
                     </div>
                     <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                         <div className="container">
-                            <div className="display-4"></div>
+                            <Slider {...settings}>
+                                {renderDanhSachPhimHot()}
+                            </Slider>
+                            {/* <div className="display-4"></div>
                             <div className="row">
                                 {renderDanhSachPhimHot()}
-                            </div>
+                            </div> */}
 
                         </div>
                     </div>

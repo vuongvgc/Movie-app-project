@@ -1,0 +1,27 @@
+    
+ .seat-true {
+  
+    color: #f7b500;
+    border: none;
+    background: none;
+    margin-left: 10px;
+}
+
+.seat-false{
+    border: none;
+    background: none;
+    color: gray;
+    margin-left: 10px;
+}   
+
+.seat-select{
+    width: 30px;
+    height: 30px;
+    color: #44c020;
+}
+
+.seat-unSelect{
+    width: 30px;
+    height: 30px;
+
+}

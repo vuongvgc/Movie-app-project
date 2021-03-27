@@ -5,6 +5,7 @@ import renderInput from "../Form/renderInput";
 import renderInputPassword from "../Form/renderInputPassword";
 import Validate from "./Validate";
 import axios from "../../utils/axiosClient";
+import renderSelectInput from "../Form/renderSelectInput";
 class RegisterForm extends React.Component {
   onSubmit = (formValue) => {
     // console.log(formValue);
@@ -13,6 +14,44 @@ class RegisterForm extends React.Component {
     // console.log(formValue);
     this.props.onSubmit(formValue);
     // axios.post("/QuanLyNguoiDung/DangKy", { ...formValue });
+  };
+  renderAdmin = (admin) => {
+    if (admin) {
+      return (
+        <React.Fragment>
+          <Field name="maNhom" component={renderInput} label="Mã Nhóm" />
+          <Field
+            name="maLoaiNguoiDung"
+            component={renderSelectInput}
+            label="Mã loại người dùng"
+            value={["KhachHang", "QuanTri"]}
+          />
+          <div className="modal-footer">
+            <button className="btn btn-primary m-2">Thêm người dùng</button>
+            <NavLink to="/login">
+              <button
+                id="btnDong"
+                type="button"
+                class="btn btn-danger"
+                data-bs-dismiss="modal"
+              >
+                Đóng
+              </button>
+            </NavLink>
+          </div>
+        </React.Fragment>
+      );
+    }
+    return (
+      <React.Fragment>
+        <button className="btn btn-primary m-2">Đăng Ký</button>
+        <NavLink to="/login">
+          <button id="btnDong" type="button" class="btn btn-primary">
+            Đăng Nhập
+          </button>
+        </NavLink>
+      </React.Fragment>
+    );
   };
   render() {
     // console.log(this.props)
@@ -37,10 +76,7 @@ class RegisterForm extends React.Component {
         ) : (
           ""
         )}
-        <button className="btn btn-primary m-2">Đăng Ký</button>
-        <NavLink to="/login">
-          <button className="btn btn-primary m-2">Đăng Nhập</button>
-        </NavLink>
+        {this.renderAdmin(this.props.admin)}
       </form>
     );
   }
