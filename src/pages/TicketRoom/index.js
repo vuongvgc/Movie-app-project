@@ -3,6 +3,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import Seat from "../../components/Seat";
 import '../../styles/TicketRoom.css'
 import { getTicketRoom } from "../../actions/TicketRoom"
+import { getBooking } from "../../actions/Booking"
+
+
+import { Redirect } from "react-router-dom";
+
+
+import { } from "react-router-dom";
 
 export default function TicketRoom(props) {
 
@@ -23,12 +30,17 @@ export default function TicketRoom(props) {
   };
 
 
+  // lưu danh sách ghế: tên ghế
   const [listSeat, setListSeat] = useState([]);
+
+  // luu tru toan bộ giá vé dùng để render ra tổng tiền
   const [giaVe, setGiaVe] = useState([]);
 
+  //lưu danh sách vé{maGhe,giaVe}
+  const [danhSachVe, setDanhSachVe] = useState([]);
 
   const { ticketRoom, loading, error } = useSelector((state) => state.ticketRoomReducer)
-
+  const { currentUser } = useSelector(state => state.authReducers)
 
 
   const row1 = ticketRoom?.danhSachGhe?.slice(0, 16);
@@ -55,34 +67,65 @@ export default function TicketRoom(props) {
 
   //  hàm thêm ghế vào danh sách ghê
   const handleListSeat = (seat) => {
+
     const arr = listSeat;
     const arr1 = giaVe;
-    const checkArr = arr.findIndex((item) => item === seat[0])
-   
+    const cloneDanhSachVe = danhSachVe;
+    const checkArr = arr.findIndex((item) => item === seat[0]);
+
+    const ve = { maGhe: seat[2], giaVe: seat[1] }
     if (checkArr === -1) {
       setListSeat([...listSeat, seat[0]]);
       setGiaVe([...giaVe, seat[1]])
+      setDanhSachVe([...danhSachVe, ve])
 
     }
     else {
       arr.splice(checkArr, 1);
-      arr1.pop()
+      arr1.splice(checkArr, 1)
+      cloneDanhSachVe.splice(checkArr, 1)
       setListSeat([...arr])
       setGiaVe([...arr1])
-   
+      danhSachVe.slice([...cloneDanhSachVe])
+    }
+  }
 
+  const handleBooking = (item) => {
+    const id = props.match.params.ticketRoomId;
+    const json = localStorage.getItem('user');
+    const user = JSON.parse(json)
+    console.log()
 
+    const value = {
+      "maLichChieu": id,
+      "danhSachVe": danhSachVe,
+      "taiKhoanNguoiDung": user.maLoaiNguoiDung
+    };
+    
+    const answer = window.confirm("Bạn có muốn đặt vé ?" );
+    if (answer) {
+      dispatch(getBooking(value))
+      window.location.reload(true)
     }
 
 
   }
 
 
+  const handleChoose = (value) => {
+    console.log(value)
+  }
 
+  // console.log(currentUser)
+  // console.log(ticketRoom)
+  if (!currentUser) {
 
+    return <Redirect to="/login" />;
+  }
 
 
   return (
+
     <div className='checkout'>
       <div className='row mainCheckout'>
         <div className="col-9 checkout-content">
@@ -278,7 +321,7 @@ export default function TicketRoom(props) {
           <div className="checkout-sideContainer">
             <div className="row-total">
 
-              {giaVe.reduce((total, item) => { return total + item }, 0)} Đ
+              {giaVe?.reduce((total, item) => { return total + item }, 0)} Đ
             </div>
 
             <div className="row-film">
@@ -287,30 +330,32 @@ export default function TicketRoom(props) {
               <p>{ticketRoom?.thongTinPhim?.ngayChieu}  - {ticketRoom?.thongTinPhim?.gioChieu} -{ticketRoom?.thongTinPhim?.tenRap} </p>
             </div>
             <div className={listSeat?.length ? "row-listSeat" : ''}>
-            
+
               {listSeat.map((seat) => {
 
                 return (
-                  <span >{seat}</span>
+                  <span key={seat}>{seat}</span>
                 )
               })}
             </div>
             <div className='infoUser'>
               <input type="text" name='emailCheckout' id="emailCheckout" required />
-              <label for="emailCheckout" className='label-emailCheckout' >
-              
+              <label htmlFor="emailCheckout" className='label-emailCheckout' >
+
                 <span className='span-emailCheckout'>E-Mail </span>
               </label>
             </div>
             <div className='infoUser'>
               <input type="text" id="emailCheckout" />
-              <label for="emailCheckout" className='label-phoneCheckout' >
+              <label htmlFor="emailCheckout" className='label-phoneCheckout' >
                 <span className='span-phoneCheckout'>Phone</span>
               </label>
             </div>
 
 
-            <button className='btn btn-success btn-checkout'>
+            <button className='btn btn-success btn-checkout'
+              onClick={() => handleBooking()}
+            >
               <span> Đặt Vé</span>
             </button>
           </div>

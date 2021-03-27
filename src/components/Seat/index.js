@@ -10,7 +10,7 @@ export default function Seat(props) {
     const handleListSeat = (seat)=>{
         setSelect(!select)
         
-        props.onListSeat([seat.tenGhe,seat.giaVe])
+        props.onListSeat([seat.tenGhe,seat.giaVe,seat.maGhe])
        
     }
     return (
