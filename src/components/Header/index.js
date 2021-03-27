@@ -5,11 +5,18 @@ import "./style.css";
 export default function Header(props) {
   return (
     <div>
+<<<<<<< HEAD
       <div>
         <nav className="fixed-top navbar navbar-expand-lg  navbar-light bg-light movie__header ">
           <div className="container-fluid">
+=======
+      <div >
+        <nav className="fixed-top navbar navbar-expand-lg  navbar-light bg-dark  movie__header ">
+          <div className="container-fluid homepage__navbar">
+
+>>>>>>> baaa7af9fc5a4c59ee4d2f1fd770b7a432d8681f
             <NavLink className="navbar-brand" to="/">
-              VPV
+              <img className="gif__header" src="https://media.giphy.com/media/Z9QGyT1RQL00318Lzz/giphy.gif" alt="" />
             </NavLink>
             <button
               className="navbar-toggler"
@@ -27,7 +34,7 @@ export default function Header(props) {
               id="navbarSupportedContent"
             >
               <ul className=" navbar nav  mx-auto">
-                <li className="nav-item">
+                <li className="nav-item movie__nav__item ">
                   <NavLink
                     className="nav-link active"
                     aria-current="page"
@@ -41,7 +48,7 @@ export default function Header(props) {
                     Cụm Rạp
                   </NavLink>
                 </li>
-                <li className="nav-item dropdown">
+                {/* <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle"
                     href="#"
@@ -67,7 +74,7 @@ export default function Header(props) {
                       </a>
                     </li>
                   </ul>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <a
                     className="nav-link active"

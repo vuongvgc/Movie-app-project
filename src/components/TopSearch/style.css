@@ -1,19 +1,47 @@
 .img__topSearch {
   height: 300px;
 }
+
+/* CSS BUtton Slick */
 .slick-next,
 .slick-prev {
-  color: black !important;
+  /* color: pink !important; */
   /* height: 100px !important; */
+  opacity: 1;
 }
 
 button.slick-arrow.slick-next,
 button.slick-arrow.slick-prev {
-  color: pink !important;
-  /* height: 100px !important; */
-  /* width: 100px !important; */
-  background-color: black;
+  /* color: black !important; */
+  height: 100px !important;
+  width: 50px !important;
+  border: none;
+  background-color: #fbbd61;
+  /* font-size: 3rem; */
+  /* margin: 0 80px; */
 }
+button.slick-arrow.slick-next {
+  transform: translate(40%, -50%);
+}
+button.slick-arrow.slick-prev {
+  transform: translate(-40%, -50%);
+  /* border: none; */
+}
+
+.slick-next:before,
+.slick-prev:before {
+  font-size: 3rem;
+  /* opacity: 1; */
+  color: black;
+}
+
+button.slick-arrow.slick-next:hover .slick-next {
+  content: " ";
+  color: #fbbd61;
+  transform: scale(1.5);
+}
+
+/*End CSS BUtton Slick */
 
 .top__Search {
   border-radius: 10px;
@@ -66,8 +94,8 @@ button.slick-arrow.slick-prev {
 .top__Search__play a:hover {
   color: white;
   text-decoration: none;
-  /* transform: scale(0.5); */
-  /* transition: all 0.5s; */
+  transform: scale(0.5);
+  transition: all 0.5s;
 }
 
 .top__Search:hover .top__Search__overlay {
@@ -88,3 +116,14 @@ button.slick-arrow.slick-prev {
 /* .top__Search:hover .top__Search__title {
   opacity: 0;
 } */
+.top__Search__link {
+  color: red;
+  transition: all 2s ease;
+  border: 1px solid black !important;
+  border-radius: 10%;
+  margin: 0 11px;
+}
+.top__Search__link:hover {
+  transform: scale(1.2);
+  transition: all 0.5s;
+}

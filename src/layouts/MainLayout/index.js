@@ -7,6 +7,7 @@ export default class MainLayout extends Component {
     return (
       <div>
         <Header />
+        {/* MainLayout */}
         {this.props.children}
         <Footer />
       </div>

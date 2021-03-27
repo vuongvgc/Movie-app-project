@@ -18,8 +18,14 @@
   position: absolute;
   top: 55%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-140%, -50%);
   padding-right: 25%;
+  transition: all 2.5s;
+}
+
+.carousel-inner:hover .carousel-item__caption {
+  transform: translate(-20%, -50%);
+  transition: all 2.5s;
 }
 
 .carousel-item__caption span {
@@ -36,7 +42,7 @@
   width: 40px;
   height: 40px;
   border: 2px solid white;
-  line-height: 40px;
+  line-height: 39px;
 }
 
 .btn-orange {
