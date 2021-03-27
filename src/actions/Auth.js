@@ -47,7 +47,7 @@ export const logout = () => {
 export const register = (values) => {
   const admin = {
     maNhom: "GP10",
-    maLoaiNguoiDung: "KhachHang",
+    loaiNguoiDung: "KhachHang",
   };
   return (dispatch) => {
     dispatch({
