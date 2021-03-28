@@ -20,6 +20,7 @@ class UsersManagement extends Component {
   }
   deleteUser = (taiKhoan, accessToken) => {
     this.props.deleteUser(taiKhoan, accessToken);
+    this.handlePage(1);
   };
   renderUser = (user) => {
     let userItem = findUser(this.props.userList, user);
