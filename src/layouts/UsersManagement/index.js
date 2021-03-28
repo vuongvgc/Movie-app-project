@@ -11,10 +11,10 @@ class UsersManagement extends Component {
     this.state = { nameModel: "userModal" };
   }
   componentDidMount() {
-    this.props.getUserList("GP01", "a", 1, 10);
+    this.props.getUserList("GP01", "vu", 1, 10);
   }
   handlePage = (page) => {
-    this.props.getUserList("GP01", "a", page, 10);
+    this.props.getUserList("GP01", "vu", page, 10);
   };
   render() {
     if (this.props.admin.loading === true) {
