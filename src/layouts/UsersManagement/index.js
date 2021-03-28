@@ -1,20 +1,81 @@
 import React, { Component } from "react";
 import ModalUser from "../../components/Modal/ModalUser";
 import { connect } from "react-redux";
-import { getUserList } from "../../actions/Admin";
+import { getUserList, deleteUser } from "../../actions/Admin";
 import RenderUserList from "./RenderUserList";
 import Snackbar from "../../components/Snackbar";
 import CircularIndeterminate from "../../components/CircularIndeterminate";
+import ModalUpdateUser from "../../components/Modal/ModalUpdateUser";
+import ModalDelete from "../../components/Modal/ModalDelete";
+import findUser from "../../utils/findUser";
+
 class UsersManagement extends Component {
   constructor(props) {
     super(props);
-    this.state = { nameModel: "userModal" };
+    this.state = {
+      user: "",
+      userItem: {},
+      nameModel: "userModal",
+    };
   }
+  deleteUser = (taiKhoan, accessToken) => {
+    this.props.deleteUser(taiKhoan, accessToken);
+  };
+  renderUser = (user) => {
+    let userItem = findUser(this.props.userList, user);
+    // console.log(userItem);formValue.soDt = formValue.soDT;
+    userItem.soDT = userItem.soDt;
+    delete userItem.soDt;
+    // console.log(userItem);
+    this.setState({
+      userItem: userItem,
+    });
+  };
+
+  selectUser = (user) => {
+    console.log(user);
+    this.setState({ user: user });
+  };
   componentDidMount() {
     this.props.getUserList("GP01", "vu", 1, 10);
   }
   handlePage = (page) => {
     this.props.getUserList("GP01", "vu", page, 10);
+  };
+  renderAction = () => {
+    return (
+      <React.Fragment>
+        <button
+          type="button"
+          className="btn btn-danger mx-2"
+          onClick={() =>
+            this.deleteUser(this.state.user, this.props.accessToken)
+          }
+          data-bs-dismiss="modal"
+        >
+          Xóa
+        </button>
+        <button
+          type="button"
+          className="btn btn-secondary "
+          data-bs-dismiss="modal"
+          handleCancel={() => this.setState({ currentUser: null })}
+        >
+          Hủy
+        </button>
+      </React.Fragment>
+    );
+  };
+  renderContent = () => {
+    if (!this.state.user) {
+      <CircularIndeterminate />;
+    }
+    return (
+      <p>
+        Bạn có chắc muốn xóa tài khoản:
+        <b>{this.state.user}</b>
+      </p>
+    );
   };
   render() {
     if (this.props.admin.loading === true) {
@@ -79,7 +140,10 @@ class UsersManagement extends Component {
                 </tr>
               </thead>
               <tbody>
-                <RenderUserList admin={this.props.admin} />
+                <RenderUserList
+                  admin={this.props.admin}
+                  selectUser={(user) => this.selectUser(user)}
+                />
               </tbody>
             </table>
           </div>
@@ -131,6 +195,16 @@ class UsersManagement extends Component {
           </div>
         </div>
         <ModalUser title="Thêm Người Dùng" idModal={this.state.nameModel} />
+        <ModalUpdateUser
+          title="Cập Nhật Thông Tin"
+          idModal="updateUserModal"
+          inforUser={this.state.userItem}
+        />
+        <ModalDelete
+          title="Delete User"
+          content={this.renderContent()}
+          action={this.renderAction()}
+        />
       </div>
     );
   }
@@ -138,6 +212,9 @@ class UsersManagement extends Component {
 const mapMapToProps = (state) => {
   return {
     admin: state.adminReducers,
+    accessToken: state.authReducers.currentUser.accessToken,
   };
 };
-export default connect(mapMapToProps, { getUserList })(UsersManagement);
+export default connect(mapMapToProps, { getUserList, deleteUser })(
+  UsersManagement
+);

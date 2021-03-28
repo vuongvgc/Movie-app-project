@@ -5,7 +5,16 @@ import InforUserForm from "../InforUserForm/";
 import { connect } from "react-redux";
 import { updateUser } from "../../actions/User";
 import _ from "lodash";
+import findUser from "../../utils/findUser";
 class ModalUpdateUser extends React.Component {
+  renderUser = (user) => {
+    let userItem = findUser(this.props.userList, user);
+    // console.log(userItem);formValue.soDt = formValue.soDT;
+    userItem.soDT = userItem.soDt;
+    delete userItem.soDt;
+    console.log(userItem);
+    return userItem;
+  };
   onSubmit = (formValue) => {
     // console.log(formValue, this.props.accessToken);
     formValue.soDt = formValue.soDT;
@@ -20,6 +29,7 @@ class ModalUpdateUser extends React.Component {
     );
   };
   render() {
+    console.log(this.props);
     return ReactDOM.createPortal(
       <div className="modal fade" id={this.props.idModal}>
         <div className="modal-dialog">
