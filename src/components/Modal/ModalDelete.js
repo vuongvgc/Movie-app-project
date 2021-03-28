@@ -2,16 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 const Modal = (props) => {
   return ReactDOM.createPortal(
-    <div class="modal fade" id="deleteModal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
-              {props.title}
-            </h5>
+    <div className="modal fade" id="deleteModal" tabIndex="-1">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title">{props.title}</h5>
           </div>
-          <div class="modal-body">{props.content}</div>
-          <div class="modal-footer">{props.action}</div>
+          <div className="modal-body">{props.content}</div>
+          <div className="modal-footer">{props.action}</div>
         </div>
       </div>
     </div>,

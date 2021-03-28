@@ -11,6 +11,7 @@ class RenderUserList extends React.Component {
     super(props);
     this.state = {
       currentUser: null,
+      user: null,
     };
   }
   handleUser = (taiKhoan) => {
@@ -28,6 +29,8 @@ class RenderUserList extends React.Component {
   };
   deleteUser = (taiKhoan, accessToken) => {
     console.log(taiKhoan, accessToken);
+    // const accessTokenTest ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW45NyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlF1YW5UcmkiLCJuYmYiOjE2MTY5MDg3MTcsImV4cCI6MTYxNjkxMjMxN30.oa7r23JrJbaJjs9t4z34Io9RXdYFh_bOq8AfWcnn7sQ";
+    this.props.deleteUser({ TaiKhoan: taiKhoan }, accessToken);
   };
   renderAction = () => {
     return (
@@ -36,13 +39,10 @@ class RenderUserList extends React.Component {
           type="button"
           className="btn btn-danger mx-2"
           onClick={() =>
-            this.deleteUser(
-              this.state.currentUser.taiKhoan,
-              this.props.accessToken
-            )
+            this.deleteUser(this.state.user, this.props.accessToken)
           }
         >
-          Delete
+          Xóa
         </button>
         <button
           type="button"
@@ -50,23 +50,25 @@ class RenderUserList extends React.Component {
           data-bs-dismiss="modal"
           handleCancel={() => this.setState({ currentUser: null })}
         >
-          Cancel
+          Hủy
         </button>
       </React.Fragment>
     );
   };
-  renderContent() {
-    console.log(!this.state.currentUser);
-    if (!this.state.currentUser) {
+  renderContent = () => {
+    if (!this.state.user) {
       <CircularIndeterminate />;
     }
     return (
       <p>
         Bạn có chắc muốn xóa tài khoản:
-        <b>{this.state.currentUser}</b>
+        <b>{this.state.user}</b>
       </p>
     );
-  }
+  };
+  selectUser = (user) => {
+    this.setState({ user: user });
+  };
   render() {
     //   console.log(props.admin);
     const idModal = "updateUserModal";
@@ -91,7 +93,7 @@ class RenderUserList extends React.Component {
               className="btn btn-danger"
               data-bs-toggle="modal"
               data-bs-target="#deleteModal"
-              onClick={() => this.handleUser(user.taiKhoan)}
+              onClick={() => this.selectUser(user.taiKhoan)}
             >
               Xóa
             </button>

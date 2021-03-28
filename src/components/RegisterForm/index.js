@@ -30,7 +30,6 @@ class RegisterForm extends React.Component {
             <button className="btn btn-primary m-2">Thêm người dùng</button>
             <NavLink to="/login">
               <button
-                id="btnDong"
                 type="button"
                 class="btn btn-danger"
                 data-bs-dismiss="modal"

@@ -86,7 +86,6 @@ export const deleteUser = (taiKhoan, accessToken) => {
         },
       })
       .then((result) => {
-        // Lưu thông tin user xuống localStorage
         dispatch({
           type: DELETE_USER_SUCCESS,
           payload: { data: result.data },
