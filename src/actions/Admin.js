@@ -39,10 +39,10 @@ export const getUserList = (
         // history.replace("/");
       })
       .catch((error) => {
-        // console.log(error.response.data);
+        console.log(error.response);
         dispatch({
           type: GET_USER_FAIL,
-          payload: { error: error.response.data },
+          payload: { error: error.response },
         });
       });
   };

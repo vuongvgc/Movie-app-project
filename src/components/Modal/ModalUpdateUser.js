@@ -1,15 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./style.css";
-import RegisterForm from "../RegisterForm";
 import InforUserForm from "../InforUserForm/";
 import { connect } from "react-redux";
-import { addUser } from "../../actions/Admin";
+import { updateUser } from "../../actions/User";
 import _ from "lodash";
-class Modal extends React.Component {
+class ModalUpdateUser extends React.Component {
   onSubmit = (formValue) => {
+    // console.log(formValue, this.props.accessToken);
+    formValue.soDt = formValue.soDT;
+    delete formValue.soDT;
     // console.log(formValue);
-    this.props.addUser(formValue, this.props.accessToken);
+    this.props.updateUser(
+      {
+        ...formValue,
+        maNhom: this.props.maNhom,
+      },
+      this.props.accessToken
+    );
   };
   render() {
     return ReactDOM.createPortal(
@@ -20,7 +28,19 @@ class Modal extends React.Component {
               <h3 id="header-title">{this.props.title}</h3>
             </header>
             <div className="modal-body">
-              <RegisterForm admin={true} onSubmit={this.onSubmit} />
+              <InforUserForm
+                admin={true}
+                onSubmit={this.onSubmit}
+                initialValues={_.pick(
+                  this.props.inforUser,
+                  "taiKhoan",
+                  "matKhau",
+                  "hoTen",
+                  "email",
+                  "soDT",
+                  "maLoaiNguoiDung"
+                )}
+              />
             </div>
           </div>
         </div>
@@ -32,6 +52,7 @@ class Modal extends React.Component {
 const mapStateToProps = (state) => {
   return {
     accessToken: state.authReducers.currentUser.accessToken,
+    maNhom: state.authReducers.currentUser.maNhom,
   };
 };
-export default connect(mapStateToProps, { addUser })(Modal);
+export default connect(mapStateToProps, { updateUser })(ModalUpdateUser);
