@@ -80,9 +80,12 @@ export const deleteUser = (taiKhoan, accessToken) => {
       type: DELETE_USER_REQUEST,
     });
     axios
-      .delete("/QuanLyNguoiDung/XoaNguoiDung", taiKhoan, {
+      .delete("/QuanLyNguoiDung/XoaNguoiDung", {
         headers: {
           Authorization: `Bearer ${accessToken}`,
+        },
+        data: {
+          TaiKhoan: taiKhoan,
         },
       })
       .then((result) => {
