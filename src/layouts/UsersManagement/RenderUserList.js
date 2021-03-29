@@ -14,7 +14,8 @@ class RenderUserList extends React.Component {
             <button
               className="btn btn-success mx-1"
               data-bs-toggle="modal"
-              data-bs-target="#updateUserModal"
+              data-bs-target="#updateModal"
+              onClick={() => this.props.renderUser(user.taiKhoan)}
             >
               Cập Nhật
             </button>

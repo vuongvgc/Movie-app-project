@@ -5,16 +5,13 @@ import InforUserForm from "../InforUserForm/";
 import { connect } from "react-redux";
 import { updateUser } from "../../actions/User";
 import _ from "lodash";
-import findUser from "../../utils/findUser";
 class ModalUpdateUser extends React.Component {
-  renderUser = (user) => {
-    let userItem = findUser(this.props.userList, user);
-    // console.log(userItem);formValue.soDt = formValue.soDT;
-    userItem.soDT = userItem.soDt;
-    delete userItem.soDt;
-    console.log(userItem);
-    return userItem;
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      userItem: {},
+    };
+  }
   onSubmit = (formValue) => {
     // console.log(formValue, this.props.accessToken);
     formValue.soDt = formValue.soDT;
@@ -28,8 +25,17 @@ class ModalUpdateUser extends React.Component {
       this.props.accessToken
     );
   };
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.inforUser !== prevProps.inforUser) {
+      console.log("modal update");
+      this.setState({
+        userItem: this.props.inforUser,
+      });
+    }
+  }
   render() {
-    console.log(this.props);
+    console.log(this.props.inforUser);
     return ReactDOM.createPortal(
       <div className="modal fade" id={this.props.idModal}>
         <div className="modal-dialog">
@@ -47,8 +53,7 @@ class ModalUpdateUser extends React.Component {
                   "matKhau",
                   "hoTen",
                   "email",
-                  "soDT",
-                  "maLoaiNguoiDung"
+                  "soDT"
                 )}
               />
             </div>
@@ -63,6 +68,7 @@ const mapStateToProps = (state) => {
   return {
     accessToken: state.authReducers.currentUser.accessToken,
     maNhom: state.authReducers.currentUser.maNhom,
+    userList: state.adminReducers.userList.items,
   };
 };
 export default connect(mapStateToProps, { updateUser })(ModalUpdateUser);

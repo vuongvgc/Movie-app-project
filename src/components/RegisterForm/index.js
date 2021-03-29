@@ -28,15 +28,13 @@ class RegisterForm extends React.Component {
           />
           <div className="modal-footer">
             <button className="btn btn-primary m-2">Thêm người dùng</button>
-            <NavLink to="/login">
-              <button
-                type="button"
-                class="btn btn-danger"
-                data-bs-dismiss="modal"
-              >
-                Đóng
-              </button>
-            </NavLink>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Đóng
+            </button>
           </div>
         </React.Fragment>
       );

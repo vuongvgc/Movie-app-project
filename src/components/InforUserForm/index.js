@@ -23,18 +23,6 @@ class InforUserForm extends React.Component {
             label="Mã loại người dùng"
             value={["KhachHang", "QuanTri"]}
           />
-          <div className="modal-footer">
-            <button className="btn btn-primary m-2">Cập Nhật Thông Tin</button>
-            <NavLink to="/login">
-              <button
-                type="button"
-                class="btn btn-danger"
-                data-bs-dismiss="modal"
-              >
-                Đóng
-              </button>
-            </NavLink>
-          </div>
         </React.Fragment>
       );
     }
@@ -50,7 +38,7 @@ class InforUserForm extends React.Component {
     );
   };
   render() {
-    // console.log(this.props)
+    console.log("Form", this.props);
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <Field

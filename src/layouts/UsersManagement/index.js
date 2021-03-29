@@ -5,9 +5,12 @@ import { getUserList, deleteUser } from "../../actions/Admin";
 import RenderUserList from "./RenderUserList";
 import Snackbar from "../../components/Snackbar";
 import CircularIndeterminate from "../../components/CircularIndeterminate";
-import ModalUpdateUser from "../../components/Modal/ModalUpdateUser";
+// import ModalUpdateUser from "../../components/Modal/ModalUpdateUser";
+import ModalUpdate from "../../components/Modal/ModalUpdate";
 import ModalDelete from "../../components/Modal/ModalDelete";
 import findUser from "../../utils/findUser";
+import InforUserForm from "../../components/InforUserForm";
+import _ from "lodash";
 
 class UsersManagement extends Component {
   constructor(props) {
@@ -23,11 +26,12 @@ class UsersManagement extends Component {
     this.handlePage(1);
   };
   renderUser = (user) => {
-    let userItem = findUser(this.props.userList, user);
+    console.log(user);
+    let userItem = findUser(this.props.admin.userList.items, user);
     // console.log(userItem);formValue.soDt = formValue.soDT;
     userItem.soDT = userItem.soDt;
     delete userItem.soDt;
-    // console.log(userItem);
+    console.log(userItem);
     this.setState({
       userItem: userItem,
     });
@@ -76,6 +80,53 @@ class UsersManagement extends Component {
         Bạn có chắc muốn xóa tài khoản:
         <b>{this.state.user}</b>
       </p>
+    );
+  };
+  renderActionUpdate = () => {
+    return (
+      <React.Fragment>
+        <div className="modal-footer">
+          <button className="btn btn-primary m-2">Cập nhật</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            Đóng
+          </button>
+        </div>
+      </React.Fragment>
+    );
+  };
+  renderContentUpdate = () => {
+    console.log(this.state.userItem);
+    if (!this.state.user) {
+      <CircularIndeterminate />;
+    }
+    return (
+      <React.Fragment>
+        <InforUserForm
+          admin={true}
+          onSubmit={this.onSubmit}
+          initialValues={_.pick(
+            this.state.userItem,
+            "taiKhoan",
+            "matKhau",
+            "hoTen",
+            "email",
+            "soDT"
+          )}
+        />
+      </React.Fragment>
+    );
+  };
+  onSubmit = (formValue) => {
+    // console.log(formValue, this.props.accessToken);
+    formValue.soDt = formValue.soDT;
+    delete formValue.soDT;
+    // console.log(formValue);
+    this.props.updateUser(
+      {
+        ...formValue,
+        maNhom: this.props.maNhom,
+      },
+      this.props.accessToken
     );
   };
   render() {
@@ -144,6 +195,7 @@ class UsersManagement extends Component {
                 <RenderUserList
                   admin={this.props.admin}
                   selectUser={(user) => this.selectUser(user)}
+                  renderUser={(user) => this.renderUser(user)}
                 />
               </tbody>
             </table>
@@ -196,10 +248,15 @@ class UsersManagement extends Component {
           </div>
         </div>
         <ModalUser title="Thêm Người Dùng" idModal={this.state.nameModel} />
-        <ModalUpdateUser
+        {/* <ModalUpdateUser
           title="Cập Nhật Thông Tin"
           idModal="updateUserModal"
           inforUser={this.state.userItem}
+        /> */}
+        <ModalUpdate
+          title="Update User"
+          content={this.renderContentUpdate()}
+          action={this.renderActionUpdate()}
         />
         <ModalDelete
           title="Delete User"
@@ -214,6 +271,7 @@ const mapMapToProps = (state) => {
   return {
     admin: state.adminReducers,
     accessToken: state.authReducers.currentUser.accessToken,
+    maNhom: state.authReducers.currentUser.maNhom,
   };
 };
 export default connect(mapMapToProps, { getUserList, deleteUser })(
