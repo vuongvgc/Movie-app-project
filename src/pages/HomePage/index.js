@@ -10,7 +10,7 @@ export default class HomePage extends Component {
   render() {
     return (
       <div >
-        <Header />
+        {/* <Header /> */}
         {/* <form className="d-flex">
              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button className="btn btn-outline-success" type="submit">Search</button>
@@ -18,7 +18,7 @@ export default class HomePage extends Component {
         <Carousel />
         <TopSearch />
         <TabTheaters />
-        <Footer />
+        {/* <Footer /> */}
 
       </div>
     );
