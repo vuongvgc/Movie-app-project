@@ -2,13 +2,13 @@ import { BOOKING_FAIL, BOOKING_SUCCESS, BOOKING_REQUEST } from "../constants/Boo
 
 
 const initialState = {
-    booking  : {},
+    booking: {},
     loading: false,
     error: null
 }
 
 
-const ticketRoomReducer =  (state  =initialState,action )=>{
+const bookingRedecer = (state = initialState, action) => {
     switch (action.type) {
         case BOOKING_REQUEST: {
             return { ...state, loading: true, error: null };
@@ -30,4 +30,4 @@ const ticketRoomReducer =  (state  =initialState,action )=>{
     }
 }
 
-export default ticketRoomReducer;
+export default bookingRedecer;

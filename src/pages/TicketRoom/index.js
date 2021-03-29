@@ -39,8 +39,9 @@ export default function TicketRoom(props) {
   //lưu danh sách vé{maGhe,giaVe}
   const [danhSachVe, setDanhSachVe] = useState([]);
 
-  const { ticketRoom, loading, error } = useSelector((state) => state.ticketRoomReducer)
+  const { ticketRoom } = useSelector((state) => state.ticketRoomReducer)
   const { currentUser } = useSelector(state => state.authReducers)
+  const { booking, loading, error } = useSelector(state => state.bookingReducer)
 
 
   const row1 = ticketRoom?.danhSachGhe?.slice(0, 16);
@@ -101,8 +102,8 @@ export default function TicketRoom(props) {
       "danhSachVe": danhSachVe,
       "taiKhoanNguoiDung": user.maLoaiNguoiDung
     };
-    
-    const answer = window.confirm("Bạn có muốn đặt vé ?" );
+
+    const answer = window.confirm("Bạn có muốn đặt vé ?");
     if (answer) {
       dispatch(getBooking(value))
       window.location.reload(true)
@@ -112,9 +113,6 @@ export default function TicketRoom(props) {
   }
 
 
-  const handleChoose = (value) => {
-    console.log(value)
-  }
 
   // console.log(currentUser)
   // console.log(ticketRoom)
@@ -127,6 +125,12 @@ export default function TicketRoom(props) {
   return (
 
     <div className='checkout'>
+      {
+
+
+
+        console.log('error:', error)
+      }
       <div className='row mainCheckout'>
         <div className="col-9 checkout-content">
           <div className="headerCheckout row">

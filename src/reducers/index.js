@@ -6,7 +6,7 @@ import movieDetailReducer from "./movieDetailReducer";
 import movieInfoReducer from "./movieInfoReducer";
 import userReducers from "./userReducers";
 import ticketRoomReducer from "./ticketRoomReducer";
-import bookingRudecer from "./bookingRudecer"
+import bookingReducer from "./bookingReducer"
 
 const rootReducers = combineReducers({
   authReducers,
@@ -16,6 +16,6 @@ const rootReducers = combineReducers({
   movieInfoReducer,
   ticketRoomReducer,
   userReducers,
-  bookingRudecer,
+  bookingReducer,
 });
 export default rootReducers;
