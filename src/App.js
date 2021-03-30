@@ -18,7 +18,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserDetail from "./pages/UserDetail";
 import { createBrowserHistory } from "history";
-
+// Guards
+import AdminRoute from "../src/guards/AdminRoute";
+import UserRoute from "../src/guards/UserRoute";
 let history = createBrowserHistory();
 function App() {
   return (
@@ -56,8 +58,8 @@ function App() {
         <Route exact path={["/admin/users", "/admin/movies"]}>
           <AdminLayout>
             <Switch>
-              <Route path="/admin/users" component={UsersManagement} />
-              <Route path="/admin/movies" component={MoviesManagement} />
+              <AdminRoute path="/admin/users" component={UsersManagement} />
+              <AdminRoute path="/admin/movies" component={MoviesManagement} />
             </Switch>
           </AdminLayout>
         </Route>
@@ -65,8 +67,8 @@ function App() {
         <Route exact path={["/user/information", "/user/movie"]}>
           <UserDetail>
             <Switch>
-              <Route path="/user/information" component={InformationUser} />
-              <Route path="/user/movie" component={TicketBookingHistory} />
+              <UserRoute path="/user/information" component={InformationUser} />
+              <UserRoute path="/user/movie" component={TicketBookingHistory} />
             </Switch>
           </UserDetail>
         </Route>
