@@ -1,133 +1,154 @@
 import React, { useState, useEffect } from "react";
 import { qlPhimService } from "../../services/QuanLyPhimService";
 import { NavLink } from "react-router-dom";
+import { Tabs, Tab, Content } from './tab.js'
 
 let moment = require("moment"); // require
 
 export default function TabTheaters(props) {
-  let [phim, setPhim] = useState({});
-  let [phimSapChieu, setDanhSachPhimSapChieu] = useState([]);
-  const renderDanhSachPhimSapChieu = () => {
-    return phimSapChieu.map((phim, index) => {
-      return <div key={index} className="col-3">
-        <div className="card text-left top__Search ">
-          <div className="top__Search__overlay"></div>
-          <div className="top__Search__play">
-            <a className="" data-fancybox href={phim.trailer}>
-              <i className="fa fa-play" />
-            </a>
-            <p>
-              <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
-            </p>
+    // Xem trong data.json lấy từ api về xem là dấu ngoặc nhọn {} hay dấu ngoặc vuông []
+    //Lưu ý ngoặc nhọn {} là object, còn dấu ngoặc vuông [] là mảng phải phân biệt được tụi nó
+    // let [phim, setPhim] = useState({});
+    let [phim, setPhim] = useState([]);
+    // const [select, setSelect] = useState(0);
 
-          </div>
-
-          <img style={{ width: '100%' }} className="card-img-top  img__topSearch img-fluid " src={phim.hinhAnh} alt={phim.hinhAnh} />
-          <div className="card-body">
-            <h6 className="card-title top__Search__title">{phim.tenPhim}</h6>
-            {/* <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink> */}
-          </div>
-        </div>
-
-      </div>
-    })
-  }
-
-
-  // console.log(props);
-  useEffect(() => {
-    qlPhimService.layThongTinPhim().then(result => {
-      console.log(result.data);
-      setPhim(result.data);
-    });
-  }, []);
-  useEffect(() => {
-    qlPhimService.layDanhSachPhimSapChieu().then(result => {
-      console.log(result.data);
-      setDanhSachPhimSapChieu(result.data);
-    }).catch(errors => {
-      console.log(errors.response.data);
-    })
-  }, []);
-  return (
-    <div className="container mt-3">
-      <div className="container">
-        <h3>Thông tin lịch chiếu</h3>
-        <hr />
-        <div className="row">
-          <div
-            className="nav flex-column nav-pills col-4"
-            id="v-pills-tab"
-            role="tablist"
-            aria-orientation="vertical"
-          >
-            {phim.heThongRapChieu?.map((heThongRap, index) => {
-              return (
-                <a
-                  key={index}
-                  className="nav-link"
-                  id="v-pills-home-tab"
-                  data-bs-toggle="pill"
-                  href={`#${heThongRap.maHeThongRap}`}
-                  role="tab"
-                  aria-controls="v-pills-home"
-                  aria-selected="true"
-                >
-                  <img
-                    src={heThongRap.logo}
-                    style={{ width: 30, height: 30 }}
-                    alt={heThongRap.logo}
-                  />
-                  {heThongRap.tenHeThongRap}
-                </a>
-              );
-            })}
-          </div>
-          <div className="tab-content col-8" id="v-pills-tabContent">
-
-            {phim.heThongRapChieu?.map((heThongRap, index) => {
-              return (
-                <div
-                  className="tab-pane fade show "
-                  id={heThongRap.maHeThongRap}
-                  role="tabpanel"
-                  aria-labelledby="v-pills-home-tab"
-                >
-                  {heThongRap.cumRapChieu?.map((cumRap, index) => {
-                    return (
-                      <div key={index.maCumRap}>
-                        <h3>{cumRap.tenCumRap}</h3>
-                        <div className="row">
-                          {cumRap.lichChieuPhim
-                            ?.slice(0, 12)
-                            .map((lichChieu, index) => {
-                              return (
-                                <NavLink
-                                  className="col-2"
-                                  key={lichChieu.maLichChieu}
-                                  to={`/showtime/${lichChieu.maLichChieu}`}
+    useEffect(() => {
+        qlPhimService.layThongTinPhim().then((result) => {
+            console.log(result.data);
+            setPhim(result.data);
+        });
+    }, []);
+    const [active, setActive] = useState(0);
+    const handleClick = e => {
+        const index = parseInt(e.target.id, 0);
+        if (index !== active) {
+            setActive(index);
+        }
+    }
+    console.log("phim", phim);
+    return (
+        <div className="container mt-3">
+            <div className="container">
+                <h3>Thông tin lịch chiếu</h3>
+                <hr />
+                <div className="row">
+                    <div
+                        className="nav flex-column nav-pills col-3"
+                        id="v-pills-tab"
+                        role="tablist"
+                        aria-orientation="vertical"
+                    >
+                        {phim?.map((heThongRap, index) => {
+                            return (
+                                <a
+                                    key={index}
+                                    className="nav-link acti "
+                                    id="v-pills-home-tab"
+                                    data-bs-toggle="pill"
+                                    href={`#${heThongRap.maHeThongRap}`}
+                                    role="tab"
+                                    aria-controls="v-pills-home"
+                                    aria-selected="true"
                                 >
-                                  {moment(lichChieu.ngayChieuGioChieu).format(
-                                    "hh:mm A"
-                                  )}
-                                </NavLink>
-                              );
+                                    <img
+                                        src={heThongRap.logo}
+                                        style={{ width: 50, height: 50, margin: 5 }}
+                                        alt={heThongRap.logo}
+                                    />
+                                    {heThongRap.tenHeThongRap}
+                                </a>
+                            );
+                        })}
+                    </div>
+                    <div className="col-9">
+                        <div className="tab-content" id="v-pills-tabContent">
+                            {phim?.map((heThongRap, index) => {
+                                return (
+                                    <div
+                                        className="tab-pane fade show"
+                                        id={heThongRap?.maHeThongRap}
+                                        role="tabpanel"
+                                        aria-labelledby="v-pills-home-tab"
+                                    >
+
+
+                                        <div className="row">
+                                            <div onClick={handleClick} active={active === 0} id={0} className="col-4">
+                                                {heThongRap.lstCumRap?.map((cumRap, index) => {
+                                                    return (
+                                                        // <div className="col-6" key={index.maCumRap}>
+                                                        <div key={index.maCumRap}>
+                                                            <h4>{cumRap.tenCumRap}</h4>
+                                                            {/* <h5>{cumRap.diaChi}</h5> */}
+                                                            {/* <div className="row"> */}
+                                                            {/* {cumRap.danhSachPhim?.map((phim, index) => {
+                                                                return <div > */}
+                                                            {/* <div className="col" > */}
+                                                            {/* <h4>{phim.tenPhim}</h4>
+                                                                    <img style={{ width: 50, height: 50 }} src={phim.hinhAnh} alt="" />
+                                                                </div>
+                                                            })} */}
+                                                            {/* </div> */}
+                                                        </div>
+
+
+                                                    );
+                                                })}
+                                            </div>
+                                            <div className="col-8">
+                                                <Content active={active === 0}>
+                                                    {heThongRap.lstCumRap?.map((cumRap, index) => {
+                                                        return <div>
+                                                            {cumRap.danhSachPhim?.slice(0, 3).map((phim, index) => {
+                                                                return <div>
+                                                                    <img style={{ width: 150, height: 150 }} src={phim.hinhAnh} alt="" />
+                                                                    <h4>{phim.tenPhim}</h4>
+                                                                    <div className="row">
+                                                                        {phim.lstLichChieuTheoPhim?.slice(0, 5).map((phimU, index) => {
+                                                                            return <div className="col-4">
+                                                                                <span className="btn btn-danger">
+                                                                                    {moment(phimU.ngayChieuGioChieu).format(
+                                                                                        "hh:mm A"
+                                                                                    )}
+                                                                                </span>
+                                                                            </div>
+                                                                        })}
+                                                                    </div>
+                                                                </div>
+                                                            })}
+                                                        </div>
+                                                    })}
+                                                </Content>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+                                    </div>
+
+
+                                );
                             })}
+
+
                         </div>
-                      </div>
-                    );
-                  })}
-                  {/* {renderDanhSachPhimSapChieu()} */}
+
+
+
+                    </div>
+
                 </div>
-              );
-            })}
-            {/* <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
-                    <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
-                    <div className="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-                    <div className="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div> */}
-          </div>
+
+            </div>
+
         </div>
-      </div>
-    </div>
-  );
+
+    );
 }

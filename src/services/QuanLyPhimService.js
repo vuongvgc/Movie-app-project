@@ -9,14 +9,14 @@ export class QuanLyPhimService {
             method: 'GET'
         });
     }
-    layThongTinPhim = () => {
+    layThongTinPhim2 = () => {
         return axios({
             url: `${domain}/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=1323`,
             method: 'GET'
         });
     }
 
-    layThongTinPhim2 = () => {
+    layThongTinPhim = () => {
         return axios({
             url: `${domain}/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP10`,
             method: 'GET'
