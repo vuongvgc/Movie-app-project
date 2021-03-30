@@ -28,14 +28,25 @@ class InforUserForm extends React.Component {
     }
     return (
       <React.Fragment>
-        <button className="btn btn-primary m-2">Đăng Ký</button>
-        <NavLink to="/login">
-          <button id="btnDong" type="button" class="btn btn-primary">
-            Đăng Nhập
-          </button>
-        </NavLink>
+        <button className="btn btn-primary m-2">Cập nhập thông tin</button>
       </React.Fragment>
     );
+  };
+  renderPassword = (admin) => {
+    if (!admin) {
+      <React.Fragment>
+        <Field
+          name="matKhau"
+          component={renderInputPassword}
+          label="Mật khẩu"
+        />
+        <Field
+          name="nhapLaiMatKhau"
+          component={renderInputPassword}
+          label="Nhập lại mật khẩu"
+        />
+      </React.Fragment>;
+    }
   };
   render() {
     console.log("Form", this.props);
@@ -47,16 +58,7 @@ class InforUserForm extends React.Component {
           label="Tài khoản"
           isUpdate={{ disabled: true }}
         />
-        <Field
-          name="matKhau"
-          component={renderInputPassword}
-          label="Mật khẩu"
-        />
-        <Field
-          name="nhapLaiMatKhau"
-          component={renderInputPassword}
-          label="Nhập lại mật khẩu"
-        />
+        {this.renderPassword(this.props.admin)}
         <Field name="hoTen" component={renderInput} label="Họ tên" />
         <Field name="email" component={renderInput} label="Email" />
         <Field name="soDT" component={renderInput} label="Số điện thoại" />
@@ -73,6 +75,7 @@ class InforUserForm extends React.Component {
 export default reduxForm({
   form: "InforUserForm",
   validate: Validate,
+  enableReinitialize: true,
 })(InforUserForm);
 
 // "taiKhoan": "vuong",

@@ -12,6 +12,7 @@ class ModalUpdateUser extends React.Component {
       userItem: {},
     };
   }
+
   onSubmit = (formValue) => {
     // console.log(formValue, this.props.accessToken);
     formValue.soDt = formValue.soDT;

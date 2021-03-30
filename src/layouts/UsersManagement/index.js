@@ -11,7 +11,7 @@ import ModalDelete from "../../components/Modal/ModalDelete";
 import findUser from "../../utils/findUser";
 import InforUserForm from "../../components/InforUserForm";
 import _ from "lodash";
-
+import { updateUser } from "../../actions/User";
 class UsersManagement extends Component {
   constructor(props) {
     super(props);
@@ -86,7 +86,12 @@ class UsersManagement extends Component {
     return (
       <React.Fragment>
         <div className="modal-footer">
-          <button className="btn btn-primary m-2">Cập nhật</button>
+          <button
+            className="btn btn-primary m-2"
+            onClick={() => this.onSubmit(this.props.inforUserform.values)}
+          >
+            Cập nhật
+          </button>
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
             Đóng
           </button>
@@ -272,8 +277,9 @@ const mapMapToProps = (state) => {
     admin: state.adminReducers,
     accessToken: state.authReducers.currentUser.accessToken,
     maNhom: state.authReducers.currentUser.maNhom,
+    inforUserform: state.form.InforUserForm,
   };
 };
-export default connect(mapMapToProps, { getUserList, deleteUser })(
+export default connect(mapMapToProps, { getUserList, deleteUser, updateUser })(
   UsersManagement
 );
