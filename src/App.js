@@ -21,6 +21,7 @@ import { createBrowserHistory } from "history";
 // Guards
 import AdminRoute from "../src/guards/AdminRoute";
 import UserRoute from "../src/guards/UserRoute";
+import AuthRoute from "../src/guards/AuthRoute";
 let history = createBrowserHistory();
 function App() {
   return (
@@ -49,8 +50,8 @@ function App() {
         <Route exact path={["/login", "/register"]}>
           <AuthLayout>
             <Switch>
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
+              <AuthRoute path="/login" component={Login} />
+              <AuthRoute path="/register" component={Register} />
             </Switch>
           </AuthLayout>
         </Route>
