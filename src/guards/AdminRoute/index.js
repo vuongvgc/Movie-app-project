@@ -19,7 +19,7 @@ function AdminRoute(props) {
             return <Component {...props} />;
           }
           // Đã đăng nhập nhưng k phải là QuanTri
-          return <Redirect to="/" />;
+          return <Redirect to="/user/information" />;
         }
         // Chưa đăng nhập
         return <Redirect to="/login" />;
