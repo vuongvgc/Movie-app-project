@@ -7,7 +7,7 @@ export default function UserDetail(props) {
   const history = useHistory();
   const location = useLocation();
   const params = useParams();
-  console.log("Header", location.pathname);
+  // console.log("Header", location.pathname);
   let activeUrl = location.pathname;
   return (
     <div className="user_detail__box">

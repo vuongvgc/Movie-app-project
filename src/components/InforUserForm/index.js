@@ -1,10 +1,8 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { NavLink } from "react-router-dom";
 import renderInput from "../Form/renderInput";
 import renderInputPassword from "../Form/renderInputPassword";
 import Validate from "./Validate";
-import axios from "../../utils/axiosClient";
 import renderSelectInput from "../Form/renderSelectInput";
 
 class InforUserForm extends React.Component {
@@ -49,7 +47,7 @@ class InforUserForm extends React.Component {
     }
   };
   render() {
-    console.log("Form", this.props);
+    // console.log("Form", this.props);
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <Field

@@ -29,14 +29,14 @@ class ModalUpdateUser extends React.Component {
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (this.props.inforUser !== prevProps.inforUser) {
-      console.log("modal update");
+      // console.log("modal update");
       this.setState({
         userItem: this.props.inforUser,
       });
     }
   }
   render() {
-    console.log(this.props.inforUser);
+    // console.log(this.props.inforUser);
     return ReactDOM.createPortal(
       <div className="modal fade" id={this.props.idModal}>
         <div className="modal-dialog">

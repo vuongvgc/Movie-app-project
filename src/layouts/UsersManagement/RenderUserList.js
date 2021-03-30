@@ -1,5 +1,5 @@
 import React from "react";
-class RenderUserList extends React.Component {
+class RenderUserList extends React.PureComponent {
   render() {
     //   console.log(props.admin);
     return this.props.admin.userList.items.map((user, index) => {

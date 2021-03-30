@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./style.css";
 import RegisterForm from "../RegisterForm";
-import InforUserForm from "../InforUserForm/";
 import { connect } from "react-redux";
 import { addUser } from "../../actions/Admin";
 import _ from "lodash";

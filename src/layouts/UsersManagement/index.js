@@ -19,6 +19,7 @@ class UsersManagement extends Component {
       user: "",
       userItem: {},
       nameModel: "userModal",
+      search: "",
     };
   }
   deleteUser = (taiKhoan, accessToken) => {
@@ -26,23 +27,23 @@ class UsersManagement extends Component {
     this.handlePage(1);
   };
   renderUser = (user) => {
-    console.log(user);
+    // console.log(user);
     let userItem = findUser(this.props.admin.userList.items, user);
     // console.log(userItem);formValue.soDt = formValue.soDT;
     userItem.soDT = userItem.soDt;
     delete userItem.soDt;
-    console.log(userItem);
+    // console.log(userItem);
     this.setState({
       userItem: userItem,
     });
   };
 
   selectUser = (user) => {
-    console.log(user);
+    // console.log(user);
     this.setState({ user: user });
   };
   componentDidMount() {
-    this.props.getUserList("GP01", "vu", 1, 10);
+    this.props.getUserList("GP01", "a", 1, 10);
   }
   handlePage = (page) => {
     this.props.getUserList("GP01", "vu", page, 10);
@@ -100,7 +101,7 @@ class UsersManagement extends Component {
     );
   };
   renderContentUpdate = () => {
-    console.log(this.state.userItem);
+    // console.log(this.state.userItem);
     if (!this.state.user) {
       <CircularIndeterminate />;
     }
@@ -115,7 +116,8 @@ class UsersManagement extends Component {
             "matKhau",
             "hoTen",
             "email",
-            "soDT"
+            "soDT",
+            "maLoaiNguoiDung"
           )}
         />
       </React.Fragment>
@@ -133,6 +135,9 @@ class UsersManagement extends Component {
       },
       this.props.accessToken
     );
+  };
+  searchUser = (value) => {
+    this.props.getUserList("GP01", value, 1, 10);
   };
   render() {
     if (this.props.admin.loading === true) {
@@ -164,18 +169,24 @@ class UsersManagement extends Component {
           <div className="card-body">
             <div className="row mb-3">
               <div className="col">
-                <div className="input-group">
+                <div class="input-group mb-3">
                   <input
                     type="text"
-                    className="form-control"
+                    class="form-control"
                     placeholder="Tên người dùng"
-                    id="searchName"
+                    value={this.state.search}
+                    onChange={(event) =>
+                      this.setState({ search: event.target.value })
+                    }
                   />
-                  <div className="input-group-prepend h-100">
-                    <span className="input-group-text" id="btnTimNV">
-                      <i className="fa fa-search"></i>
-                    </span>
-                  </div>
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="button-addon2"
+                    onClick={() => this.searchUser(this.state.search)}
+                  >
+                    <i className="fa fa-search"></i>
+                  </button>
                 </div>
               </div>
             </div>
