@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-const Modal = (props) => {
+const ModalUpdate = (props) => {
   return ReactDOM.createPortal(
-    <div className="modal fade" id="deleteModal" tabIndex="-1">
+    <div className="modal fade" id="updateModal" tabIndex="-1">
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">{props.title}</h5>
+            <h3 id="header-title">{props.title}</h3>
           </div>
           <div className="modal-body">{props.content}</div>
           <div className="modal-footer">{props.action}</div>
@@ -16,4 +16,4 @@ const Modal = (props) => {
     document.querySelector("#modal")
   );
 };
-export default Modal;
+export default ModalUpdate;

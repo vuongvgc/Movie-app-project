@@ -1,26 +1,38 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { NavLink } from "react-router-dom";
 import renderInput from "../Form/renderInput";
 import renderInputPassword from "../Form/renderInputPassword";
 import Validate from "./Validate";
-import axios from "../../utils/axiosClient";
+import renderSelectInput from "../Form/renderSelectInput";
+
 class InforUserForm extends React.Component {
   onSubmit = (formValue) => {
     // console.log(formValue);
     delete formValue.nhapLaiMatKhau;
     this.props.onSubmit(formValue);
   };
-  render() {
-    // console.log(this.props)
+  renderAdmin = (admin) => {
+    if (admin) {
+      return (
+        <React.Fragment>
+          <Field
+            name="maLoaiNguoiDung"
+            component={renderSelectInput}
+            label="Mã loại người dùng"
+            value={["KhachHang", "QuanTri"]}
+          />
+        </React.Fragment>
+      );
+    }
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field
-          name="taiKhoan"
-          component={renderInput}
-          label="Tài khoản"
-          isUpdate={{ disabled: true }}
-        />
+      <React.Fragment>
+        <button className="btn btn-primary m-2">Cập nhập thông tin</button>
+      </React.Fragment>
+    );
+  };
+  renderPassword = (admin) => {
+    if (!admin) {
+      <React.Fragment>
         <Field
           name="matKhau"
           component={renderInputPassword}
@@ -31,6 +43,20 @@ class InforUserForm extends React.Component {
           component={renderInputPassword}
           label="Nhập lại mật khẩu"
         />
+      </React.Fragment>;
+    }
+  };
+  render() {
+    // console.log("Form", this.props);
+    return (
+      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <Field
+          name="taiKhoan"
+          component={renderInput}
+          label="Tài khoản"
+          isUpdate={{ disabled: true }}
+        />
+        {this.renderPassword(this.props.admin)}
         <Field name="hoTen" component={renderInput} label="Họ tên" />
         <Field name="email" component={renderInput} label="Email" />
         <Field name="soDT" component={renderInput} label="Số điện thoại" />
@@ -39,7 +65,7 @@ class InforUserForm extends React.Component {
         ) : (
           ""
         )}
-        <button className="btn btn-primary m-2">Cập nhập thông tin</button>
+        {this.renderAdmin(this.props.admin)}
       </form>
     );
   }
@@ -47,6 +73,7 @@ class InforUserForm extends React.Component {
 export default reduxForm({
   form: "InforUserForm",
   validate: Validate,
+  enableReinitialize: true,
 })(InforUserForm);
 
 // "taiKhoan": "vuong",

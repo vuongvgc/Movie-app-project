@@ -5,18 +5,15 @@ import "./style.css";
 export default function Header(props) {
   return (
     <div>
-<<<<<<< HEAD
       <div>
-        <nav className="fixed-top navbar navbar-expand-lg  navbar-light bg-light movie__header ">
-          <div className="container-fluid">
-=======
-      <div >
         <nav className="fixed-top navbar navbar-expand-lg  navbar-light bg-dark  movie__header ">
           <div className="container-fluid homepage__navbar">
-
->>>>>>> baaa7af9fc5a4c59ee4d2f1fd770b7a432d8681f
             <NavLink className="navbar-brand" to="/">
-              <img className="gif__header" src="https://media.giphy.com/media/Z9QGyT1RQL00318Lzz/giphy.gif" alt="" />
+              <img
+                className="gif__header"
+                src="https://media.giphy.com/media/Z9QGyT1RQL00318Lzz/giphy.gif"
+                alt=""
+              />
             </NavLink>
             <button
               className="navbar-toggler"
