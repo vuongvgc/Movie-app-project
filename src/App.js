@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 //Layout
 import MainLayout from "./layouts/MainLayout";
 import CheckoutLayout from "./layouts/CheckoutLayout";
@@ -25,7 +30,7 @@ import AuthRoute from "../src/guards/AuthRoute";
 let history = createBrowserHistory();
 function App() {
   return (
-    <BrowserRouter history={history}>
+    <Router history={history}>
       <Switch>
         {/* Movie */}
         <Route exact path={["/", "/ticketRoom/:movieId", "/movie/:movieId"]}>
@@ -75,7 +80,7 @@ function App() {
         </Route>
         <Redirect to="/" />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 
