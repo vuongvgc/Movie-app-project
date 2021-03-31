@@ -56,13 +56,13 @@ export const register = (values) => {
     axios
       .post("/QuanLyNguoiDung/DangKy", { ...values, ...admin })
       .then((result) => {
+        history.push("/login");
         dispatch({
           type: REGISTER_SUCCESS,
           payload: {
             data: result.data,
           },
         });
-        history.replace("/");
       })
       .catch((error) => {
         dispatch({

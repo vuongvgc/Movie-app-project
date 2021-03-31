@@ -80,7 +80,7 @@ export const deleteUser = (taiKhoan, accessToken) => {
     });
     axiosPure({
       method: "delete",
-      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?taiKhoan=${taiKhoan}`,
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },

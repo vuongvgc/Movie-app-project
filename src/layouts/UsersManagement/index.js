@@ -46,7 +46,7 @@ class UsersManagement extends Component {
     this.props.getUserList("GP01", "a", 1, 10);
   }
   handlePage = (page) => {
-    this.props.getUserList("GP01", "vu", page, 10);
+    this.props.getUserList("GP01", "a", page, 10);
   };
   renderAction = () => {
     return (
