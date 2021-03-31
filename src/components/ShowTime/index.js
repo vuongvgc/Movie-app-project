@@ -48,7 +48,10 @@ export default function ShowTime(props) {
                             <div className='showTimes-tenCumRap'>{item?.tenCumRap}</div>
                             {item?.lichChieuPhim.map((time) => {
                                 return (
-                                    <NavLink to={`/checkout/${time.maLichChieu}`} >
+                                    <NavLink to={`/checkout/${time.maLichChieu}`} 
+                                     
+                                    
+                                    >
                                         <div className='showTime-item'>
 
                                             Ngày: {time?.ngayChieuGioChieu?.slice(0, 10)}
