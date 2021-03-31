@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
+import { NavLink } from 'react-router-dom'
 import { getMovieInfo } from '../../actions/MovieInfo'
 import '../../styles/ShowTime.css'
 
@@ -29,7 +29,6 @@ export default function ShowTime(props) {
                         >
                             <div className='logo'>
                                 <img src={item?.logo} alt="" />
-
                             </div>
                             <span className='showTime-maRap'>{item?.maHeThongRap}</span>
                         </div>
@@ -49,11 +48,15 @@ export default function ShowTime(props) {
                             <div className='showTimes-tenCumRap'>{item?.tenCumRap}</div>
                             {item?.lichChieuPhim.map((time) => {
                                 return (
-                                    <div className='showTime-item'>
-                                        Ngày: { time?.ngayChieuGioChieu?.slice(0, 10)}
-                                        <br />
+                                    <NavLink to={`/checkout/${time.maLichChieu}`} >
+                                        <div className='showTime-item'>
+
+                                            Ngày: {time?.ngayChieuGioChieu?.slice(0, 10)}
+                                            <br />
                                            Giờ: {time?.ngayChieuGioChieu?.slice(11, 16)}
-                                    </div>
+                                        </div>
+                                    </NavLink>
+
                                 )
 
                             })}

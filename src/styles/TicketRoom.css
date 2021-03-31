@@ -1,0 +1,176 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.checkout {
+    width: 100%;
+    overflow: hidden;
+}
+.mainCheckout {
+    overflow: hidden;
+}
+.checkout-content{
+    overflow: hidden;
+    padding: 0;
+
+}
+
+.headerCheckout {
+    height: 80px;
+    position: fixed;
+    top: 0;
+    width: 76%;
+    background: #fff;
+    box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+}
+
+.stepCheckout {
+    display: flex;
+    list-style: none;
+}
+.stepCheckout li {
+    padding: 0 30px;
+    font-weight: 500;
+    line-height: 80px;
+}
+
+.checkoutContent {
+    margin-top: 80px;
+    text-align: center;
+
+}
+.topContent {
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+
+}
+
+.topContent .logoCinema {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+.topContent .logoCinema img {
+    width: 100%;
+}
+
+.contentCinema .address {
+    font-size: 16px;
+}
+.contentCinema .address .nameCinema {
+    color: #8bc541;
+}
+.contentCinema .address .timeCinema {
+    line-height: 5px;
+    font-size: 14px;
+    color: #9b9b9b;
+}
+
+/* sideBar */
+.checkout-side {
+    position: fixed;
+    top: 0;
+    left: 75%;
+    overflow: hidden;
+    
+    box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+    height: 100%;
+}
+
+.seatmap {
+    color: black;
+}
+
+.row-total{
+    text-align: center;
+    font-size: 36px;
+    color: #44c020!important;
+    border-bottom: 1px dashed #333;
+}
+
+.row-film{
+    border-bottom: 1px dashed #333;
+}
+.row-listSeat{
+    border-bottom: 1px dashed #333;
+    line-height: 40px;
+}
+.row-listSeat span{
+    color: #fb4226;
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+.seatmap .screen img {
+    width: 80%;
+ 
+   
+}
+
+.hang {
+    margin-right: 20px;
+}
+
+/* seat */
+
+.seatmap {
+    text-align: center;
+}
+
+.listseat {
+    text-align: center;
+    width: 100%;
+}
+
+.infoUser {
+    position: relative;
+}
+
+.infoUser input {
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+    border: none;
+    outline: none;
+}
+
+.infoUser label {
+    position: absolute;
+    bottom: 0px;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px dashed #333;
+}
+.infoUser label span {
+    font-size: 16px;
+    color: #9b9b9b;
+    transition: all 0.3s;
+}
+
+.infoUser input:focus + .label-emailCheckout .span-emailCheckout,
+.infoUser input:focus + .label-phoneCheckout .span-phoneCheckout {
+    font-size: 12px;
+    color: #4a90e2;
+}
+
+.btn-checkout{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+   
+}
+
+
+.checkout-sideContainer{
+    
+    position: relative;
+    height: 100%;
+}

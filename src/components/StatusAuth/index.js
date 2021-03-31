@@ -10,12 +10,16 @@ class StatusAuth extends Component {
       return (
         <ul className="navbar nav">
           <li className="nav-item">
-            <NavLink className="nav-link" aria-current="page" to="/">
+            <NavLink
+              className="nav-link"
+              aria-current="page"
+              to="/user/information"
+            >
               Chào, {this.props.currentUser.hoTen}
             </NavLink>
           </li>
           <li className="nav-item" onClick={() => this.props.logout()}>
-            <NavLink className="nav-link active" aria-current="page" to="/">
+            <NavLink className="nav-link" aria-current="page" to="/">
               Đăng Xuất
             </NavLink>
           </li>
@@ -26,22 +30,15 @@ class StatusAuth extends Component {
         <div>
           <ul className="navbar nav">
             <li className="nav-item">
-              <NavLink
-                className="nav-link active"
-                aria-current="page"
-                to="/login"
-              >
-
-                <ButtonWhite name="Đăng Nhập" />
+              <NavLink className="nav-link" aria-current="page" to="/login">
+                {/* <ButtonWhite name="Đăng Nhập" /> */}
+                Đăng Nhập
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink
-                className="nav-link active"
-                aria-current="page"
-                to="/register"
-              >
-                <ButtonWhite name="Đăng Ký" />
+              <NavLink className="nav-link" aria-current="page" to="/register">
+                {/* <ButtonWhite name="Đăng Ký" /> */}
+                Đăng ký
               </NavLink>
             </li>
           </ul>
