@@ -5,9 +5,10 @@ import "./style.css";
 export default function Header(props) {
   return (
     <div>
-      <div>
+      <div >
         <nav className="fixed-top navbar navbar-expand-lg  navbar-light bg-dark  movie__header ">
           <div className="container-fluid homepage__navbar">
+
             <NavLink className="navbar-brand" to="/">
               <img
                 className="gif__header"

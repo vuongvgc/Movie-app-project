@@ -16,7 +16,7 @@ export const getBooking = (value) => {
     return (dispatch) => {
         dispatch({ type: BOOKING_REQUEST });
 
-
+        
         axios.post(
 
             `QuanLyDatVe/DatVe`, value, {
