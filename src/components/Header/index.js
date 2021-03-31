@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import StatusAuth from "../StatusAuth";
-import './style.css'
+import "./style.css";
 export default function Header(props) {
   return (
     <div>
@@ -10,7 +10,11 @@ export default function Header(props) {
           <div className="container-fluid homepage__navbar">
 
             <NavLink className="navbar-brand" to="/">
-              <img className="gif__header" src="https://media.giphy.com/media/Z9QGyT1RQL00318Lzz/giphy.gif" alt="" />
+              <img
+                className="gif__header"
+                src="https://media.giphy.com/media/Z9QGyT1RQL00318Lzz/giphy.gif"
+                alt=""
+              />
             </NavLink>
             <button
               className="navbar-toggler"
@@ -70,11 +74,13 @@ export default function Header(props) {
                   </ul>
                 </li> */}
                 <li className="nav-item">
-                  <a className="nav-link active"
-                    aria-current="page" href="#footer">
+                  <a
+                    className="nav-link active"
+                    aria-current="page"
+                    href="#footer"
+                  >
                     Liên Hệ
-                      </a>
-
+                  </a>
                 </li>
               </ul>
               {/* <form className="d-flex">

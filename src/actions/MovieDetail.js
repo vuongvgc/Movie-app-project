@@ -1,6 +1,9 @@
 import axios from "../utils/axiosClient";
 import { MOVIE_DETAIL_FAIL, MOVIE_DETAIL_REQUEST, MOVIE_DETAIL_SUCCESS } from '../constants/MovieDetail';
 
+
+
+
 export const getMovieDetail = (id) => {
     return (dispatch) => {
         dispatch({ type: MOVIE_DETAIL_REQUEST });
@@ -9,6 +12,7 @@ export const getMovieDetail = (id) => {
             `QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`
         )
             .then((result) => {
+
                 dispatch({
                     type: MOVIE_DETAIL_SUCCESS,
                     payload: { data: result.data }
