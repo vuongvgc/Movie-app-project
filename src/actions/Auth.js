@@ -8,8 +8,7 @@ import {
   REGISTER_FAIL,
 } from "../constants/auth";
 import axios from "../utils/axiosClient";
-import { createBrowserHistory } from "history";
-let history = createBrowserHistory();
+import history from "../utils/history";
 export const login = (values) => {
   return (dispatch) => {
     dispatch({
@@ -42,6 +41,7 @@ export const login = (values) => {
 };
 export const logout = () => {
   localStorage.removeItem("user");
+  history.replace("/");
   return { type: LOGOUT_SUCCESS };
 };
 export const register = (values) => {
