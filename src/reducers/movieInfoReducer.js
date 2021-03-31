@@ -1,13 +1,13 @@
 import { MOVIE_INFO_FAIL, MOVIE_INFO_REQUEST, MOVIE_INFO_SUCCESS } from "../constants/MovieInfo";
 
 const initialState = {
-    movieInfo : {},
+    movieInfo: {},
     loading: false,
     error: null
 }
 
 
-const movieInfoReducer =  (state  =initialState,action )=>{
+const movieInfoReducer = (state = initialState, action) => {
     switch (action.type) {
         case MOVIE_INFO_REQUEST: {
             return { ...state, loading: true, error: null };
