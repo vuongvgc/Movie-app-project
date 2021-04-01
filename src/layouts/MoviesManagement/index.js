@@ -50,8 +50,7 @@ class MoviesManagement extends Component {
                     <i className="fa fa-arrow-up mx-2" id="SapXepTang"></i>
                     <i className="fa fa-arrow-down" id="SapXepGiam"></i>
                   </th>
-                  <th>Hình ảnh</th>
-                  <th>Mô Tả</th>
+                  <th className="col-3">Hình ảnh</th>
                   <th>Ngày khởi chiếu</th>
                   <th>
                     <em className="fa fa-cog"></em>

@@ -3,20 +3,16 @@ import {
   GET_MOVIES_SUCCESS,
   GET_MOVIES_FAIL,
 } from "../constants/Admin";
-import axios from "../utils/axiosClient";
-export const getMoviesList = (maNhom = "GP01", page = 1, pageSize = 10) => {
+import axiosPure from "axios";
+export const getMoviesList = (maNhom = "GP10", page = 1, pageSize = 5) => {
   return (dispatch) => {
     dispatch({
       type: GET_MOVIES_REQUEST,
     });
-    axios
-      .get("/QuanLyPhim/LayDanhSachPhimPhanTrang", {
-        params: {
-          maNhom: maNhom,
-          soTrang: page,
-          soPhanTuTrenTrang: pageSize,
-        },
-      })
+    axiosPure({
+      method: "get",
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=${maNhom}&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`,
+    })
       .then((result) => {
         // Lưu thông tin user xuống localStorage
         dispatch({

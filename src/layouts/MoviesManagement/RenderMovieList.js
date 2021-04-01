@@ -1,5 +1,6 @@
 import { CircularProgress } from "@material-ui/core";
 import React from "react";
+import PopOver from "../../components/Popover";
 class RenderUserList extends React.Component {
   render() {
     if (this.props.adminMovies.loading) {
@@ -11,14 +12,16 @@ class RenderUserList extends React.Component {
         <tr key={movie.maPhim}>
           <td>{movie.maPhim}</td>
           <td>{movie.tenPhim}</td>
-          <td>
+          <td class="card">
             <img
               src={movie.hinhAnh}
               alt={movie.tenPhim}
-              className="img-fluid"
+              className="card-img-top img-fluid"
             />
+            <div class="card-body">
+              <PopOver action="Mô tả" content={movie.moTa} />
+            </div>
           </td>
-          <td>{movie.moTa}</td>
           <td>{movie.ngayKhoiChieu}</td>
           <td>
             <button
