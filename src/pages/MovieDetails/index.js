@@ -15,12 +15,14 @@ export default function MovieDetails(props) {
   useEffect(() => {
 
     const id = props.match.params.movieId;
-
+    setMenu(1);
     dispatch(getMovieDetail(id));
-
-
   }, []);
 
+  const handleScroll = () => {
+    setMenu(1);
+    document.getElementById("tab-content").scrollIntoView();
+  }
 
   return (
     <>
@@ -41,9 +43,16 @@ export default function MovieDetails(props) {
                 <h3>{movieDetails?.tenPhim}</h3>
 
 
-                <button className='btn btn-danger btn-datVe'>
+                <button className='btn btn-danger btn-datVe'
+                  onClick={() => { handleScroll("tab-content") }}>
                   Mua vé
-            </button>
+                </button>
+
+                <button data-fancybox
+                  href={movieDetails.trailer} className="btn btn-success btn-trailer">
+                  <i className="fa fa-play mr-1" />
+                  Xem trailer
+                </button>
               </div>
             </div>
             <div className="col-4 detailMain-score">
@@ -78,7 +87,7 @@ export default function MovieDetails(props) {
             <li >
               <span
                 onClick={() => setMenu(1)}
-                className={menu === 1 ? 'active' : ''}>Thông Tin</span>
+                className={menu === 1 ? 'active' : ''}>Lịch Chiếu</span>
             </li>
             <li >
               <span
@@ -88,7 +97,7 @@ export default function MovieDetails(props) {
 
           </ul>
 
-          <div className='tab-content'>
+          <div className='tab-content' id="tab-content">
             <div className={menu === 1 ? '' : 'hidden'}>
               <ShowTime movieId={props.match.params.movieId} />
             </div>
@@ -99,7 +108,7 @@ export default function MovieDetails(props) {
                     Ngày công chiếu
                 </div>
                   <div className="col-6">
-                    {movieDetails?.ngayKhoiChieu?.slice(0,10)}
+                    {movieDetails?.ngayKhoiChieu?.slice(0, 10)}
                   </div>
                 </div>
 
@@ -157,7 +166,6 @@ export default function MovieDetails(props) {
               </h3>
                 <p>
                   {movieDetails?.moTa}
-
                 </p>
 
               </div>
