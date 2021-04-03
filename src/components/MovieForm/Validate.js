@@ -1,39 +1,48 @@
 const Validate = (formValues) => {
   //   console.log(formValues);
-  const regexName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/g;
-  const regexEmail = /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/gm;
-  const regexPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
-  const { taiKhoan, matKhau, nhapLaiMatKhau, hoTen, email, soDt } = formValues;
+  const regexYoutubeLink = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/;
+  const regexHinhAnhLink = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
+  const regexDanhGia = /^([1-9]|10)$/;
+  const regexDate = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
+  const {
+    tenPhim,
+    biDanh,
+    trailer,
+    hinhAnh,
+    danhGia,
+    moTa,
+    ngayKhoiChieu,
+  } = formValues;
   let error = {};
-  if (!taiKhoan) {
-    error.taiKhoan = "Bạn phải nhập tài khoản";
+  if (!tenPhim) {
+    error.tenPhim = "Tên phim không được để trống";
   }
-  if (!matKhau) {
-    error.matKhau = "Bạn phải nhập mật khẩu";
+  if (!biDanh) {
+    error.biDanh = "Bí danh không được để trống";
   }
-  if (!nhapLaiMatKhau) {
-    error.nhapLaiMatKhau = "Bạn phải nhập mật khẩu";
+  if (!trailer) {
+    error.trailer = "Trailer không được để trống";
   }
-  if (nhapLaiMatKhau !== matKhau) {
-    error.nhapLaiMatKhau = "Mật khẩu không khớp nhau";
+  if (!hinhAnh) {
+    error.hinhAnh = "Hình ảnh không được để trống";
   }
-  if (!hoTen) {
-    error.hoTen = "Bạn phải nhập họ tên";
+  if (!moTa) {
+    error.moTa = "Mô tả không được để trống";
   }
-  if (!regexName.test(hoTen)) {
-    error.hoTen = "Họ tên không hợp lệ";
+  if (!danhGia) {
+    error.danhGia = "Bạn phải nhập đánh giá không được để trống";
   }
-  if (!email) {
-    error.email = "Bạn phải nhập email";
+  if (!regexYoutubeLink.test(trailer)) {
+    error.trailer = "Trailer phải là link youtube";
   }
-  if (!regexEmail.test(email)) {
-    error.email = "Email không hợp lệ";
+  if (!regexHinhAnhLink.test(hinhAnh)) {
+    error.soDt = "Hình ảnh phải là link url";
   }
-  if (!soDt) {
-    error.soDt = "Bạn phải nhập số điện thoại";
+  if (!regexDanhGia.test(danhGia)) {
+    error.danhGia = "Điểm đánh giá phải từ 0 tới 10";
   }
-  if (!regexPhoneNumber.test(soDt)) {
-    error.soDt = "Số điện thoại không hợp lệ";
+  if (!regexDate.test(ngayKhoiChieu)) {
+    error.ngayKhoiChieu = "Ngày khởi chiếu phải định dạng dd/mm/yyyy";
   }
   return error;
 };

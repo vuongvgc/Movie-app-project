@@ -1,12 +1,21 @@
+import { actionTypes } from "redux-form";
 import {
   GET_MOVIES_REQUEST,
   GET_MOVIES_SUCCESS,
   GET_MOVIES_FAIL,
+  ADD_MOVIE_REQUEST,
+  ADD_MOVIE_SUCCESS,
+  ADD_MOVIE_FAIL,
 } from "../constants/Admin";
 const initialState = {
   moviesList: null,
   loading: true,
   error: null,
+  currentUser: {
+    loading: true,
+    user: null,
+    error: null,
+  },
 };
 const adminMoviesReducers = (state = initialState, action) => {
   switch (action.type) {
@@ -30,6 +39,33 @@ const adminMoviesReducers = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload.error,
+      };
+    }
+    case ADD_MOVIE_REQUEST: {
+      return {
+        ...state,
+        currentUser: { ...state.currentUser, loading: true, error: null },
+      };
+    }
+    case ADD_MOVIE_SUCCESS: {
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          loading: false,
+          error: null,
+          currentUser: action.payload.data,
+        },
+      };
+    }
+    case ADD_MOVIE_FAIL: {
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          loading: false,
+          error: action.payload.error,
+        },
       };
     }
     default: {

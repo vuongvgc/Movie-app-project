@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getMoviesList } from "../../actions/AdminMovies";
+import { getMoviesList, addMovie } from "../../actions/AdminMovies";
 import RenderMovieList from "./RenderMovieList";
 import ModalPure from "../../components/Modal/Modal";
 import MovieForm from "../../components/MovieForm";
-import CircularIndeterminate from "../../components/CircularIndeterminate";
 import _ from "lodash";
 class MoviesManagement extends Component {
   componentDidMount() {
@@ -21,12 +20,7 @@ class MoviesManagement extends Component {
     return (
       <React.Fragment>
         <div className="modal-footer">
-          <button
-            className="btn btn-primary m-2"
-            onClick={() => this.onSubmit(this.props.movieForm.values)}
-          >
-            Thêm Phim
-          </button>
+          <button className="btn btn-primary m-2">Thêm Phim</button>
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
             Đóng
           </button>
@@ -36,17 +30,10 @@ class MoviesManagement extends Component {
   };
   onSubmit = (formValue) => {
     console.log(formValue);
-    // // console.log(formValue, this.props.accessToken);
-    // formValue.soDt = formValue.soDT;
-    // delete formValue.soDT;
-    // // console.log(formValue);
-    // this.props.updateUser(
-    //   {
-    //     ...formValue,
-    //     maNhom: this.props.maNhom,
-    //   },
-    //   this.props.accessToken
-    // );
+    this.props.addMovie(
+      { ...this.props.movieForm.values, maNhom: this.props.maNhom },
+      this.props.accessToken
+    );
   };
   render() {
     return (
@@ -152,4 +139,6 @@ const mapMapToProps = (state) => {
     movieForm: state.form.movieForm,
   };
 };
-export default connect(mapMapToProps, { getMoviesList })(MoviesManagement);
+export default connect(mapMapToProps, { getMoviesList, addMovie })(
+  MoviesManagement
+);
