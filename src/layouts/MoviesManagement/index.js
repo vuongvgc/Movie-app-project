@@ -2,10 +2,52 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getMoviesList } from "../../actions/AdminMovies";
 import RenderMovieList from "./RenderMovieList";
+import ModalPure from "../../components/Modal/Modal";
+import MovieForm from "../../components/MovieForm";
+import CircularIndeterminate from "../../components/CircularIndeterminate";
+import _ from "lodash";
 class MoviesManagement extends Component {
   componentDidMount() {
     this.props.getMoviesList();
   }
+  renderContent = () => {
+    return (
+      <React.Fragment>
+        <MovieForm admin={true} onSubmit={this.onSubmit} />
+      </React.Fragment>
+    );
+  };
+  renderAction = () => {
+    return (
+      <React.Fragment>
+        <div className="modal-footer">
+          <button
+            className="btn btn-primary m-2"
+            onClick={() => this.onSubmit(this.props.movieForm.values)}
+          >
+            Thêm Phim
+          </button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            Đóng
+          </button>
+        </div>
+      </React.Fragment>
+    );
+  };
+  onSubmit = (formValue) => {
+    console.log(formValue);
+    // // console.log(formValue, this.props.accessToken);
+    // formValue.soDt = formValue.soDT;
+    // delete formValue.soDT;
+    // // console.log(formValue);
+    // this.props.updateUser(
+    //   {
+    //     ...formValue,
+    //     maNhom: this.props.maNhom,
+    //   },
+    //   this.props.accessToken
+    // );
+  };
   render() {
     return (
       <div className="container">
@@ -16,7 +58,11 @@ class MoviesManagement extends Component {
                 <h4 className="text-start font-weight-bold">Danh sách Phim</h4>
               </div>
               <div className="col-md-6 text-end">
-                <button className="btn btn-primary" id="btnThem">
+                <button
+                  className="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#ModalPure"
+                >
                   Thêm Phim
                 </button>
               </div>
@@ -59,6 +105,12 @@ class MoviesManagement extends Component {
               </thead>
               <tbody>
                 <RenderMovieList adminMovies={this.props.adminMovies} />
+                <ModalPure
+                  title="Thêm Phim Mới"
+                  content={this.renderContent()}
+                  action={this.renderAction()}
+                  onSubmit={this.onSubmit}
+                />
               </tbody>
             </table>
           </div>
@@ -97,6 +149,7 @@ const mapMapToProps = (state) => {
     accessToken: state.authReducers.currentUser.accessToken,
     maNhom: state.authReducers.currentUser.maNhom,
     adminMovies: state.adminMovies,
+    movieForm: state.form.movieForm,
   };
 };
 export default connect(mapMapToProps, { getMoviesList })(MoviesManagement);

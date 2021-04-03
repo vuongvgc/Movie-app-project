@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
   popover: {
     width: "50%",
+    margin: "0 auto"
   },
 }));
 
