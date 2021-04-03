@@ -11,16 +11,16 @@
 .mainCheckout {
     overflow: hidden;
 }
-.checkout-content{
+.checkout-content {
     overflow: hidden;
     padding: 0;
-
 }
 
 .headerCheckout {
     height: 80px;
     position: fixed;
     top: 0;
+   
     width: 76%;
     background: #fff;
     box-shadow: 0 0 15px rgb(0 0 0 / 30%);
@@ -29,23 +29,30 @@
 .stepCheckout {
     display: flex;
     list-style: none;
+    margin-left: 40px;
 }
-.stepCheckout li {
+.stepCheckout li a {
     padding: 0 30px;
     font-weight: 500;
     line-height: 80px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #44c020;
+    transition: all 0.3s;
+}
+
+.stepCheckout li a:hover {
+    color: #fb4226;
 }
 
 .checkoutContent {
     margin-top: 80px;
     text-align: center;
-
 }
 .topContent {
     padding-top: 20px;
     width: 100%;
     display: flex;
-
 }
 
 .topContent .logoCinema {
@@ -75,7 +82,7 @@
     top: 0;
     left: 75%;
     overflow: hidden;
-    
+
     box-shadow: 0 0 15px rgb(0 0 0 / 30%);
     height: 100%;
 }
@@ -84,21 +91,21 @@
     color: black;
 }
 
-.row-total{
+.row-total {
     text-align: center;
     font-size: 36px;
-    color: #44c020!important;
+    color: #44c020 !important;
     border-bottom: 1px dashed #333;
 }
 
-.row-film{
+.row-film {
     border-bottom: 1px dashed #333;
 }
-.row-listSeat{
+.row-listSeat {
     border-bottom: 1px dashed #333;
     line-height: 40px;
 }
-.row-listSeat span{
+.row-listSeat span {
     color: #fb4226;
     font-size: 16px;
     font-weight: 700;
@@ -107,8 +114,6 @@
 
 .seatmap .screen img {
     width: 80%;
- 
-   
 }
 
 .hang {
@@ -159,18 +164,38 @@
     color: #4a90e2;
 }
 
-.btn-checkout{
+.btn-checkout {
     width: 100%;
     text-align: center;
     position: absolute;
     bottom: 10px;
     left: 0;
+}
+
+.checkout-sideContainer {
+    position: relative;
+    height: 100%;
+}
+
+.nav-checkTicket {
+    text-decoration: none;
    
 }
 
+.lanif{
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+.lanif2{
+    color: white;
 
-.checkout-sideContainer{
-    
-    position: relative;
-    height: 100%;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+.popUp-alert{
+    font-size: 24px;
+   
 }

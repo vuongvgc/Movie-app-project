@@ -3,25 +3,16 @@ import axios from "../utils/axiosClient";
 
 const user = localStorage.getItem('user')
 
-let token = '';
 
-if (user) {
-    const { accessToken } = JSON.parse(user)
-    token = accessToken
-}
-
+const { accessToken } = JSON.parse(user)
 
 export const getBooking = (value) => {
-
     return (dispatch) => {
         dispatch({ type: BOOKING_REQUEST });
-
-        
         axios.post(
-
             `QuanLyDatVe/DatVe`, value, {
             headers: {
-                'Authorization': `Bearer ${token}`
+                Authorization:`Bearer ${accessToken}`
             }
         }
         )
