@@ -1,7 +1,7 @@
-import { ThreeSixtyTwoTone } from "@material-ui/icons";
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import renderInput from "../Form/renderInput";
+import renderInputFile from "../Form/renderInputFile";
 import Validate from "./Validate";
 class MovieForm extends React.Component {
   onSubmit = (formValue) => {
@@ -21,7 +21,8 @@ class MovieForm extends React.Component {
         />
         <Field
           name="hinhAnh"
-          component={renderInput}
+          type="file"
+          component={renderInputFile}
           label="Hình Ảnh"
           placeholder="https://media.vov.vn/sites/default/files/styles/large/public/2020-12/bo_gia_teaser_1_.jpg"
         />

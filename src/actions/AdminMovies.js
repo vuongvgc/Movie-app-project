@@ -1,5 +1,4 @@
 import axiosPure from "axios";
-import axios from "../utils/axiosClient";
 import {
   ADD_MOVIE_FAIL,
   ADD_MOVIE_REQUEST,
@@ -34,29 +33,22 @@ export const getMoviesList = (maNhom = "GP10", page = 1, pageSize = 5) => {
       });
   };
 };
-export const addMovie = (formValue, accessToken) => {
+export const addMovie = (form_data) => {
   return (dispatch) => {
     dispatch({
       type: ADD_MOVIE_REQUEST,
     });
-    axios
-      .post("/QuanLyPhim/ThemPhim", formValue, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
+    axiosPure({
+      url:
+        "http://movie0706.cybersoft.edu.vn/api/quanlyphim/ThemPhimUploadHinh",
+      method: "POST",
+      data: form_data,
+    })
+      .then((res) => {
+        console.log(res);
       })
-      .then((result) => {
-        dispatch({
-          type: ADD_MOVIE_SUCCESS,
-          payload: { data: result.data },
-        });
-        // history.replace("/");
-      })
-      .catch((error) => {
-        dispatch({
-          type: ADD_MOVIE_FAIL,
-          payload: { error: error.response.data },
-        });
+      .catch((err) => {
+        console.log(err.response.data);
       });
   };
 };

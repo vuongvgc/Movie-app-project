@@ -3,19 +3,27 @@ import { connect } from "react-redux";
 import { getMoviesList, addMovie } from "../../actions/AdminMovies";
 import RenderMovieList from "./RenderMovieList";
 import ModalPure from "../../components/Modal/Modal";
-import MovieForm from "../../components/MovieForm";
+import MovieInsertForm from "../../components/MovieInsertForm";
 import _ from "lodash";
 class MoviesManagement extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      movie: "",
+      update: false,
+    };
+  }
   componentDidMount() {
     this.props.getMoviesList();
   }
   renderContent = () => {
     return (
       <React.Fragment>
-        <MovieForm
-          admin={true}
+        <MovieInsertForm
           onSubmit={this.onSubmit}
           renderAction={this.renderAction}
+          maNhom={this.props.maNhom}
+          movie={this.state.movie}
         />
       </React.Fragment>
     );
@@ -24,7 +32,9 @@ class MoviesManagement extends Component {
     return (
       <React.Fragment>
         <div className="modal-footer">
-          <button className="btn btn-primary m-2">Thêm Phim</button>
+          <button className="btn btn-primary m-2">
+            {this.state.update ? "Cập nhật" : "Thêm Phim"}
+          </button>
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
             Đóng
           </button>
@@ -34,10 +44,28 @@ class MoviesManagement extends Component {
   };
   onSubmit = (formValue) => {
     console.log(formValue);
-    this.props.addMovie(
-      { ...this.props.movieForm.values, maNhom: this.props.maNhom },
-      this.props.accessToken
-    );
+    this.props.addMovie(formValue, this.props.accessToken);
+  };
+  handleMovie = (movie) => {
+    this.setState({
+      movie: { ...movie },
+      update: true,
+    });
+  };
+  resetForm = () => {
+    this.setState({
+      movie: {
+        tenPhim: "",
+        biDanh: "",
+        trailer: "",
+        hinhAnh: {},
+        moTa: "",
+        maNhom: this.props.maNhom,
+        danhGia: "",
+        ngayKhoiChieu: "",
+      },
+      update: false,
+    });
   };
   render() {
     return (
@@ -52,7 +80,8 @@ class MoviesManagement extends Component {
                 <button
                   className="btn btn-primary"
                   data-bs-toggle="modal"
-                  data-bs-target="#ModalPure"
+                  data-bs-target="#ModalAddMovie"
+                  onClick={() => this.resetForm()}
                 >
                   Thêm Phim
                 </button>
@@ -84,8 +113,8 @@ class MoviesManagement extends Component {
                   <th>Mã Phim</th>
                   <th className="nowrap col-2">
                     <span className="mr-1">Tên Phim</span>
-                    <i className="fa fa-arrow-up mx-2" id="SapXepTang"></i>
-                    <i className="fa fa-arrow-down" id="SapXepGiam"></i>
+                    <i className="fa fa-arrow-up mx-2"></i>
+                    <i className="fa fa-arrow-down"></i>
                   </th>
                   <th className="col-3">Hình ảnh</th>
                   <th>Ngày khởi chiếu</th>
@@ -95,11 +124,22 @@ class MoviesManagement extends Component {
                 </tr>
               </thead>
               <tbody>
-                <RenderMovieList adminMovies={this.props.adminMovies} />
+                <RenderMovieList
+                  adminMovies={this.props.adminMovies}
+                  handleMovie={this.handleMovie}
+                />
                 <ModalPure
                   title="Thêm Phim Mới"
+                  id="ModalAddMovie"
                   content={this.renderContent()}
                   onSubmit={this.onSubmit}
+                />
+                <ModalPure
+                  title="Cập Nhật Phim"
+                  id="ModalUpdateMovie"
+                  content={this.renderContent()}
+                  onSubmit={this.onSubmit}
+                  update={true}
                 />
               </tbody>
             </table>
