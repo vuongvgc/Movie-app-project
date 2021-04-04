@@ -3,6 +3,7 @@ export default class PhimInsert extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      maPhim: "",
       tenPhim: "",
       biDanh: "",
       trailer: "",
@@ -17,6 +18,7 @@ export default class PhimInsert extends Component {
     if (this.props.movie !== prevProps.movie) {
       console.log("run update Movie");
       let {
+        maPhim,
         tenPhim,
         biDanh,
         trailer,
@@ -27,6 +29,7 @@ export default class PhimInsert extends Component {
         ngayKhoiChieu,
       } = this.props.movie;
       this.setState({
+        maPhim: maPhim,
         tenPhim: tenPhim,
         biDanh: biDanh,
         trailer: trailer,

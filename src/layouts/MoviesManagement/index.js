@@ -75,7 +75,11 @@ class MoviesManagement extends Component {
       update: false,
     });
   };
+  handlePage = (page) => {
+    this.props.getMoviesList(this.props.maNhom, page);
+  };
   render() {
+    const { adminMovies } = this.props;
     return (
       <div className="container">
         <div className="card text-center">
@@ -103,7 +107,7 @@ class MoviesManagement extends Component {
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Tên người dùng"
+                    placeholder="Tên Phim"
                   />
                   <button
                     class="btn btn-outline-secondary"
@@ -154,21 +158,59 @@ class MoviesManagement extends Component {
             <nav aria-label="Page navigation">
               <ul className="pagination col-3  mx-auto">
                 <li className="page-item">
-                  <button className="page-link" href="#">
+                  <button
+                    className="page-link"
+                    onClick={() =>
+                      this.handlePage(adminMovies.moviesList.currentPage - 2)
+                    }
+                    disabled={
+                      adminMovies.moviesList.currentPage < 3 ? true : false
+                    }
+                  >
                     <span aria-hidden="true">&laquo;</span>
                   </button>
                 </li>
+                {adminMovies.moviesList.currentPage > 1 ? (
+                  <li className="page-item">
+                    <button
+                      className="page-link"
+                      onClick={() =>
+                        this.handlePage(adminMovies.moviesList.currentPage - 1)
+                      }
+                    >
+                      {adminMovies.moviesList.currentPage - 1}
+                    </button>
+                  </li>
+                ) : (
+                  ""
+                )}
                 <li className="page-item">
-                  <button className="page-link">1</button>
+                  <button
+                    className="page-link"
+                    onClick={() =>
+                      this.handlePage(adminMovies.moviesList.currentPage)
+                    }
+                  >
+                    {adminMovies.moviesList.currentPage}
+                  </button>
                 </li>
                 <li className="page-item">
-                  <button className="page-link">2</button>
+                  <button
+                    className="page-link"
+                    onClick={() =>
+                      this.handlePage(adminMovies.moviesList.currentPage + 1)
+                    }
+                  >
+                    {adminMovies.moviesList.currentPage + 1}
+                  </button>
                 </li>
                 <li className="page-item">
-                  <button className="page-link">3</button>
-                </li>
-                <li className="page-item">
-                  <button className="page-link" href="#" aria-label="Next">
+                  <button
+                    className="page-link"
+                    onClick={() =>
+                      this.handlePage(adminMovies.moviesList.currentPage + 2)
+                    }
+                  >
                     <span aria-hidden="true">&raquo;</span>
                   </button>
                 </li>

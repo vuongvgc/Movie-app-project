@@ -46,7 +46,7 @@ export const addMovie = (form_data) => {
     });
     axiosPure({
       url:
-        "http://movie0706.cybersoft.edu.vn/api/quanlyphim/ThemPhimUploadHinh",
+        "https://movie0706.cybersoft.edu.vn/api/quanlyphim/ThemPhimUploadHinh",
       method: "POST",
       data: form_data,
     })
@@ -64,7 +64,8 @@ export const updateMovie = (form_data, accessToken) => {
       type: UPDATE_MOVIE_REQUEST,
     });
     axiosPure({
-      url: "http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload",
+      url:
+        "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload",
       method: "POST",
       data: form_data,
       headers: {
