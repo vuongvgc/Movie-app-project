@@ -1,4 +1,3 @@
-import { actionTypes } from "redux-form";
 import {
   GET_MOVIES_REQUEST,
   GET_MOVIES_SUCCESS,
@@ -68,6 +67,7 @@ const adminMoviesReducers = (state = initialState, action) => {
         },
       };
     }
+
     default: {
       return { ...state };
     }

@@ -9,6 +9,9 @@ import {
   UPDATE_MOVIE_REQUEST,
   UPDATE_MOVIE_SUCCESS,
   UPDATE_MOVIE_FAIL,
+  DELETE_MOVIE_REQUEST,
+  DELETE_MOVIE_SUCCESS,
+  DELETE_USER_FAIL,
 } from "../constants/Admin";
 export const getMoviesList = (maNhom = "GP10", page = 1, pageSize = 5) => {
   return (dispatch) => {
@@ -58,7 +61,7 @@ export const addMovie = (form_data) => {
 export const updateMovie = (form_data, accessToken) => {
   return (dispatch) => {
     dispatch({
-      type: ADD_MOVIE_REQUEST,
+      type: UPDATE_MOVIE_REQUEST,
     });
     axiosPure({
       url: "http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload",
@@ -73,6 +76,26 @@ export const updateMovie = (form_data, accessToken) => {
       })
       .catch((err) => {
         console.log(err);
+      });
+  };
+};
+export const deleteMovie = (maPhim, accessToken) => {
+  return (dispatch) => {
+    dispatch({
+      type: DELETE_MOVIE_REQUEST,
+    });
+    axiosPure({
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
+      method: "delete",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
       });
   };
 };
