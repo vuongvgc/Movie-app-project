@@ -12,7 +12,11 @@ class MoviesManagement extends Component {
   renderContent = () => {
     return (
       <React.Fragment>
-        <MovieForm admin={true} onSubmit={this.onSubmit} />
+        <MovieForm
+          admin={true}
+          onSubmit={this.onSubmit}
+          renderAction={this.renderAction}
+        />
       </React.Fragment>
     );
   };
@@ -95,7 +99,6 @@ class MoviesManagement extends Component {
                 <ModalPure
                   title="Thêm Phim Mới"
                   content={this.renderContent()}
-                  action={this.renderAction()}
                   onSubmit={this.onSubmit}
                 />
               </tbody>

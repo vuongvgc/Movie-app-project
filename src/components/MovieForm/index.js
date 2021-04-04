@@ -1,3 +1,4 @@
+import { ThreeSixtyTwoTone } from "@material-ui/icons";
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import renderInput from "../Form/renderInput";
@@ -42,10 +43,7 @@ class MovieForm extends React.Component {
         ) : (
           ""
         )}
-        <button className="btn btn-primary m-2">Thêm Phim</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-          Đóng
-        </button>
+        {this.props.renderAction()}
       </form>
     );
   }
