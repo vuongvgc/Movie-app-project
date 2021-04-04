@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getMoviesList, addMovie } from "../../actions/AdminMovies";
+import {
+  getMoviesList,
+  addMovie,
+  updateMovie,
+} from "../../actions/AdminMovies";
 import RenderMovieList from "./RenderMovieList";
 import ModalPure from "../../components/Modal/Modal";
 import MovieInsertForm from "../../components/MovieInsertForm";
@@ -20,7 +24,7 @@ class MoviesManagement extends Component {
     return (
       <React.Fragment>
         <MovieInsertForm
-          onSubmit={this.onSubmit}
+          onSubmit={this.state.update ? this.onSubmitUpdate : this.onSubmit}
           renderAction={this.renderAction}
           maNhom={this.props.maNhom}
           movie={this.state.movie}
@@ -45,6 +49,10 @@ class MoviesManagement extends Component {
   onSubmit = (formValue) => {
     console.log(formValue);
     this.props.addMovie(formValue, this.props.accessToken);
+  };
+  onSubmitUpdate = (formValue) => {
+    console.log(formValue);
+    this.props.updateMovie(formValue, this.props.accessToken);
   };
   handleMovie = (movie) => {
     this.setState({
@@ -132,13 +140,11 @@ class MoviesManagement extends Component {
                   title="Thêm Phim Mới"
                   id="ModalAddMovie"
                   content={this.renderContent()}
-                  onSubmit={this.onSubmit}
                 />
                 <ModalPure
                   title="Cập Nhật Phim"
                   id="ModalUpdateMovie"
                   content={this.renderContent()}
-                  onSubmit={this.onSubmit}
                   update={true}
                 />
               </tbody>
@@ -182,6 +188,6 @@ const mapMapToProps = (state) => {
     movieForm: state.form.movieForm,
   };
 };
-export default connect(mapMapToProps, { getMoviesList, addMovie })(
+export default connect(mapMapToProps, { getMoviesList, addMovie, updateMovie })(
   MoviesManagement
 );
