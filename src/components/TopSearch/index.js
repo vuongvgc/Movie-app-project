@@ -62,8 +62,8 @@ export default function TopSearch(props) {
                         <a className="" data-fancybox href={phim.trailer}>
                             <i className="fa fa-play" />
                         </a>
-                        <p>
-                            <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
+                        <p className="topSearch__book" >
+                            <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success ">Đặt vé</NavLink>
                         </p>
 
                     </div>
@@ -71,7 +71,6 @@ export default function TopSearch(props) {
                     <img style={{ width: '100%' }} className="card-img-top  img__topSearch img-fluid " src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
                         <h6 className="card-title top__Search__title">{phim.tenPhim}</h6>
-                        <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
                     </div>
                 </div>
             </div>
@@ -86,7 +85,7 @@ export default function TopSearch(props) {
                         <a className="" data-fancybox href={phim.trailer}>
                             <i className="fa fa-play" />
                         </a>
-                        <p>
+                        <p className="topSearch__book" >
                             <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
                         </p>
 
@@ -95,7 +94,6 @@ export default function TopSearch(props) {
                     <img style={{ width: '100%' }} className="card-img-top  img__topSearch img-fluid " src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
                         <h6 className="card-title top__Search__title">{phim.tenPhim}</h6>
-                        <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
                     </div>
                 </div>
 
@@ -112,8 +110,8 @@ export default function TopSearch(props) {
                         <a className="" data-fancybox href={phim.trailer}>
                             <i className="fa fa-play" />
                         </a>
-                        <p>
-                            <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success">Đặt vé</NavLink>
+                        <p className="topSearch__book">
+                            <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-success  ">Đặt vé</NavLink>
                         </p>
 
                     </div>

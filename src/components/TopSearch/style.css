@@ -92,10 +92,10 @@ button.slick-arrow.slick-next:hover .slick-next {
 }
 
 .top__Search__play a:hover {
-  color: white;
+  color: yellow;
   text-decoration: none;
-  transform: scale(0.5);
-  transition: all 0.5s;
+  /* transform: scale(0.5); */
+  /* transition: all 0.5s; */
 }
 
 .top__Search:hover .top__Search__overlay {
@@ -127,3 +127,8 @@ button.slick-arrow.slick-next:hover .slick-next {
   transform: scale(1.2);
   transition: all 0.5s;
 }
+
+/* .topSearch__book:hover {
+  transform: none;
+  transition: none;
+} */
