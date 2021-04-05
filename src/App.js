@@ -47,7 +47,7 @@ function App() {
         <Route exact path={["/checkout/:ticketRoomId"]}>
           <CheckoutLayout>
             <Switch>
-              <Route path="/checkout/:ticketRoomId" component={TicketRoom} />
+              <UserRoute path="/checkout/:ticketRoomId" component={TicketRoom} />
             </Switch>
           </CheckoutLayout>
         </Route>
