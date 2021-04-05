@@ -5,6 +5,12 @@ import {
   ADD_MOVIE_REQUEST,
   ADD_MOVIE_SUCCESS,
   ADD_MOVIE_FAIL,
+  UPDATE_MOVIE_REQUEST,
+  UPDATE_MOVIE_SUCCESS,
+  UPDATE_MOVIE_FAIL,
+  DELETE_MOVIE_REQUEST,
+  DELETE_MOVIE_SUCCESS,
+  DELETE_MOVIE_FAIL,
   SEARCH_MOVIE_REQUEST,
   SEARCH_MOVIE_SUCCESS,
   SEARCH_MOVIE_FAIL,
@@ -18,6 +24,9 @@ const initialState = {
     user: null,
     error: null,
   },
+  addMovie: { success: false, error: null, loading: true },
+  updateMovie: { success: false, error: null, loading: true },
+  deleteMovie: { success: false, error: null, loading: true },
 };
 const adminMoviesReducers = (state = initialState, action) => {
   switch (action.type) {
@@ -47,6 +56,12 @@ const adminMoviesReducers = (state = initialState, action) => {
       return {
         ...state,
         currentUser: { ...state.currentUser, loading: true, error: null },
+        addMovie: {
+          ...state.addMovie,
+          success: false,
+          error: null,
+          loading: false,
+        },
       };
     }
     case ADD_MOVIE_SUCCESS: {
@@ -58,6 +73,12 @@ const adminMoviesReducers = (state = initialState, action) => {
           error: null,
           currentUser: action.payload.data,
         },
+        addMovie: {
+          ...state.addMovie,
+          success: true,
+          error: null,
+          loading: true,
+        },
       };
     }
     case ADD_MOVIE_FAIL: {
@@ -67,6 +88,12 @@ const adminMoviesReducers = (state = initialState, action) => {
           ...state.currentUser,
           loading: false,
           error: action.payload.error,
+        },
+        addMovie: {
+          ...state.addMovie,
+          success: false,
+          error: action.payload.error,
+          loading: true,
         },
       };
     }
@@ -92,7 +119,72 @@ const adminMoviesReducers = (state = initialState, action) => {
         error: action.payload.error,
       };
     }
-
+    case UPDATE_MOVIE_REQUEST: {
+      return {
+        ...state,
+        updateMovie: {
+          ...state.updateMovie,
+          success: false,
+          error: null,
+          loading: false,
+        },
+      };
+    }
+    case UPDATE_MOVIE_SUCCESS: {
+      return {
+        ...state,
+        updateMovie: {
+          ...state.updateMovie,
+          success: true,
+          error: null,
+          loading: true,
+        },
+      };
+    }
+    case UPDATE_MOVIE_FAIL: {
+      return {
+        ...state,
+        updateMovie: {
+          ...state.updateMovie,
+          success: false,
+          error: action.payload.error,
+          loading: true,
+        },
+      };
+    }
+    case DELETE_MOVIE_REQUEST: {
+      return {
+        ...state,
+        deleteMovie: {
+          ...state.deleteMovie,
+          success: false,
+          error: null,
+          loading: false,
+        },
+      };
+    }
+    case DELETE_MOVIE_SUCCESS: {
+      return {
+        ...state,
+        deleteMovie: {
+          ...state.deleteMovie,
+          success: true,
+          error: null,
+          loading: true,
+        },
+      };
+    }
+    case DELETE_MOVIE_FAIL: {
+      return {
+        ...state,
+        deleteMovie: {
+          ...state.deleteMovie,
+          success: false,
+          error: action.payload.error,
+          loading: true,
+        },
+      };
+    }
     default: {
       return { ...state };
     }

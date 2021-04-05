@@ -11,7 +11,7 @@ import {
   UPDATE_MOVIE_FAIL,
   DELETE_MOVIE_REQUEST,
   DELETE_MOVIE_SUCCESS,
-  DELETE_USER_FAIL,
+  DELETE_MOVIE_FAIL,
   SEARCH_MOVIE_REQUEST,
   SEARCH_MOVIE_SUCCESS,
   SEARCH_MOVIE_FAIL,
@@ -53,11 +53,18 @@ export const addMovie = (form_data) => {
       method: "POST",
       data: form_data,
     })
-      .then((res) => {
-        console.log(res);
+      .then((result) => {
+        dispatch({
+          type: ADD_MOVIE_SUCCESS,
+          payload: { data: result.data },
+        });
       })
-      .catch((err) => {
-        console.log(err.response.data);
+      .catch((error) => {
+        console.log(error.response);
+        dispatch({
+          type: ADD_MOVIE_FAIL,
+          payload: { error: error.response.data },
+        });
       });
   };
 };
@@ -75,11 +82,20 @@ export const updateMovie = (form_data, accessToken) => {
         Authorization: `Bearer ${accessToken}`,
       },
     })
-      .then((res) => {
-        console.log(res);
+      .then((result) => {
+        // Lưu thông tin user xuống localStorage
+        dispatch({
+          type: UPDATE_MOVIE_SUCCESS,
+          payload: { data: result.data },
+        });
+        // history.replace("/");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error.response);
+        dispatch({
+          type: UPDATE_MOVIE_FAIL,
+          payload: { error: error.response.data },
+        });
       });
   };
 };
@@ -95,11 +111,20 @@ export const deleteMovie = (maPhim, accessToken) => {
         Authorization: `Bearer ${accessToken}`,
       },
     })
-      .then((res) => {
-        console.log(res);
+      .then((result) => {
+        // Lưu thông tin user xuống localStorage
+        dispatch({
+          type: DELETE_MOVIE_SUCCESS,
+          payload: { data: result.data },
+        });
+        // history.replace("/");
       })
-      .catch((err) => {
-        console.log(err.response.data);
+      .catch((error) => {
+        console.log(error.response);
+        dispatch({
+          type: DELETE_MOVIE_FAIL,
+          payload: { error: error.response.data },
+        });
       });
   };
 };

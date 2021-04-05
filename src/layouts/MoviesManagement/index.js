@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import SnackBar from "../../components/Snackbar";
 import {
   getMoviesList,
   addMovie,
@@ -17,6 +18,7 @@ class MoviesManagement extends Component {
       movie: "",
       update: false,
       search: "",
+      snackbar: true,
     };
   }
   componentDidMount() {
@@ -167,6 +169,7 @@ class MoviesManagement extends Component {
               adminMovies={this.props.adminMovies}
               handlePage={this.handlePage}
             />
+            <SnackBar isOpen={true} />
           </div>
         </div>
       </div>

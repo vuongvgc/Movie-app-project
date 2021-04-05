@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
-
+import MuiAlert from "@material-ui/lab/Alert";
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 export default function PositionedSnackbar(props) {
   const [state, setState] = React.useState({
     open: false,
     vertical: "top",
     horizontal: "center",
   });
-
   const { vertical, horizontal, open } = state;
 
   const handleClick = (newState) => () => {
@@ -18,18 +20,28 @@ export default function PositionedSnackbar(props) {
   const handleClose = () => {
     setState({ ...state, open: false });
   };
-  return (
-    <div>
+
+  const buttons = (
+    <React.Fragment>
       <Button onClick={handleClick({ vertical: "top", horizontal: "center" })}>
         Top-Center
       </Button>
+    </React.Fragment>
+  );
+
+  return (
+    <div>
+      {buttons}
       <Snackbar
         anchorOrigin={{ vertical, horizontal }}
         open={open}
         onClose={handleClose}
-        message={props.status}
         key={vertical + horizontal}
-      />
+      >
+        <Alert onClose={handleClose} severity="success">
+          This is a success message!
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
