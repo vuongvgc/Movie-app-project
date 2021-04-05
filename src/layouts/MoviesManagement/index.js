@@ -9,6 +9,7 @@ import RenderMovieList from "./RenderMovieList";
 import ModalPure from "../../components/Modal/Modal";
 import MovieInsertForm from "../../components/MovieInsertForm";
 import _ from "lodash";
+import RenderChangePage from "./RenderChangePage";
 class MoviesManagement extends Component {
   constructor(props) {
     super(props);
@@ -79,7 +80,6 @@ class MoviesManagement extends Component {
     this.props.getMoviesList(this.props.maNhom, page);
   };
   render() {
-    const { adminMovies } = this.props;
     return (
       <div className="container">
         <div className="card text-center">
@@ -155,67 +155,10 @@ class MoviesManagement extends Component {
             </table>
           </div>
           <div className="card-footer">
-            <nav aria-label="Page navigation">
-              <ul className="pagination col-3  mx-auto">
-                <li className="page-item">
-                  <button
-                    className="page-link"
-                    onClick={() =>
-                      this.handlePage(adminMovies.moviesList.currentPage - 2)
-                    }
-                    disabled={
-                      adminMovies.moviesList.currentPage < 3 ? true : false
-                    }
-                  >
-                    <span aria-hidden="true">&laquo;</span>
-                  </button>
-                </li>
-                {adminMovies.moviesList.currentPage > 1 ? (
-                  <li className="page-item">
-                    <button
-                      className="page-link"
-                      onClick={() =>
-                        this.handlePage(adminMovies.moviesList.currentPage - 1)
-                      }
-                    >
-                      {adminMovies.moviesList.currentPage - 1}
-                    </button>
-                  </li>
-                ) : (
-                  ""
-                )}
-                <li className="page-item">
-                  <button
-                    className="page-link"
-                    onClick={() =>
-                      this.handlePage(adminMovies.moviesList.currentPage)
-                    }
-                  >
-                    {adminMovies.moviesList.currentPage}
-                  </button>
-                </li>
-                <li className="page-item">
-                  <button
-                    className="page-link"
-                    onClick={() =>
-                      this.handlePage(adminMovies.moviesList.currentPage + 1)
-                    }
-                  >
-                    {adminMovies.moviesList.currentPage + 1}
-                  </button>
-                </li>
-                <li className="page-item">
-                  <button
-                    className="page-link"
-                    onClick={() =>
-                      this.handlePage(adminMovies.moviesList.currentPage + 2)
-                    }
-                  >
-                    <span aria-hidden="true">&raquo;</span>
-                  </button>
-                </li>
-              </ul>
-            </nav>
+            <RenderChangePage
+              adminMovies={this.props.adminMovies}
+              handlePage={this.handlePage}
+            />
           </div>
         </div>
       </div>
