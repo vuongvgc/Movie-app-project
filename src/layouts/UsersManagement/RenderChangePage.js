@@ -1,11 +1,10 @@
 import React from "react";
 
 const RenderChangePage = (props) => {
-  console.log(props.adminMovies);
-  if (props.adminMovies.loading) {
+  if (props.adminUser.loading) {
     return <div>Loading</div>;
   }
-  let { moviesList } = props.adminMovies;
+  let { userList } = props.adminUser;
   return (
     <div>
       <nav aria-label="Page navigation">
@@ -13,19 +12,19 @@ const RenderChangePage = (props) => {
           <li className="page-item">
             <button
               className="page-link"
-              onClick={() => props.handlePage(moviesList.currentPage - 2)}
-              disabled={moviesList.currentPage < 3 ? true : false}
+              onClick={() => props.handlePage(userList.currentPage - 2)}
+              disabled={userList.currentPage < 3 ? true : false}
             >
               <span aria-hidden="true">&laquo;</span>
             </button>
           </li>
-          {moviesList.currentPage > 1 ? (
+          {userList.currentPage > 1 ? (
             <li className="page-item">
               <button
                 className="page-link"
-                onClick={() => props.handlePage(moviesList.currentPage - 1)}
+                onClick={() => props.handlePage(userList.currentPage - 1)}
               >
-                {moviesList.currentPage - 1}
+                {userList.currentPage - 1}
               </button>
             </li>
           ) : (
@@ -34,23 +33,23 @@ const RenderChangePage = (props) => {
           <li className="page-item">
             <button
               className="page-link text-danger"
-              onClick={() => props.handlePage(moviesList.currentPage)}
+              onClick={() => props.handlePage(userList.currentPage)}
             >
-              <b>{moviesList.currentPage}</b>
+              <b>{userList.currentPage}</b>
             </button>
           </li>
           <li className="page-item">
             <button
               className="page-link"
-              onClick={() => props.handlePage(moviesList.currentPage + 1)}
+              onClick={() => props.handlePage(userList.currentPage + 1)}
             >
-              {moviesList.currentPage + 1}
+              {userList.currentPage + 1}
             </button>
           </li>
           <li className="page-item">
             <button
               className="page-link"
-              onClick={() => props.handlePage(moviesList.currentPage + 2)}
+              onClick={() => props.handlePage(userList.currentPage + 2)}
             >
               <span aria-hidden="true">&raquo;</span>
             </button>

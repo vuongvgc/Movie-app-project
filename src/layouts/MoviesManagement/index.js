@@ -8,7 +8,6 @@ import {
 import RenderMovieList from "./RenderMovieList";
 import ModalPure from "../../components/Modal/Modal";
 import MovieInsertForm from "../../components/MovieInsertForm";
-import _ from "lodash";
 import RenderChangePage from "./RenderChangePage";
 class MoviesManagement extends Component {
   constructor(props) {
