@@ -24,45 +24,43 @@ export default function ShowTime(props) {
             <div className='col-3 showTime-logo'>
                 {movieInfo?.heThongRapChieu?.map((item, index) => {
                     return (
-                        <div key={item?.maHeThongRap} className='showTime-logoBorderBottom'
+                        <div key={item?.maHeThongRap} className={select === index ? `showTime-logoBorderBottom showTime-active` : `showTime-logoBorderBottom`}
                             onClick={() => setSelect(index)}
                         >
                             <div className='logo'>
                                 <img src={item?.logo} alt="" />
                             </div>
-                            <span className='showTime-maRap'>{item?.maHeThongRap}</span>
+                            <span className='showTime-maRap d-none d-md-block'>{item?.maHeThongRap}</span>
                         </div>
                     )
-
-
                 })}
             </div>
 
             <div className='col-9'>
                 {movieInfo.heThongRapChieu ? movieInfo.heThongRapChieu[select].cumRapChieu.map((item) => {
-
                     return (
+                        <div key={item?.maCumRap}>
+                            <div className='showTimes-tenCumRap'>
+                                {item?.tenCumRap}
+                                <br/>
+                                {item?.lichChieuPhim.map((time) => {
+                                    return (
 
-                        <div>
-
-                            <div className='showTimes-tenCumRap'>{item?.tenCumRap}</div>
-                            {item?.lichChieuPhim.map((time) => {
-                                return (
-                                    <NavLink to={`/checkout/${time.maLichChieu}`} 
-                                     
-                                    
-                                    >
-                                        <div className='showTime-item'>
-
-                                            Ngày: {time?.ngayChieuGioChieu?.slice(0, 10)}
-                                            <br />
+                                        <NavLink to={`/checkout/${time.maLichChieu}`}
+                                            key={time?.maLichChieu}
+                                        >
+                                            <div className='showTime-item'>
+                                                Ngày: {time?.ngayChieuGioChieu?.slice(0, 10)}
+                                                <br />
                                            Giờ: {time?.ngayChieuGioChieu?.slice(11, 16)}
-                                        </div>
-                                    </NavLink>
+                                            </div>
+                                        </NavLink>
 
-                                )
 
-                            })}
+                                    )
+
+                                })}
+                         </div>
                         </div>
                     )
                 }) : ''}

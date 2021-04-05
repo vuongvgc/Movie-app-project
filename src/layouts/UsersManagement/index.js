@@ -12,6 +12,7 @@ import findUser from "../../utils/findUser";
 import InforUserForm from "../../components/InforUserForm";
 import _ from "lodash";
 import { updateUser } from "../../actions/User";
+import RenderChangePage from "./RenderChangePage";
 class UsersManagement extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +47,7 @@ class UsersManagement extends Component {
     this.props.getUserList("GP01", "a", 1, 10);
   }
   handlePage = (page) => {
-    this.props.getUserList("GP01", "vu", page, 10);
+    this.props.getUserList("GP01", "a", page, 10);
   };
   renderAction = () => {
     return (
@@ -217,50 +218,10 @@ class UsersManagement extends Component {
             </table>
           </div>
           <div className="card-footer">
-            <nav aria-label="Page navigation">
-              <ul className="pagination col-3  mx-auto">
-                <li className="page-item">
-                  <button className="page-link" href="#">
-                    <span aria-hidden="true">&laquo;</span>
-                  </button>
-                </li>
-                <li className="page-item">
-                  <button
-                    className="page-link"
-                    onClick={() =>
-                      this.handlePage(this.props.admin.userList.currentPage - 1)
-                    }
-                  >
-                    {this.props.admin.userList.currentPage - 1}
-                  </button>
-                </li>
-                <li className="page-item">
-                  <button
-                    className="page-link"
-                    onClick={() =>
-                      this.handlePage(this.props.admin.userList.currentPage)
-                    }
-                  >
-                    {this.props.admin.userList.currentPage}
-                  </button>
-                </li>
-                <li className="page-item">
-                  <button
-                    className="page-link"
-                    onClick={() =>
-                      this.handlePage(this.props.admin.userList.currentPage + 1)
-                    }
-                  >
-                    {this.props.admin.userList.currentPage + 1}
-                  </button>
-                </li>
-                <li className="page-item">
-                  <button className="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </button>
-                </li>
-              </ul>
-            </nav>
+            <RenderChangePage
+              adminUser={this.props.admin}
+              handlePage={this.handlePage}
+            />
           </div>
         </div>
         <ModalUser title="Thêm Người Dùng" idModal={this.state.nameModel} />

@@ -1,27 +1,21 @@
 import { BOOKING_FAIL, BOOKING_REQUEST, BOOKING_SUCCESS } from "../constants/Booking";
 import axios from "../utils/axiosClient";
 
+
+let token = "";
 const user = localStorage.getItem('user')
-
-let token = '';
-
-if (user) {
+if(user){
     const { accessToken } = JSON.parse(user)
-    token = accessToken
+    token = accessToken;
 }
 
-
 export const getBooking = (value) => {
-
     return (dispatch) => {
         dispatch({ type: BOOKING_REQUEST });
-
-        
         axios.post(
-
             `QuanLyDatVe/DatVe`, value, {
             headers: {
-                'Authorization': `Bearer ${token}`
+                Authorization:`Bearer ${token}`
             }
         }
         )

@@ -12,10 +12,10 @@ import {
 import axios from "../utils/axiosClient";
 import axiosPure from "axios";
 export const getUserList = (
-  maNhom = "GP01",
+  maNhom = "GP02",
   tuKhoa,
   page = 1,
-  pageSize = 10
+  pageSize = 5
 ) => {
   return (dispatch) => {
     dispatch({
@@ -31,12 +31,10 @@ export const getUserList = (
         },
       })
       .then((result) => {
-        // Lưu thông tin user xuống localStorage
         dispatch({
           type: GET_USER_SUCCESS,
           payload: { data: result.data },
         });
-        // history.replace("/");
       })
       .catch((error) => {
         console.log(error.response);
@@ -80,7 +78,7 @@ export const deleteUser = (taiKhoan, accessToken) => {
     });
     axiosPure({
       method: "delete",
-      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?taiKhoan=${taiKhoan}`,
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
