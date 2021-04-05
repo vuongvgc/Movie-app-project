@@ -70,7 +70,9 @@ class RenderUserList extends React.Component {
               <PopOver action="Mô tả" content={movie.moTa} />
             </div>
           </td>
-          <td>{movie.ngayKhoiChieu}</td>
+          <td>
+            <p className="">{movie.ngayKhoiChieu?.slice(0, 10)}</p>
+          </td>
           <td>
             <button
               className="btn btn-success mx-1"

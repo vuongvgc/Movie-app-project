@@ -135,8 +135,6 @@ class MoviesManagement extends Component {
                   <th>Mã Phim</th>
                   <th className="nowrap col-2">
                     <span className="mr-1">Tên Phim</span>
-                    <i className="fa fa-arrow-up mx-2"></i>
-                    <i className="fa fa-arrow-down"></i>
                   </th>
                   <th className="col-3">Hình ảnh</th>
                   <th>Ngày khởi chiếu</th>
