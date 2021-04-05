@@ -34,10 +34,10 @@ export default function MovieDetails(props) {
         </div>
         <div className="detailMain-top container ">
           <div className="row">
-            <div className="col-2 detailMain-img">
+            <div className="col-lg-2 col-md-4 col-7  detailMain-img">
               <img src={movieDetails?.hinhAnh} alt="movieImg" />
             </div>
-            <div className="col-6 detailMain-info">
+            <div className="col-lg-6 col-md-5 col-5  detailMain-info">
               <div className='detailMain-info2'>
                 <p className=''>{movieDetails?.ngayKhoiChieu?.slice(0, 10)}</p>
                 <h3>{movieDetails?.tenPhim}</h3>
@@ -55,7 +55,7 @@ export default function MovieDetails(props) {
                 </button>
               </div>
             </div>
-            <div className="col-4 detailMain-score">
+            <div className="col-lg-4 col-md-3 d-none d-md-block detailMain-score">
               <div className='detailMain-scoreContainer'>
                 <div className='circlePercent'>
                   <div className='circleBorder'>
@@ -82,9 +82,9 @@ export default function MovieDetails(props) {
 
 
       <div className="contentMain">
-        <div className='container'>
+        <div className='container-xl'>
           <ul className='nav-tabs'>
-            <li >
+            <li>
               <span
                 onClick={() => setMenu(1)}
                 className={menu === 1 ? 'active' : ''}>Lịch Chiếu</span>
