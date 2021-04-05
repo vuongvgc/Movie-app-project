@@ -4,6 +4,7 @@ import {
   getMoviesList,
   addMovie,
   updateMovie,
+  searchMoviesList,
 } from "../../actions/AdminMovies";
 import RenderMovieList from "./RenderMovieList";
 import ModalPure from "../../components/Modal/Modal";
@@ -15,6 +16,7 @@ class MoviesManagement extends Component {
     this.state = {
       movie: "",
       update: false,
+      search: "",
     };
   }
   componentDidMount() {
@@ -76,7 +78,11 @@ class MoviesManagement extends Component {
     });
   };
   handlePage = (page) => {
-    this.props.getMoviesList(this.props.maNhom, page);
+    if (this.state.search === "") {
+      this.props.getMoviesList(this.props.maNhom, page);
+    } else {
+      this.props.searchMoviesList(this.props.maNhom, this.state.search, page);
+    }
   };
   render() {
     return (
@@ -107,11 +113,16 @@ class MoviesManagement extends Component {
                     type="text"
                     class="form-control"
                     placeholder="Tên Phim"
+                    onChange={(event) =>
+                      this.setState({ search: event.target.value })
+                    }
+                    value={this.state.search}
                   />
                   <button
                     class="btn btn-outline-secondary"
                     type="button"
                     id="button-addon2"
+                    onClick={() => this.handlePage(1)}
                   >
                     <i className="fa fa-search"></i>
                   </button>
@@ -172,6 +183,9 @@ const mapMapToProps = (state) => {
     movieForm: state.form.movieForm,
   };
 };
-export default connect(mapMapToProps, { getMoviesList, addMovie, updateMovie })(
-  MoviesManagement
-);
+export default connect(mapMapToProps, {
+  getMoviesList,
+  addMovie,
+  updateMovie,
+  searchMoviesList,
+})(MoviesManagement);
