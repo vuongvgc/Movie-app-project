@@ -41,6 +41,7 @@
     font-size: 20px;
     font-weight: 500;
     padding-bottom: 20px;
+    text-align: center;
 }
 
 .showTimes-tenCumRap  .showTime-item {
@@ -55,4 +56,11 @@
     display: inline-block;
     color: #108f3e;
     width: 160px;
+}
+
+
+@media screen and (max-width:576px) {
+    .showTimes-tenCumRap  .showTime-item{
+        width: 100%;
+    }
 }

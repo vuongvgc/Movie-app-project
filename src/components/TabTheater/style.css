@@ -1,0 +1,35 @@
+.tabTheater__cumRap:hover {
+  cursor: pointer;
+}
+.tabTheater__listPhim {
+  /* display: block; */
+  /* height: 100%; */
+  /* border-radius: 80%; */
+  padding: 2.5px;
+  background-clip: content-box;
+  animation: spin 1s linear infinite;
+  margin: 5px 0;
+  border: 2.5px dashed #e914c2d4;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotateZ(1deg);
+    /* transform: rotate3d(1deg); */
+  }
+  80% {
+    transform: rotateZ(-1deg);
+    /* transform: rotate3d(1deg); */
+  }
+  60% {
+    transform: rotateZ(1deg);
+    /* transform: rotate3d(1deg); */
+  }
+  40% {
+    transform: rotateZ(-1deg);
+    /* transform: rotate3d(1deg); */
+  }
+}
+
+a.tabTheater__active:active {
+}
