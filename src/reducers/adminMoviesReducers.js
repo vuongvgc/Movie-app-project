@@ -5,6 +5,9 @@ import {
   ADD_MOVIE_REQUEST,
   ADD_MOVIE_SUCCESS,
   ADD_MOVIE_FAIL,
+  SEARCH_MOVIE_REQUEST,
+  SEARCH_MOVIE_SUCCESS,
+  SEARCH_MOVIE_FAIL,
 } from "../constants/Admin";
 const initialState = {
   moviesList: null,
@@ -65,6 +68,28 @@ const adminMoviesReducers = (state = initialState, action) => {
           loading: false,
           error: action.payload.error,
         },
+      };
+    }
+    case SEARCH_MOVIE_REQUEST: {
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    }
+    case SEARCH_MOVIE_SUCCESS: {
+      return {
+        ...state,
+        moviesList: action.payload.data,
+        loading: false,
+        error: null,
+      };
+    }
+    case SEARCH_MOVIE_FAIL: {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
       };
     }
 

@@ -9,8 +9,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   popover: {
-    width: "50%",
-    margin: "0 auto"
+    width: "75%",
+    margin: "0 auto",
   },
 }));
 

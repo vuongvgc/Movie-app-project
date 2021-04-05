@@ -4,17 +4,19 @@ import {
   getMoviesList,
   addMovie,
   updateMovie,
+  searchMoviesList,
 } from "../../actions/AdminMovies";
 import RenderMovieList from "./RenderMovieList";
 import ModalPure from "../../components/Modal/Modal";
 import MovieInsertForm from "../../components/MovieInsertForm";
-import _ from "lodash";
+import RenderChangePage from "./RenderChangePage";
 class MoviesManagement extends Component {
   constructor(props) {
     super(props);
     this.state = {
       movie: "",
       update: false,
+      search: "",
     };
   }
   componentDidMount() {
@@ -75,6 +77,13 @@ class MoviesManagement extends Component {
       update: false,
     });
   };
+  handlePage = (page) => {
+    if (this.state.search === "") {
+      this.props.getMoviesList(this.props.maNhom, page);
+    } else {
+      this.props.searchMoviesList(this.props.maNhom, this.state.search, page);
+    }
+  };
   render() {
     return (
       <div className="container">
@@ -103,12 +112,17 @@ class MoviesManagement extends Component {
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Tên người dùng"
+                    placeholder="Tên Phim"
+                    onChange={(event) =>
+                      this.setState({ search: event.target.value })
+                    }
+                    value={this.state.search}
                   />
                   <button
                     class="btn btn-outline-secondary"
                     type="button"
                     id="button-addon2"
+                    onClick={() => this.handlePage(1)}
                   >
                     <i className="fa fa-search"></i>
                   </button>
@@ -121,8 +135,6 @@ class MoviesManagement extends Component {
                   <th>Mã Phim</th>
                   <th className="nowrap col-2">
                     <span className="mr-1">Tên Phim</span>
-                    <i className="fa fa-arrow-up mx-2"></i>
-                    <i className="fa fa-arrow-down"></i>
                   </th>
                   <th className="col-3">Hình ảnh</th>
                   <th>Ngày khởi chiếu</th>
@@ -151,29 +163,10 @@ class MoviesManagement extends Component {
             </table>
           </div>
           <div className="card-footer">
-            <nav aria-label="Page navigation">
-              <ul className="pagination col-3  mx-auto">
-                <li className="page-item">
-                  <button className="page-link" href="#">
-                    <span aria-hidden="true">&laquo;</span>
-                  </button>
-                </li>
-                <li className="page-item">
-                  <button className="page-link">1</button>
-                </li>
-                <li className="page-item">
-                  <button className="page-link">2</button>
-                </li>
-                <li className="page-item">
-                  <button className="page-link">3</button>
-                </li>
-                <li className="page-item">
-                  <button className="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </button>
-                </li>
-              </ul>
-            </nav>
+            <RenderChangePage
+              adminMovies={this.props.adminMovies}
+              handlePage={this.handlePage}
+            />
           </div>
         </div>
       </div>
@@ -188,6 +181,9 @@ const mapMapToProps = (state) => {
     movieForm: state.form.movieForm,
   };
 };
-export default connect(mapMapToProps, { getMoviesList, addMovie, updateMovie })(
-  MoviesManagement
-);
+export default connect(mapMapToProps, {
+  getMoviesList,
+  addMovie,
+  updateMovie,
+  searchMoviesList,
+})(MoviesManagement);
