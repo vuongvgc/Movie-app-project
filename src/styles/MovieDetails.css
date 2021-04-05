@@ -5,9 +5,10 @@
 }
 
 .movieDetail {
+    top: 73px; 
     background-repeat: no-repeat;
     background-size: cover;
-    height: 780px;
+    height: 760px;
     position: relative;
     color: white;
 }
@@ -61,7 +62,7 @@
     margin-right: 12px;
     height: 40px;
 }
-.detailMain-info2 .btn-datVe  {
+.detailMain-info2 .btn-datVe {
     color: white;
     text-decoration: none;
 }
@@ -141,8 +142,10 @@
 }
 
 .contentMain {
+    padding-top: 80px;
     color: white;
     background: #000;
+  
 }
 
 .nav-tabs {
@@ -175,11 +178,8 @@
     font-size: 22px;
 }
 
-/* .contentMain .tab-content{
-    background: #fff;
-    color: black;
 
-} */
+
 
 .contentMain .tab-content .hidden {
     display: none;
@@ -189,9 +189,30 @@
     font-size: 14px;
 }
 .rowLeftInfo {
-    margin-left: 60px;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .contentInfo {
     font-weight: 500;
+}
+
+@media screen and (max-width: 1200px) {
+  
+    .movieDetail{
+        height: 480px;
+    }
+}
+
+@media screen and (max-width:768px){
+    .leftInfo{
+        width: 100%;
+        padding: 0;
+    }
+    .rightInfo{
+        padding: 10px 12px;
+        text-align: left;
+        width: 80%;
+        margin: 0 auto;
+    }
 }
