@@ -10,33 +10,35 @@ export default function AdminLayout(props) {
   // console.log("Header", location.pathname);
   let activeUrl = location.pathname;
   return (
-    <div className="admin-layout__box">
+    <div className="admin-layout__box ">
       <Header />
       <div className="container-fluid">
         <div className="row">
-          <div className="col-12 col-md-2 border border-secondary">
-            <NavLink
-              to="/admin/users"
-              className={
-                activeUrl === "/admin/users"
-                  ? "nav-link user_detail__nav active_link"
-                  : "nav-link user_detail__nav"
-              }
-            >
-              <div>Quản Lý Người Dùng</div>
-            </NavLink>
-            <NavLink
-              to="/admin/movies"
-              className={
-                activeUrl === "/admin/movies"
-                  ? "nav-link user_detail__nav active_link"
-                  : "nav-link user_detail__nav"
-              }
-            >
-              <div>Quản Lý Phim</div>
-            </NavLink>
+          <div className="col-12 col-lg-2 border border-lg-secondary">
+            <div className="d-flex d-lg-block">
+              <NavLink
+                to="/admin/users"
+                className={
+                  activeUrl === "/admin/users"
+                    ? "nav-link user_detail__nav active_link"
+                    : "nav-link user_detail__nav"
+                }
+              >
+                <div>Quản Lý Người Dùng</div>
+              </NavLink>
+              <NavLink
+                to="/admin/movies"
+                className={
+                  activeUrl === "/admin/movies"
+                    ? "nav-link user_detail__nav active_link"
+                    : "nav-link user_detail__nav"
+                }
+              >
+                <div>Quản Lý Phim</div>
+              </NavLink>
+            </div>
           </div>
-          <div className="col-12 col-md-10 border border-secondary ">
+          <div className="col-12 col-lg-10 border border-lg-secondary ">
             {props.children}
           </div>
         </div>

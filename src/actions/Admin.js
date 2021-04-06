@@ -8,6 +8,7 @@ import {
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAIL,
+  RESET_STATUS,
 } from "../constants/Admin";
 import axios from "../utils/axiosClient";
 import axiosPure from "axios";
@@ -96,5 +97,10 @@ export const deleteUser = (taiKhoan, accessToken) => {
           payload: { error: error.response.data },
         });
       });
+  };
+};
+export const resetStatus = () => {
+  return {
+    type: RESET_STATUS,
   };
 };
