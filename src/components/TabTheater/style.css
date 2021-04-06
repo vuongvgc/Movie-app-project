@@ -33,3 +33,27 @@
 
 a.tabTheater__active:active {
 }
+
+.tabTheater__info {
+  position: relative;
+  padding-bottom: 15px;
+  margin: 2rem 0;
+  color: blue;
+}
+
+.tabTheater__info::after {
+  content: " ";
+  width: 0;
+  height: 4px;
+  background-image: linear-gradient(to right, #fbbd61, #ec7532);
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  display: block;
+  transition: all 0.5s;
+}
+
+.tabTheater__info:hover::after {
+  width: 100%;
+  /* border: solid 2px goldenrod; */
+}
