@@ -1,35 +1,60 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+import { makeStyles } from "@material-ui/core/styles";
 
-export default function PositionedSnackbar(props) {
-  const [state, setState] = React.useState({
-    open: false,
-    vertical: "top",
-    horizontal: "center",
-  });
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
-  const { vertical, horizontal, open } = state;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    "& > * + *": {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
-  const handleClick = (newState) => () => {
-    setState({ open: true, ...newState });
+export default function CustomizedSnackbars(props) {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  useEffect(() => {
+    console.log(props.isOpen);
+    setOpen(props.isOpen);
+  }, [props.isOpen]); //
+  // const handleClick = () => {
+  //   setOpen(true);
+  // };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
   };
 
-  const handleClose = () => {
-    setState({ ...state, open: false });
-  };
   return (
-    <div>
-      <Button onClick={handleClick({ vertical: "top", horizontal: "center" })}>
-        Top-Center
-      </Button>
+    <div className={classes.root}>
+      {/* <Button variant="outlined" onClick={handleClick}>
+        Open success snackbar
+      </Button> */}
       <Snackbar
-        anchorOrigin={{ vertical, horizontal }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
         open={open}
+        autoHideDuration={10000}
         onClose={handleClose}
-        message={props.status}
-        key={vertical + horizontal}
-      />
+      >
+        <Alert onClose={handleClose} severity={props.severity}>
+          {props.title}
+        </Alert>
+      </Snackbar>
+      {/* <Alert severity="error">This is an error message!</Alert>
+      <Alert severity="warning">This is a warning message!</Alert>
+      <Alert severity="info">This is an information message!</Alert>
+      <Alert severity="success">This is a success message!</Alert> */}
     </div>
   );
 }

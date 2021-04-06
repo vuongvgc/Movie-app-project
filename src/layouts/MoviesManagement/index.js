@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import SnackBar from "../../components/Snackbar";
 import {
   getMoviesList,
   addMovie,
@@ -17,6 +18,7 @@ class MoviesManagement extends Component {
       movie: "",
       update: false,
       search: "",
+      snackbar: this.props.adminMovies.updateMovie.success,
     };
   }
   componentDidMount() {
@@ -87,13 +89,13 @@ class MoviesManagement extends Component {
   render() {
     return (
       <div className="container">
-        <div className="card text-center">
+        <div className="card text-center mx-0 px-0">
           <div className="card-header">
             <div className="row justify-content-between">
-              <div className="col-md-6">
+              <div className="col-12 col-md-5">
                 <h4 className="text-start font-weight-bold">Danh sách Phim</h4>
               </div>
-              <div className="col-md-6 text-end">
+              <div className="col-12 col-md-3 text-start text-md-end">
                 <button
                   className="btn btn-primary"
                   data-bs-toggle="modal"
@@ -132,13 +134,13 @@ class MoviesManagement extends Component {
             <table className="table table-bordered table-hover myTable">
               <thead className="text-primary">
                 <tr>
-                  <th>Mã Phim</th>
-                  <th className="nowrap col-2">
-                    <span className="mr-1">Tên Phim</span>
+                  <th class="col-1">Mã Phim</th>
+                  <th className="nowrap col-3">
+                    <span className="mr-1 col-3">Tên Phim</span>
                   </th>
                   <th className="col-3">Hình ảnh</th>
-                  <th>Ngày khởi chiếu</th>
-                  <th>
+                  <th className="col-2">Ngày khởi chiếu</th>
+                  <th className="col-3">
                     <em className="fa fa-cog"></em>
                   </th>
                 </tr>
@@ -166,6 +168,26 @@ class MoviesManagement extends Component {
             <RenderChangePage
               adminMovies={this.props.adminMovies}
               handlePage={this.handlePage}
+            />
+            <SnackBar
+              isOpen={this.props.adminMovies.updateMovie.success}
+              title="Cập nhật thành công"
+              severity="success"
+            />
+            <SnackBar
+              isOpen={this.props.adminMovies.updateMovie.error}
+              title="Cập nhật thật bại"
+              severity="warning"
+            />
+            <SnackBar
+              isOpen={this.props.adminMovies.addMovie.success}
+              title="Thêm phim thành công"
+              severity="success"
+            />
+            <SnackBar
+              isOpen={this.props.adminMovies.addMovie.error}
+              title={this.props.adminMovies.addMovie.error}
+              severity="warning"
             />
           </div>
         </div>

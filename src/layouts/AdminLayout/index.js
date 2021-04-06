@@ -14,7 +14,7 @@ export default function AdminLayout(props) {
       <Header />
       <div className="container-fluid">
         <div className="row">
-          <div className="col-2 border border-secondary">
+          <div className="col-12 col-md-2 border border-secondary">
             <NavLink
               to="/admin/users"
               className={
@@ -36,7 +36,9 @@ export default function AdminLayout(props) {
               <div>Quản Lý Phim</div>
             </NavLink>
           </div>
-          <div className="col-10 border border-secondary">{props.children}</div>
+          <div className="col-12 col-md-10 border border-secondary ">
+            {props.children}
+          </div>
         </div>
       </div>
       <Footer />
