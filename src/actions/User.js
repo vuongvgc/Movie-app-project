@@ -1,4 +1,9 @@
-import { GET_USER, UPDATE_USER } from "../constants/user";
+import {
+  GET_USER,
+  UPDATE_USER_REQUEST,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAIL,
+} from "../constants/user";
 import axios from "../utils/axiosClient";
 
 export const getUser = (user) => {
@@ -18,6 +23,9 @@ export const getUser = (user) => {
 };
 export const updateUser = (formValue, accessToken) => {
   return (dispatch) => {
+    dispatch({
+      type: UPDATE_USER_REQUEST,
+    });
     axios
       .put("/QuanLyNguoiDung/CapNhatThongTinNguoiDung", formValue, {
         headers: {
@@ -26,12 +34,16 @@ export const updateUser = (formValue, accessToken) => {
       })
       .then((result) => {
         dispatch({
-          type: UPDATE_USER,
+          type: UPDATE_USER_SUCCESS,
           payload: { data: result.data },
         });
       })
       .catch((error) => {
         console.log(error.response);
+        dispatch({
+          type: UPDATE_USER_FAIL,
+          payload: { error: error.response.data },
+        });
       });
   };
 };
