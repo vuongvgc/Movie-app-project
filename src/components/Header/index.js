@@ -12,7 +12,7 @@ export default function Header(props) {
 
             <NavLink className="navbar-brand" to="/">
               <img
-                className="gif__header d-none d-lg-block "
+                className="img__header d-none d-lg-block "
                 src="../img/VPVlogo.png"
                 alt=""
               />
@@ -43,9 +43,13 @@ export default function Header(props) {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/">
+                  <a
+                    className="nav-link active"
+                    aria-current="page"
+                    href="#infoTheater"
+                  >
                     Cụm Rạp
-                  </NavLink>
+                  </a>
                 </li>
 
                 <li className="nav-item">

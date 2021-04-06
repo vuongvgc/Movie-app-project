@@ -28,11 +28,14 @@ import AdminRoute from "../src/guards/AdminRoute";
 import UserRoute from "../src/guards/UserRoute";
 import AuthRoute from "../src/guards/AuthRoute";
 import TicketRoomRoute from "../src/guards/TicketRoomRoute"
-
 let history = createBrowserHistory();
 function App() {
   return (
     <Router history={history}>
+      {/* <Suspense fallback={<div>
+        <img src="../img/carousel1.jpg" style={{ width: 500, height: 400 }} alt="..." />
+      </div>}>
+      </Suspense> */}
       <Switch>
         {/* Movie */}
         <Route exact path={["/", "/ticketRoom/:movieId", "/movie/:movieId"]}>
@@ -82,6 +85,7 @@ function App() {
         </Route>
         <Redirect to="/" />
       </Switch>
+
     </Router>
   );
 }

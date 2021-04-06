@@ -1,11 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, Suspense, lazy } from "react";
 import { NavLink } from "react-router-dom";
 import Carousel from "../../../src/components/Carousel/index";
-import Header from "../../components/Header";
-import TabTheaters from "../../components/TabTheater";
 import TopSearch from "../../components/TopSearch";
-import Footer from "../../components/Footer";
-// import TabTheaters2 from "../../components/TabTheater/index2";
+import TabTheaters from "../../components/TabTheater";
+
+// const CarouselLazy = React.lazy(() => import('../../../src/components/Carousel/index'));
+
+
+// const TopSearchLazy = React.lazy(() => import('../../components/TopSearch'));
+
+
+// const TabTheaterLazy = React.lazy(() => import('../../components/TabTheater'));
+
 
 export default class HomePage extends Component {
   render() {
@@ -14,6 +20,9 @@ export default class HomePage extends Component {
         <Carousel />
         <TopSearch />
         <TabTheaters />
+
+        {/* <TabTheaters2 /> */}
+
       </div>
     );
   }
