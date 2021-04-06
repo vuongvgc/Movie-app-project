@@ -4,6 +4,8 @@ import ModalPure from "../../components/Modal/Modal";
 import CircularIndeterminate from "../../components/CircularIndeterminate";
 import { connect } from "react-redux";
 import { deleteMovie } from "../../actions/AdminMovies";
+import SnackBar from "../../components/Snackbar";
+
 class RenderUserList extends React.Component {
   constructor(props) {
     super(props);
@@ -97,6 +99,16 @@ class RenderUserList extends React.Component {
             content={this.renderContent(this.state.nameMovie)}
             action={this.renderAction()}
           />
+          <SnackBar
+            isOpen={this.props.adminMovies.deleteMovie.success}
+            title="Xóa phim thành công"
+            severity="success"
+          />
+          <SnackBar
+            isOpen={this.props.adminMovies.deleteMovie.error}
+            title={this.props.adminMovies.deleteMovie.error}
+            severity="warning"
+          />
         </tr>
       );
     });
@@ -105,6 +117,7 @@ class RenderUserList extends React.Component {
 const mapMapToProps = (state) => {
   return {
     accessToken: state.authReducers.currentUser.accessToken,
+    adminMovies: state.adminMovies,
   };
 };
 export default connect(mapMapToProps, { deleteMovie })(RenderUserList);

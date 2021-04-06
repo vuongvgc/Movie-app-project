@@ -83,18 +83,15 @@ export const updateMovie = (form_data, accessToken) => {
       },
     })
       .then((result) => {
-        // Lưu thông tin user xuống localStorage
         dispatch({
           type: UPDATE_MOVIE_SUCCESS,
           payload: { data: result.data },
         });
-        // history.replace("/");
       })
       .catch((error) => {
-        console.log(error.response);
         dispatch({
           type: UPDATE_MOVIE_FAIL,
-          payload: { error: error.response.data },
+          payload: { error: "Cập nhật thất bại" },
         });
       });
   };

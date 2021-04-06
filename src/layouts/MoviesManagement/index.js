@@ -18,7 +18,7 @@ class MoviesManagement extends Component {
       movie: "",
       update: false,
       search: "",
-      snackbar: true,
+      snackbar: this.props.adminMovies.updateMovie.success,
     };
   }
   componentDidMount() {
@@ -169,7 +169,26 @@ class MoviesManagement extends Component {
               adminMovies={this.props.adminMovies}
               handlePage={this.handlePage}
             />
-            <SnackBar isOpen={true} />
+            <SnackBar
+              isOpen={this.props.adminMovies.updateMovie.success}
+              title="Cập nhật thành công"
+              severity="success"
+            />
+            <SnackBar
+              isOpen={this.props.adminMovies.updateMovie.error}
+              title="Cập nhật thật bại"
+              severity="warning"
+            />
+            <SnackBar
+              isOpen={this.props.adminMovies.addMovie.success}
+              title="Thêm phim thành công"
+              severity="success"
+            />
+            <SnackBar
+              isOpen={this.props.adminMovies.addMovie.error}
+              title={this.props.adminMovies.addMovie.error}
+              severity="warning"
+            />
           </div>
         </div>
       </div>
