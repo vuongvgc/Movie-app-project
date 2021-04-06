@@ -14,6 +14,7 @@ import {
   SEARCH_MOVIE_REQUEST,
   SEARCH_MOVIE_SUCCESS,
   SEARCH_MOVIE_FAIL,
+  RESET_STATUS,
 } from "../constants/Admin";
 const initialState = {
   moviesList: null,
@@ -183,6 +184,14 @@ const adminMoviesReducers = (state = initialState, action) => {
           error: action.payload.error,
           loading: true,
         },
+      };
+    }
+    case RESET_STATUS: {
+      return {
+        ...state,
+        addMovie: { success: false, error: null, loading: true },
+        updateMovie: { success: false, error: null, loading: true },
+        deleteMovie: { success: false, error: null, loading: true },
       };
     }
     default: {

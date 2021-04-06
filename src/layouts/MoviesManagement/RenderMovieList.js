@@ -76,22 +76,24 @@ class RenderUserList extends React.Component {
             <p className="">{movie.ngayKhoiChieu?.slice(0, 10)}</p>
           </td>
           <td>
-            <button
-              className="btn btn-success mx-1"
-              data-bs-toggle="modal"
-              data-bs-target="#ModalUpdateMovie"
-              onClick={() => this.props.handleMovie(movie)}
-            >
-              Cập Nhật
-            </button>
-            <button
-              className="btn btn-danger"
-              data-bs-toggle="modal"
-              data-bs-target="#ModalDeleteMovie"
-              onClick={() => this.selectMovie(movie)}
-            >
-              Xóa
-            </button>
+            <div class="d-grid gap-2 d-block">
+              <button
+                className="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#ModalUpdateMovie"
+                onClick={() => this.props.handleMovie(movie)}
+              >
+                Cập Nhật
+              </button>
+              <button
+                className="btn btn-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#ModalDeleteMovie"
+                onClick={() => this.selectMovie(movie)}
+              >
+                Xóa
+              </button>
+            </div>
           </td>
           <ModalPure
             title="Xóa Phim"

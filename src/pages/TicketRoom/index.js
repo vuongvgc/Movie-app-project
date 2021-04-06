@@ -255,12 +255,11 @@ export default function TicketRoom(props) {
 
   setLogo()
 
-
   // dùng để kiểm tra user có đăng nhập chưa nếu chưa thì đẩy về trang logins
-  if (!currentUser) {
+  // if (!currentUser) {
 
-    return <Redirect to="/login" />;
-  }
+  //   return <Redirect to="/login" />;
+  // }
 
 
 
@@ -269,7 +268,7 @@ export default function TicketRoom(props) {
     <div className='checkout'>
 
       <div className='row mainCheckout'>
-        <div className="col-9 checkout-content">
+        <div className="col-md-9 checkout-content">
           <div className="headerCheckout row">
             <ul className='stepCheckout'>
               <li>
@@ -322,11 +321,13 @@ export default function TicketRoom(props) {
               <span className="col hang">A</span>
               {row1?.map((item) => {
                 return (
-                  <span key={item.maGhe}>
+                  <span key={item.maGhe} 
+                  className="seatItem"
+                  >
                     <Seat
-
                       item={item}
-                      onListSeat={(seatId) => handleListSeat(seatId)}
+                      onListSeat={(seatId) => handleListSeat(seatId) }
+                      
                     />
                   </span>
 
@@ -340,7 +341,9 @@ export default function TicketRoom(props) {
               <span className="col hang">B</span>
               {row2?.map((item) => {
                 return (
-                  <span key={item.maGhe}>
+                  <span key={item.maGhe}
+                  className="seatItem"
+                  >
 
                     <Seat
                       key={item.maGhe}
@@ -356,7 +359,9 @@ export default function TicketRoom(props) {
               <span className="col hang">C</span>
               {row3?.map((item) => {
                 return (
-                  <span key={item.maGhe}>
+                  <span key={item.maGhe}
+                  className="seatItem"
+                  >
 
                     <Seat
 
@@ -372,7 +377,9 @@ export default function TicketRoom(props) {
               <span className="col hang">D</span>
               {row4?.map((item) => {
                 return (
-                  <span key={item.maGhe}>
+                  <span key={item.maGhe}
+                  className="seatItem"
+                  >
 
                     <Seat item={item}
                       onListSeat={(seatId) => handleListSeat(seatId)} />
@@ -386,7 +393,9 @@ export default function TicketRoom(props) {
               <span className="col hang">E</span>
               {row5?.map((item) => {
                 return (
-                  <span key={item.maGhe}>
+                  <span key={item.maGhe}
+                  className="seatItem"
+                  >
 
                     <Seat
                       item={item}
@@ -401,7 +410,9 @@ export default function TicketRoom(props) {
               <span className="col hang">F</span>
               {row6?.map((item) => {
                 return (
-                  <span key={item.maGhe}>
+                  <span key={item.maGhe}
+                  className="seatItem"
+                  >
 
                     <Seat
                       item={item}
@@ -416,7 +427,9 @@ export default function TicketRoom(props) {
               <span className="col hang">G</span>
               {row7?.map((item) => {
                 return (
-                  <span key={item.maGhe}>
+                  <span key={item.maGhe}
+                  className="seatItem"
+                  >
 
                     <Seat
                       item={item}
@@ -431,7 +444,9 @@ export default function TicketRoom(props) {
               <span className="col hang">H</span>
               {row8?.map((item) => {
                 return (
-                  <span key={item.maGhe}>
+                  <span key={item.maGhe}
+                  className="seatItem"
+                  >
 
                     <Seat
                       item={item}
@@ -446,7 +461,9 @@ export default function TicketRoom(props) {
               <span className="col hang">I</span>
               {row9?.map((item) => {
                 return (
-                  <span key={item.maGhe}>
+                  <span key={item.maGhe}
+                  className="seatItem"
+                  >
 
                     <Seat
                       item={item}
@@ -461,7 +478,9 @@ export default function TicketRoom(props) {
               <span className="col hang">J</span>
               {row10?.map((item) => {
                 return (
-                  <span key={item.maGhe}>
+                  <span key={item.maGhe}
+                  className="seatItem"
+                  >
 
                     <Seat
                       item={item}
@@ -474,7 +493,7 @@ export default function TicketRoom(props) {
 
         </div>
 
-        <div className="col-3 checkout-side">
+        <div className="col-md-3 checkout-side">
           <div className="checkout-sideContainer">
             <div className="row-total">
 
@@ -487,9 +506,7 @@ export default function TicketRoom(props) {
               <p>{ticketRoom?.thongTinPhim?.ngayChieu}  - {ticketRoom?.thongTinPhim?.gioChieu} -{ticketRoom?.thongTinPhim?.tenRap} </p>
             </div>
             <div className={listSeat?.length ? "row-listSeat" : ''}>
-
               {listSeat.map((seat) => {
-
                 return (
                   <span key={seat}>{seat}</span>
                 )
@@ -497,7 +514,7 @@ export default function TicketRoom(props) {
             </div>
             <div className='infoUser'>
               <input type="text" name='emailCheckout' id="emailCheckout"
-                // value={currentUser.email}
+                value={currentUser?.email}
                 disabled
                 required />
               <label htmlFor="emailCheckout" className='label-emailCheckout' >
@@ -508,7 +525,7 @@ export default function TicketRoom(props) {
 
             <div className='infoUser'>
               <input type="text" id="emailCheckout"
-                // value={currentUser.soDT}
+                value={currentUser?.soDT}
                 disabled
               />
               <label htmlFor="emailCheckout" className='label-phoneCheckout' >
@@ -659,6 +676,17 @@ export default function TicketRoom(props) {
           </div>
         </div>
       </div>
+      <div className="btn-checkout2 d-block d-md-none">
+              <Button
+
+                className={classes.btn__booking}
+
+                onClick={handleClickOpen}
+                disabled={listSeat.length ? false : true}
+              >
+                Đặt vé
+            </Button>
+            </div>
     </div>
   )
 

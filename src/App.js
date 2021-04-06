@@ -27,12 +27,7 @@ import { createBrowserHistory } from "history";
 import AdminRoute from "../src/guards/AdminRoute";
 import UserRoute from "../src/guards/UserRoute";
 import AuthRoute from "../src/guards/AuthRoute";
-
-//Lazy React
-import React, { Suspense, lazy } from 'react';
-
-// const HomeLazy = lazy(() => import("./pages/HomePage"))
-
+import TicketRoomRoute from "../src/guards/TicketRoomRoute"
 let history = createBrowserHistory();
 function App() {
   return (
@@ -57,7 +52,7 @@ function App() {
         <Route exact path={["/checkout/:ticketRoomId"]}>
           <CheckoutLayout>
             <Switch>
-              <Route path="/checkout/:ticketRoomId" component={TicketRoom} />
+              <TicketRoomRoute path="/checkout/:ticketRoomId" component={TicketRoom} />
             </Switch>
           </CheckoutLayout>
         </Route>

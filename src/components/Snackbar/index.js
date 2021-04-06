@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { useDispatch } from "react-redux";
+import { resetStatus } from "../../actions/Admin";
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
 export default function CustomizedSnackbars(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
+  const dispatchResetStatus = () => dispatch(resetStatus());
   useEffect(() => {
     console.log(props.isOpen);
     setOpen(props.isOpen);
@@ -32,7 +34,7 @@ export default function CustomizedSnackbars(props) {
     if (reason === "clickaway") {
       return;
     }
-
+    dispatchResetStatus();
     setOpen(false);
   };
 

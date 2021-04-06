@@ -88,7 +88,7 @@ class MoviesManagement extends Component {
   };
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="card text-center mx-0 px-0">
           <div className="card-header">
             <div className="row justify-content-between">
@@ -131,38 +131,40 @@ class MoviesManagement extends Component {
                 </div>
               </div>
             </div>
-            <table className="table table-bordered table-hover myTable">
-              <thead className="text-primary">
-                <tr>
-                  <th class="col-1">Mã Phim</th>
-                  <th className="nowrap col-3">
-                    <span className="mr-1 col-3">Tên Phim</span>
-                  </th>
-                  <th className="col-3">Hình ảnh</th>
-                  <th className="col-2">Ngày khởi chiếu</th>
-                  <th className="col-3">
-                    <em className="fa fa-cog"></em>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <RenderMovieList
-                  adminMovies={this.props.adminMovies}
-                  handleMovie={this.handleMovie}
-                />
-                <ModalPure
-                  title="Thêm Phim Mới"
-                  id="ModalAddMovie"
-                  content={this.renderContent()}
-                />
-                <ModalPure
-                  title="Cập Nhật Phim"
-                  id="ModalUpdateMovie"
-                  content={this.renderContent()}
-                  update={true}
-                />
-              </tbody>
-            </table>
+            <div className="table-responsive">
+              <table className="table table-bordered table-hover">
+                <thead className="text-primary">
+                  <tr>
+                    <th class="col-1">Mã Phim</th>
+                    <th className="nowrap col-3">
+                      <span className="mr-1 col-3">Tên Phim</span>
+                    </th>
+                    <th className="col-4">Hình ảnh</th>
+                    <th className="col-2">Ngày khởi chiếu</th>
+                    <th className="col-2">
+                      <em className="fa fa-cog"></em>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <RenderMovieList
+                    adminMovies={this.props.adminMovies}
+                    handleMovie={this.handleMovie}
+                  />
+                  <ModalPure
+                    title="Thêm Phim Mới"
+                    id="ModalAddMovie"
+                    content={this.renderContent()}
+                  />
+                  <ModalPure
+                    title="Cập Nhật Phim"
+                    id="ModalUpdateMovie"
+                    content={this.renderContent()}
+                    update={true}
+                  />
+                </tbody>
+              </table>
+            </div>
           </div>
           <div className="card-footer">
             <RenderChangePage
