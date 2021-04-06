@@ -60,7 +60,9 @@ class TicketBookingHistory extends Component {
                       );
                     })}
                   </td>
-                  <td>{ngayDat}</td>
+                  <td>
+                    <p className="">{ngayDat?.slice(0, 10)}</p>
+                  </td>
                 </tr>
               );
             })}

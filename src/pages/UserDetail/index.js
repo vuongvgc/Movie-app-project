@@ -14,9 +14,8 @@ function UserDetail(props) {
     <div className="user_detail__box">
       <Header />
       <div className="container-fluid">
-        <h2 className="text-center">Thông tin cá nhân</h2>
         <div className="row">
-          <div className="col-2 border border-secondary">
+          <div className="col-12 col-lg-2 border mx-auto border-secondary d-block d-sm-flex d-lg-block">
             <NavLink
               to="/user/information"
               className={
@@ -48,7 +47,9 @@ function UserDetail(props) {
               <div>Quản Lý Trang Movie</div>
             </NavLink>
           </div>
-          <div className="col-10 border border-secondary">{props.children}</div>
+          <div className="col-12 col-lg-10 border border-secondary">
+            {props.children}
+          </div>
         </div>
       </div>
       <Footer />

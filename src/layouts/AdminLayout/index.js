@@ -2,11 +2,9 @@ import React from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "./style.css";
-import { NavLink, useParams, useHistory, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 export default function AdminLayout(props) {
-  const history = useHistory();
   const location = useLocation();
-  const params = useParams();
   // console.log("Header", location.pathname);
   let activeUrl = location.pathname;
   return (
@@ -15,7 +13,7 @@ export default function AdminLayout(props) {
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 col-lg-2 border border-lg-secondary">
-            <div className="d-flex d-lg-block">
+            <div className="d-block d-sm-flex d-lg-block">
               <NavLink
                 to="/admin/users"
                 className={
@@ -35,6 +33,12 @@ export default function AdminLayout(props) {
                 }
               >
                 <div>Quản Lý Phim</div>
+              </NavLink>
+              <NavLink
+                to="/user/information"
+                className="nav-link user_detail__nav"
+              >
+                <div>Thông Tin Cá Nhân</div>
               </NavLink>
             </div>
           </div>

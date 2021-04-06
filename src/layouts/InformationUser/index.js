@@ -29,6 +29,7 @@ class InformationUser extends Component {
     }
     return (
       <div className="container-fluid">
+        <h2 className="text-center">Thông tin cá nhân</h2>
         <InforUserForm
           initialValues={_.pick(
             this.props.userDetail,
