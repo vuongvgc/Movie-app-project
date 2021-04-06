@@ -8,7 +8,7 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
 } from "../constants/auth";
-import { UPDATE_USER } from "../constants/user";
+import { UPDATE_USER_SUCCESS } from "../constants/user";
 const currentUser = localStorage.getItem("user")
   ? JSON.parse(localStorage.getItem("user"))
   : null;
@@ -45,7 +45,7 @@ const authReducer = (state = initialState, action) => {
     case REGISTER_FAIL: {
       return { ...state, registerStatus: action.payload.error };
     }
-    case UPDATE_USER: {
+    case UPDATE_USER_SUCCESS: {
       return { ...state, currentUser: action.payload.data, loading: false };
     }
     default:

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getUser, updateUser } from "../../actions/User";
 import InforUserForm from "../../components/InforUserForm";
 import _ from "lodash";
+import SnackBar from "../../components/Snackbar";
 class InformationUser extends Component {
   componentDidMount() {
     this.props.getUser({ taikhoan: this.props.currentUser });
@@ -41,6 +42,16 @@ class InformationUser extends Component {
           onSubmit={this.onSubmit}
           accessToken={this.props.accessToken}
         />
+        <SnackBar
+          isOpen={this.props.adminUser.updateUser.success}
+          title="Cập nhật thông tin thành công"
+          severity="success"
+        />
+        <SnackBar
+          isOpen={this.props.adminUser.updateUser.error}
+          title="Cập nhật không thành công"
+          severity="warning"
+        />
       </div>
     );
   }
@@ -52,6 +63,7 @@ const mapStateToProps = (state) => {
     maNhom: state.authReducers.currentUser.maNhom,
     maLoaiNguoiDung: state.authReducers.currentUser.maLoaiNguoiDung,
     accessToken: state.authReducers.currentUser.accessToken,
+    adminUser: state.adminReducers,
   };
 };
 export default connect(mapStateToProps, { getUser, updateUser })(

@@ -8,13 +8,20 @@ import {
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAIL,
+  RESET_STATUS,
 } from "../constants/Admin";
+import {
+  UPDATE_USER_FAIL,
+  UPDATE_USER_REQUEST,
+  UPDATE_USER_SUCCESS,
+} from "../constants/user";
 const initialState = {
   userList: null,
   loading: true,
   error: null,
-  addUser: { user: null, loading: true, isSuccess: false, error: null },
-  deleteUser: { user: null, loading: true, isSuccess: false, error: null },
+  updateUser: { loading: true, success: false, error: null },
+  addUser: { loading: true, success: false, error: null },
+  deleteUser: { loading: true, success: false, error: null },
 };
 
 const adminReducers = (state = initialState, action) => {
@@ -35,7 +42,12 @@ const adminReducers = (state = initialState, action) => {
     case ADD_USER_REQUEST: {
       return {
         ...state,
-        addUser: { ...state.addUser, loading: true, error: null },
+        addUser: {
+          ...state.addUser,
+          loading: true,
+          error: null,
+          success: false,
+        },
       };
     }
     case ADD_USER_SUCCESS: {
@@ -44,7 +56,7 @@ const adminReducers = (state = initialState, action) => {
         addUser: {
           ...state.addUser,
           loading: false,
-          isSuccess: true,
+          success: true,
           error: null,
           user: action.payload.data,
         },
@@ -56,6 +68,7 @@ const adminReducers = (state = initialState, action) => {
         addUser: {
           ...state.addUser,
           loading: false,
+          success: false,
           error: action.payload.error,
         },
       };
@@ -63,7 +76,12 @@ const adminReducers = (state = initialState, action) => {
     case DELETE_USER_REQUEST: {
       return {
         ...state,
-        deleteUser: { ...state.deleteUser, loading: true, error: null },
+        deleteUser: {
+          ...state.deleteUser,
+          loading: true,
+          error: null,
+          success: false,
+        },
       };
     }
     case DELETE_USER_SUCCESS: {
@@ -72,9 +90,8 @@ const adminReducers = (state = initialState, action) => {
         deleteUser: {
           ...state.deleteUser,
           loading: false,
-          isSuccess: true,
+          success: true,
           error: null,
-          user: action.payload.data,
         },
       };
     }
@@ -84,8 +101,50 @@ const adminReducers = (state = initialState, action) => {
         deleteUser: {
           ...state.deleteUser,
           loading: false,
+          success: false,
           error: action.payload.error,
         },
+      };
+    }
+    case UPDATE_USER_REQUEST: {
+      return {
+        ...state,
+        updateUser: {
+          ...state.updateUser,
+          loading: true,
+          error: null,
+          success: false,
+        },
+      };
+    }
+    case UPDATE_USER_SUCCESS: {
+      return {
+        ...state,
+        updateUser: {
+          ...state.updateUser,
+          loading: false,
+          success: true,
+          error: null,
+        },
+      };
+    }
+    case UPDATE_USER_FAIL: {
+      return {
+        ...state,
+        updateUser: {
+          ...state.updateUser,
+          loading: false,
+          success: false,
+          error: true,
+        },
+      };
+    }
+    case RESET_STATUS: {
+      return {
+        ...state,
+        updateUser: { loading: true, success: false, error: null },
+        addUser: { loading: true, success: false, error: null },
+        deleteUser: { loading: true, success: false, error: null },
       };
     }
     default:
