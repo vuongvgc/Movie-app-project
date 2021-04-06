@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
-function UserRoute(props) {
+function TicketRoomRoute(props) {
   const { component: Component, currentUser, ...routerProps } = props;
 
   return (
@@ -27,4 +27,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(UserRoute);
+export default connect(mapStateToProps)(TicketRoomRoute);
