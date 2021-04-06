@@ -31,10 +31,12 @@
 
 .detailMain-top .detailMain-img {
     padding: 0;
+    /* height: 340px; */
 }
 
 .detailMain-top .detailMain-img img {
     width: 100%;
+    height: 300px;
 }
 
 .detailMain-top .detailMain-info {
