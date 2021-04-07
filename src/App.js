@@ -7,16 +7,17 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+
 //Layout
 import MainLayout from "./layouts/MainLayout";
 import CheckoutLayout from "./layouts/CheckoutLayout";
-
 import AuthLayout from "./layouts/AuthLayout";
 import AdminLayout from "./layouts/AdminLayout";
 import UsersManagement from "./layouts/UsersManagement";
 import MoviesManagement from "./layouts/MoviesManagement";
 import InformationUser from "./layouts/InformationUser";
 import TicketBookingHistory from "./layouts/TicketBookingHistory";
+
 //Page
 // import HomePage from "./pages/HomePage";
 // import TicketRoom from "./pages/TicketRoom";
