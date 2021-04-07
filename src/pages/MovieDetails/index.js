@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getMovieDetail } from "../../actions/MovieDetail";
 import ShowTime from '../../components/ShowTime';
-
+import Loading from "../../components/Loading"
 import '../../styles/MovieDetails.css';
 
 export default function MovieDetails(props) {
@@ -25,6 +25,10 @@ export default function MovieDetails(props) {
   }
 
   return (
+    <>
+    {loading?
+    <Loading />
+    :
     <>
       <div className='movieDetail'
         style={{ backgroundImage: `url(${movieDetails?.hinhAnh})` }}
@@ -176,7 +180,8 @@ export default function MovieDetails(props) {
 
 
         </div>
-      </div>
+      </div></> }
+     
 
 
 
