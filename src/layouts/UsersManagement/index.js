@@ -146,7 +146,7 @@ class UsersManagement extends Component {
     }
     // console.log("run user");
     return (
-      <div className="ccontainer-fluid">
+      <div className="container-fluid">
         <div className="card text-center mx-0 px-0">
           <div className="card-header">
             <div className="row justify-content-between">
@@ -155,7 +155,7 @@ class UsersManagement extends Component {
                   Danh sách Người Dùng
                 </h4>
               </div>
-              <div className="col-md-6 text-end">
+              <div className="col-12 col-md-3 text-start text-md-end">
                 <button
                   className="btn btn-primary"
                   id="btnThem"
@@ -192,11 +192,11 @@ class UsersManagement extends Component {
               </div>
             </div>
             <div className="table-responsive">
-              <table className="table table-bordered table-hover">
+              <table className="table table-bordered table-hover table-movie">
                 <thead className="text-primary">
                   <tr>
                     <th>STT</th>
-                    <th className="nowrap col-1">
+                    <th className="col-1">
                       <span className="mr-1">Tài Khoản</span>
                     </th>
                     <th className="col-3">Họ Tên</th>

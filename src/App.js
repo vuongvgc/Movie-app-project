@@ -30,7 +30,7 @@ import TicketBookingHistory from "./layouts/TicketBookingHistory";
 import AdminRoute from "../src/guards/AdminRoute";
 import UserRoute from "../src/guards/UserRoute";
 import AuthRoute from "../src/guards/AuthRoute";
-import TicketRoomRoute from "../src/guards/TicketRoomRoute"
+import TicketRoomRoute from "../src/guards/TicketRoomRoute";
 
 // component loading
 import Loading from "../src/components/Loading";
@@ -38,12 +38,12 @@ import Loading from "../src/components/Loading";
 import { createBrowserHistory } from "history";
 
 // lazy loading
-const HomePage = lazy(() => import("./pages/HomePage"))
-const MovieDetails = lazy(() => import("./pages/MovieDetails"))
-const TicketRoom = lazy(() => import("./pages/TicketRoom"))
+const HomePage = lazy(() => import("./pages/HomePage"));
+const MovieDetails = lazy(() => import("./pages/MovieDetails"));
+const TicketRoom = lazy(() => import("./pages/TicketRoom"));
 const Login = lazy(() => import("./pages/Login"));
-const Register = lazy(() => import("./pages/Register"))
-const UserDetail = lazy(() => ("./pages/UserDetail"));
+const Register = lazy(() => import("./pages/Register"));
+const UserDetail = lazy(() => import("./pages/UserDetail"));
 
 let history = createBrowserHistory();
 
@@ -71,7 +71,10 @@ function App() {
           <Route exact path={["/checkout/:ticketRoomId"]}>
             <CheckoutLayout>
               <Switch>
-                <TicketRoomRoute path="/checkout/:ticketRoomId" component={TicketRoom} />
+                <TicketRoomRoute
+                  path="/checkout/:ticketRoomId"
+                  component={TicketRoom}
+                />
               </Switch>
             </CheckoutLayout>
           </Route>
@@ -97,14 +100,19 @@ function App() {
           <Route exact path={["/user/information", "/user/movie"]}>
             <UserDetail>
               <Switch>
-                <UserRoute path="/user/information" component={InformationUser} />
-                <UserRoute path="/user/movie" component={TicketBookingHistory} />
+                <UserRoute
+                  path="/user/information"
+                  component={InformationUser}
+                />
+                <UserRoute
+                  path="/user/movie"
+                  component={TicketBookingHistory}
+                />
               </Switch>
             </UserDetail>
           </Route>
           <Redirect to="/" />
         </Switch>
-
       </Router>
     </Suspense>
   );
