@@ -4,24 +4,25 @@ import { TICKET_ROOM_FAIL, TICKET_ROOM_SUCCESS, TICKET_ROOM_REQUEST } from "../c
 const initialState = {
     ticketRoom : {},
     loadingTicketRoom: false,
-    error: null
+    errorTicketRoom: null
 }
 
 
 const ticketRoomReducer =  (state  =initialState,action )=>{
+    console.log("action",action)
     switch (action.type) {
         case TICKET_ROOM_REQUEST: {
-            return { ...state, loadingTicketRoom: true, error: null };
+            return { ...state, loadingTicketRoom: true, errorTicketRoom: null };
         }
 
         case TICKET_ROOM_SUCCESS: {
 
-            return { ...state, ticketRoom: action.payload.data, loadingTicketRoom: false, error: null }
+            return { ...state, ticketRoom: action.payload.data, loadingTicketRoom: false, errorTicketRoom: null }
         }
 
         case TICKET_ROOM_FAIL: {
 
-            return { ...state, loadingTicketRoom: false, error: action.payload.error }
+            return { ...state, loadingTicketRoom: false, errorTicketRoom: action.payload.error }
         }
 
 

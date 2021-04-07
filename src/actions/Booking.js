@@ -31,7 +31,7 @@ export const getBooking = (value) => {
       .catch((error) => {
         dispatch({
           type: BOOKING_FAIL,
-          payload: { error: error?.reponse?.data },
+          payload: { error: error?.response?.data },
         });
       });
   };
