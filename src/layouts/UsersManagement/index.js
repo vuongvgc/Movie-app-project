@@ -3,7 +3,7 @@ import ModalUser from "../../components/Modal/ModalUser";
 import { connect } from "react-redux";
 import { getUserList, deleteUser } from "../../actions/Admin";
 import RenderUserList from "./RenderUserList";
-import Snackbar from "../../components/Snackbar";
+import SnackBar from "../../components/Snackbar";
 import CircularIndeterminate from "../../components/CircularIndeterminate";
 // import ModalUpdateUser from "../../components/Modal/ModalUpdateUser";
 import ModalUpdate from "../../components/Modal/ModalUpdate";
@@ -25,7 +25,6 @@ class UsersManagement extends Component {
   }
   deleteUser = (taiKhoan, accessToken) => {
     this.props.deleteUser(taiKhoan, accessToken);
-    this.handlePage(1);
   };
   renderUser = (user) => {
     // console.log(user);
@@ -234,6 +233,37 @@ class UsersManagement extends Component {
           title="Delete User"
           content={this.renderContent()}
           action={this.renderAction()}
+        />
+        <SnackBar
+          isOpen={this.props.admin.updateUser.success}
+          title="Cập nhật thành công"
+          severity="success"
+        />
+        <SnackBar
+          isOpen={this.props.admin.updateUser.error}
+          title="Cập nhật thất bại"
+          severity="warning"
+        />
+
+        <SnackBar
+          isOpen={this.props.admin.addUser.success}
+          title="Thêm phim thành công"
+          severity="success"
+        />
+        <SnackBar
+          isOpen={this.props.admin.addUser.error}
+          title={this.props.admin.addUser.error}
+          severity="warning"
+        />
+        <SnackBar
+          isOpen={this.props.admin.deleteUser.success}
+          title="Xóa người dùng thành công"
+          severity="success"
+        />
+        <SnackBar
+          isOpen={this.props.admin.deleteUser.error}
+          title={this.props.admin.deleteUser.error}
+          severity="warning"
         />
       </div>
     );

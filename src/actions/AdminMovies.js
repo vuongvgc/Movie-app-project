@@ -63,7 +63,7 @@ export const addMovie = (form_data) => {
         console.log(error.response);
         dispatch({
           type: ADD_MOVIE_FAIL,
-          payload: { error: error.response.data },
+          payload: { error: error?.response?.data },
         });
       });
   };
@@ -120,7 +120,7 @@ export const deleteMovie = (maPhim, accessToken) => {
         console.log(error.response);
         dispatch({
           type: DELETE_MOVIE_FAIL,
-          payload: { error: error.response.data },
+          payload: { error: error?.response?.data },
         });
       });
   };

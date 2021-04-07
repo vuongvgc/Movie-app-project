@@ -5,6 +5,7 @@ class RenderUserList extends React.PureComponent {
     if (this.props.admin.loading) {
       return <CircularIndeterminate />;
     }
+    console.log(this.props.admin.userList);
     return this.props.admin.userList.items.map((user, index) => {
       return (
         <tr key={user.taiKhoan}>

@@ -29,11 +29,11 @@ export const login = (values) => {
         history.replace("/");
       })
       .catch((error) => {
-        // console.log(error.response.data);
+        // console.log(error?.response?.data);
         dispatch({
           type: LOGIN_FAIL,
           payload: {
-            error: error.response.data,
+            error: error?.response?.data,
           },
         });
       });
@@ -68,7 +68,7 @@ export const register = (values) => {
         dispatch({
           type: REGISTER_FAIL,
           payload: {
-            error: error.response.data,
+            error: error?.response?.data,
           },
         });
       });
