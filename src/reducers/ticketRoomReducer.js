@@ -3,7 +3,7 @@ import { TICKET_ROOM_FAIL, TICKET_ROOM_SUCCESS, TICKET_ROOM_REQUEST } from "../c
 
 const initialState = {
     ticketRoom : {},
-    loading: false,
+    loadingTicketRoom: false,
     error: null
 }
 
@@ -11,17 +11,17 @@ const initialState = {
 const ticketRoomReducer =  (state  =initialState,action )=>{
     switch (action.type) {
         case TICKET_ROOM_REQUEST: {
-            return { ...state, loading: true, error: null };
+            return { ...state, loadingTicketRoom: true, error: null };
         }
 
         case TICKET_ROOM_SUCCESS: {
 
-            return { ...state, ticketRoom: action.payload.data, loading: false, error: null }
+            return { ...state, ticketRoom: action.payload.data, loadingTicketRoom: false, error: null }
         }
 
         case TICKET_ROOM_FAIL: {
 
-            return { ...state, loading: false, error: action.payload.error }
+            return { ...state, loadingTicketRoom: false, error: action.payload.error }
         }
 
 
