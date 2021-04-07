@@ -146,11 +146,11 @@ class UsersManagement extends Component {
     }
     // console.log("run user");
     return (
-      <div className="container">
-        <div className="card text-center">
+      <div className="ccontainer-fluid">
+        <div className="card text-center mx-0 px-0">
           <div className="card-header">
             <div className="row justify-content-between">
-              <div className="col-md-6">
+              <div className="col-12 col-md-5">
                 <h4 className="text-start font-weight-bold">
                   Danh sách Người Dùng
                 </h4>
@@ -160,7 +160,7 @@ class UsersManagement extends Component {
                   className="btn btn-primary"
                   id="btnThem"
                   data-bs-toggle="modal"
-                  data-bs-target={"#" + this.state.nameModel}
+                  data-bs-target="#userModal"
                 >
                   Thêm Người Dùng
                 </button>
@@ -191,31 +191,31 @@ class UsersManagement extends Component {
                 </div>
               </div>
             </div>
-            <table className="table table-bordered table-hover myTable">
-              <thead className="text-primary">
-                <tr>
-                  <th>STT</th>
-                  <th className="nowrap">
-                    <span className="mr-1">Tài Khoản</span>
-                    <i className="fa fa-arrow-up mx-2" id="SapXepTang"></i>
-                    <i className="fa fa-arrow-down" id="SapXepGiam"></i>
-                  </th>
-                  <th>Họ Tên</th>
-                  <th>Email</th>
-                  <th>Số Điện Thoại</th>
-                  <th>
-                    <em className="fa fa-cog"></em>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <RenderUserList
-                  admin={this.props.admin}
-                  selectUser={(user) => this.selectUser(user)}
-                  renderUser={(user) => this.renderUser(user)}
-                />
-              </tbody>
-            </table>
+            <div className="table-responsive">
+              <table className="table table-bordered table-hover">
+                <thead className="text-primary">
+                  <tr>
+                    <th>STT</th>
+                    <th className="nowrap col-1">
+                      <span className="mr-1">Tài Khoản</span>
+                    </th>
+                    <th className="col-3">Họ Tên</th>
+                    <th className="col-3">Email</th>
+                    <th className="col-2">Số Điện Thoại</th>
+                    <th className="col-2">
+                      <em className="fa fa-cog"></em>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <RenderUserList
+                    admin={this.props.admin}
+                    selectUser={(user) => this.selectUser(user)}
+                    renderUser={(user) => this.renderUser(user)}
+                  />
+                </tbody>
+              </table>
+            </div>
           </div>
           <div className="card-footer">
             <RenderChangePage
@@ -224,12 +224,7 @@ class UsersManagement extends Component {
             />
           </div>
         </div>
-        <ModalUser title="Thêm Người Dùng" idModal={this.state.nameModel} />
-        {/* <ModalUpdateUser
-          title="Cập Nhật Thông Tin"
-          idModal="updateUserModal"
-          inforUser={this.state.userItem}
-        /> */}
+        <ModalUser title="Thêm Người Dùng" idModal="userModal" />
         <ModalUpdate
           title="Update User"
           content={this.renderContentUpdate()}
