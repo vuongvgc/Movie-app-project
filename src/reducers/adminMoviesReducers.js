@@ -16,6 +16,7 @@ import {
   SEARCH_MOVIE_FAIL,
   RESET_STATUS,
 } from "../constants/Admin";
+import addItemInArr from "../utils/addItemInArr";
 const initialState = {
   moviesList: null,
   loading: true,
@@ -66,6 +67,8 @@ const adminMoviesReducers = (state = initialState, action) => {
       };
     }
     case ADD_MOVIE_SUCCESS: {
+      let addItem = action.payload.data;
+      let arrMovie = state.moviesList.items;
       return {
         ...state,
         currentUser: {
@@ -73,6 +76,10 @@ const adminMoviesReducers = (state = initialState, action) => {
           loading: false,
           error: null,
           currentUser: action.payload.data,
+        },
+        moviesList: {
+          ...state.moviesList,
+          items: addItemInArr(arrMovie, addItem),
         },
         addMovie: {
           ...state.addMovie,

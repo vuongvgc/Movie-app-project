@@ -56,7 +56,7 @@ export const addMovie = (form_data) => {
       .then((result) => {
         dispatch({
           type: ADD_MOVIE_SUCCESS,
-          payload: { data: result.data },
+          payload: { data: result.data, movieForm: form_data },
         });
       })
       .catch((error) => {
