@@ -19,7 +19,7 @@ export const getMovieInfo = (id) => {
             .catch((error) => {
                 dispatch({
                     type: MOVIE_INFO_FAIL,
-                    payload: { error: error?.reponse?.data }
+                    payload: { error: error?.response?.data }
                 })
             })
     }

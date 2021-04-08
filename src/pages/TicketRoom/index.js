@@ -6,6 +6,7 @@ import { getTicketRoom } from "../../actions/TicketRoom"
 import { getBooking } from "../../actions/Booking"
 
 import Loading from "../../components/Loading"
+import Error from "../../components/Error"
 // material-ui
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -109,7 +110,7 @@ export default function TicketRoom(props) {
   const [danhSachVe, setDanhSachVe] = useState([]);
 
 
-  const { ticketRoom, loadingTicketRoom } = useSelector((state) => state.ticketRoomReducer)
+  const { ticketRoom, loadingTicketRoom ,errorTicketRoom } = useSelector((state) => state.ticketRoomReducer)
   const { currentUser } = useSelector(state => state.authReducers)
   // const { booking, loading, error } = useSelector(state => state.bookingReducer)
   const { booking, loading, error } = useSelector(state => state.bookingReducer)
@@ -263,7 +264,10 @@ export default function TicketRoom(props) {
   return (
 
     <div className='checkout'>
-      { loadingTicketRoom ?
+      {console.log(errorTicketRoom)}
+      { errorTicketRoom ? <Error />:
+      
+      loadingTicketRoom ? 
         <Loading /> :
         <>
           <div className='row mainCheckout'>
@@ -689,7 +693,7 @@ export default function TicketRoom(props) {
         </>
 
 
-
+   
       }
 
     </div>
