@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUser } from "../../actions/User";
 import "./style.css";
+import Loading from "../../components/Loading";
 class TicketBookingHistory extends Component {
   componentDidMount() {
     this.props.getUser({ taikhoan: this.props.currentUser });
@@ -12,7 +13,7 @@ class TicketBookingHistory extends Component {
   };
   render() {
     if (!this.props.userDetail) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
     return (
       <div className="container-fluid ">

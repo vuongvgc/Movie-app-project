@@ -4,6 +4,7 @@ import { getUser, updateUser } from "../../actions/User";
 import InforUserForm from "../../components/InforUserForm";
 import _ from "lodash";
 import SnackBar from "../../components/Snackbar";
+import Loading from "../../components/Loading";
 class InformationUser extends Component {
   componentDidMount() {
     this.props.getUser({ taikhoan: this.props.currentUser });
@@ -25,7 +26,7 @@ class InformationUser extends Component {
   render() {
     // console.log(this.props.userDetail);
     if (!this.props.userDetail) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
     return (
       <div className="container-fluid">

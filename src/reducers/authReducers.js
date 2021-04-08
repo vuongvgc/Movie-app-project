@@ -37,7 +37,7 @@ const authReducer = (state = initialState, action) => {
       return { ...state, loading: false, error: action.payload.error };
     }
     case LOGOUT_SUCCESS: {
-      return { ...initialState };
+      return { ...initialState, currentUser: "" };
     }
     case REGISTER_SUCCESS: {
       return { ...state, registerUser: action.payload.data };

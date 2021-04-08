@@ -1,8 +1,8 @@
 import React from "react";
-
+import Loading from "../../components/Loading";
 const RenderChangePage = (props) => {
   if (props.adminUser.loading) {
-    return <div>Loading</div>;
+    return <Loading />;
   }
   let { userList } = props.adminUser;
   return (

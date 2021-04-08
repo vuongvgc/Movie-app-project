@@ -1,10 +1,10 @@
 import React from "react";
 import PopOver from "../../components/Popover";
 import ModalPure from "../../components/Modal/Modal";
-import CircularIndeterminate from "../../components/CircularIndeterminate";
 import { connect } from "react-redux";
 import { deleteMovie } from "../../actions/AdminMovies";
 import SnackBar from "../../components/Snackbar";
+import Loading from "../../components/Loading";
 
 class RenderUserList extends React.Component {
   constructor(props) {
@@ -54,7 +54,7 @@ class RenderUserList extends React.Component {
   };
   render() {
     if (this.props.adminMovies.loading) {
-      return <CircularIndeterminate />;
+      return <Loading />;
     }
     // console.log(this.props.adminMovies);
     return this.props.adminMovies.moviesList.items.map((movie) => {
