@@ -112,7 +112,7 @@ export const deleteMovie = (maPhim, accessToken) => {
         // Lưu thông tin user xuống localStorage
         dispatch({
           type: DELETE_MOVIE_SUCCESS,
-          payload: { data: result.data },
+          payload: { data: result.data, movieModel: maPhim },
         });
         // history.replace("/");
       })

@@ -17,6 +17,7 @@ import {
   RESET_STATUS,
 } from "../constants/Admin";
 import addItemInArr from "../utils/addItemInArr";
+import deleteMovieInArr from "../utils/deleteMovieInArr";
 const initialState = {
   moviesList: null,
   loading: true,
@@ -172,8 +173,14 @@ const adminMoviesReducers = (state = initialState, action) => {
       };
     }
     case DELETE_MOVIE_SUCCESS: {
+      let movieModel = action.payload.movieModel;
+      let arrMovie = state.moviesList.items;
       return {
         ...state,
+        moviesList: {
+          ...state.moviesList,
+          items: deleteMovieInArr(arrMovie, movieModel),
+        },
         deleteMovie: {
           ...state.deleteMovie,
           success: true,
