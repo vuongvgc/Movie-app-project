@@ -1,5 +1,6 @@
-.tabTheater__cumRap:hover {
-  cursor: pointer;
+.tabTheater__cumRap {
+  color: #a8e063;
+  /* cursor: pointer; */
 }
 .tabTheater__listPhim {
   /* display: block; */
@@ -31,19 +32,23 @@
   }
 }
 
-a.tabTheater__active:active {
+a.tabTheater__active:hover {
+  color: #f7797d !important;
+  background-color: #c6ffdd !important;
+  font-size: 2rem;
+  /* transform: scale(1); */
 }
 
 .tabTheater__info {
   position: relative;
   padding-bottom: 15px;
   margin: 2rem 0;
-  color: blue;
+  color: #ffffffe3;
 }
 
 .tabTheater__info::after {
   content: " ";
-  width: 0;
+  width: 100%;
   height: 4px;
   background-image: linear-gradient(to right, #fbbd61, #ec7532);
   position: absolute;
@@ -56,4 +61,36 @@ a.tabTheater__active:active {
 .tabTheater__info:hover::after {
   width: 100%;
   /* border: solid 2px goldenrod; */
+}
+
+.tabTheater__first {
+  opacity: 0.9;
+  background-size: cover;
+  background-position: center;
+  padding-top: 2rem;
+}
+
+.tabTheater__content {
+  /* background: url("../../../public/img/bgListMovies.jpg") no-repeat center
+    center;
+  background-size: cover; */
+  position: relative;
+  opacity: 1;
+}
+
+.tabTheater__overplay {
+  /* position: absolute; */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, black, transparent);
+  box-shadow: inset 0 120px 30px -5px rgba(0, 0, 0, 0.75);
+}
+a.nav-link {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.tabTheater__list {
+  /* border-left: solid 0.5rem #a8e063;
+  border-right: solid 0.5rem #a8e063; */
 }

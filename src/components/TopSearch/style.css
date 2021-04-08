@@ -92,7 +92,7 @@ button.slick-arrow.slick-next:hover .slick-next {
 }
 
 .top__Search__play a:hover {
-  color: yellow;
+  color: #66ff00;
   text-decoration: none;
   /* transform: scale(0.5); */
   /* transition: all 0.5s; */

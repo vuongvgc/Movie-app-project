@@ -1,15 +1,25 @@
-import React, { Component } from "react";
+import React, { Component, lazy, Suspense } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import Loading from "../../components/Loading";
+
+
+const HeaderLazy = lazy(() => import('../../components/Header'))
+const FooterLazy = lazy(() => import('../../components/Footer'))
+
 
 export default class MainLayout extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Suspense fallback={<Loading />}>
+          <HeaderLazy />
+        </Suspense>
         {/* MainLayout */}
         {this.props.children}
-        <Footer />
+        <Suspense fallback={<Loading />}>
+          <FooterLazy />
+        </Suspense>
       </div>
     );
   }
