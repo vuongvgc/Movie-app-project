@@ -17,7 +17,7 @@ export const getUser = (user) => {
         });
       })
       .catch((error) => {
-        console.log(error.response.data);
+        console.log(error?.response?.data);
       });
   };
 };
@@ -42,7 +42,7 @@ export const updateUser = (formValue, accessToken) => {
         console.log(error.response);
         dispatch({
           type: UPDATE_USER_FAIL,
-          payload: { error: error.response.data },
+          payload: { error: error?.response?.data },
         });
       });
   };

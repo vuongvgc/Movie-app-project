@@ -56,7 +56,7 @@ class RenderUserList extends React.Component {
     if (this.props.adminMovies.loading) {
       return <CircularIndeterminate />;
     }
-    console.log(this.props.adminMovies);
+    // console.log(this.props.adminMovies);
     return this.props.adminMovies.moviesList.items.map((movie) => {
       return (
         <tr key={movie.maPhim}>

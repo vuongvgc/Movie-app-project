@@ -60,14 +60,14 @@ export const addUser = (formValue, accessToken) => {
       .then((result) => {
         dispatch({
           type: ADD_USER_SUCCESS,
-          payload: { data: result.data },
+          payload: { data: result.data, user: { ...formValue } },
         });
         // history.replace("/");
       })
       .catch((error) => {
         dispatch({
           type: ADD_USER_FAIL,
-          payload: { error: error.response.data },
+          payload: { error: error?.response?.data },
         });
       });
   };
@@ -87,14 +87,14 @@ export const deleteUser = (taiKhoan, accessToken) => {
       .then((result) => {
         dispatch({
           type: DELETE_USER_SUCCESS,
-          payload: { data: result.data },
+          payload: { data: result.data, user: taiKhoan },
         });
       })
       .catch((error) => {
         console.log(error.response);
         dispatch({
           type: DELETE_USER_FAIL,
-          payload: { error: error.response.data },
+          payload: { error: error?.response?.data },
         });
       });
   };

@@ -16,6 +16,8 @@ import {
   SEARCH_MOVIE_FAIL,
   RESET_STATUS,
 } from "../constants/Admin";
+import addItemInArr from "../utils/addItemInArr";
+import deleteMovieInArr from "../utils/deleteMovieInArr";
 const initialState = {
   moviesList: null,
   loading: true,
@@ -66,6 +68,8 @@ const adminMoviesReducers = (state = initialState, action) => {
       };
     }
     case ADD_MOVIE_SUCCESS: {
+      let addItem = action.payload.data;
+      let arrMovie = state.moviesList.items;
       return {
         ...state,
         currentUser: {
@@ -73,6 +77,10 @@ const adminMoviesReducers = (state = initialState, action) => {
           loading: false,
           error: null,
           currentUser: action.payload.data,
+        },
+        moviesList: {
+          ...state.moviesList,
+          items: addItemInArr(arrMovie, addItem),
         },
         addMovie: {
           ...state.addMovie,
@@ -165,8 +173,14 @@ const adminMoviesReducers = (state = initialState, action) => {
       };
     }
     case DELETE_MOVIE_SUCCESS: {
+      let movieModel = action.payload.movieModel;
+      let arrMovie = state.moviesList.items;
       return {
         ...state,
+        moviesList: {
+          ...state.moviesList,
+          items: deleteMovieInArr(arrMovie, movieModel),
+        },
         deleteMovie: {
           ...state.deleteMovie,
           success: true,

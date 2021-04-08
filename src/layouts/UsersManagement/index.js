@@ -3,7 +3,7 @@ import ModalUser from "../../components/Modal/ModalUser";
 import { connect } from "react-redux";
 import { getUserList, deleteUser } from "../../actions/Admin";
 import RenderUserList from "./RenderUserList";
-import Snackbar from "../../components/Snackbar";
+import SnackBar from "../../components/Snackbar";
 import CircularIndeterminate from "../../components/CircularIndeterminate";
 // import ModalUpdateUser from "../../components/Modal/ModalUpdateUser";
 import ModalUpdate from "../../components/Modal/ModalUpdate";
@@ -25,7 +25,6 @@ class UsersManagement extends Component {
   }
   deleteUser = (taiKhoan, accessToken) => {
     this.props.deleteUser(taiKhoan, accessToken);
-    this.handlePage(1);
   };
   renderUser = (user) => {
     // console.log(user);
@@ -146,21 +145,21 @@ class UsersManagement extends Component {
     }
     // console.log("run user");
     return (
-      <div className="container">
-        <div className="card text-center">
+      <div className="container-fluid">
+        <div className="card text-center mx-0 px-0">
           <div className="card-header">
             <div className="row justify-content-between">
-              <div className="col-md-6">
+              <div className="col-12 col-md-5">
                 <h4 className="text-start font-weight-bold">
                   Danh sách Người Dùng
                 </h4>
               </div>
-              <div className="col-md-6 text-end">
+              <div className="col-12 col-md-3 text-start text-md-end">
                 <button
                   className="btn btn-primary"
                   id="btnThem"
                   data-bs-toggle="modal"
-                  data-bs-target={"#" + this.state.nameModel}
+                  data-bs-target="#userModal"
                 >
                   Thêm Người Dùng
                 </button>
@@ -191,31 +190,31 @@ class UsersManagement extends Component {
                 </div>
               </div>
             </div>
-            <table className="table table-bordered table-hover myTable">
-              <thead className="text-primary">
-                <tr>
-                  <th>STT</th>
-                  <th className="nowrap">
-                    <span className="mr-1">Tài Khoản</span>
-                    <i className="fa fa-arrow-up mx-2" id="SapXepTang"></i>
-                    <i className="fa fa-arrow-down" id="SapXepGiam"></i>
-                  </th>
-                  <th>Họ Tên</th>
-                  <th>Email</th>
-                  <th>Số Điện Thoại</th>
-                  <th>
-                    <em className="fa fa-cog"></em>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <RenderUserList
-                  admin={this.props.admin}
-                  selectUser={(user) => this.selectUser(user)}
-                  renderUser={(user) => this.renderUser(user)}
-                />
-              </tbody>
-            </table>
+            <div className="table-responsive">
+              <table className="table table-bordered table-hover table-movie">
+                <thead className="text-primary">
+                  <tr>
+                    <th>STT</th>
+                    <th className="col-1">
+                      <span className="mr-1">Tài Khoản</span>
+                    </th>
+                    <th className="col-3">Họ Tên</th>
+                    <th className="col-3">Email</th>
+                    <th className="col-2">Số Điện Thoại</th>
+                    <th className="col-2">
+                      <em className="fa fa-cog"></em>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <RenderUserList
+                    admin={this.props.admin}
+                    selectUser={(user) => this.selectUser(user)}
+                    renderUser={(user) => this.renderUser(user)}
+                  />
+                </tbody>
+              </table>
+            </div>
           </div>
           <div className="card-footer">
             <RenderChangePage
@@ -224,12 +223,7 @@ class UsersManagement extends Component {
             />
           </div>
         </div>
-        <ModalUser title="Thêm Người Dùng" idModal={this.state.nameModel} />
-        {/* <ModalUpdateUser
-          title="Cập Nhật Thông Tin"
-          idModal="updateUserModal"
-          inforUser={this.state.userItem}
-        /> */}
+        <ModalUser title="Thêm Người Dùng" idModal="userModal" />
         <ModalUpdate
           title="Update User"
           content={this.renderContentUpdate()}
@@ -239,6 +233,37 @@ class UsersManagement extends Component {
           title="Delete User"
           content={this.renderContent()}
           action={this.renderAction()}
+        />
+        <SnackBar
+          isOpen={this.props.admin.updateUser.success}
+          title="Cập nhật thành công"
+          severity="success"
+        />
+        <SnackBar
+          isOpen={this.props.admin.updateUser.error}
+          title="Cập nhật thất bại"
+          severity="warning"
+        />
+
+        <SnackBar
+          isOpen={this.props.admin.addUser.success}
+          title="Thêm phim thành công"
+          severity="success"
+        />
+        <SnackBar
+          isOpen={this.props.admin.addUser.error}
+          title={this.props.admin.addUser.error}
+          severity="warning"
+        />
+        <SnackBar
+          isOpen={this.props.admin.deleteUser.success}
+          title="Xóa người dùng thành công"
+          severity="success"
+        />
+        <SnackBar
+          isOpen={this.props.admin.deleteUser.error}
+          title={this.props.admin.deleteUser.error}
+          severity="warning"
         />
       </div>
     );

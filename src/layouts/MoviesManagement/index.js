@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import SnackBar from "../../components/Snackbar";
+import CircularIndeterminate from "../../components/CircularIndeterminate";
 import {
   getMoviesList,
   addMovie,
@@ -11,6 +12,7 @@ import RenderMovieList from "./RenderMovieList";
 import ModalPure from "../../components/Modal/Modal";
 import MovieInsertForm from "../../components/MovieInsertForm";
 import RenderChangePage from "./RenderChangePage";
+import "./style.css";
 class MoviesManagement extends Component {
   constructor(props) {
     super(props);
@@ -87,6 +89,9 @@ class MoviesManagement extends Component {
     }
   };
   render() {
+    if (this.props.adminMovies.loading === true) {
+      return <CircularIndeterminate />;
+    }
     return (
       <div className="container-fluid">
         <div className="card text-center mx-0 px-0">
@@ -131,13 +136,13 @@ class MoviesManagement extends Component {
                 </div>
               </div>
             </div>
-            <div className="table-responsive">
-              <table className="table table-bordered table-hover">
+            <div className="table table-responsive ">
+              <table className="table table-bordered table-hover table-movie">
                 <thead className="text-primary">
                   <tr>
-                    <th class="col-1">Mã Phim</th>
-                    <th className="nowrap col-3">
-                      <span className="mr-1 col-3">Tên Phim</span>
+                    <th>Mã Phim</th>
+                    <th className="col-3">
+                      <span className="mr-1">Tên Phim</span>
                     </th>
                     <th className="col-4">Hình ảnh</th>
                     <th className="col-2">Ngày khởi chiếu</th>
@@ -151,17 +156,6 @@ class MoviesManagement extends Component {
                     adminMovies={this.props.adminMovies}
                     handleMovie={this.handleMovie}
                   />
-                  <ModalPure
-                    title="Thêm Phim Mới"
-                    id="ModalAddMovie"
-                    content={this.renderContent()}
-                  />
-                  <ModalPure
-                    title="Cập Nhật Phim"
-                    id="ModalUpdateMovie"
-                    content={this.renderContent()}
-                    update={true}
-                  />
                 </tbody>
               </table>
             </div>
@@ -171,28 +165,39 @@ class MoviesManagement extends Component {
               adminMovies={this.props.adminMovies}
               handlePage={this.handlePage}
             />
-            <SnackBar
-              isOpen={this.props.adminMovies.updateMovie.success}
-              title="Cập nhật thành công"
-              severity="success"
-            />
-            <SnackBar
-              isOpen={this.props.adminMovies.updateMovie.error}
-              title="Cập nhật thật bại"
-              severity="warning"
-            />
-            <SnackBar
-              isOpen={this.props.adminMovies.addMovie.success}
-              title="Thêm phim thành công"
-              severity="success"
-            />
-            <SnackBar
-              isOpen={this.props.adminMovies.addMovie.error}
-              title={this.props.adminMovies.addMovie.error}
-              severity="warning"
-            />
           </div>
         </div>
+        <SnackBar
+          isOpen={this.props.adminMovies.updateMovie.success}
+          title="Cập nhật thành công"
+          severity="success"
+        />
+        <SnackBar
+          isOpen={this.props.adminMovies.updateMovie.error}
+          title="Cập nhật thật bại"
+          severity="warning"
+        />
+        <SnackBar
+          isOpen={this.props.adminMovies.addMovie.success}
+          title="Thêm phim thành công"
+          severity="success"
+        />
+        <SnackBar
+          isOpen={this.props.adminMovies.addMovie.error}
+          title={this.props.adminMovies.addMovie.error}
+          severity="warning"
+        />
+        <ModalPure
+          title="Thêm Phim Mới"
+          id="ModalAddMovie"
+          content={this.renderContent()}
+        />
+        <ModalPure
+          title="Cập Nhật Phim"
+          id="ModalUpdateMovie"
+          content={this.renderContent()}
+          update={true}
+        />
       </div>
     );
   }

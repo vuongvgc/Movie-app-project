@@ -1,7 +1,11 @@
 import React from "react";
+import CircularIndeterminate from "../../components/CircularIndeterminate";
 class RenderUserList extends React.PureComponent {
   render() {
-    //   console.log(props.admin);
+    if (this.props.admin.loading) {
+      return <CircularIndeterminate />;
+    }
+    console.log(this.props.admin.userList);
     return this.props.admin.userList.items.map((user, index) => {
       return (
         <tr key={user.taiKhoan}>
@@ -10,9 +14,9 @@ class RenderUserList extends React.PureComponent {
           <td>{user.hoTen}</td>
           <td>{user.email}</td>
           <td>{user.soDt}</td>
-          <td>
+          <td className="d-grid gap-2 d-block">
             <button
-              className="btn btn-success mx-1"
+              className="btn btn-success"
               data-bs-toggle="modal"
               data-bs-target="#updateModal"
               onClick={() => this.props.renderUser(user.taiKhoan)}

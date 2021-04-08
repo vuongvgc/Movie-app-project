@@ -15,6 +15,8 @@ import {
   UPDATE_USER_REQUEST,
   UPDATE_USER_SUCCESS,
 } from "../constants/user";
+import deleteItemInArr from "../utils/deleteItemInArr";
+import addItemInArr from "../utils/addItemInArr";
 const initialState = {
   userList: null,
   loading: true,
@@ -51,8 +53,14 @@ const adminReducers = (state = initialState, action) => {
       };
     }
     case ADD_USER_SUCCESS: {
+      let userList = state.userList.items;
+      let userItem = action.payload.user;
       return {
         ...state,
+        userList: {
+          ...state.userList,
+          items: addItemInArr(userList, userItem),
+        },
         addUser: {
           ...state.addUser,
           loading: false,
@@ -85,8 +93,19 @@ const adminReducers = (state = initialState, action) => {
       };
     }
     case DELETE_USER_SUCCESS: {
+      console.log(action.payload.user);
+      // let newUserList = state.userList.items.filter(
+      //   (item) => item.taiKhoan !== action.payload.user
+      // );
+      // console.log(newUserList);
+      let userDelete = action.payload.user;
+      let oldUserList = state.userList.items;
       return {
         ...state,
+        userList: {
+          ...state.userList,
+          items: deleteItemInArr(oldUserList, userDelete),
+        },
         deleteUser: {
           ...state.deleteUser,
           loading: false,

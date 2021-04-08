@@ -56,14 +56,14 @@ export const addMovie = (form_data) => {
       .then((result) => {
         dispatch({
           type: ADD_MOVIE_SUCCESS,
-          payload: { data: result.data },
+          payload: { data: result.data, movieForm: form_data },
         });
       })
       .catch((error) => {
         console.log(error.response);
         dispatch({
           type: ADD_MOVIE_FAIL,
-          payload: { error: error.response.data },
+          payload: { error: error?.response?.data },
         });
       });
   };
@@ -112,7 +112,7 @@ export const deleteMovie = (maPhim, accessToken) => {
         // Lưu thông tin user xuống localStorage
         dispatch({
           type: DELETE_MOVIE_SUCCESS,
-          payload: { data: result.data },
+          payload: { data: result.data, movieModel: maPhim },
         });
         // history.replace("/");
       })
@@ -120,7 +120,7 @@ export const deleteMovie = (maPhim, accessToken) => {
         console.log(error.response);
         dispatch({
           type: DELETE_MOVIE_FAIL,
-          payload: { error: error.response.data },
+          payload: { error: error?.response?.data },
         });
       });
   };
