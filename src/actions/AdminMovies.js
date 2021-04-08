@@ -109,12 +109,10 @@ export const deleteMovie = (maPhim, accessToken) => {
       },
     })
       .then((result) => {
-        // Lưu thông tin user xuống localStorage
         dispatch({
           type: DELETE_MOVIE_SUCCESS,
           payload: { data: result.data, movieModel: maPhim },
         });
-        // history.replace("/");
       })
       .catch((error) => {
         console.log(error.response);
