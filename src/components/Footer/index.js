@@ -33,7 +33,14 @@ const Footer = ({ classes }) => {
       <Container maxWidth="lg">
         <Box className={classes.contentFooter}>
           <Box className={classes.itemContentFooter}>
-            <Typography style={{ marginBottom: 15, fontWeight: "bold" }}>
+            <Typography
+              style={{
+                marginBottom: 15,
+                fontWeight: "bold",
+                fontSize: "1.2rem",
+                color: "white",
+              }}
+            >
               VPVCENTER
             </Typography>
             <Box>
@@ -46,35 +53,35 @@ const Footer = ({ classes }) => {
               </Link>
               <Link
                 className={classes.styleLink}
-                to={{ pathname: "https://www.facebook.com/minhphuc219" }}
+                to={{ pathname: "https://www.facebook.com/vuongvgc" }}
                 target="_blank"
               >
                 <Typography>Điều khoản VPVCenter</Typography>
               </Link>
               <Link
                 className={classes.styleLink}
-                to={{ pathname: "https://www.facebook.com/minhphuc219" }}
+                to={{ pathname: "https://www.facebook.com/cainaylaurl" }}
                 target="_blank"
               >
                 <Typography>Thỏa thuận sử dụng</Typography>
               </Link>
               <Link
                 className={classes.styleLink}
-                to={{ pathname: "https://www.facebook.com/minhphuc219" }}
+                to={{ pathname: "https://github.com/flashphuc" }}
                 target="_blank"
               >
                 <Typography>Chính sách bảo mật</Typography>
               </Link>
               <Link
                 className={classes.styleLink}
-                to={{ pathname: "https://www.facebook.com/minhphuc219" }}
+                to={{ pathname: "https://github.com/vuongvgc" }}
                 target="_blank"
               >
                 <Typography>Chăm sóc khách hàng</Typography>
               </Link>
               <Link
                 className={classes.styleLink}
-                to={{ pathname: "https://www.facebook.com/minhphuc219" }}
+                to={{ pathname: "https://github.com/BuiVoQuangVinh" }}
                 target="_blank"
               >
                 <Typography>Giấy phép bản quyền</Typography>
@@ -82,7 +89,14 @@ const Footer = ({ classes }) => {
             </Box>
           </Box>
           <Box className={classes.itemContentFooter}>
-            <Typography style={{ fontWeight: "bold", marginBottom: 15 }}>
+            <Typography
+              style={{
+                fontWeight: "bold",
+                marginBottom: 15,
+                fontSize: "1.2rem",
+                color: " white",
+              }}
+            >
               ĐỐI TÁC
             </Typography>
             <Grid
@@ -228,7 +242,14 @@ const Footer = ({ classes }) => {
             </Grid>
           </Box>
           <Box className={classes.itemContentFooter}>
-            <Typography style={{ fontWeight: "bold", marginBottom: 20 }}>
+            <Typography
+              style={{
+                fontWeight: "bold",
+                marginBottom: 20,
+                fontSize: "1.2rem",
+                color: "white",
+              }}
+            >
               ỨNG DỤNG TRÊN ĐIỆN THOẠI
             </Typography>
             <Box display="block">
@@ -264,7 +285,14 @@ const Footer = ({ classes }) => {
             </Box>
           </Box>
           <Box className={classes.itemContentFooter}>
-            <Typography style={{ fontWeight: "bold", marginBottom: 15 }}>
+            <Typography
+              style={{
+                fontWeight: "bold",
+                marginBottom: 15,
+                fontSize: "1.2rem",
+                color: "white",
+              }}
+            >
               KẾT NỐI VỚI CHÚNG TÔI
             </Typography>
             <Grid
@@ -275,7 +303,7 @@ const Footer = ({ classes }) => {
               <Grid container item md={3} sm={6} xs={3}>
                 <Link
                   className={classes.styleLogoPartner}
-                  to={{ pathname: "https://www.facebook.com/minhphuc219/" }}
+                  to={{ pathname: "https://zalo.me/0372993412" }}
                   target="_blank"
                 >
                   <LazyLoad once={true}>
@@ -305,7 +333,7 @@ const Footer = ({ classes }) => {
               <Grid container item md={3} sm={6} xs={3}>
                 <Link
                   className={classes.styleLogoPartner}
-                  to={{ pathname: "https://www.facebook.com/minhphuc219/" }}
+                  to={{ pathname: "https://zalo.me/0789200396" }}
                   target="_blank"
                 >
                   <LazyLoad once={true}>
@@ -333,21 +361,33 @@ const Footer = ({ classes }) => {
                 </Link>
               </Grid>
             </Grid>
-            <Typography style={{ fontWeight: "bold", margin: "15px 0 10px 0" }}>
+            <Typography
+              style={{
+                fontWeight: "bold",
+                margin: "15px 0 10px 0",
+                color: "white",
+              }}
+            >
               LIÊN HỆ
             </Typography>
             <Box className={classes.boxContact}>
               <Box display="flex" mb={1}>
                 <RoomIcon />
+                <div>
+                  <h5>Ho Chi Minh City, VietNam</h5>
+                </div>
               </Box>
               <Box display="flex" mb={1}>
                 <MailRoundedIcon />
                 <div>
-                  <h5>@gmail.com</h5>
+                  <h5>VPVCENTER@gmail.com</h5>
                 </div>
               </Box>
               <Box display="flex">
                 <PhoneIphoneRoundedIcon />
+                <div>
+                  <h5>0372993412</h5>
+                </div>
               </Box>
             </Box>
           </Box>

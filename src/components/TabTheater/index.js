@@ -1,10 +1,9 @@
-import React, { useState, useEffect, } from "react";
+import React, { useState, useEffect } from "react";
 import { qlPhimService } from "../../services/QuanLyPhimService";
 import { NavLink } from "react-router-dom";
 import "./style.css";
-import Image from '../../../src/assets/image/background/bgContact.jpg'
+import Image from "../../../src/assets/image/background/bgContact.jpg";
 // component loading
-
 
 let moment = require("moment"); // require
 
@@ -62,12 +61,15 @@ export default function TabTheaters(props) {
   // };
   console.log("phim", phim);
   return (
-    <div className="tabTheater__first mt-3 " style={{ backgroundImage: `url(${Image})` }}>
-      <div className="container tabTheater__content  " >
+    <div
+      className="tabTheater__first mt-3 "
+      style={{ backgroundImage: `url(${Image})` }}
+    >
+      <div className="container tabTheater__content  ">
         <div className="tabTheater__overplay">
           <h2 className="tabTheater__info" id="infoTheater">
             Thông Tin Lịch Chiếu
-        </h2>
+          </h2>
           <div className="row">
             <div
               className="nav flex-column nav-pills col-3"
@@ -131,7 +133,6 @@ export default function TabTheaters(props) {
                     aria-controls="v-pills-messages"
                     aria-selected="false"
                     data-bs-target="#v-pills-messages"
-
                   >
                     <img
                       src={heThongRap.logo}
@@ -204,16 +205,18 @@ export default function TabTheaters(props) {
                           // id={0}
                           className="col-4 d-none  d-lg-block tabTheater__list"
                         >
-                          {heThongRap.lstCumRap?.slice(0, 5).map((cumRap, index) => {
-                            return (
-                              // <div className="col-6" key={index.maCumRap}>
-                              <div key={index.maCumRap}>
-                                <h4 className="tabTheater__cumRap mb-2">
-                                  {cumRap.tenCumRap}
-                                </h4>
-                              </div>
-                            );
-                          })}
+                          {heThongRap.lstCumRap
+                            ?.slice(0, 5)
+                            .map((cumRap, index) => {
+                              return (
+                                // <div className="col-6" key={index.maCumRap}>
+                                <div key={index.maCumRap}>
+                                  <h4 className="tabTheater__cumRap mb-2">
+                                    {cumRap.tenCumRap}
+                                  </h4>
+                                </div>
+                              );
+                            })}
                         </div>
                         <div className="col-8  col-sm-11 col-lg-8 text-center">
                           {/* <Content active={active === 0}> */}
@@ -221,7 +224,7 @@ export default function TabTheaters(props) {
                             return (
                               <div>
                                 {cumRap.danhSachPhim
-                                  ?.slice(0, 2)
+                                  ?.slice(0, 1)
                                   .map((phim, index) => {
                                     return (
                                       <div className="tabTheater__listPhim">
@@ -375,7 +378,7 @@ export default function TabTheaters(props) {
                             return (
                               <div>
                                 {cumRap.danhSachPhim
-                                  ?.slice(0, 3)
+                                  ?.slice(0, 2)
                                   .map((phim, index) => {
                                     return (
                                       <div className="tabTheater__listPhim">
@@ -579,6 +582,6 @@ export default function TabTheaters(props) {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }
