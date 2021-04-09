@@ -10,9 +10,17 @@ class Login extends Component {
   render() {
     // console.log(this.props.currentUser);
     return (
-      <div>
-        <h3>Đăng Ký</h3>
-        <RegisterForm onSubmit={this.onSubmit} wrongAuth={this.props.error} />
+      <div className="register__box row">
+        <div className="d-none d-md-flex col-md-6 register_background"></div>
+        <div className="col-12 col-md-6 register-form_box">
+          <div>
+            <h3>Đăng Ký</h3>
+            <RegisterForm
+              onSubmit={this.onSubmit}
+              wrongAuth={this.props.error}
+            />
+          </div>
+        </div>
       </div>
     );
   }
