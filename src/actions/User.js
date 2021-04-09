@@ -33,6 +33,7 @@ export const updateUser = (formValue, accessToken) => {
         },
       })
       .then((result) => {
+        console.log(result.data);
         dispatch({
           type: UPDATE_USER_SUCCESS,
           payload: { data: result.data },

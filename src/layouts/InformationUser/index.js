@@ -13,6 +13,12 @@ class InformationUser extends Component {
     // console.log(formValue, this.props.accessToken);
     formValue.soDt = formValue.soDT;
     delete formValue.soDT;
+    // console.log(
+    //   formValue,
+    //   this.props.accessToken,
+    //   this.props.maNhom,
+    //   this.props.maLoaiNguoiDung
+    // );
     // console.log(formValue);
     this.props.updateUser(
       {

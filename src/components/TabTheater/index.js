@@ -238,7 +238,7 @@ export default function TabTheaters(props) {
                                         </h2>
                                         <div className="row">
                                           {phim.lstLichChieuTheoPhim
-                                            ?.slice(0, 5)
+                                            ?.slice(0, 4)
                                             .map((phimU, index) => {
                                               return (
                                                 <div className="col-6 col-sm-4 col-lg-4 col-xl-3 p-0">
