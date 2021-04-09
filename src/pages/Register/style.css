@@ -1,0 +1,15 @@
+.register__box {
+    background-color: #62AEE5;
+    display: flex;
+}
+.register-form_box {
+    width: 400px;
+    margin: 20vh auto;
+}
+.register_background {
+    background-image: url("../../assets/bg-01.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
