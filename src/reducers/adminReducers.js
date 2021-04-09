@@ -9,12 +9,10 @@ import {
   DELETE_USER_SUCCESS,
   DELETE_USER_FAIL,
   RESET_STATUS,
+  UPDATE_ADMIN_USER_REQUEST,
+  UPDATE_ADMIN_USER_SUCCESS,
+  UPDATE_ADMIN_USER_FAIL,
 } from "../constants/Admin";
-import {
-  UPDATE_USER_FAIL,
-  UPDATE_USER_REQUEST,
-  UPDATE_USER_SUCCESS,
-} from "../constants/user";
 import deleteItemInArr from "../utils/deleteItemInArr";
 import addItemInArr from "../utils/addItemInArr";
 const initialState = {
@@ -125,7 +123,7 @@ const adminReducers = (state = initialState, action) => {
         },
       };
     }
-    case UPDATE_USER_REQUEST: {
+    case UPDATE_ADMIN_USER_REQUEST: {
       return {
         ...state,
         updateUser: {
@@ -136,7 +134,7 @@ const adminReducers = (state = initialState, action) => {
         },
       };
     }
-    case UPDATE_USER_SUCCESS: {
+    case UPDATE_ADMIN_USER_SUCCESS: {
       return {
         ...state,
         updateUser: {
@@ -147,7 +145,7 @@ const adminReducers = (state = initialState, action) => {
         },
       };
     }
-    case UPDATE_USER_FAIL: {
+    case UPDATE_ADMIN_USER_FAIL: {
       return {
         ...state,
         updateUser: {

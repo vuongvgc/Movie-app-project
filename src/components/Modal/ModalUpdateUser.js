@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./style.css";
 import InforUserForm from "../InforUserForm/";
 import { connect } from "react-redux";
-import { updateUser } from "../../actions/User";
+import { updateAdminUser } from "../../actions/Admin";
 import _ from "lodash";
 class ModalUpdateUser extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class ModalUpdateUser extends React.Component {
     formValue.soDt = formValue.soDT;
     delete formValue.soDT;
     // console.log(formValue);
-    this.props.updateUser(
+    this.props.updateAdminUser(
       {
         ...formValue,
         maNhom: this.props.maNhom,
@@ -72,4 +72,4 @@ const mapStateToProps = (state) => {
     userList: state.adminReducers.userList.items,
   };
 };
-export default connect(mapStateToProps, { updateUser })(ModalUpdateUser);
+export default connect(mapStateToProps, { updateAdminUser })(ModalUpdateUser);

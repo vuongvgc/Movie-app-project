@@ -11,7 +11,7 @@ import ModalDelete from "../../components/Modal/ModalDelete";
 import findUser from "../../utils/findUser";
 import InforUserForm from "../../components/InforUserForm";
 import _ from "lodash";
-import { updateUser } from "../../actions/User";
+import { updateAdminUser } from "../../actions/Admin";
 import RenderChangePage from "./RenderChangePage";
 import Loading from "../../components/Loading";
 
@@ -130,7 +130,7 @@ class UsersManagement extends Component {
     formValue.soDt = formValue.soDT;
     delete formValue.soDT;
     // console.log(formValue);
-    this.props.updateUser(
+    this.props.updateAdminUser(
       {
         ...formValue,
         maNhom: this.props.maNhom,
@@ -279,6 +279,8 @@ const mapMapToProps = (state) => {
     inforUserform: state.form.InforUserForm,
   };
 };
-export default connect(mapMapToProps, { getUserList, deleteUser, updateUser })(
-  UsersManagement
-);
+export default connect(mapMapToProps, {
+  getUserList,
+  deleteUser,
+  updateAdminUser,
+})(UsersManagement);
