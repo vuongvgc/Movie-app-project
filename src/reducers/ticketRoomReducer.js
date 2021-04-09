@@ -9,7 +9,7 @@ const initialState = {
 
 
 const ticketRoomReducer =  (state  =initialState,action )=>{
-    console.log("action",action)
+
     switch (action.type) {
         case TICKET_ROOM_REQUEST: {
             return { ...state, loadingTicketRoom: true, errorTicketRoom: null };

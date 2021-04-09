@@ -38,8 +38,6 @@ export default function ShowTime(props) {
 
             <div className='col-9'>
                 {movieInfo.heThongRapChieu ? movieInfo.heThongRapChieu[select].cumRapChieu.map((item) => {
-                    console.log(movieInfo.heThongRapChieu)
-                    console.log(movieInfo.heThongRapChieu[select])
                     return (
                         <div key={item?.maCumRap}>
                             <div className='showTimes-tenCumRap'>

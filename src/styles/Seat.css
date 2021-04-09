@@ -1,10 +1,14 @@
     
- .seat-true {
+ .seat-thuong {
     color: #f7b500;
     border: none;
     background: none;
 }
-
+.seat-vip{
+    color: #b03550;
+    border: none;
+    background: none;
+}
 .seat-false{
     border: none;
     background: none;
@@ -14,11 +18,11 @@
 .seat-select{
     width: 30px;
     height: 30px;
-    color: #44c020;
+    color: #39f107;
 }
 
 .seat-unSelect{
     width: 30px;
     height: 30px;
 
-}
+}   

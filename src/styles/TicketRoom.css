@@ -124,13 +124,12 @@
 }
 
 /* seat */
-.rowSeat{
+.rowSeat {
     margin-bottom: 10px;
 }
 
 .rowSeat .seatItem {
     margin-left: 10px;
-    
 }
 
 .seatmap {
@@ -208,6 +207,45 @@
     font-size: 24px;
 }
 
+.seatInfo {
+    text-align: center;
+    display: flex;
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 50px;
+    
+}
+.seatInfo > span{
+    margin-left: 20px;
+    font-size: 12px;
+}
+.seatInfo > span > svg{
+    width: 25px;
+    height: 25px;
+    
+}
+.seatInfo-select{
+    border: none;
+    background: none;
+    color: #39f107;
+}
+.seatInfo-thuong {
+    color: #f7b500;
+    border: none;
+    background: none;
+}
+
+.seatInfo-vip{
+    color: #b03550;
+    border: none;
+    background: none;
+}
+.seatInfo-daDat{
+    border: none;
+    background: none;
+    color: gray;
+}   
+
 @media screen and (max-width: 1200px) {
     .headerCheckout {
         width: 76.7%;
@@ -224,7 +262,6 @@
 }
 
 @media screen and (max-width: 820px) {
-   
     .rowSeat .seatItem {
         margin-left: 3px;
     }

@@ -18,7 +18,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 // icon
 import { TiTickOutline } from "react-icons/ti";
 import { VscError } from "react-icons/vsc";
-
+import { MdEventSeat } from 'react-icons/md'
 import { NavLink } from "react-router-dom";
 
 
@@ -110,7 +110,7 @@ export default function TicketRoom(props) {
   const [danhSachVe, setDanhSachVe] = useState([]);
 
 
-  const { ticketRoom, loadingTicketRoom ,errorTicketRoom } = useSelector((state) => state.ticketRoomReducer)
+  const { ticketRoom, loadingTicketRoom, errorTicketRoom } = useSelector((state) => state.ticketRoomReducer)
   const { currentUser } = useSelector(state => state.authReducers)
   // const { booking, loading, error } = useSelector(state => state.bookingReducer)
   const { booking, loading, error } = useSelector(state => state.bookingReducer)
@@ -264,436 +264,447 @@ export default function TicketRoom(props) {
   return (
 
     <div className='checkout'>
-      {console.log(errorTicketRoom)}
-      { errorTicketRoom ? <Error />:
       
-      loadingTicketRoom ? 
-        <Loading /> :
-        <>
-          <div className='row mainCheckout'>
-            <div className="col-md-9 checkout-content">
-              <div className="headerCheckout row">
-                <ul className='stepCheckout'>
-                  <li>
+      { errorTicketRoom ? <Error /> :
 
-                    <NavLink to="/">
-                      Trang Chủ
+        loadingTicketRoom ?
+          <Loading /> :
+          <>
+            <div className='row mainCheckout'>
+              <div className="col-md-9 checkout-content">
+                <div className="headerCheckout row">
+                  <ul className='stepCheckout'>
+                    <li>
+
+                      <NavLink to="/">
+                        Trang Chủ
                 </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/user/information">
-                      Thay đổi Thông Tin
+                    </li>
+                    <li>
+                      <NavLink to="/user/information">
+                        Thay đổi Thông Tin
                 </NavLink>
 
-                  </li>
-                  <li>
+                    </li>
+                    <li>
 
 
-                  </li>
-                </ul>
-              </div>
+                    </li>
+                  </ul>
+                </div>
 
-              <div className='checkoutContent container'>
-                <div className="topContent">
-                  <div className='logoCinema'
-                  >
-                    <img src={logo} alt="logo" />
+                <div className='checkoutContent container'>
+                  <div className="topContent">
+                    <div className='logoCinema'
+                    >
+                      <img src={logo} alt="logo" />
+                    </div>
+                    <div className='contentCinema'>
+                      <p className='address'>
+                        <span className='nameCinema'>{ticketRoom?.thongTinPhim?.tenCumRap} </span>
+
+                        <span className='addressCinema'>- {ticketRoom?.thongTinPhim?.diaChi}  </span>
+                        <br />
+                        <span className='timeCinema'>{ticketRoom?.thongTinPhim?.ngayChieu}-{ticketRoom?.thongTinPhim?.tenRap}s</span>
+                      </p>
+
+                    </div>
                   </div>
-                  <div className='contentCinema'>
-                    <p className='address'>
-                      <span className='nameCinema'>{ticketRoom?.thongTinPhim?.tenCumRap} </span>
 
-                      <span className='addressCinema'>- {ticketRoom?.thongTinPhim?.diaChi}  </span>
-                      <br />
-                      <span className='timeCinema'>{ticketRoom?.thongTinPhim?.ngayChieu}-{ticketRoom?.thongTinPhim?.tenRap}s</span>
-                    </p>
+                </div>
 
+                <div className="seatmap container">
+                  <div className="screen">
+                    <img src="../img/checkout/screen.png" alt="" />
+                  </div>
+                </div>
+                <div className='listseat'>
+
+                  <div className="rowSeat">
+                    <span className="col hang">A</span>
+                    {row1?.map((item) => {
+                      return (
+                        <span key={item.maGhe}
+                          className="seatItem"
+                        >
+                          <Seat
+                            item={item}
+                            onListSeat={(seatId) => handleListSeat(seatId)}
+
+                          />
+                        </span>
+
+
+
+                      )
+                    })}
+                  </div>
+
+                  <div className="rowSeat">
+                    <span className="col hang">B</span>
+                    {row2?.map((item) => {
+                      return (
+                        <span key={item.maGhe}
+                          className="seatItem"
+                        >
+
+                          <Seat
+                            key={item.maGhe}
+                            item={item}
+                            onListSeat={(seatId) => handleListSeat(seatId)}
+                          />
+                        </span>
+                      )
+                    })}
+                  </div>
+
+                  <div className="rowSeat">
+                    <span className="col hang">C</span>
+                    {row3?.map((item) => {
+                      return (
+                        <span key={item.maGhe}
+                          className="seatItem"
+                        >
+
+                          <Seat
+
+                            item={item}
+                            onListSeat={(seatId) => handleListSeat(seatId)} />
+                        </span>
+                      )
+                    })}
+                  </div>
+
+
+                  <div className="rowSeat">
+                    <span className="col hang">D</span>
+                    {row4?.map((item) => {
+                      return (
+                        <span key={item.maGhe}
+                          className="seatItem"
+                        >
+
+                          <Seat item={item}
+                            onListSeat={(seatId) => handleListSeat(seatId)} />
+                        </span>
+                      )
+                    })}
+                  </div>
+
+
+                  <div className="rowSeat">
+                    <span className="col hang">E</span>
+                    {row5?.map((item) => {
+                      return (
+                        <span key={item.maGhe}
+                          className="seatItem"
+                        >
+
+                          <Seat
+                            item={item}
+                            onListSeat={(seatId) => handleListSeat(seatId)} />
+                        </span>
+                      )
+                    })}
+                  </div>
+
+
+                  <div className="rowSeat">
+                    <span className="col hang">F</span>
+                    {row6?.map((item) => {
+                      return (
+                        <span key={item.maGhe}
+                          className="seatItem"
+                        >
+
+                          <Seat
+                            item={item}
+                            onListSeat={(seatId) => handleListSeat(seatId)} />
+                        </span>
+                      )
+                    })}
+                  </div>
+
+
+                  <div className="rowSeat">
+                    <span className="col hang">G</span>
+                    {row7?.map((item) => {
+                      return (
+                        <span key={item.maGhe}
+                          className="seatItem"
+                        >
+
+                          <Seat
+                            item={item}
+                            onListSeat={(seatId) => handleListSeat(seatId)} />
+                        </span>
+                      )
+                    })}
+                  </div>
+
+
+                  <div className="rowSeat">
+                    <span className="col hang">H</span>
+                    {row8?.map((item) => {
+                      return (
+                        <span key={item.maGhe}
+                          className="seatItem"
+                        >
+
+                          <Seat
+                            item={item}
+                            onListSeat={(seatId) => handleListSeat(seatId)} />
+                        </span>
+                      )
+                    })}
+                  </div>
+
+
+                  <div className="rowSeat">
+                    <span className="col hang">I</span>
+                    {row9?.map((item) => {
+                      return (
+                        <span key={item.maGhe}
+                          className="seatItem"
+                        >
+
+                          <Seat
+                            item={item}
+                            onListSeat={(seatId) => handleListSeat(seatId)} />
+                        </span>
+                      )
+                    })}
+                  </div>
+
+
+                  <div className="rowSeat">
+                    <span className="col hang">J</span>
+                    {row10?.map((item) => {
+                      return (
+                        <span key={item.maGhe}
+                          className="seatItem"
+                        >
+
+                          <Seat
+                            item={item}
+                            onListSeat={(seatId) => handleListSeat(seatId)} />
+                        </span>
+                      )
+                    })}
                   </div>
                 </div>
 
+                <div className="seatInfo">
+                  <span > <MdEventSeat className="seatInfo-thuong" /> <br/><span>Ghế Thường</span> </span>
+                  <br/>
+                  <span > <MdEventSeat className="seatInfo-vip" />  <br/> <span> Ghế Vip</span> </span>
+                  <br/>
+                  <span > <MdEventSeat className="seatInfo-daDat" /> <br/> <span>Ghế Đã Được Đặt</span> </span>
+                  <br/>
+                  <span > <MdEventSeat className="seatInfo-select" /> <br/> <span>Ghế Đang Chọn</span> </span>
+                  
+                </div>
+
               </div>
 
-              <div className="seatmap container">
-                <div className="screen">
-                  <img src="../img/checkout/screen.png" alt="" />
-                </div>
-              </div>
-              <div className='listseat'>
+              <div className="col-md-3 checkout-side">
+                <div className="checkout-sideContainer">
+                  <div className="row-total">
 
-                <div className="rowSeat">
-                  <span className="col hang">A</span>
-                  {row1?.map((item) => {
-                    return (
-                      <span key={item.maGhe}
-                        className="seatItem"
-                      >
-                        <Seat
-                          item={item}
-                          onListSeat={(seatId) => handleListSeat(seatId)}
-
-                        />
-                      </span>
-
-
-
-                    )
-                  })}
-                </div>
-
-                <div className="rowSeat">
-                  <span className="col hang">B</span>
-                  {row2?.map((item) => {
-                    return (
-                      <span key={item.maGhe}
-                        className="seatItem"
-                      >
-
-                        <Seat
-                          key={item.maGhe}
-                          item={item}
-                          onListSeat={(seatId) => handleListSeat(seatId)}
-                        />
-                      </span>
-                    )
-                  })}
-                </div>
-
-                <div className="rowSeat">
-                  <span className="col hang">C</span>
-                  {row3?.map((item) => {
-                    return (
-                      <span key={item.maGhe}
-                        className="seatItem"
-                      >
-
-                        <Seat
-
-                          item={item}
-                          onListSeat={(seatId) => handleListSeat(seatId)} />
-                      </span>
-                    )
-                  })}
-                </div>
-
-
-                <div className="rowSeat">
-                  <span className="col hang">D</span>
-                  {row4?.map((item) => {
-                    return (
-                      <span key={item.maGhe}
-                        className="seatItem"
-                      >
-
-                        <Seat item={item}
-                          onListSeat={(seatId) => handleListSeat(seatId)} />
-                      </span>
-                    )
-                  })}
-                </div>
-
-
-                <div className="rowSeat">
-                  <span className="col hang">E</span>
-                  {row5?.map((item) => {
-                    return (
-                      <span key={item.maGhe}
-                        className="seatItem"
-                      >
-
-                        <Seat
-                          item={item}
-                          onListSeat={(seatId) => handleListSeat(seatId)} />
-                      </span>
-                    )
-                  })}
-                </div>
-
-
-                <div className="rowSeat">
-                  <span className="col hang">F</span>
-                  {row6?.map((item) => {
-                    return (
-                      <span key={item.maGhe}
-                        className="seatItem"
-                      >
-
-                        <Seat
-                          item={item}
-                          onListSeat={(seatId) => handleListSeat(seatId)} />
-                      </span>
-                    )
-                  })}
-                </div>
-
-
-                <div className="rowSeat">
-                  <span className="col hang">G</span>
-                  {row7?.map((item) => {
-                    return (
-                      <span key={item.maGhe}
-                        className="seatItem"
-                      >
-
-                        <Seat
-                          item={item}
-                          onListSeat={(seatId) => handleListSeat(seatId)} />
-                      </span>
-                    )
-                  })}
-                </div>
-
-
-                <div className="rowSeat">
-                  <span className="col hang">H</span>
-                  {row8?.map((item) => {
-                    return (
-                      <span key={item.maGhe}
-                        className="seatItem"
-                      >
-
-                        <Seat
-                          item={item}
-                          onListSeat={(seatId) => handleListSeat(seatId)} />
-                      </span>
-                    )
-                  })}
-                </div>
-
-
-                <div className="rowSeat">
-                  <span className="col hang">I</span>
-                  {row9?.map((item) => {
-                    return (
-                      <span key={item.maGhe}
-                        className="seatItem"
-                      >
-
-                        <Seat
-                          item={item}
-                          onListSeat={(seatId) => handleListSeat(seatId)} />
-                      </span>
-                    )
-                  })}
-                </div>
-
-
-                <div className="rowSeat">
-                  <span className="col hang">J</span>
-                  {row10?.map((item) => {
-                    return (
-                      <span key={item.maGhe}
-                        className="seatItem"
-                      >
-
-                        <Seat
-                          item={item}
-                          onListSeat={(seatId) => handleListSeat(seatId)} />
-                      </span>
-                    )
-                  })}
-                </div>
-              </div>
-
+                    {giaVe?.reduce((total, item) => { return total + item }, 0)} Đ
             </div>
 
-            <div className="col-md-3 checkout-side">
-              <div className="checkout-sideContainer">
-                <div className="row-total">
+                  <div className="row-film">
+                    <h3>{ticketRoom?.thongTinPhim?.tenPhim} </h3>
+                    <p> {ticketRoom?.thongTinPhim?.tenCumRap}</p>
+                    <p>{ticketRoom?.thongTinPhim?.ngayChieu}  - {ticketRoom?.thongTinPhim?.gioChieu} -{ticketRoom?.thongTinPhim?.tenRap} </p>
+                  </div>
+                  <div className={listSeat?.length ? "row-listSeat" : ''}>
+                    {listSeat.map((seat) => {
+                      return (
+                        <span key={seat}>{seat}</span>
+                      )
+                    })}
+                  </div>
+                  <div className='infoUser'>
+                    <input type="text" name='emailCheckout' id="emailCheckout"
+                      value={currentUser?.email}
+                      disabled
+                      required />
+                    <label htmlFor="emailCheckout" className='label-emailCheckout' >
 
-                  {giaVe?.reduce((total, item) => { return total + item }, 0)} Đ
-            </div>
+                      <span className='span-emailCheckout' >E-Mail </span>
+                    </label>
+                  </div>
 
-                <div className="row-film">
-                  <h3>{ticketRoom?.thongTinPhim?.tenPhim} </h3>
-                  <p> {ticketRoom?.thongTinPhim?.tenCumRap}</p>
-                  <p>{ticketRoom?.thongTinPhim?.ngayChieu}  - {ticketRoom?.thongTinPhim?.gioChieu} -{ticketRoom?.thongTinPhim?.tenRap} </p>
-                </div>
-                <div className={listSeat?.length ? "row-listSeat" : ''}>
-                  {listSeat.map((seat) => {
-                    return (
-                      <span key={seat}>{seat}</span>
-                    )
-                  })}
-                </div>
-                <div className='infoUser'>
-                  <input type="text" name='emailCheckout' id="emailCheckout"
-                    value={currentUser?.email}
-                    disabled
-                    required />
-                  <label htmlFor="emailCheckout" className='label-emailCheckout' >
+                  <div className='infoUser'>
+                    <input type="text" id="emailCheckout"
+                      value={currentUser?.soDT}
+                      disabled
+                    />
+                    <label htmlFor="emailCheckout" className='label-phoneCheckout' >
+                      <span className='span-phoneCheckout'>Phone</span>
+                    </label>
+                  </div>
 
-                    <span className='span-emailCheckout' >E-Mail </span>
-                  </label>
-                </div>
+                  <div className="btn-checkout">
+                    <Button
 
-                <div className='infoUser'>
-                  <input type="text" id="emailCheckout"
-                    value={currentUser?.soDT}
-                    disabled
-                  />
-                  <label htmlFor="emailCheckout" className='label-phoneCheckout' >
-                    <span className='span-phoneCheckout'>Phone</span>
-                  </label>
-                </div>
+                      className={classes.btn__booking}
 
-                <div className="btn-checkout">
-                  <Button
-
-                    className={classes.btn__booking}
-
-                    onClick={handleClickOpen}
-                    disabled={listSeat.length ? false : true}
-                  >
-                    Đặt vé
+                      onClick={handleClickOpen}
+                      disabled={listSeat.length ? false : true}
+                    >
+                      Đặt vé
             </Button>
-                </div>
+                  </div>
 
-                <Dialog
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="alert-dialog-title"
-                  aria-describedby="alert-dialog-description"
+                  <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
 
-                >
-
-                  <DialogContent>
-                    <DialogContentText id="alert-dialog-description"
-                      className={classes.popupTitle}
-                    >
-                      Bạn có muốn đặt vé không ?
-                </DialogContentText>
-                  </DialogContent>
-                  <DialogActions
-                    className={classes.popupBtn}
                   >
 
-                    <Button onClick={() => handleBooking()}
-                      variant="contained"
-                      color="primary"
-                      autoFocus
-                      className={classes.popupBtnLeft}
+                    <DialogContent>
+                      <DialogContentText id="alert-dialog-description"
+                        className={classes.popupTitle}
+                      >
+                        Bạn có muốn đặt vé không ?
+                </DialogContentText>
+                    </DialogContent>
+                    <DialogActions
+                      className={classes.popupBtn}
                     >
-                      Đồng ý
+
+                      <Button onClick={() => handleBooking()}
+                        variant="contained"
+                        color="primary"
+                        autoFocus
+                        className={classes.popupBtnLeft}
+                      >
+                        Đồng ý
                 </Button>
 
-                    <Button onClick={handleClose}
-                      variant="contained"
-                      color="secondary"
-                      className={classes.popupBtnLeft}
-                    >
-                      Không
+                      <Button onClick={handleClose}
+                        variant="contained"
+                        color="secondary"
+                        className={classes.popupBtnLeft}
+                      >
+                        Không
               </Button>
-                  </DialogActions>
-                </Dialog>
-                {
-                  error ?
-                    <>
-                      <Dialog
-                        open={mess}
-                        onClose={handleMessage}
-                        aria-labelledby="alert-dialog-title"
-                        aria-describedby="alert-dialog-description"
-                      >
+                    </DialogActions>
+                  </Dialog>
+                  {
+                    error ?
+                      <>
+                        <Dialog
+                          open={mess}
+                          onClose={handleMessage}
+                          aria-labelledby="alert-dialog-title"
+                          aria-describedby="alert-dialog-description"
+                        >
 
-                        <>
-                          <DialogContent>
-                            <DialogContentText id="alert-dialog-description"
-                              className={classes.popupTitle2}
+                          <>
+                            <DialogContent>
+                              <DialogContentText id="alert-dialog-description"
+                                className={classes.popupTitle2}
+                              >
+                                <span className="popUp-alert">Xảy ra lỗi khi đặt vé.</span>
+                                <br />
+
+                              </DialogContentText>
+                              <div className="text-center">
+                                <VscError className={classes.icon2} />
+                              </div>
+                            </DialogContent>
+                            <DialogActions
+                              className={classes.popupBtn2}
                             >
-                              <span className="popUp-alert">Xảy ra lỗi khi đặt vé.</span>
-                              <br />
+                              <Button size="large"
 
-                            </DialogContentText>
-                            <div className="text-center">
-                              <VscError className={classes.icon2} />
-                            </div>
-                          </DialogContent>
-                          <DialogActions
-                            className={classes.popupBtn2}
-                          >
-                            <Button size="large"
+                                autoFocus className={classes.btnError}>
 
-                              autoFocus className={classes.btnError}>
+                                <NavLink to="/" className="nav-checkTicket">
+                                  <span className='lanif2'
+                                  >VỀ TRANG CHỦ !    </span>
+                                </NavLink>
+                              </Button>
+                            </DialogActions>
+                          </>
+                        </Dialog>
+                      </> :
+                      <>
+                        <Dialog
+                          open={mess}
+                          onClose={handleMessage}
+                          aria-labelledby="alert-dialog-title"
+                          aria-describedby="alert-dialog-description"
+                        >
 
-                              <NavLink to="/" className="nav-checkTicket">
-                                <span className='lanif2'
-                                >VỀ TRANG CHỦ !    </span>
-                              </NavLink>
-                            </Button>
-                          </DialogActions>
-                        </>
-                      </Dialog>
-                    </> :
-                    <>
-                      <Dialog
-                        open={mess}
-                        onClose={handleMessage}
-                        aria-labelledby="alert-dialog-title"
-                        aria-describedby="alert-dialog-description"
-                      >
+                          <>
+                            <DialogContent>
+                              <DialogContentText id="alert-dialog-description"
+                                className={classes.popupTitle2}
+                              >
+                                <span className="popUp-alert">{booking}</span>
+                                <br />
 
-                        <>
-                          <DialogContent>
-                            <DialogContentText id="alert-dialog-description"
-                              className={classes.popupTitle2}
+                              </DialogContentText>
+                              <div className="text-center">
+                                <TiTickOutline className={classes.icon} />
+                              </div>
+                            </DialogContent>
+                            <DialogActions
+                              className={classes.popupBtn2}
                             >
-                              <span className="popUp-alert">{booking}</span>
-                              <br />
 
-                            </DialogContentText>
-                            <div className="text-center">
-                              <TiTickOutline className={classes.icon} />
-                            </div>
-                          </DialogContent>
-                          <DialogActions
-                            className={classes.popupBtn2}
-                          >
+                              <Button size="large"
 
-                            <Button size="large"
-
-                              autoFocus className={classes.btnNav}>
-                              <NavLink to="/user/movie" className="nav-checkTicket">
-                                <span className='lanif' >
-                                  Xem vé đã đặt
+                                autoFocus className={classes.btnNav}>
+                                <NavLink to="/user/movie" className="nav-checkTicket">
+                                  <span className='lanif' >
+                                    Xem vé đã đặt
                           </span>
-                              </NavLink>
-                            </Button>
+                                </NavLink>
+                              </Button>
 
-                            <Button onClick={handleMessage}
-                              variant="contained"
-                              color="primary"
-                              className={classes.btnNav}
-                            >
-                              <span className='lanif'>Đặt thêm...</span>
-                            </Button>
-                          </DialogActions>
-                        </>
-                      </Dialog>
+                              <Button onClick={handleMessage}
+                                variant="contained"
+                                color="primary"
+                                className={classes.btnNav}
+                              >
+                                <span className='lanif'>Đặt thêm...</span>
+                              </Button>
+                            </DialogActions>
+                          </>
+                        </Dialog>
 
-                    </>
-
-
-                }
+                      </>
 
 
+                  }
+
+
+                </div>
               </div>
             </div>
-          </div>
-          <div className="btn-checkout2 d-block d-md-none">
-            <Button
+            <div className="btn-checkout2 d-block d-md-none">
+              <Button
 
-              className={classes.btn__booking}
+                className={classes.btn__booking}
 
-              onClick={handleClickOpen}
-              disabled={listSeat.length ? false : true}
-            >
-              Đặt vé
+                onClick={handleClickOpen}
+                disabled={listSeat.length ? false : true}
+              >
+                Đặt vé
             </Button>
-          </div>
-        </>
+            </div>
+          </>
 
 
-   
+
       }
 
     </div>
