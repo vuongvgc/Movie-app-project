@@ -20,7 +20,7 @@ export const getTicketRoom = (id) => {
             .catch((error) => {
                 dispatch({
                     type: TICKET_ROOM_FAIL,
-                    payload: { error: error?.reponse?.data }
+                    payload: { error: error?.response?.data }
                 })
             })
     }

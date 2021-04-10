@@ -8,6 +8,9 @@ import {
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAIL,
+  UPDATE_ADMIN_USER_REQUEST,
+  UPDATE_ADMIN_USER_SUCCESS,
+  UPDATE_ADMIN_USER_FAIL,
   RESET_STATUS,
 } from "../constants/Admin";
 import axios from "../utils/axiosClient";
@@ -94,6 +97,32 @@ export const deleteUser = (taiKhoan, accessToken) => {
         console.log(error.response);
         dispatch({
           type: DELETE_USER_FAIL,
+          payload: { error: error?.response?.data },
+        });
+      });
+  };
+};
+export const updateAdminUser = (formValue, accessToken) => {
+  return (dispatch) => {
+    dispatch({
+      type: UPDATE_ADMIN_USER_REQUEST,
+    });
+    axios
+      .put("/QuanLyNguoiDung/CapNhatThongTinNguoiDung", formValue, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((result) => {
+        dispatch({
+          type: UPDATE_ADMIN_USER_SUCCESS,
+          payload: { data: result.data },
+        });
+      })
+      .catch((error) => {
+        console.log(error.response);
+        dispatch({
+          type: UPDATE_ADMIN_USER_FAIL,
           payload: { error: error?.response?.data },
         });
       });

@@ -10,9 +10,8 @@ class LoginForm extends React.Component {
     this.props.onSubmit(formValue);
   };
   render() {
-    // console.log(this.props)
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+      <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="m-2">
         <Field name="taiKhoan" component={renderInput} label="Tài Khoản" />
         <Field
           name="matKhau"

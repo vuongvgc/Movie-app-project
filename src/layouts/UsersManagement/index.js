@@ -11,8 +11,10 @@ import ModalDelete from "../../components/Modal/ModalDelete";
 import findUser from "../../utils/findUser";
 import InforUserForm from "../../components/InforUserForm";
 import _ from "lodash";
-import { updateUser } from "../../actions/User";
+import { updateAdminUser } from "../../actions/Admin";
 import RenderChangePage from "./RenderChangePage";
+import Loading from "../../components/Loading";
+
 class UsersManagement extends Component {
   constructor(props) {
     super(props);
@@ -74,7 +76,7 @@ class UsersManagement extends Component {
   };
   renderContent = () => {
     if (!this.state.user) {
-      <CircularIndeterminate />;
+      <Loading />;
     }
     return (
       <p>
@@ -103,7 +105,7 @@ class UsersManagement extends Component {
   renderContentUpdate = () => {
     // console.log(this.state.userItem);
     if (!this.state.user) {
-      <CircularIndeterminate />;
+      <Loading />;
     }
     return (
       <React.Fragment>
@@ -128,7 +130,7 @@ class UsersManagement extends Component {
     formValue.soDt = formValue.soDT;
     delete formValue.soDT;
     // console.log(formValue);
-    this.props.updateUser(
+    this.props.updateAdminUser(
       {
         ...formValue,
         maNhom: this.props.maNhom,
@@ -141,7 +143,7 @@ class UsersManagement extends Component {
   };
   render() {
     if (this.props.admin.loading === true) {
-      return <CircularIndeterminate />;
+      return <Loading />;
     }
     // console.log("run user");
     return (
@@ -247,7 +249,7 @@ class UsersManagement extends Component {
 
         <SnackBar
           isOpen={this.props.admin.addUser.success}
-          title="Thêm phim thành công"
+          title="Thêm người dùng thành công"
           severity="success"
         />
         <SnackBar
@@ -277,6 +279,8 @@ const mapMapToProps = (state) => {
     inforUserform: state.form.InforUserForm,
   };
 };
-export default connect(mapMapToProps, { getUserList, deleteUser, updateUser })(
-  UsersManagement
-);
+export default connect(mapMapToProps, {
+  getUserList,
+  deleteUser,
+  updateAdminUser,
+})(UsersManagement);

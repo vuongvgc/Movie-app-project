@@ -13,6 +13,8 @@ import ModalPure from "../../components/Modal/Modal";
 import MovieInsertForm from "../../components/MovieInsertForm";
 import RenderChangePage from "./RenderChangePage";
 import "./style.css";
+import Loading from "../../components/Loading";
+
 class MoviesManagement extends Component {
   constructor(props) {
     super(props);
@@ -90,7 +92,7 @@ class MoviesManagement extends Component {
   };
   render() {
     if (this.props.adminMovies.loading === true) {
-      return <CircularIndeterminate />;
+      return <Loading />;
     }
     return (
       <div className="container-fluid">

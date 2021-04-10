@@ -1,9 +1,9 @@
 import React from "react";
-
+import Loading from "../../components/Loading";
 const RenderChangePage = (props) => {
   console.log(props.adminMovies);
   if (props.adminMovies.loading) {
-    return <div>Loading</div>;
+    return <Loading />;
   }
   let { moviesList } = props.adminMovies;
   return (

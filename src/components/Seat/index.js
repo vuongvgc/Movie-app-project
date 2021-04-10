@@ -14,8 +14,9 @@ export default function Seat(props) {
     }
     return (
         <>
+   
             <button
-                className={seat?.daDat ? 'seat-false' : "seat-true"}
+                className={seat?.daDat ? 'seat-false' :seat?.loaiGhe==="Thuong"?"seat-thuong" :"seat-vip"}
                 disabled={seat?.daDat ? true : false}
                 onClick={() => handleListSeat(seat)}
             >

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ButtonWhite from "../Buttons/ButtonWhite";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../actions/Auth";
