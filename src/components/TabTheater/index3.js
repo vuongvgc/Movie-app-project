@@ -7,7 +7,7 @@ import Image from "../../../src/assets/image/background/bgContact.jpg";
 
 let moment = require("moment"); // require
 
-export default function TabTheaters(props) {
+export default function TabTheaters2(props) {
   // Xem trong data.json lấy từ api về xem là dấu ngoặc nhọn {} hay dấu ngoặc vuông []
   //Lưu ý ngoặc nhọn {} là object, còn dấu ngoặc vuông [] là mảng phải phân biệt được tụi nó
   // let [phim, setPhim] = useState({});
@@ -16,7 +16,6 @@ export default function TabTheaters(props) {
   let [phimG, setPhimG] = useState([]);
   let [phimLC, setPhimLC] = useState([]);
   let [phimMGS, setPhimMGS] = useState([]);
-  let [phimCS2, setPhimCS2] = useState([]);
   // const [select, setSelect] = useState(0);
 
   useEffect(() => {
@@ -51,13 +50,6 @@ export default function TabTheaters(props) {
     qlPhimService.layThongTinPhongVeMegaGS().then((result) => {
       console.log(result.data);
       setPhimMGS(result.data);
-    });
-  }, []);
-
-  useEffect(() => {
-    qlPhimService.layThongTinPhongVeCineStar2().then((result) => {
-      console.log(result.data);
-      setPhimCS2(result.data);
     });
   }, []);
   // const [active, setActive] = useState(0);
@@ -198,90 +190,86 @@ export default function TabTheaters(props) {
             </div>
             <div className="col-9 ">
               <div className="tab-content" id="v-pills-tabContent">
-                <div
-                  className="tab-pane fade show active"
-                  id="v-pills-home"
-                  role="tabpanel"
-                  aria-labelledby="v-pills-home-tab"
-                >
-                  <div className="row">
-                    <div className="col-4  d-none  d-lg-block tabTheater__list">
-                      {phim?.map((hethongRap, index) => {
-                        return (
-                          <div key={index.maPhim}>
-                            {hethongRap.lstCumRap
-                              ?.slice(0, 5)
-                              .map((cumRap, index) => {
-                                return (
-                                  <div>
-                                    <h4 className="tabTheater__cumRap mb-2">
-                                      {cumRap.tenCumRap}
-                                    </h4>
-                                  </div>
-                                );
-                              })}
-                          </div>
-                        );
-                      })}
+                {phim?.map((heThongRap, index) => {
+                  return (
+                    <div
+                      className="tab-pane fade show active"
+                      id="v-pills-home"
+                      role="tabpanel"
+                      aria-labelledby="v-pills-home-tab"
+                    >
+                      <div className="row">
+                        <div
+                          // onClick={handleClick}
+                          // active={active === 0}
+                          // id={0}
+                          className="col-4 d-none  d-lg-block tabTheater__list"
+                        >
+                          {heThongRap.lstCumRap
+                            ?.slice(0, 5)
+                            .map((cumRap, index) => {
+                              return (
+                                // <div className="col-6" key={index.maCumRap}>
+                                <div key={index.maCumRap}>
+                                  <h4 className="tabTheater__cumRap mb-2">
+                                    {cumRap.tenCumRap}
+                                  </h4>
+                                </div>
+                              );
+                            })}
+                        </div>
+                        <div className="col-8  col-sm-11 col-lg-8 text-center">
+                          {/* <Content active={active === 0}> */}
+
+                          {heThongRap.lstCumRap?.map((cumRap, index) => {
+                            return (
+                              <div>
+                                {cumRap.danhSachPhim
+                                  ?.slice(0, 1)
+                                  .map((phim, index) => {
+                                    return (
+                                      <div className="tabTheater__listPhim">
+                                        <img
+                                          style={{ width: 250, height: 150 }}
+                                          src={phim.hinhAnh}
+                                          alt=""
+                                        />
+                                        <h2 className="text-info">
+                                          {phim.tenPhim}
+                                        </h2>
+                                        <div className="row">
+                                          {phim.lstLichChieuTheoPhim
+                                            ?.slice(0, 5)
+                                            .map((phimU, index) => {
+                                              return (
+                                                <div className="col-6 col-sm-4 col-lg-4 col-xl-3 p-0">
+                                                  {/* <h5>{phimU.tenRap} - {phimU.giaVe}</h5> */}
+                                                  <span className="m-1 p-0">
+                                                    <NavLink
+                                                      to={`/ticketRoom/${phim.maPhim}`}
+                                                      className="btn btn-danger my-1  "
+                                                    >
+                                                      {moment(
+                                                        phimU.ngayChieuGioChieu
+                                                      ).format("hh:mm A")}
+                                                    </NavLink>
+                                                  </span>
+                                                </div>
+                                              );
+                                            })}
+                                        </div>
+                                      </div>
+                                    );
+                                  })}
+                              </div>
+                            );
+                          })}
+                          {/* </Content> */}
+                        </div>
+                      </div>
                     </div>
-                    <div className="col-8  col-sm-11 col-lg-8 text-center">
-                      {phimCS2?.map((heThongRap, index) => {
-                        return (
-                          <div>
-                            {heThongRap.lstCumRap
-                              ?.slice(0, 5)
-                              .map((cumRap, index) => {
-                                return (
-                                  <div>
-                                    {cumRap.danhSachPhim
-                                      ?.slice(0, 5)
-                                      .map((phim, index) => {
-                                        return (
-                                          <div className="tabTheater__listPhim">
-                                            <img
-                                              src={phim.hinhAnh}
-                                              style={{
-                                                width: 250,
-                                                height: 150,
-                                              }}
-                                              alt=""
-                                            />
-                                            <h4 className="text-info">
-                                              {phim.tenPhim}
-                                            </h4>
-                                            <div className="row">
-                                              {phim.lstLichChieuTheoPhim
-                                                ?.slice(0, 5)
-                                                .map((phimU, index) => {
-                                                  return (
-                                                    <div className="col-6 col-sm-4 col-lg-4 col-xl-3 p-0">
-                                                      {/* <h5>{phimU.tenRap} - {phimU.giaVe}</h5> */}
-                                                      <span className="m-1 p-0">
-                                                        <NavLink
-                                                          to={`/ticketRoom/${phim.maPhim}`}
-                                                          className="btn btn-danger my-1  "
-                                                        >
-                                                          {moment(
-                                                            phimU.ngayChieuGioChieu
-                                                          ).format("hh:mm A")}
-                                                        </NavLink>
-                                                      </span>
-                                                    </div>
-                                                  );
-                                                })}
-                                            </div>
-                                          </div>
-                                        );
-                                      })}
-                                  </div>
-                                );
-                              })}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
                 {phimCS?.map((heThongRap, index) => {
                   return (
                     <div
