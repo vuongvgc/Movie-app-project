@@ -135,7 +135,8 @@ class UsersManagement extends Component {
         ...formValue,
         maNhom: this.props.maNhom,
       },
-      this.props.accessToken
+      this.props.accessToken,
+      formValue.taiKhoan
     );
   };
   searchUser = (value) => {

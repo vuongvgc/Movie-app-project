@@ -102,7 +102,7 @@ export const deleteUser = (taiKhoan, accessToken) => {
       });
   };
 };
-export const updateAdminUser = (formValue, accessToken) => {
+export const updateAdminUser = (formValue, accessToken, taiKhoan) => {
   return (dispatch) => {
     dispatch({
       type: UPDATE_ADMIN_USER_REQUEST,
@@ -116,7 +116,7 @@ export const updateAdminUser = (formValue, accessToken) => {
       .then((result) => {
         dispatch({
           type: UPDATE_ADMIN_USER_SUCCESS,
-          payload: { data: result.data },
+          payload: { data: result.data, taiKhoan: taiKhoan },
         });
       })
       .catch((error) => {
