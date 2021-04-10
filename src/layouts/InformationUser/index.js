@@ -51,12 +51,12 @@ class InformationUser extends Component {
           accessToken={this.props.accessToken}
         />
         <SnackBar
-          isOpen={this.props.adminUser.updateUser.success}
+          isOpen={this.props.userReducers.updateUser.success}
           title="Cập nhật thông tin thành công"
           severity="success"
         />
         <SnackBar
-          isOpen={this.props.adminUser.updateUser.error}
+          isOpen={this.props.userReducers.updateUser.error}
           title="Cập nhật không thành công"
           severity="warning"
         />
@@ -71,7 +71,7 @@ const mapStateToProps = (state) => {
     maNhom: state.authReducers.currentUser.maNhom,
     maLoaiNguoiDung: state.authReducers.currentUser.maLoaiNguoiDung,
     accessToken: state.authReducers.currentUser.accessToken,
-    adminUser: state.adminReducers,
+    userReducers: state.userReducers,
   };
 };
 export default connect(mapStateToProps, { getUser, updateUser })(

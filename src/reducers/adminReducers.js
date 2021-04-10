@@ -15,6 +15,7 @@ import {
 } from "../constants/Admin";
 import deleteItemInArr from "../utils/deleteItemInArr";
 import addItemInArr from "../utils/addItemInArr";
+import updateItemInArr from "../utils/updateItem";
 const initialState = {
   userList: null,
   loading: true,
@@ -137,6 +138,14 @@ const adminReducers = (state = initialState, action) => {
     case UPDATE_ADMIN_USER_SUCCESS: {
       return {
         ...state,
+        userList: {
+          ...state.userList,
+          items: updateItemInArr(
+            state.userList.items,
+            action.payload.data,
+            action.payload.taiKhoan
+          ),
+        },
         updateUser: {
           ...state.updateUser,
           loading: false,
