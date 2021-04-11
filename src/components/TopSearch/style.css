@@ -16,7 +16,7 @@ button.slick-arrow.slick-prev {
   height: 100px !important;
   width: 50px !important;
   border: none;
-  background-color: #fbbd61;
+  background-color: #29ffc6;
   /* font-size: 3rem; */
   /* margin: 0 80px; */
 }
@@ -37,7 +37,7 @@ button.slick-arrow.slick-prev {
 
 button.slick-arrow.slick-next:hover .slick-next {
   content: " ";
-  color: #fbbd61;
+  /* color: #fbbd61; */
   transform: scale(1.5);
 }
 
@@ -59,7 +59,7 @@ button.slick-arrow.slick-next:hover .slick-next {
 
   width: 180%;
   height: 100%;
-  background: linear-gradient(to bottom, #fbbd61, #ec7532);
+  background: linear-gradient(to bottom, #a8ff78, #78ffd6);
 
   /* CÁCH BẺ XÉO NỀN THEO TRỤC X */
   transform: translateX(-148%) skewX(30deg);
@@ -92,7 +92,7 @@ button.slick-arrow.slick-next:hover .slick-next {
 }
 
 .top__Search__play a:hover {
-  color: #66ff00;
+  color: #fff;
   text-decoration: none;
   /* transform: scale(0.5); */
   /* transition: all 0.5s; */
@@ -113,15 +113,18 @@ button.slick-arrow.slick-next:hover .slick-next {
   transform: translateY(-50%) scale(1);
 }
 
-/* .top__Search:hover .top__Search__title {
-  opacity: 0;
-} */
+.top__Search__title {
+  /* padding: -1rem 0; */
+  /* padding-bottom: 2rem; */
+  /* margin-bottom: 1rem; */
+}
 .top__Search__link {
-  color: red;
+  color: #38ef7d;
   transition: all 2s ease;
   border: 1px solid black !important;
   border-radius: 10%;
   margin: 0 11px;
+  font-size: 1.5rem;
 }
 .top__Search__link:hover {
   transform: scale(1.2);
