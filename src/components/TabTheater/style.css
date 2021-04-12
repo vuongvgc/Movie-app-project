@@ -43,7 +43,7 @@ a.tabTheater__active:hover {
   position: relative;
   padding-bottom: 15px;
   margin: 2rem 0;
-  color: #ffffffe3;
+  color: #ffff;
 }
 
 .tabTheater__info::after {
@@ -74,6 +74,8 @@ a.tabTheater__active:hover {
   /* background: url("../../../public/img/bgListMovies.jpg") no-repeat center
     center;
   background-size: cover; */
+  width: 95%;
+  margin: 0 auto;
   position: relative;
   opacity: 1;
 }
@@ -93,4 +95,118 @@ a.nav-link {
 .tabTheater__list {
   /* border-left: solid 0.5rem #a8e063;
   border-right: solid 0.5rem #a8e063; */
+}
+
+.test-logo {
+  margin-bottom: 1rem;
+  color: white;
+  text-align: center;
+}
+
+.test-logo:hover {
+  cursor: pointer;
+  animation-name: wobble-to-top-right;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes wobble-to-top-right {
+  16.65% {
+    -ms-transform: translate(8px, -8px);
+    -webkit-transform: translate(8px, -8px);
+    transform: translate(8px, -8px);
+  }
+  33.3% {
+    -ms-transform: translate(-6px, 6px);
+    -webkit-transform: translate(-6px, 6px);
+    transform: translate(-6px, 6px);
+  }
+  49.95% {
+    -ms-transform: translate(4px, -4px);
+    -webkit-transform: translate(4px, -4px);
+    transform: translate(4px, -4px);
+  }
+  66.6% {
+    -ms-transform: translate(-2px, 2px);
+    -webkit-transform: translate(-2px, 2px);
+    transform: translate(-2px, 2px);
+  }
+  83.25% {
+    -ms-transform: translate(1px, -1px);
+    -webkit-transform: translate(1px, -1px);
+    transform: translate(1px, -1px);
+  }
+  100% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+.test-logo img {
+  width: 100%;
+}
+
+.test-logoSelect {
+  background-color: #c6ffdd;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+
+.test-hinhAnh img {
+  width: 100px;
+  height: 50px;
+}
+
+.btn-showTime {
+  margin-top: 5px;
+  margin-right: 10px;
+  background-color: #1e847f;
+}
+
+.btn-showTime:hover {
+  animation-name: buzz;
+  animation-duration: 0.15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  background-color: #1e847f;
+}
+
+@keyframes buzz {
+  50% {
+    -ms-transform: translateX(3px) rotate(2deg);
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+  100% {
+    -ms-transform: translateX(-3px) rotate(-2deg);
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+}
+
+.test-lichChieu {
+  margin-bottom: 20px;
+}
+.test-tenRap {
+  margin-bottom: 15px;
+  font-size: 2rem;
+  background: #a2d5c6;
+  /* color: #fff !important; */
+
+  cursor: pointer;
+}
+
+.btn-tenRap {
+  padding: 2rem 0.5rem;
+}
+
+.test-rapSelect {
+  /* background-color: #c6ffdd; */
+  color: #fff !important;
+}
+
+.tabTheater__logo {
+  margin: 0;
 }

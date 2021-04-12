@@ -4,6 +4,7 @@ import Carousel from "../../../src/components/Carousel/index";
 import TopSearch from "../../components/TopSearch";
 import TabTheaters from "../../components/TabTheater";
 import Loading from "../../components/Loading";
+// import Test from "../../components/TabTheater/index4";
 // import TabTheaters2 from "../../components/TabTheater/index2";
 
 const CarouselLazy = lazy(() =>
@@ -25,8 +26,9 @@ export default class HomePage extends Component {
           <TopSearchLazy />
         </Suspense>
         <Suspense fallback={<Loading />}>
-          <TabTheaters />
+          <TabTheaterLazy />
         </Suspense>
+        {/* <Test /> */}
         {/* <TabTheaters2 /> */}
 
         {/* <TabTheaters2 /> */}
