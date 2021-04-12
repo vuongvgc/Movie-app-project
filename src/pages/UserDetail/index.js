@@ -17,8 +17,8 @@ function UserDetail(props) {
               to="/user/information"
               className={
                 activeUrl === "/user/information"
-                  ? "nav-link user_detail__nav active_link"
-                  : "nav-link user_detail__nav"
+                  ? "user_detail__nav active_link"
+                  : "user_detail__nav"
               }
             >
               <p>Thông tin người dùng</p>
@@ -27,8 +27,8 @@ function UserDetail(props) {
               to="/user/movie"
               className={
                 activeUrl === "/user/movie"
-                  ? "nav-link user_detail__nav active_link"
-                  : "nav-link user_detail__nav"
+                  ? "user_detail__nav active_link"
+                  : "user_detail__nav"
               }
             >
               <p>Lịch sử đặt vé</p>
@@ -37,8 +37,8 @@ function UserDetail(props) {
               to="/admin/users"
               className={
                 activeUrl === "/admin/user"
-                  ? "nav-link user_detail__nav active_link"
-                  : "nav-link user_detail__nav"
+                  ? "user_detail__nav active_link"
+                  : "user_detail__nav"
               }
             >
               <p>Quản Lý Trang Movie</p>

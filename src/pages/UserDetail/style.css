@@ -1,20 +1,3 @@
 .user_detail__box {
     margin-top: 15vh;
 }
-.user_detail__nav {
-    color: black;
-    margin: 10px 0;
-    font-weight: 700;
-    font-size: 16px;
-}
-.user_detail__box .user_detail__nav:hover {
-    color: #3845fa;
-    transform: scale(1.1);
-    transition: .2s;
-  }
-.active_link {
-    color: #fa5238;
-    transition: .2s;
-
-
-}

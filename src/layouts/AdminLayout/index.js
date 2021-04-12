@@ -18,8 +18,8 @@ export default function AdminLayout(props) {
                 to="/admin/users"
                 className={
                   activeUrl === "/admin/users"
-                    ? "nav-link user_detail__nav active_link"
-                    : "nav-link user_detail__nav"
+                    ? "user_detail__nav active_link"
+                    : "user_detail__nav"
                 }
               >
                 <p>Quản Lý Người Dùng</p>
@@ -28,16 +28,13 @@ export default function AdminLayout(props) {
                 to="/admin/movies"
                 className={
                   activeUrl === "/admin/movies"
-                    ? "nav-link user_detail__nav active_link"
-                    : "nav-link user_detail__nav"
+                    ? "user_detail__nav active_link"
+                    : "user_detail__nav"
                 }
               >
                 <p>Quản Lý Phim</p>
               </NavLink>
-              <NavLink
-                to="/user/information"
-                className="nav-link user_detail__nav"
-              >
+              <NavLink to="/user/information" className="user_detail__nav">
                 <p>Thông Tin Cá Nhân</p>
               </NavLink>
             </div>
