@@ -12,28 +12,21 @@ import {
   UPDATE_ADMIN_USER_SUCCESS,
   UPDATE_ADMIN_USER_FAIL,
   RESET_STATUS,
+  SEARCH_USER_REQUEST,
+  SEARCH_USER_SUCCESS,
+  SEARCH_MOVIE_FAIL,
 } from "../constants/Admin";
 import axios from "../utils/axiosClient";
 import axiosPure from "axios";
-export const getUserList = (
-  maNhom = "GP02",
-  tuKhoa,
-  page = 1,
-  pageSize = 5
-) => {
+export const getUserList = (maNhom = "GP10", page = 1, pageSize = 5) => {
   return (dispatch) => {
     dispatch({
       type: GET_USER_REQUEST,
     });
-    axios
-      .get("/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang", {
-        params: {
-          MaNhom: maNhom,
-          tuKhoa: tuKhoa,
-          soTrang: page,
-          soPhanTuTrenTrang: pageSize,
-        },
-      })
+    axiosPure({
+      method: "get",
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=${maNhom}&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`,
+    })
       .then((result) => {
         dispatch({
           type: GET_USER_SUCCESS,
@@ -41,7 +34,7 @@ export const getUserList = (
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         dispatch({
           type: GET_USER_FAIL,
           payload: { error: error.response },
@@ -94,7 +87,7 @@ export const deleteUser = (taiKhoan, accessToken) => {
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         dispatch({
           type: DELETE_USER_FAIL,
           payload: { error: error?.response?.data },
@@ -120,7 +113,7 @@ export const updateAdminUser = (formValue, accessToken, taiKhoan) => {
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         dispatch({
           type: UPDATE_ADMIN_USER_FAIL,
           payload: { error: error?.response?.data },
@@ -131,5 +124,36 @@ export const updateAdminUser = (formValue, accessToken, taiKhoan) => {
 export const resetStatus = () => {
   return {
     type: RESET_STATUS,
+  };
+};
+export const searchUsersList = (
+  maNhom = "GP10",
+  tenNguoiDung,
+  page = 1,
+  pageSize = 5
+) => {
+  return (dispatch) => {
+    dispatch({
+      type: SEARCH_USER_REQUEST,
+    });
+    axiosPure({
+      method: "get",
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=${maNhom}&tuKhoa=${tenNguoiDung}&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`,
+    })
+      .then((result) => {
+        // Lưu thông tin user xuống localStorage
+        dispatch({
+          type: SEARCH_USER_SUCCESS,
+          payload: { data: result.data },
+        });
+        // history.replace("/");
+      })
+      .catch((error) => {
+        // console.log(error.response);
+        dispatch({
+          type: SEARCH_MOVIE_FAIL,
+          payload: { error: error.response },
+        });
+      });
   };
 };

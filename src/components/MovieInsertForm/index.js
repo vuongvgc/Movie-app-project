@@ -16,7 +16,7 @@ export default class PhimInsert extends Component {
   }
   componentDidUpdate(prevProps) {
     if (this.props.movie !== prevProps.movie) {
-      console.log("run update Movie");
+      // console.log("run update Movie");
       let {
         maPhim,
         tenPhim,
@@ -24,6 +24,7 @@ export default class PhimInsert extends Component {
         trailer,
         hinhAnh,
         moTa,
+        //eslint-disable-next-line
         maNhom,
         danhGia,
         ngayKhoiChieu,
@@ -45,11 +46,11 @@ export default class PhimInsert extends Component {
     let target = e.target;
     if (target.name === "hinhAnh") {
       this.setState({ hinhAnh: e.target.files[0] }, () => {
-        console.log(this.state);
+        // console.log(this.state);
       });
     } else {
       this.setState({ [e.target.name]: e.target.value }, () => {
-        console.log(this.state);
+        // console.log(this.state);
       });
     }
   };
@@ -64,7 +65,7 @@ export default class PhimInsert extends Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     let {
       tenPhim,
       biDanh,

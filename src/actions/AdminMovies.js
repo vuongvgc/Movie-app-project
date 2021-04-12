@@ -34,7 +34,7 @@ export const getMoviesList = (maNhom = "GP10", page = 1, pageSize = 5) => {
         // history.replace("/");
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         dispatch({
           type: GET_MOVIES_FAIL,
           payload: { error: error.response },
@@ -60,7 +60,7 @@ export const addMovie = (form_data) => {
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         dispatch({
           type: ADD_MOVIE_FAIL,
           payload: { error: error?.response?.data },
@@ -115,7 +115,7 @@ export const deleteMovie = (maPhim, accessToken) => {
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         dispatch({
           type: DELETE_MOVIE_FAIL,
           payload: { error: error?.response?.data },
@@ -146,7 +146,7 @@ export const searchMoviesList = (
         // history.replace("/");
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         dispatch({
           type: SEARCH_MOVIE_FAIL,
           payload: { error: error.response },

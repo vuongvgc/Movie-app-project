@@ -23,7 +23,7 @@ export default function CustomizedSnackbars(props) {
   const dispatch = useDispatch();
   const dispatchResetStatus = () => dispatch(resetStatus());
   useEffect(() => {
-    console.log(props.isOpen);
+    // console.log(props.isOpen);
     setOpen(props.isOpen);
   }, [props.isOpen]); //
   // const handleClick = () => {

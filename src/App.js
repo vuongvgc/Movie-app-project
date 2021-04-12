@@ -2,10 +2,11 @@ import React, { lazy, Suspense } from "react";
 
 import "./App.css";
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Switch,
   Route,
   Redirect,
+  Router,
 } from "react-router-dom";
 
 //Layout
@@ -50,7 +51,7 @@ let history = createBrowserHistory();
 function App() {
   return (
     <Suspense fallback={<Loading />}>
-      <Router history={history}>
+      <BrowserRouter history={history}>
         {/* <Suspense fallback={<div>
         <img src="../img/carousel1.jpg" style={{ width: 500, height: 400 }} alt="..." />
       </div>}>
@@ -113,7 +114,7 @@ function App() {
           </Route>
           <Redirect to="/" />
         </Switch>
-      </Router>
+      </BrowserRouter>
     </Suspense>
   );
 }

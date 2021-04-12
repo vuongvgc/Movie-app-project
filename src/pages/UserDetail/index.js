@@ -12,7 +12,7 @@ function UserDetail(props) {
       <Header />
       <div className="container-fluid">
         <div className="row">
-          <div className="col-12 col-lg-2 border mx-auto border-secondary d-block d-sm-flex d-lg-block">
+          <div className="col-12 col-lg-2 border mx-auto border-secondary d-block d-sm-flex d-lg-block justify-content-sm-around">
             <NavLink
               to="/user/information"
               className={
@@ -33,6 +33,7 @@ function UserDetail(props) {
             >
               <p>Lịch sử đặt vé</p>
             </NavLink>
+            <hr />
             <NavLink
               to="/admin/users"
               className={

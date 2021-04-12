@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { logout } from "../../actions/Auth";
 class StatusAuth extends Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     if (this.props.currentUser) {
       return (
         <ul className="navbar nav">

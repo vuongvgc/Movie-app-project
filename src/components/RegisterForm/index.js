@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import renderInput from "../Form/renderInput";
 import renderInputPassword from "../Form/renderInputPassword";
 import Validate from "./Validate";
-import axios from "../../utils/axiosClient";
 import renderSelectInput from "../Form/renderSelectInput";
 class RegisterForm extends React.Component {
   onSubmit = (formValue) => {
@@ -30,7 +29,7 @@ class RegisterForm extends React.Component {
             <button className="btn btn-primary m-2">Thêm người dùng</button>
             <button
               type="button"
-              class="btn btn-danger"
+              className="btn btn-danger"
               data-bs-dismiss="modal"
             >
               Đóng

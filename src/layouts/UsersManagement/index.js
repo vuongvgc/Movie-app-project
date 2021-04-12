@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import ModalUser from "../../components/Modal/ModalUser";
 import { connect } from "react-redux";
-import { getUserList, deleteUser } from "../../actions/Admin";
+import { getUserList, deleteUser, searchUsersList } from "../../actions/Admin";
 import RenderUserList from "./RenderUserList";
 import SnackBar from "../../components/Snackbar";
-import CircularIndeterminate from "../../components/CircularIndeterminate";
-// import ModalUpdateUser from "../../components/Modal/ModalUpdateUser";
 import ModalUpdate from "../../components/Modal/ModalUpdate";
 import ModalDelete from "../../components/Modal/ModalDelete";
 import findUser from "../../utils/findUser";
@@ -45,10 +43,14 @@ class UsersManagement extends Component {
     this.setState({ user: user });
   };
   componentDidMount() {
-    this.props.getUserList("GP01", "a", 1, 10);
+    this.props.getUserList();
   }
   handlePage = (page) => {
-    this.props.getUserList("GP01", "a", page, 10);
+    if (this.state.search === "") {
+      this.props.getUserList(this.props.maNhom, page);
+    } else {
+      this.props.searchUsersList(this.props.maNhom, this.state.search, page);
+    }
   };
   renderAction = () => {
     return (
@@ -95,7 +97,11 @@ class UsersManagement extends Component {
           >
             Cập nhật
           </button>
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+          <button
+            type="button"
+            className="btn btn-danger"
+            data-bs-dismiss="modal"
+          >
             Đóng
           </button>
         </div>
@@ -139,9 +145,6 @@ class UsersManagement extends Component {
       formValue.taiKhoan
     );
   };
-  searchUser = (value) => {
-    this.props.getUserList("GP01", value, 1, 10);
-  };
   render() {
     if (this.props.admin.loading === true) {
       return <Loading />;
@@ -172,10 +175,10 @@ class UsersManagement extends Component {
           <div className="card-body">
             <div className="row mb-3">
               <div className="col">
-                <div class="input-group mb-3">
+                <div className="input-group mb-3">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Tên người dùng"
                     value={this.state.search}
                     onChange={(event) =>
@@ -183,10 +186,10 @@ class UsersManagement extends Component {
                     }
                   />
                   <button
-                    class="btn btn-outline-secondary"
+                    className="btn btn-outline-secondary"
                     type="button"
                     id="button-addon2"
-                    onClick={() => this.searchUser(this.state.search)}
+                    onClick={() => this.handlePage()}
                   >
                     <i className="fa fa-search"></i>
                   </button>
@@ -284,4 +287,5 @@ export default connect(mapMapToProps, {
   getUserList,
   deleteUser,
   updateAdminUser,
+  searchUsersList,
 })(UsersManagement);

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import SnackBar from "../../components/Snackbar";
-import CircularIndeterminate from "../../components/CircularIndeterminate";
 import {
   getMoviesList,
   addMovie,
@@ -47,7 +46,11 @@ class MoviesManagement extends Component {
           <button className="btn btn-primary m-2">
             {this.state.update ? "Cập nhật" : "Thêm Phim"}
           </button>
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+          <button
+            type="button"
+            className="btn btn-danger"
+            data-bs-dismiss="modal"
+          >
             Đóng
           </button>
         </div>
@@ -55,11 +58,11 @@ class MoviesManagement extends Component {
     );
   };
   onSubmit = (formValue) => {
-    console.log(formValue);
+    // console.log(formValue);
     this.props.addMovie(formValue, this.props.accessToken);
   };
   onSubmitUpdate = (formValue) => {
-    console.log(formValue);
+    // console.log(formValue);
     this.props.updateMovie(formValue, this.props.accessToken);
   };
   handleMovie = (movie) => {
@@ -117,10 +120,10 @@ class MoviesManagement extends Component {
           <div className="card-body">
             <div className="row mb-3">
               <div className="col">
-                <div class="input-group mb-3">
+                <div className="input-group mb-3">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Tên Phim"
                     onChange={(event) =>
                       this.setState({ search: event.target.value })
@@ -128,7 +131,7 @@ class MoviesManagement extends Component {
                     value={this.state.search}
                   />
                   <button
-                    class="btn btn-outline-secondary"
+                    className="btn btn-outline-secondary"
                     type="button"
                     id="button-addon2"
                     onClick={() => this.handlePage(1)}
