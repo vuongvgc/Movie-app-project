@@ -54,11 +54,11 @@ class MoviesManagement extends Component {
     );
   };
   onSubmit = (formValue) => {
-    console.log(formValue);
+    // console.log(formValue);
     this.props.addMovie(formValue, this.props.accessToken);
   };
   onSubmitUpdate = (formValue) => {
-    console.log(formValue);
+    // console.log(formValue);
     this.props.updateMovie(formValue, this.props.accessToken);
   };
   handleMovie = (movie) => {

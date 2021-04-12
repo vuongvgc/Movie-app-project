@@ -34,7 +34,7 @@ export const getUserList = (maNhom = "GP10", page = 1, pageSize = 5) => {
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         dispatch({
           type: GET_USER_FAIL,
           payload: { error: error.response },
@@ -87,7 +87,7 @@ export const deleteUser = (taiKhoan, accessToken) => {
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         dispatch({
           type: DELETE_USER_FAIL,
           payload: { error: error?.response?.data },
@@ -113,7 +113,7 @@ export const updateAdminUser = (formValue, accessToken, taiKhoan) => {
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         dispatch({
           type: UPDATE_ADMIN_USER_FAIL,
           payload: { error: error?.response?.data },
@@ -149,7 +149,7 @@ export const searchUsersList = (
         // history.replace("/");
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         dispatch({
           type: SEARCH_MOVIE_FAIL,
           payload: { error: error.response },
