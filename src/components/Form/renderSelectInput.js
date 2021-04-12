@@ -4,7 +4,7 @@ const renderSelectInput = ({ input, label, meta, value }) => {
   return (
     <div className="form-group">
       <label className={className}>{label}</label>
-      <select class="form-select" {...input} defaultValue={"KhachHang"}>
+      <select className="form-select" {...input} defaultValue={"KhachHang"}>
         <option selected>Chọn loại người dùng</option>
         <option value="KhachHang">Khách hàng</option>
         <option value="QuanTri">Quản Trị</option>

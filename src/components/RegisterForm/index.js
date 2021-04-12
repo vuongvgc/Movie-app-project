@@ -30,7 +30,7 @@ class RegisterForm extends React.Component {
             <button className="btn btn-primary m-2">Thêm người dùng</button>
             <button
               type="button"
-              class="btn btn-danger"
+              className="btn btn-danger"
               data-bs-dismiss="modal"
             >
               Đóng

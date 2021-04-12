@@ -62,13 +62,13 @@ class RenderUserList extends React.Component {
         <tr key={movie.maPhim}>
           <td>{movie.maPhim}</td>
           <td>{movie.tenPhim}</td>
-          <td class="card">
+          <td className="card">
             <img
               src={movie.hinhAnh}
               alt={movie.tenPhim}
               className="card-img-top img-fluid"
             />
-            <div class="card-body">
+            <div className="card-body">
               <PopOver action="Mô tả" content={movie.moTa} />
             </div>
           </td>
@@ -76,7 +76,7 @@ class RenderUserList extends React.Component {
             <p className="">{movie.ngayKhoiChieu?.slice(0, 10)}</p>
           </td>
           <td>
-            <div class="d-grid gap-2 d-block">
+            <div className="d-grid gap-2 d-block">
               <button
                 className="btn btn-success"
                 data-bs-toggle="modal"
