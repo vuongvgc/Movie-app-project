@@ -8,7 +8,7 @@
     font-weight: 700;
 }
 .user_detail__box .user_detail__nav:hover {
-    color: #fa5238;
+    color: #3845fa;
     transform: scale(1.1);
     transition: .2s;
   }

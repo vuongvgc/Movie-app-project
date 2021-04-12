@@ -22,7 +22,7 @@ export default function AdminLayout(props) {
                     : "nav-link user_detail__nav"
                 }
               >
-                <div>Quản Lý Người Dùng</div>
+                <p>Quản Lý Người Dùng</p>
               </NavLink>
               <NavLink
                 to="/admin/movies"
@@ -32,13 +32,13 @@ export default function AdminLayout(props) {
                     : "nav-link user_detail__nav"
                 }
               >
-                <div>Quản Lý Phim</div>
+                <p>Quản Lý Phim</p>
               </NavLink>
               <NavLink
                 to="/user/information"
                 className="nav-link user_detail__nav"
               >
-                <div>Thông Tin Cá Nhân</div>
+                <p>Thông Tin Cá Nhân</p>
               </NavLink>
             </div>
           </div>
