@@ -13,7 +13,7 @@ export default function AdminLayout(props) {
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 col-lg-2 border border-lg-secondary">
-            <div className="d-block d-sm-flex d-lg-block">
+            <div className="d-block d-sm-flex d-lg-block justify-content-sm-around">
               <NavLink
                 to="/admin/users"
                 className={
@@ -34,6 +34,7 @@ export default function AdminLayout(props) {
               >
                 <p>Quản Lý Phim</p>
               </NavLink>
+              <hr />
               <NavLink to="/user/information" className="user_detail__nav">
                 <p>Thông Tin Cá Nhân</p>
               </NavLink>
