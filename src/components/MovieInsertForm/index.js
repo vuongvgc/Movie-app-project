@@ -24,6 +24,7 @@ export default class PhimInsert extends Component {
         trailer,
         hinhAnh,
         moTa,
+        //eslint-disable-next-line
         maNhom,
         danhGia,
         ngayKhoiChieu,

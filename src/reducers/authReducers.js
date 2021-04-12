@@ -18,6 +18,7 @@ const initialState = {
   error: null,
   registerUser: "",
   registerStatus: null,
+  register: { loading: true, success: false, error: null },
 };
 
 const authReducer = (state = initialState, action) => {
@@ -38,11 +39,29 @@ const authReducer = (state = initialState, action) => {
     case LOGOUT_SUCCESS: {
       return { ...initialState, currentUser: "" };
     }
+    case REGISTER_REQUEST: {
+      return {
+        ...state,
+        register: { loading: true, success: false, error: null },
+      };
+    }
     case REGISTER_SUCCESS: {
-      return { ...state, registerUser: action.payload.data };
+      return {
+        ...state,
+        registerUser: action.payload.data,
+        register: { loading: false, success: true, error: null },
+      };
     }
     case REGISTER_FAIL: {
-      return { ...state, registerStatus: action.payload.error };
+      return {
+        ...state,
+        registerStatus: action.payload.error,
+        register: {
+          loading: true,
+          success: false,
+          error: action.payload.error,
+        },
+      };
     }
 
     default:

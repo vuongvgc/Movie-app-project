@@ -4,7 +4,6 @@ import "./style.css";
 import RegisterForm from "../RegisterForm";
 import { connect } from "react-redux";
 import { addUser } from "../../actions/Admin";
-import _ from "lodash";
 class Modal extends React.Component {
   onSubmit = (formValue) => {
     // console.log(formValue);

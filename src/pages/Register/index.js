@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { register } from "../../actions/Auth";
 import RegisterForm from "../../components/RegisterForm";
 import "./style.css";
+import SnackBar from "../../components/Snackbar";
 class Login extends Component {
   onSubmit = (formValue) => {
     this.props.register(formValue);
@@ -21,6 +22,12 @@ class Login extends Component {
             />
           </div>
         </div>
+        <SnackBar isOpen={true} title="Đăng ký thành công" severity="success" />
+        <SnackBar
+          isOpen={this.props.register.error}
+          title="Đăng ký  thất bại"
+          severity="warning"
+        />
       </div>
     );
   }
@@ -29,6 +36,7 @@ const mapStateToProp = (state) => {
   return {
     currentUser: state.authReducers.currentUser,
     error: state.authReducers.registerStatus,
+    register: state.authReducers.register,
   };
 };
 export default connect(mapStateToProp, { register: register })(Login);

@@ -1,6 +1,7 @@
 const Validate = (formValues) => {
   //   console.log(formValues);
   const regexName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/g;
+  //eslint-disable-next-line
   const regexEmail = /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/gm;
   const regexPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
   const { taiKhoan, matKhau, nhapLaiMatKhau, hoTen, email, soDt } = formValues;

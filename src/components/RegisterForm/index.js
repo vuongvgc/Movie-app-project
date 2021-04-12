@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import renderInput from "../Form/renderInput";
 import renderInputPassword from "../Form/renderInputPassword";
 import Validate from "./Validate";
-import axios from "../../utils/axiosClient";
 import renderSelectInput from "../Form/renderSelectInput";
 class RegisterForm extends React.Component {
   onSubmit = (formValue) => {
