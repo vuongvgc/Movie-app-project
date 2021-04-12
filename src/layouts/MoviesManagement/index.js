@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import SnackBar from "../../components/Snackbar";
-import CircularIndeterminate from "../../components/CircularIndeterminate";
 import {
   getMoviesList,
   addMovie,

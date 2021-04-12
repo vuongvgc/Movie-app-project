@@ -12,6 +12,9 @@ import {
   UPDATE_ADMIN_USER_REQUEST,
   UPDATE_ADMIN_USER_SUCCESS,
   UPDATE_ADMIN_USER_FAIL,
+  SEARCH_USER_SUCCESS,
+  SEARCH_USER_REQUEST,
+  SEARCH_USER_FAIL,
 } from "../constants/Admin";
 import deleteItemInArr from "../utils/deleteItemInArr";
 import addItemInArr from "../utils/addItemInArr";
@@ -172,6 +175,19 @@ const adminReducers = (state = initialState, action) => {
         addUser: { loading: true, success: false, error: null },
         deleteUser: { loading: true, success: false, error: null },
       };
+    }
+    case SEARCH_USER_REQUEST: {
+      return { ...state, loading: true, error: null };
+    }
+    case SEARCH_USER_SUCCESS: {
+      return {
+        ...state,
+        userList: action.payload.data,
+        loading: false,
+      };
+    }
+    case SEARCH_USER_FAIL: {
+      return { ...state, loading: false, error: action.payload.error };
     }
     default:
       return state;
