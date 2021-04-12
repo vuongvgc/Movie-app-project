@@ -54,7 +54,7 @@ export default function TopSearch(props) {
     let [phimHot, setDanhSachPhimHot] = useState([]);
     const renderDanhSachPhim = () => {
         return phim.map((phim, index) => {
-            return <div key={index} className="col-3 ">
+            return <div key={index} className="col-3 my-2 ">
 
                 <div className="card text-left top__Search ">
                     <div className="top__Search__overlay"></div>
@@ -63,14 +63,14 @@ export default function TopSearch(props) {
                             <i className="fa fa-play" />
                         </a>
                         <p className="topSearch__book" >
-                            <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-secondary ">Đặt vé</NavLink>
+                            <NavLink style={{ fontSize: "1.5rem" }} to={`/movie/${phim.maPhim}`} className="btn btn-secondary p-3 ">ĐẶT VÉ</NavLink>
                         </p>
 
                     </div>
 
                     <img style={{ width: '100%' }} className="card-img-top  img__topSearch img-fluid " src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
-                        <h6 className="card-title top__Search__title">{phim.tenPhim}</h6>
+                        <h5 className="card-title top__Search__title text-center">{phim.tenPhim}</h5>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@ export default function TopSearch(props) {
     }
     const renderDanhSachPhimSapChieu = () => {
         return phimSapChieu.map((phim, index) => {
-            return <div key={index} className="col-3">
+            return <div key={index} className="col-3 my-2">
                 <div className="card text-left top__Search ">
                     <div className="top__Search__overlay"></div>
                     <div className="top__Search__play">
@@ -86,14 +86,14 @@ export default function TopSearch(props) {
                             <i className="fa fa-play" />
                         </a>
                         <p className="topSearch__book" >
-                            <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-secondary">Đặt vé</NavLink>
+                            <NavLink style={{ fontSize: "1.5rem" }} to={`/movie/${phim.maPhim}`} className="btn btn-secondary p-3">ĐẶT VÉ</NavLink>
                         </p>
 
                     </div>
 
                     <img style={{ width: '100%' }} className="card-img-top  img__topSearch img-fluid " src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
-                        <h6 className="card-title top__Search__title">{phim.tenPhim}</h6>
+                        <h5 className="text-center card-title top__Search__title">{phim.tenPhim}</h5>
                     </div>
                 </div>
 
@@ -103,7 +103,7 @@ export default function TopSearch(props) {
 
     const renderDanhSachPhimHot = () => {
         return phimHot.map((phim, index) => {
-            return <div key={index} className="col-3">
+            return <div key={index} className="col-3 my-2" >
                 <div className="card text-left top__Search ">
                     <div className="top__Search__overlay"></div>
                     <div className="top__Search__play">
@@ -111,14 +111,14 @@ export default function TopSearch(props) {
                             <i className="fa fa-play" />
                         </a>
                         <p className="topSearch__book">
-                            <NavLink to={`/movie/${phim.maPhim}`} className="btn btn-secondary  ">Đặt vé</NavLink>
+                            <NavLink style={{ fontSize: "1.5rem" }} to={`/movie/${phim.maPhim}`} className="btn btn-secondary p-3 ">ĐẶT VÉ</NavLink>
                         </p>
 
                     </div>
 
                     <img style={{ width: '100%' }} className="card-img-top  img__topSearch img-fluid " src={phim.hinhAnh} alt={phim.hinhAnh} />
                     <div className="card-body">
-                        <h6 className="card-title top__Search__title">{phim.tenPhim}</h6>
+                        <h5 className="text-center card-title top__Search__title">{phim.tenPhim}</h5>
                     </div>
                 </div>
 
@@ -172,15 +172,15 @@ export default function TopSearch(props) {
 
     return (
         <div>
-            <div className='mt-5 container'>
-                <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li className="nav-item" role="presentation">
+            <div className='mt-5 container '>
+                <ul className="nav nav-pills mb-3  " id="pills-tab" role="tablist">
+                    <li className="nav-item my-2" role="presentation">
                         <button className="nav-link  top__Search__link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Phim Đang Chiếu</button>
                     </li>
-                    <li className="nav-item" role="presentation">
+                    <li className="nav-item  my-2" role="presentation">
                         <button className="nav-link top__Search__link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Phim Sắp Chiếu</button>
                     </li>
-                    <li className="nav-item" role="presentation">
+                    <li className="nav-item my-2 " role="presentation">
                         <button className="nav-link top__Search__link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Phim Hot</button>
                     </li>
                 </ul>
