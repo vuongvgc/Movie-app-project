@@ -2,13 +2,10 @@ import React from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "./style.css";
-import { NavLink, useParams, useHistory, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 function UserDetail(props) {
-  const history = useHistory();
   const location = useLocation();
-  const params = useParams();
-  // console.log("Header", location.pathname);
   let activeUrl = location.pathname;
   return (
     <div className="user_detail__box">
@@ -24,7 +21,7 @@ function UserDetail(props) {
                   : "nav-link user_detail__nav"
               }
             >
-              <div>Thông tin người dùng</div>
+              <p>Thông tin người dùng</p>
             </NavLink>
             <NavLink
               to="/user/movie"
@@ -34,7 +31,7 @@ function UserDetail(props) {
                   : "nav-link user_detail__nav"
               }
             >
-              <div>Lịch sử đặt vé</div>
+              <p>Lịch sử đặt vé</p>
             </NavLink>
             <NavLink
               to="/admin/users"
@@ -44,7 +41,7 @@ function UserDetail(props) {
                   : "nav-link user_detail__nav"
               }
             >
-              <div>Quản Lý Trang Movie</div>
+              <p>Quản Lý Trang Movie</p>
             </NavLink>
           </div>
           <div className="col-12 col-lg-10 border border-secondary">
