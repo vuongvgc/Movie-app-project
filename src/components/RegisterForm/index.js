@@ -42,7 +42,7 @@ class RegisterForm extends React.Component {
       <React.Fragment>
         <button className="btn btn-primary m-2">Đăng Ký</button>
         <NavLink to="/login">
-          <button id="btnDong" type="button" class="btn btn-primary">
+          <button id="btnDong" type="button" className="btn btn-primary">
             Đăng Nhập
           </button>
         </NavLink>

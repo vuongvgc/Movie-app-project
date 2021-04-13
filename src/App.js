@@ -41,6 +41,7 @@ import { createBrowserHistory } from "history";
 // lazy loading
 const HomePage = lazy(() => import("./pages/HomePage"));
 const MovieDetails = lazy(() => import("./pages/MovieDetails"));
+const ShowtimeManagement = lazy(() => import("./layouts/ShowtimeManagement"));
 const TicketRoom = lazy(() => import("./pages/TicketRoom"));
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
@@ -89,11 +90,18 @@ function App() {
             </AuthLayout>
           </Route>
           {/* Admin */}
-          <Route exact path={["/admin/users", "/admin/movies"]}>
+          <Route
+            exact
+            path={["/admin/users", "/admin/movies", "/admin/showtime/:movieId"]}
+          >
             <AdminLayout>
               <Switch>
                 <AdminRoute path="/admin/users" component={UsersManagement} />
                 <AdminRoute path="/admin/movies" component={MoviesManagement} />
+                <AdminRoute
+                  path="/admin/showtime/:movieId"
+                  component={ShowtimeManagement}
+                />
               </Switch>
             </AdminLayout>
           </Route>
