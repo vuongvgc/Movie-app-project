@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { deleteMovie } from "../../actions/AdminMovies";
 import SnackBar from "../../components/Snackbar";
 import Loading from "../../components/Loading";
+import { NavLink } from "react-router-dom";
 
 class RenderUserList extends React.Component {
   constructor(props) {
@@ -61,7 +62,11 @@ class RenderUserList extends React.Component {
       return (
         <tr key={movie.maPhim}>
           <td>{movie.maPhim}</td>
-          <td>{movie.tenPhim}</td>
+          <td>
+            <NavLink className="" to={`/admin/showtime/${movie.maPhim}`}>
+              {movie.tenPhim}
+            </NavLink>
+          </td>
           <td className="card">
             <img
               src={movie.hinhAnh}
