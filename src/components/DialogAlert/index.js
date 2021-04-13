@@ -24,19 +24,15 @@ export default function AlertDialog(props) {
         <DialogTitle id="alert-dialog-title">{"MOVIE APP"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Chúc mừng bạn đã đăng ký thành công !
+            {props.title}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            <NavLink className="text-decoration-none" to="/">
-              Về Trang Chủ
-            </NavLink>
+            {props.renderContentLeft()}
           </Button>
           <Button onClick={handleClose} color="primary" autoFocus>
-            <NavLink className="text-decoration-none" to="/login">
-              Đăng Nhập
-            </NavLink>
+            {props.renderContentRight()}
           </Button>
         </DialogActions>
       </Dialog>

@@ -67,11 +67,11 @@ class RegisterForm extends React.Component {
         <Field name="hoTen" component={renderInput} label="Họ tên" />
         <Field name="email" component={renderInput} label="Email" />
         <Field name="soDt" component={renderInput} label="Số điện thoại" />
-        {this.props.wrongAuth ? (
+        {/* {this.props.wrongAuth ? (
           <div className="alert alert-danger">{this.props.wrongAuth}</div>
         ) : (
           ""
-        )}
+        )} */}
         {this.renderAdmin(this.props.admin)}
       </form>
     );
