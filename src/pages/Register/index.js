@@ -4,12 +4,13 @@ import { register } from "../../actions/Auth";
 import RegisterForm from "../../components/RegisterForm";
 import "./style.css";
 import SnackBar from "../../components/Snackbar";
+import DialogAlert from "../../components/DialogAlert";
 class Login extends Component {
   onSubmit = (formValue) => {
     this.props.register(formValue);
   };
   render() {
-    // console.log(this.props.currentUser);
+    // console.log(this.props.register);
     return (
       <div className="register__box row">
         <div className="d-none d-md-flex col-md-6 register_background"></div>
@@ -22,12 +23,7 @@ class Login extends Component {
             />
           </div>
         </div>
-        <SnackBar isOpen={true} title="Đăng ký thành công" severity="success" />
-        <SnackBar
-          isOpen={this.props.register.error}
-          title="Đăng ký  thất bại"
-          severity="warning"
-        />
+        <DialogAlert isOpen={this.props.registerStatus.success} />
       </div>
     );
   }
@@ -36,7 +32,7 @@ const mapStateToProp = (state) => {
   return {
     currentUser: state.authReducers.currentUser,
     error: state.authReducers.registerStatus,
-    register: state.authReducers.register,
+    registerStatus: state.authReducers.register,
   };
 };
 export default connect(mapStateToProp, { register: register })(Login);
