@@ -113,7 +113,7 @@ export default function TicketRoom(props) {
   const { ticketRoom, loadingTicketRoom, errorTicketRoom } = useSelector((state) => state.ticketRoomReducer)
   const { currentUser } = useSelector(state => state.authReducers)
   // const { booking, loading, error } = useSelector(state => state.bookingReducer)
-  const { booking, loading, error } = useSelector(state => state.bookingReducer)
+  const { booking, error } = useSelector(state => state.bookingReducer)
 
   // !@$#!$@@#!@
   const row1 = ticketRoom?.danhSachGhe?.slice(0, 16);
@@ -133,7 +133,7 @@ export default function TicketRoom(props) {
     const id = props.match.params.ticketRoomId;
     dispatch(getTicketRoom(id));
 
-  }, [dispatch]);
+  }, [dispatch,props.match.params.ticketRoomId]);
 
   const arrLogo = [
     "http://movie0706.cybersoft.edu.vn/hinhanh/bhd-star-cineplex.png",
@@ -210,7 +210,7 @@ export default function TicketRoom(props) {
     dispatch(getBooking(value))
     setTimeout(() => {
       dispatch(getTicketRoom(id))
-    }, 300);
+    }, 0);
 
     handleClose();
     handleMessage();
@@ -538,11 +538,11 @@ export default function TicketRoom(props) {
                   </div>
 
                   <div className='infoUser'>
-                    <input type="text" id="emailCheckout"
+                    <input type="text" id="phoneCheckout"
                       value={currentUser?.soDT}
                       disabled
                     />
-                    <label htmlFor="emailCheckout" className='label-phoneCheckout' >
+                    <label htmlFor="phoneCheckout" className='label-phoneCheckout' >
                       <span className='span-phoneCheckout'>Phone</span>
                     </label>
                   </div>

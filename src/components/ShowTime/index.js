@@ -9,14 +9,14 @@ export default function ShowTime(props) {
     const dispatch = useDispatch();
 
     const [select, setSelect] = useState(0);
-    const { movieInfo, loading, error } = useSelector((state) => state.movieInfoReducer)
+    const { movieInfo } = useSelector((state) => state.movieInfoReducer)
 
     useEffect(() => {
         const movieId = props.movieId;
 
         dispatch(getMovieInfo(movieId));
 
-    }, []);
+    }, [dispatch,props.movieId  ]);
 
 
     return (
