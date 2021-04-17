@@ -1,81 +1,86 @@
-import React, { useEffect, useState } from "react";
-import { Field, reduxForm } from "redux-form";
-import renderInput from "../Form/renderInput";
-import Validate from "./Validate";
-import renderSelect from "../Form/renderSelect";
-import axios from "axios";
-import { connect } from "react-redux";
-import {
-  getMovieTheaterSystemList,
-  getMovieTheaterZoneList,
-} from "../../actions/AdminShowtime";
-
-const RenderMaRap = (props) => {
-  useEffect(() => {
-    this.props.getMovieTheaterZoneList(props.maHeThongRap);
-  }, [props.maHeThongRap]);
-  // console.log(this.props.movieTheaterZone);
-  return <div></div>;
-};
-class ShowtimeForm extends React.Component {
+import React, { Component } from "react";
+export default class ShowtimeForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      theaterMovieList: null,
-      theaterZone: null,
+      maPhim: "",
+      ngayChieuGioChieu: "",
+      maRap: "",
+      giaVe: "",
     };
   }
-
-  onSubmit = (formValue) => {
-    this.props.onSubmit(formValue);
-  };
-  componentDidMount() {
-    this.props.getMovieTheaterSystemList();
+  componentDidUpdate(prevProps) {
+    if (this.props.movie !== prevProps.movie) {
+      // console.log("run update Movie");
+      let { maPhim, ngayChieuGioChieu, maRap, giaVe } = this.props.movie;
+      this.setState({
+        maPhim,
+        ngayChieuGioChieu,
+        maRap,
+        giaVe,
+      });
+    }
   }
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value }, () => {
+      // console.log(this.state);
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let formValues = {};
+    for (var key in this.state) {
+      formValues = { ...formValues, [key]: this.state[key] };
+    }
+    this.props.onSubmit(formValues);
+    console.log(formValues);
+  };
+
   render() {
+    // console.log(this.state);
+    let { maPhim, ngayChieuGioChieu, maRap, giaVe } = this.state;
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field
-          name="maPhim"
-          component={renderInput}
-          label="Mã Phim"
-          isUpdate={{ disabled: true }}
-        />
-        {!this.props.movieTheaterSystem.loading ? (
-          <Field
-            name="maHeThongRap"
-            component={renderSelect}
-            label="Hệ Thống Rạp"
-            arrTheaterMovie={this.props.movieTheaterSystem.theaterSystemList}
-          />
-        ) : (
-          ""
-        )}
-        {!this.props.movieTheaterSystem.loading ? (
-          <RenderMaRap
-            maHeThongRap={this.props.ShowtimeForm.values.maHeThongRap}
-          />
-        ) : (
-          ""
-        )}
-      </form>
+      <div className="container">
+        <form onSubmit={this.handleSubmit}>
+          <div className="form-group">
+            <label>Mã Phim</label>
+            <input
+              name="maPhim"
+              className="form-control"
+              onChange={this.handleChange}
+              value={maPhim}
+            />
+          </div>
+          <div className="form-group">
+            <label>Ngày Giờ Chiếu</label>
+            <input
+              name="ngayChieuGioChieu"
+              className="form-control"
+              onChange={this.handleChange}
+              value={ngayChieuGioChieu}
+            />
+          </div>
+          <div className="form-group">
+            <label>Mã Rạp</label>
+            <input
+              name="maRap"
+              className="form-control"
+              onChange={this.handleChange}
+              value={maRap}
+            />
+          </div>
+          <div className="form-group">
+            <label>Giá Vé</label>
+            <input
+              name="giaVe"
+              className="form-control"
+              onChange={this.handleChange}
+              value={giaVe}
+            />
+          </div>
+        </form>
+      </div>
     );
   }
 }
-const mapStateToProps = (state) => {
-  return {
-    ShowtimeForm: state.form.ShowtimeForm,
-    movieTheaterSystem: state.adminShowtime.movieTheaterSystem,
-    movieTheaterZone: state.adminShowtime.movieTheaterZone,
-  };
-};
-export default reduxForm({
-  form: "ShowtimeForm",
-  validate: Validate,
-  enableReinitialize: true,
-})(
-  connect(mapStateToProps, {
-    getMovieTheaterZoneList,
-    getMovieTheaterSystemList,
-  })(ShowtimeForm)
-);
