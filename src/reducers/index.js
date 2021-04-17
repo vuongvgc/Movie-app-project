@@ -9,6 +9,7 @@ import ticketRoomReducer from "./ticketRoomReducer";
 import bookingReducer from "./bookingReducer";
 import adminReducers from "./adminReducers";
 import adminMoviesReducers from "./adminMoviesReducers";
+import adminShowtimeReducers from "./adminShowtimeReducers.js";
 
 const rootReducers = combineReducers({
   authReducers,
@@ -21,5 +22,6 @@ const rootReducers = combineReducers({
   bookingReducer,
   adminReducers,
   adminMovies: adminMoviesReducers,
+  adminShowtime: adminShowtimeReducers,
 });
 export default rootReducers;

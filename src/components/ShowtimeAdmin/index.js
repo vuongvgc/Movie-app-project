@@ -34,6 +34,7 @@ export default function ShowTime(props) {
 
     dispatch(getMovieInfo(movieId));
   }, []);
+  console.log(movieInfo);
   return (
     <div className="row showTimes">
       <div className="col-3 showTime-logo">
