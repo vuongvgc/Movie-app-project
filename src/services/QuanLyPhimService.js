@@ -1,5 +1,5 @@
 import axios from "axios";
-import { domain, groupID, userLogin } from "../config/setting";
+import { domain, groupID } from "../config/setting";
 export class QuanLyPhimService {
   layDanhSachPhim = () => {
     return axios({

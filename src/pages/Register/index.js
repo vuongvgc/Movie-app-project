@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { register } from "../../actions/Auth";
 import RegisterForm from "../../components/RegisterForm";
 import "./style.css";
-import SnackBar from "../../components/Snackbar";
 import DialogAlert from "../../components/DialogAlert";
 import { NavLink } from "react-router-dom";
 class Login extends Component {
