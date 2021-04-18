@@ -1,16 +1,29 @@
 import React, { Component } from "react";
-export default class ShowtimeForm extends Component {
+import { connect } from "react-redux";
+import {
+  getMovieTheaterSystemList,
+  getMovieTheaterZoneList,
+  addMovieShowtime,
+} from "../../actions/AdminShowtime";
+
+import findTheaterList from "../../utils/findTheaterList";
+class ShowtimeForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       maPhim: "",
       ngayChieuGioChieu: "",
       heThongRap: "",
+      maCumRap: "",
       maRap: "",
       giaVe: "",
+      theaterList: [],
     };
   }
-  componentDidUpdate(prevProps) {
+  componentDidMount() {
+    this.props.getMovieTheaterSystemList();
+  }
+  componentDidUpdate(prevProps, prevState) {
     if (this.props.movie !== prevProps.movie) {
       // console.log("run update Movie");
       let { maPhim, ngayChieuGioChieu, maRap, giaVe } = this.props.movie;
@@ -21,6 +34,17 @@ export default class ShowtimeForm extends Component {
         giaVe,
       });
     }
+    if (this.state.heThongRap !== prevState.heThongRap) {
+      this.props.getMovieTheaterZoneList(this.state.heThongRap);
+    }
+    if (this.state.maCumRap !== prevState.maCumRap) {
+      let newTheaterList = findTheaterList(
+        this.props.movieTheaterZone.theaterZoneList,
+        this.state.maCumRap
+      );
+      // console.log(theaterList);
+      this.setState({ theaterList: newTheaterList });
+    }
   }
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value }, () => {
@@ -30,17 +54,30 @@ export default class ShowtimeForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    let { maPhim, ngayChieuGioChieu, maRap, giaVe } = this.state;
     let formValues = {};
-    for (var key in this.state) {
-      formValues = { ...formValues, [key]: this.state[key] };
-    }
-    this.props.onSubmit(formValues);
-    console.log(formValues);
+    // for (var key in this.state) {
+    //   formValues = { ...formValues, [key]: this.state[key] };
+    // }
+    formValues = {
+      maPhim: maPhim,
+      ngayChieuGioChieu: ngayChieuGioChieu,
+      maRap: maRap,
+      giaVe: giaVe,
+    };
+    this.props.addMovieShowtime(formValues, this.props.accessToken);
   };
 
   render() {
-    // console.log(this.state);
-    let { maPhim, ngayChieuGioChieu, maRap, giaVe, heThongRap } = this.state;
+    // console.log(this.props.match.params);
+    let {
+      maPhim,
+      ngayChieuGioChieu,
+      maRap,
+      giaVe,
+      heThongRap,
+      maCumRap,
+    } = this.state;
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit}>
@@ -60,34 +97,71 @@ export default class ShowtimeForm extends Component {
               className="form-control"
               onChange={this.handleChange}
               value={ngayChieuGioChieu}
+              placeholder="Định dạng ngày chiếu: dd/mm/yyyy hh:mm:ss"
             />
           </div>
           <div className="form-group">
             <label>Hệ Thống Rạp</label>
             <select
-              class="form-select"
+              className="form-select"
               value={heThongRap}
               onChange={this.handleChange}
               name="heThongRap"
             >
               <option selected>Lựa chọn hệ thống rạp</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              {!this.props.movieTheaterSystem.loading
+                ? this.props.movieTheaterSystem.theaterSystemList.map(
+                    (item) => {
+                      return (
+                        <React.Fragment>
+                          <option value={item.maHeThongRap}>
+                            {item.tenHeThongRap}
+                          </option>
+                        </React.Fragment>
+                      );
+                    }
+                  )
+                : ""}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Cụm Rạp</label>
+            <select
+              className="form-select"
+              value={maCumRap}
+              name="maCumRap"
+              onChange={this.handleChange}
+            >
+              <option selected>Lựa chọn cụm rạp</option>
+              {!this.props.movieTheaterZone.loading
+                ? this.props.movieTheaterZone.theaterZoneList.map((item) => {
+                    return (
+                      <React.Fragment>
+                        <option value={item.maCumRap}>{item.tenCumRap}</option>
+                      </React.Fragment>
+                    );
+                  })
+                : ""}
             </select>
           </div>
           <div className="form-group">
             <label>Mã Rạp</label>
             <select
-              class="form-select"
+              className="form-select"
               value={maRap}
               name="maRap"
               onChange={this.handleChange}
             >
               <option selected>Lựa chọn rạp</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              {!this.props.movieTheaterZone.loading
+                ? this.state.theaterList.map((item) => {
+                    return (
+                      <React.Fragment>
+                        <option value={item.maRap}>{item.tenRap}</option>
+                      </React.Fragment>
+                    );
+                  })
+                : ""}
             </select>
           </div>
           <div className="form-group">
@@ -97,6 +171,7 @@ export default class ShowtimeForm extends Component {
               className="form-control"
               onChange={this.handleChange}
               value={giaVe}
+              placeholder="Giá Vé từ 75.000 - 200.000"
             />
           </div>
           <div className="text-end m-2">{this.props.renderAction}</div>
@@ -105,3 +180,15 @@ export default class ShowtimeForm extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    movieTheaterSystem: state.adminShowtime.movieTheaterSystem,
+    movieTheaterZone: state.adminShowtime.movieTheaterZone,
+    accessToken: state.authReducers.currentUser.accessToken,
+  };
+};
+export default connect(mapStateToProps, {
+  getMovieTheaterSystemList,
+  getMovieTheaterZoneList,
+  addMovieShowtime,
+})(ShowtimeForm);

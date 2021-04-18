@@ -7,7 +7,7 @@ import ShowtimeForm from "../ShowtimeForm";
 const renderContent = () => {
   return (
     <React.Fragment>
-      <ShowtimeForm onSubmit={onSubmit} renderAction={renderAction()} />
+      <ShowtimeForm renderAction={renderAction()} />
     </React.Fragment>
   );
 };
@@ -21,12 +21,10 @@ const renderAction = () => {
     </React.Fragment>
   );
 };
-const onSubmit = (formValue) => {
-  console.log(formValue);
-};
+
 export default function ShowTime(props) {
   const dispatch = useDispatch();
-
+  const movieId = props.movieId;
   const [select, setSelect] = useState(0);
   const { movieInfo } = useSelector((state) => state.movieInfoReducer);
 
