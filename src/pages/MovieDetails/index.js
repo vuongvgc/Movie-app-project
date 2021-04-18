@@ -18,7 +18,7 @@ export default function MovieDetails(props) {
     const id = props.match.params.movieId;
     setMenu(1);
     dispatch(getMovieDetail(id));
-  }, []);
+  }, [dispatch,props.match.params.movieId]);
 
   const handleScroll = () => {
     setMenu(1);

@@ -12425,7 +12425,7 @@ export default function TabTheaters() {
                         <div className="col-2 tabTheater__logo">
                             {rap.map((item, index) => {
                                 return (
-                                    <div
+                                    <div key={index}
                                         className={
                                             index === selectLogo
                                                 ? "test-logo test-logoSelect "
@@ -12438,11 +12438,11 @@ export default function TabTheaters() {
                                 );
                             })}
                         </div>
-                        {console.log(rap[selectLogo]?.lstCumRap[selectRap]?.danhSachPhim)}
+                        {/* {console.log(rap[selectLogo]?.lstCumRap[selectRap]?.danhSachPhim)} */}
                         <div className="col-4">
                             {rap[selectLogo]?.lstCumRap.slice(0, 5).map((item, indexTenRap) => {
                                 return (
-                                    <div className="test-tenRap">
+                                    <div key={indexTenRap} className="test-tenRap">
                                         <h1 style={{ fontSize: "1.5rem" }}
                                             className={
                                                 indexTenRap === selectRap
@@ -12463,7 +12463,7 @@ export default function TabTheaters() {
                                 (item, index) => {
                                     return (
                                         <>
-                                            <div className="test-hinhAnh text-center">
+                                            <div key={index} className="test-hinhAnh text-center">
                                                 <img style={{ width: 250, height: 250 }} src={item?.hinhAnh} alt="hinhAnh" />
                                                 <h1 className="text-white">{item?.tenPhim} </h1>
                                             </div>
@@ -12473,7 +12473,7 @@ export default function TabTheaters() {
                                                 ]?.lstLichChieuTheoPhim.map((time, index1) => {
                                                     if (index1 <= 3) {
                                                         return (
-                                                            <NavLink style={{ fontSize: "1.4rem" }} to={`/checkout/${time.maLichChieu}`} className="btn btn-success btn-showTime">
+                                                            <NavLink key={index1} style={{ fontSize: "1.4rem" }} to={`/checkout/${time.maLichChieu}`} className="btn btn-success btn-showTime">
                                                                 <span>{time?.ngayChieuGioChieu.slice(0, 10)}</span>
                                                                 <br />
                                                                 <span>
