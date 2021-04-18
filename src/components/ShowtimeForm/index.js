@@ -5,6 +5,7 @@ import {
   getMovieTheaterZoneList,
   addMovieShowtime,
 } from "../../actions/AdminShowtime";
+import SnackBar from "../Snackbar";
 
 import findTheaterList from "../../utils/findTheaterList";
 class ShowtimeForm extends Component {
@@ -176,6 +177,16 @@ class ShowtimeForm extends Component {
           </div>
           <div className="text-end m-2">{this.props.renderAction}</div>
         </form>
+        <SnackBar
+          isOpen={this.props.addShowtime.success}
+          title="Thêm lịch chiếu thành công"
+          severity="success"
+        />
+        <SnackBar
+          isOpen={this.props.addShowtime.error}
+          title={this.props.addShowtime.error}
+          severity="warning"
+        />
       </div>
     );
   }
@@ -184,6 +195,7 @@ const mapStateToProps = (state) => {
   return {
     movieTheaterSystem: state.adminShowtime.movieTheaterSystem,
     movieTheaterZone: state.adminShowtime.movieTheaterZone,
+    addShowtime: state.adminShowtime.addShowtime,
     accessToken: state.authReducers.currentUser.accessToken,
   };
 };
