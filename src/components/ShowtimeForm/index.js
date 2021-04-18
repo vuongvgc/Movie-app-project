@@ -5,6 +5,7 @@ export default class ShowtimeForm extends Component {
     this.state = {
       maPhim: "",
       ngayChieuGioChieu: "",
+      heThongRap: "",
       maRap: "",
       giaVe: "",
     };
@@ -23,7 +24,7 @@ export default class ShowtimeForm extends Component {
   }
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value }, () => {
-      // console.log(this.state);
+      console.log(this.state);
     });
   };
 
@@ -39,7 +40,7 @@ export default class ShowtimeForm extends Component {
 
   render() {
     // console.log(this.state);
-    let { maPhim, ngayChieuGioChieu, maRap, giaVe } = this.state;
+    let { maPhim, ngayChieuGioChieu, maRap, giaVe, heThongRap } = this.state;
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit}>
@@ -62,13 +63,32 @@ export default class ShowtimeForm extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Mã Rạp</label>
-            <input
-              name="maRap"
-              className="form-control"
+            <label>Hệ Thống Rạp</label>
+            <select
+              class="form-select"
+              value={heThongRap}
               onChange={this.handleChange}
+              name="heThongRap"
+            >
+              <option selected>Lựa chọn hệ thống rạp</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Mã Rạp</label>
+            <select
+              class="form-select"
               value={maRap}
-            />
+              name="maRap"
+              onChange={this.handleChange}
+            >
+              <option selected>Lựa chọn rạp</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
           </div>
           <div className="form-group">
             <label>Giá Vé</label>
@@ -79,6 +99,7 @@ export default class ShowtimeForm extends Component {
               value={giaVe}
             />
           </div>
+          <div className="text-end m-2">{this.props.renderAction}</div>
         </form>
       </div>
     );

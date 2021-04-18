@@ -7,33 +7,34 @@ import ShowtimeForm from "../ShowtimeForm";
 const renderContent = () => {
   return (
     <React.Fragment>
-      <ShowtimeForm />
+      <ShowtimeForm onSubmit={onSubmit} renderAction={renderAction()} />
     </React.Fragment>
   );
 };
 const renderAction = () => {
   return (
     <React.Fragment>
-      <button className="btn btn-danger" data-bs-dismiss="modal">
+      <button className="btn btn-danger mx-2" data-bs-dismiss="modal">
         Đóng
       </button>
       <button className="btn btn-success">Thêm</button>
     </React.Fragment>
   );
 };
+const onSubmit = (formValue) => {
+  console.log(formValue);
+};
 export default function ShowTime(props) {
   const dispatch = useDispatch();
 
   const [select, setSelect] = useState(0);
-  const { movieInfo, loading, error } = useSelector(
-    (state) => state.movieInfoReducer
-  );
+  const { movieInfo } = useSelector((state) => state.movieInfoReducer);
 
   useEffect(() => {
     const movieId = props.movieId;
 
     dispatch(getMovieInfo(movieId));
-  }, []);
+  }, [dispatch, props.movieId]);
   console.log(movieInfo);
   return (
     <div className="row showTimes">
@@ -98,7 +99,6 @@ export default function ShowTime(props) {
         id="modalAddShowtime"
         title="Thêm Lịch Chiếu"
         content={renderContent()}
-        action={renderAction()}
       />
     </div>
   );
