@@ -144,27 +144,27 @@ export default function TopSearch(props) {
     //useEffect thay thế cho 3 lifecycle (xem slide)
     useEffect(() => {
         qlPhimService.layDanhSachPhim().then(result => {
-            console.log(result.data);
+            // console.log(result.data);
             setDanhSachPhim(result.data);
         }).catch(errors => {
-            console.log(errors.response.data);
+            // console.log(errors.response.data);
         })
     }, []); //Tham số 2 [] rổng sử dụng như componentdidmount
 
     useEffect(() => {
         qlPhimService.layDanhSachPhimSapChieu().then(result => {
-            console.log(result.data);
+            // console.log(result.data);
             setDanhSachPhimSapChieu(result.data);
         }).catch(errors => {
-            console.log(errors.response.data);
+            // console.log(errors.response.data);
         })
     }, []); //Tham số 2 [] rổng sử dụng như componentdidmount
     useEffect(() => {
         qlPhimService.layDanhSachPhimHot().then(result => {
-            console.log(result.data);
+            // console.log(result.data);
             setDanhSachPhimHot(result.data);
         }).catch(errors => {
-            console.log(errors.response.data);
+            // console.log(errors.response.data);
         })
     }, []); //Tham số 2 [] rổng sử dụng như componentdidmount
 
