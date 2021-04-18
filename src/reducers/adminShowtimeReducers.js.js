@@ -8,6 +8,7 @@ import {
   MOVIE_ADD_SHOWTIME_REQUEST,
   MOVIE_ADD_SHOWTIME_SUCCESS,
   MOVIE_ADD_SHOWTIME_FAIL,
+  RESET_STATUS,
 } from "../constants/Admin";
 const initialState = {
   movieTheaterSystem: {
@@ -128,6 +129,12 @@ const adminShowtimeReducers = (state = initialState, action) => {
           error: action.payload.error,
           success: false,
         },
+      };
+    }
+    case RESET_STATUS: {
+      return {
+        ...state,
+        addShowtime: { success: false, error: null, loading: true },
       };
     }
     default:
