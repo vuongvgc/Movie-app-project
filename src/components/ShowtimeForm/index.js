@@ -5,6 +5,7 @@ import {
   getMovieTheaterZoneList,
   addMovieShowtime,
 } from "../../actions/AdminShowtime";
+import { getMovieInfo } from "../../actions/MovieInfo";
 import SnackBar from "../Snackbar";
 
 import findTheaterList from "../../utils/findTheaterList";
@@ -45,6 +46,10 @@ class ShowtimeForm extends Component {
       );
       // console.log(theaterList);
       this.setState({ theaterList: newTheaterList });
+    }
+    // console.log(this.state.statusAddShowtime);
+    if (this.props.addShowtime.success !== prevProps.addShowtime.success) {
+      this.props.getMovieInfo(this.state.maPhim);
     }
   }
   handleChange = (e) => {
@@ -203,4 +208,5 @@ export default connect(mapStateToProps, {
   getMovieTheaterSystemList,
   getMovieTheaterZoneList,
   addMovieShowtime,
+  getMovieInfo,
 })(ShowtimeForm);
