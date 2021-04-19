@@ -24,6 +24,7 @@ class RenderUserList extends React.Component {
   deleteMovie = (modelMovie) => {
     this.props.deleteMovie(modelMovie, this.props.accessToken);
   };
+
   renderAction = () => {
     return (
       <React.Fragment>
