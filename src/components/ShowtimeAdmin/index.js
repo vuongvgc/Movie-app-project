@@ -24,7 +24,6 @@ const renderAction = () => {
 
 export default function ShowTime(props) {
   const dispatch = useDispatch();
-  const movieId = props.movieId;
   const [select, setSelect] = useState(0);
   const { movieInfo } = useSelector((state) => state.movieInfoReducer);
 
