@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import {
   getMovieTheaterSystemList,
@@ -7,7 +7,6 @@ import {
 } from "../../actions/AdminShowtime";
 import { getMovieInfo } from "../../actions/MovieInfo";
 import SnackBar from "../Snackbar";
-
 import findTheaterList from "../../utils/findTheaterList";
 class ShowtimeForm extends Component {
   constructor(props) {
@@ -94,6 +93,7 @@ class ShowtimeForm extends Component {
               className="form-control"
               onChange={this.handleChange}
               value={maPhim}
+              required
             />
           </div>
           <div className="form-group">
@@ -104,6 +104,7 @@ class ShowtimeForm extends Component {
               onChange={this.handleChange}
               value={ngayChieuGioChieu}
               placeholder="Định dạng ngày chiếu: dd/mm/yyyy hh:mm:ss"
+              required
             />
           </div>
           <div className="form-group">
@@ -113,8 +114,9 @@ class ShowtimeForm extends Component {
               value={heThongRap}
               onChange={this.handleChange}
               name="heThongRap"
+              required
             >
-              <option selected>Lựa chọn hệ thống rạp</option>
+              <option value="">Lựa chọn hệ thống rạp</option>
               {!this.props.movieTheaterSystem.loading
                 ? this.props.movieTheaterSystem.theaterSystemList.map(
                     (item) => {
@@ -137,8 +139,9 @@ class ShowtimeForm extends Component {
               value={maCumRap}
               name="maCumRap"
               onChange={this.handleChange}
+              required
             >
-              <option selected>Lựa chọn cụm rạp</option>
+              <option value="">Lựa chọn cụm rạp</option>
               {!this.props.movieTheaterZone.loading
                 ? this.props.movieTheaterZone.theaterZoneList.map((item) => {
                     return (
@@ -157,8 +160,9 @@ class ShowtimeForm extends Component {
               value={maRap}
               name="maRap"
               onChange={this.handleChange}
+              required
             >
-              <option selected>Lựa chọn rạp</option>
+              <option value="">Lựa chọn rạp</option>
               {!this.props.movieTheaterZone.loading
                 ? this.state.theaterList.map((item) => {
                     return (
@@ -178,6 +182,7 @@ class ShowtimeForm extends Component {
               onChange={this.handleChange}
               value={giaVe}
               placeholder="Giá Vé từ 75.000 - 200.000"
+              required
             />
           </div>
           <div className="text-end m-2">{this.props.renderAction}</div>
