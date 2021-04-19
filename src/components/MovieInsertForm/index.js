@@ -85,6 +85,7 @@ export default class PhimInsert extends Component {
               className="form-control"
               onChange={this.handleChange}
               value={tenPhim}
+              required
             />
           </div>
           <div className="form-group">
@@ -94,6 +95,7 @@ export default class PhimInsert extends Component {
               className="form-control"
               onChange={this.handleChange}
               value={biDanh}
+              required
             />
           </div>
           <div className="form-group">
@@ -103,6 +105,7 @@ export default class PhimInsert extends Component {
               className="form-control"
               onChange={this.handleChange}
               value={trailer}
+              required
             />
           </div>
           <div className="form-group">
@@ -117,6 +120,7 @@ export default class PhimInsert extends Component {
               name="hinhAnh"
               className="form-control"
               onChange={this.handleChange}
+              required
             />
           </div>
           <div className="form-group">
@@ -126,6 +130,7 @@ export default class PhimInsert extends Component {
               className="form-control"
               onChange={this.handleChange}
               value={moTa}
+              required
             />
           </div>
           <div className="form-group">
@@ -135,6 +140,7 @@ export default class PhimInsert extends Component {
               className="form-control"
               onChange={this.handleChange}
               value={danhGia}
+              required
             />
           </div>
           <div className="form-group">
@@ -144,6 +150,7 @@ export default class PhimInsert extends Component {
               className="form-control"
               onChange={this.handleChange}
               value={ngayKhoiChieu}
+              required
             />
           </div>
           {this.props.renderAction()}
