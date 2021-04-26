@@ -137,7 +137,7 @@ const Footer = ({ classes }) => {
               <Grid container item md={3} sm={6} xs={3}>
                 <Link
                   className={classes.styleLogoPartner}
-                  to={{ pathname: "http://www.cinebox.vn/" }}
+                  to={{ pathname: "https://www.cinebox.vn/" }}
                   target="_blank"
                 >
                   <LazyLoad once={true}>
@@ -167,7 +167,7 @@ const Footer = ({ classes }) => {
               <Grid container item md={3} sm={6} xs={3}>
                 <Link
                   className={classes.styleLogoPartner}
-                  to={{ pathname: "http://ddcinema.vn/" }}
+                  to={{ pathname: "https://ddcinema.vn/" }}
                   target="_blank"
                 >
                   <LazyLoad once={true}>
@@ -182,7 +182,7 @@ const Footer = ({ classes }) => {
               <Grid container item md={3} sm={6} xs={3}>
                 <Link
                   className={classes.styleLogoPartner}
-                  to={{ pathname: "http://flamingoresorts.vn/vi/trang-chu" }}
+                  to={{ pathname: "https://flamingoresorts.vn/vi/trang-chu" }}
                   target="_blank"
                 >
                   <LazyLoad once={true}>
@@ -212,7 +212,7 @@ const Footer = ({ classes }) => {
               <Grid container item md={3} sm={6} xs={3}>
                 <Link
                   className={classes.styleLogoPartner}
-                  to={{ pathname: "http://www.lottecinemavn.com/" }}
+                  to={{ pathname: "https://www.lottecinemavn.com/" }}
                   target="_blank"
                 >
                   <LazyLoad once={true}>
